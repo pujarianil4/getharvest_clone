@@ -1,6 +1,6 @@
-import { LOGIN_FAILURE, LOGIN_SUCCESS } from "./authActionType"
+import { LOGIN_FAILURE, LOGIN_SUCCESS, SIGNUP_SUCCESS,SIGNUP_FAILURE } from "./authActionType"
 import Axios from "axios"
-import axios from "axios"
+
 
 
 const loginSuccess = () => {
@@ -11,6 +11,16 @@ const loginSuccess = () => {
 const loginFailure = () => {
     return {
         type: LOGIN_FAILURE
+    }
+}
+const registerSuccess = () => {
+    return {
+        type: SIGNUP_SUCCESS
+    }
+}
+const registerFailure = () => {
+    return {
+        type: SIGNUP_FAILURE
     }
 }
 
@@ -32,13 +42,15 @@ const submitSignUpData = (inp) => (dispatch) => {
     })
         .then((res) => {
             console.log(res)
-            dispatch(loginSuccess());
+            dispatch(registerSuccess());
         })
         .catch((error) =>
-            dispatch(loginFailure())
+            dispatch(registerFailure())
         )
 
 }
+
+///    login auth is getting done here
 
 const submitSignInData = (inp) => (dispatch) => {
 
@@ -57,17 +69,6 @@ const submitSignInData = (inp) => (dispatch) => {
                 dispatch(loginSuccess()) :
                 dispatch(loginFailure())
             )
-
-            // res.filter((item)=>{
-            //     if (item.wmail == inp.password && item.password == inp.password) {
-            //        return( dispatch(loginSuccess))
-                   
-            //     }
-            //     else {
-            //         dispatch(loginFailure);
-            //     }
-            // })
-
 
         })
 }
