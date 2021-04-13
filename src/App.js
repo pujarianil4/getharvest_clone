@@ -1,5 +1,6 @@
 //import logo from './logo.svg';
 import './App.css';
+import Signup from './Components/Auth/SIgnUp/Signup';
 import HomeHeader from './Components/Router/Header/HomeHeader'
 
 
@@ -8,6 +9,7 @@ function App() {
     <div>
       
       <HomeHeader />
+      <Signup />
 
     </div>
   );
