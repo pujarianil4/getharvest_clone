@@ -9,8 +9,8 @@ import style from './Style.module.css'
 const Section = styled.section`
     display: flex;
     flex-flow: row;
-    background-color: #F26C36;
-    padding: 8px 0px;
+    background-color: #F26314;
+    padding: 5px 0px;
 `
 const Logo = styled.section`
     flex-basis: 25%;
@@ -27,7 +27,7 @@ const Htitle = styled.p`
 `
 const Menu = styled.section`
     flex-basis: 50%;
-    padding: 25px 0px;
+    padding: 20px 0px;
     align-content: right;
     
 `
@@ -67,7 +67,9 @@ export default function HomeHeader() {
                 <Button>Try Harvest Free</Button>
                 
             </Icon>
+            
         </Section>
+        
         // </AppBar>
     )
 }
