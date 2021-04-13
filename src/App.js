@@ -1,5 +1,6 @@
 //import logo from './logo.svg';
 import './App.css';
+import Signin from './Components/Auth/SignIn/Signin';
 import Signup from './Components/Auth/SIgnUp/Signup';
 import HomeHeader from './Components/Router/Header/HomeHeader'
 
@@ -9,7 +10,8 @@ function App() {
     <div>
       
       <HomeHeader />
-      <Signup />
+      {/* <Signup /> */}
+      <Signin />
 
     </div>
   );
