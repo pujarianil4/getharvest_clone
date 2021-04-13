@@ -1,0 +1,19 @@
+.front_section{
+    height: 100vh;
+    background-image: linear-gradient(to top, #F14853 0%,#F26314  100%);
+    text-align: center;
+    color: white;
+}
+.front_section > div> hr{
+    margin: 0px;
+    padding: 0px;
+    color: black;
+}
+.front_div{
+    width: 80%;
+    margin: auto;
+}
+.title > h1{
+    font-size: 50px;
+    margin: 5px;
+}
