@@ -1,0 +1,14 @@
+.Links{
+    text-decoration: none;
+    color:#626262;
+    height: 30px;
+    font-family: Fakt,Helvetica Neue,arial,sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+}
+.Links:focus{
+    border-bottom: 2.5px solid#f37510ed;
+    color: #222222;
+
+}
