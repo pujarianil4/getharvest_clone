@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-import Home from '../Pages/Home'
+import {Home} from '../Pages/Home/Home'
 
 export default function Router() {
     return (
@@ -9,18 +9,7 @@ export default function Router() {
                 <Route exact path="/">
                     <Home />                    
                 </Route>
-                <Route  path="/features">
-                    <Features />                    
-                </Route>
-                <Route  path="/integrations">
-                    <Integrations />                    
-                </Route>
-                <Route  path="/customers">
-                    <Customers />                    
-                </Route>
-                <Route  path="/pricing">
-                    <Pricing />                    
-                </Route>
+   
             </Switch>
         </div>
     )

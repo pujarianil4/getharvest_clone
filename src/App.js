@@ -15,16 +15,6 @@ function App() {
     <div>
 
 
-      
-      <HomeHeader />
-      {/* <Signup /> */}
-      <Signin />
-
- 
-   <TimeRoutes/>
-
-
-
     </div>
   );
 }
