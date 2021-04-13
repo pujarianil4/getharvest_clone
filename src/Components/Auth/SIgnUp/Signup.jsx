@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import styled from "styled-components"
+// import styled from "styled-components"
 import { submitSignUpData } from '../../../Redux/Auth/authAction';
 
 
