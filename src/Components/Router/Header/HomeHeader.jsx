@@ -2,8 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import style from './Style.module.css'
-import search from './search.png'
-import bag from './bag.png'
 // import {
 //     AppBar, Toolbar
 // } from "@material-ui/core"
