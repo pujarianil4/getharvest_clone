@@ -1,17 +1,14 @@
-import { timeReducer } from "./Timer/timeReducer";
-import { applyMiddleware, combineReducers, compose, createStore } from "redux";
-import { thunk } from "redux-thunk";
+
+import { authReducer } from "./Auth/authReducer";
+import { createStore, applyMiddleware, compose } from 'redux'
 
 
+const customMiddleware = (store) => (next) => (action) => {
+    return typeof action == "function" ? action(store.dispatch, store.getState) : next(action)
+}
 
-const rootReducer = combineReducers({
-   time: timeReducer,
+export const store = createStore(authReducer,
+    compose(applyMiddleware(customMiddleware),
+        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    ));
 
-});
-
-  
-
-export const store = createStore(
-  rootReducer,
-  compose(applyMiddleware(thunk))
-);
