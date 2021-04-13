@@ -40,8 +40,11 @@ export const Timesheet = () => {
                 <TaskWrapper>
                   <ArrowForwardIosIcon className={styles.btn}/>
                   <ArrowBackIosIcon className={styles.btn}/>
+                  <input type="date" name="" id="" />
                 </TaskWrapper>
             </TimeSheetContainer>
+
+           
         </TimeSheetWrapper>
         </div>
     )
