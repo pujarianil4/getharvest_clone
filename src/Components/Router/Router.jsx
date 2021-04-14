@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom'
 import Signin from '../Auth/SignIn/Signin'
 import Signup from '../Auth/SIgnUp/Signup'
 import {Home} from '../Pages/Home/Home'
+import { CreateInvoice } from '../Pages/Invoices_/CreateInvoice'
 import { Timesheet } from '../Pages/Time/Timesheet_/TimeSheet'
 import HomeHeader from './Header/HomeHeader'
 
@@ -18,8 +19,8 @@ export default function Router() {
                     <Home />                    
                 </Route>
 
-                <Route exact path="/time">
-                  <Timesheet/>                  
+                <Route path="/invoice">
+                  <CreateInvoice/>                  
                 </Route>
         
 
