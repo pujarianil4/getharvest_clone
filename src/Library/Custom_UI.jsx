@@ -9,6 +9,7 @@ font-size:20px;
 font-weight:600;
 color:white;
 border:0px;
+cursor: pointer;
 background-color: ${prop=>prop.color};
 `
 

@@ -9,6 +9,7 @@ import CreateProject from '../Pages/Project/CreateProject'
 import { CreateInvoice } from '../Pages/Invoices_/CreateInvoice'
 
 import HomeHeader from './Header/HomeHeader'
+import { Footer } from '../Pages/Footer/Footer'
 
 export default function Router() {
     return (
@@ -39,6 +40,7 @@ export default function Router() {
                 </Route>
 
             </Switch>
+            <Footer/>
         </div>
     )
 }

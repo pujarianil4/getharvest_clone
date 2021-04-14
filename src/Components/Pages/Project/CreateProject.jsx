@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
-import { useDispatch } from "react-redux"
-import { projectData } from "../../../Redux/Project/projectAction"
+import React, { useState } from 'react';
+import { useDispatch } from "react-redux";
+import { projectData } from "../../../Redux/Project/projectAction";
+import styles from './CreateProject.module.css'
 
 export default function CreateProject() {
 
@@ -45,23 +46,76 @@ export default function CreateProject() {
     }
 
     return (
-        <div>
+        <div className={styles.mainCont}>
 
             <div>
-
+                    <div className={styles.heading}>
+                        <h1>New Project</h1>
+                    </div>
                 <form>
 
-                    <input onChange={handleInp} name="client" value={inp.client} type="text" placeholder="client" /><br />
-                    <input onChange={handleInp} name="pname" value={inp.pname} type="text" placeholder="project name" /><br />
-                    <input onChange={handleInp} name="pcode" value={inp.pcode} type="text" placeholder="project code" /><br />
-                    <input onChange={handleInp} name="starton" value={inp.starton} type="date" placeholder="starts on" />
-                    <input onChange={handleInp} name="endson" value={inp.endson} type="date" placeholder="ends on" /><br />
-                    <input onChange={handleInp} name="notes" value={inp.notes} type="text" placeholder="notes" /><br />
 
-                    <button onClick={handleTimeAndMaterials}>Time & Materials</button>
-                    <button onClick={handleFixedFee}>Fixed Fee</button>
-                    <button onClick={handleNonBillable}>Non Billable</button><br /><br />
-                    <div>
+                    <div className={styles.InputBoxes}>
+
+                         <div className={styles.labels}>
+                            <div><label htmlFor="">Client</label> </div>  
+                            <div><label htmlFor="">Project Name</label></div>
+                            <div><label htmlFor="">Project Code</label></div>
+                            <div><label htmlFor="">Date</label></div>
+                            <div><label htmlFor="">Notes</label></div>
+                         </div>
+                         
+                    
+                    
+
+                    <div className={styles.inputs}>
+                        <div><input onChange={handleInp} name="client" value={inp.client} type="text" placeholder="client" /></div>
+                        <div><input onChange={handleInp} name="pname" value={inp.pname} type="text" placeholder="project name" /></div>
+                        <div><input onChange={handleInp} name="pcode" value={inp.pcode} type="text" placeholder="project code" /></div>
+                        <div>
+                            <input onChange={handleInp} name="starton" value={inp.starton} type="date" placeholder="starts on" />
+                            to
+                            <input onChange={handleInp} name="endson" value={inp.endson} type="date" placeholder="ends on" />
+                        </div>
+                        <div>
+                        
+                        <textarea  placeholder="Optional, but great for notes like invoice schedules. You can see notes when creating an invoice for Fixed Fee projects." rows="3" onChange={handleInp} name="notes" value={inp.notes}  ></textarea>
+                        </div>
+                    </div>
+                
+
+                 
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <div className={styles.projectypesBox}>
+
+                        <div className={styles.projectLeft}>
+                            <label htmlFor=""> Project Type </label>
+                        </div>
+                        <div className={styles.projectRight}>
+                                <div className={styles.projectButtons}>
+                                <button onClick={handleTimeAndMaterials}>Time & Materials</button>
+                                <button onClick={handleFixedFee}>Fixed Fee</button>
+                                <button onClick={handleNonBillable}>Non Billable</button>
+                                </div>
+
+
+                 <div className={styles.ProjectTypeCategory}>
                         {
                             tm ? <div>
                                 <label>HourlyRates</label>
@@ -84,22 +138,55 @@ export default function CreateProject() {
                                     </div>
                         }
 
-                    </div>
+                </div>
 
-                    <div style={{ border: "1px solid red" }}>
-                        <label>Business Development</label>
-                        <input name = "bd" checked = {inp.bd} type="checkbox" /><br />
-                        <label>Design</label>
-                        <input name = "design" checked = {inp.design} type="checkbox" /><br />
-                        <label>Marketing</label>
-                        <input name = "marketing" checked = {inp.marketing} type="checkbox" /><br />
-                        <label>Programming</label>
-                        <input name = "programming" type="checkbox" checked = {inp.programming} /><br />
-                        <label>project Management</label>
-                        <input name = "projectMan" checked = {inp.projectMan} type="checkbox" /><br />
+                        </div>
 
                     </div>
+
+
+
+                    
+                   <div className={styles.ProjectTaskHeading}>
+                        <div><h4>Tasks</h4></div>
+                         <div><p>Billable</p><p>
+                            Select All / None</p></div>
+                   </div>
+                    <div className={styles.projectTasks}>
+                    <div>
+                        <div className={styles.taskwidth}><label>Business Development</label></div>
+                        <input name = "bd" checked = {inp.bd} type="checkbox" />
+                    </div>
+                    <div>
+                        <div className={styles.taskwidth}><label>Design</label></div>
+                        <input name = "design" checked = {inp.design} type="checkbox" />
+                    </div>
+
+                    <div>
+                        <div className={styles.taskwidth}><label>Business Development</label></div>
+                        <input name = "marketing" checked = {inp.marketing} type="checkbox" />
+                    </div>
+                    <div>
+                    <div className={styles.taskwidth}><label>Business Development</label></div>
+                        <input name = "programming" type="checkbox" checked = {inp.programming} />
+                    </div>
+                    <div>
+                    <div className={styles.taskwidth}><label>project Management</label></div>
+                        <input name = "projectMan" checked = {inp.projectMan} type="checkbox" />
+                    </div>
+                    </div>
+                    
+                        
+
+                 
+
+
+
+                    <div className={styles.Buttons}>
+
                     <button onClick={handleSubmit}>submit</button>
+                    <button>Cancel</button>
+                    </div>
                 </form>
 
             </div>
