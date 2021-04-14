@@ -1,8 +1,11 @@
 import { LOGIN_FAILURE, LOGIN_SUCCESS, SIGNUP_FAILURE, SIGNUP_SUCCESS } from "./authActionType"
+import { auth } from "../../Components/Auth/firebase"
+
 
 const init = {
     isAuth: false,
-    isRegistered: false
+    isRegistered: false,
+   // currentUser: 
 }
 
 export const authReducer = (state = init, { type, payload }) => {
