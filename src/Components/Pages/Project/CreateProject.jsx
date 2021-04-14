@@ -155,24 +155,24 @@ export default function CreateProject() {
                     <div className={styles.projectTasks}>
                     <div>
                         <div className={styles.taskwidth}><label>Business Development</label></div>
-                        <input name = "bd" checked = {inp.bd} type="checkbox" />
+                        <input onChange = {handleInp} name = "bd" checked = {inp.bd} type="checkbox" />
                     </div>
                     <div>
                         <div className={styles.taskwidth}><label>Design</label></div>
-                        <input name = "design" checked = {inp.design} type="checkbox" />
+                        <input onChange = {handleInp} name = "design" checked = {inp.design} type="checkbox" />
                     </div>
 
                     <div>
                         <div className={styles.taskwidth}><label>Business Development</label></div>
-                        <input name = "marketing" checked = {inp.marketing} type="checkbox" />
+                        <input onChange = {handleInp} name = "marketing" checked = {inp.marketing} type="checkbox" />
                     </div>
                     <div>
                     <div className={styles.taskwidth}><label>Business Development</label></div>
-                        <input name = "programming" type="checkbox" checked = {inp.programming} />
+                        <input onChange = {handleInp} name = "programming" type="checkbox" checked = {inp.programming} />
                     </div>
                     <div>
                     <div className={styles.taskwidth}><label>project Management</label></div>
-                        <input name = "projectMan" checked = {inp.projectMan} type="checkbox" />
+                        <input onChange = {handleInp} name = "projectMan" checked = {inp.projectMan} type="checkbox" />
                     </div>
                     </div>
                     

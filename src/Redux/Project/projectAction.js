@@ -56,16 +56,16 @@ const projectData = (inp) => (dispatch) => {
                 }
             ],
             tasks: {
-                businessDevelopment: inp.businessdevelopment,
+                businessDevelopment: inp.bd,
                 design: inp.design,
                 marketing: inp.marketing,
                 programming: inp.programming,
-                projectManagement: inp.projectmanagement
+                projectManagement: inp.projectMan
 
             }
         }
     })
-    .then((res) => console.log(res))
+    .then((res) => console.log(res));
 
 }
 
