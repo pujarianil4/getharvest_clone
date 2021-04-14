@@ -2,7 +2,7 @@ import React from "react"
 import { Feature_card, Start_trial_button } from "../../../Library/Custom_UI"
 import style from "./Home.module.css"
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
-// import "react-responsive-carousel/lib/styles/carousel.min.css";
+
 import ImportContactsIcon from '@material-ui/icons/ImportContacts';
 import ComputerIcon from '@material-ui/icons/Computer';
 import RecordVoiceOverIcon from '@material-ui/icons/RecordVoiceOver';
@@ -161,6 +161,20 @@ export function Home(){
 
 
               </div>
+           </div>
+
+           {/* Start tracking time for free */}
+           <div style={{backgroundColor:"#F8F5F1"}}>
+           <div className={style.tracking}>
+             <div className={style.t_title}>
+               <h1>Start tracking time for free</h1>
+               <h2>See if Harvest is right for you with a fully functional 30-day trial. No credit card required.</h2>
+               <Start_trial_button color="#24A90C">Start Your Free Trial</Start_trial_button>
+             </div>
+             <div className={style.t_img}>
+              <img src="https://www.getharvest.com/assets/illustrations/timesheets-medium-857db8f1310d74ce1a0d2ef066ce09f1a0354b7a9eb40e02449d8a18942734b1.png" alt="img"/>
+             </div>
+           </div>
            </div>
      </>   
     )
