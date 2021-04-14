@@ -12,17 +12,17 @@ export default function CreateProject() {
     //const [nb, setNb] = useState(false)
 
     const handleInp = (e) => {
-        const { name, value } = e.target;
+        const { name, value, type, checked } = e.target;
+        let val = type === "checkbox" ? checked : value;
         let payload = {
             ...inp,
-            [name]: value
+            [name]: val
         }
         setInp(payload);
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
         const action = projectData(inp);
         dispatch(action);
 
@@ -32,21 +32,17 @@ export default function CreateProject() {
         e.preventDefault()
         setTm(true);
         setFf(false);
-       // setNb(false);
     }
     const handleFixedFee = (e) => {
         e.preventDefault()
 
         setTm(false);
         setFf(true);
-       // setNb(false);
     }
     const handleNonBillable = (e) => {
         e.preventDefault()
-
         setTm(false);
         setFf(false);
-        //setNb(true);
     }
 
     return (
@@ -149,6 +145,7 @@ export default function CreateProject() {
                     </div>
 
 
+
                     
                    <div className={styles.ProjectTaskHeading}>
                         <div><h4>Tasks</h4></div>
@@ -158,23 +155,24 @@ export default function CreateProject() {
                     <div className={styles.projectTasks}>
                     <div>
                         <div className={styles.taskwidth}><label>Business Development</label></div>
-                        <input type="checkbox"/>
+                        <input name = "bd" checked = {inp.bd} type="checkbox" />
                     </div>
                     <div>
                         <div className={styles.taskwidth}><label>Design</label></div>
-                        <input type="checkbox"/>
+                        <input name = "design" checked = {inp.design} type="checkbox" />
                     </div>
+
                     <div>
                         <div className={styles.taskwidth}><label>Business Development</label></div>
-                        <input type="checkbox" />
+                        <input name = "marketing" checked = {inp.marketing} type="checkbox" />
                     </div>
                     <div>
                     <div className={styles.taskwidth}><label>Business Development</label></div>
-                        <input type="checkbox" />
+                        <input name = "programming" type="checkbox" checked = {inp.programming} />
                     </div>
                     <div>
-                    <div className={styles.taskwidth}><label>Business Development</label></div>
-                        <input type="checkbox" />
+                    <div className={styles.taskwidth}><label>project Management</label></div>
+                        <input name = "projectMan" checked = {inp.projectMan} type="checkbox" />
                     </div>
                     </div>
                     
@@ -185,11 +183,11 @@ export default function CreateProject() {
 
 
                     <div className={styles.Buttons}>
+
                     <button onClick={handleSubmit}>submit</button>
                     <button>Cancel</button>
                     </div>
                 </form>
-
 
             </div>
 
