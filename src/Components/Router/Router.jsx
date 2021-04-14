@@ -9,7 +9,10 @@ import HomeHeader from './Header/HomeHeader'
 export default function Router() {
     return (
         <div>
+           
             <HomeHeader/>
+        
+        
             <Switch>
                 <Route exact path="/">
                     <Home />                    
