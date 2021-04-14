@@ -32,6 +32,8 @@ const registerFailure = () => {
 
 const signUp = (inp) => (dispatch) => {
 
+    // const {wemail,password} = inp
+
     // try {
     //     auth.createUserWithEmailAndPassword(wemail, password)
     //     .then(dataBeforeEmail => {

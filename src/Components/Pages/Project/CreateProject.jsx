@@ -11,17 +11,17 @@ export default function CreateProject() {
     //const [nb, setNb] = useState(false)
 
     const handleInp = (e) => {
-        const { name, value } = e.target;
+        const { name, value, type, checked } = e.target;
+        let val = type === "checkbox" ? checked : value;
         let payload = {
             ...inp,
-            [name]: value
+            [name]: val
         }
         setInp(payload);
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
         const action = projectData(inp);
         dispatch(action);
 
@@ -31,21 +31,17 @@ export default function CreateProject() {
         e.preventDefault()
         setTm(true);
         setFf(false);
-       // setNb(false);
     }
     const handleFixedFee = (e) => {
         e.preventDefault()
 
         setTm(false);
         setFf(true);
-       // setNb(false);
     }
     const handleNonBillable = (e) => {
         e.preventDefault()
-
         setTm(false);
         setFf(false);
-        //setNb(true);
     }
 
     return (
@@ -92,23 +88,19 @@ export default function CreateProject() {
 
                     <div style={{ border: "1px solid red" }}>
                         <label>Business Development</label>
-                        <input type="checkbox" /><br />
+                        <input name = "bd" checked = {inp.bd} type="checkbox" /><br />
                         <label>Design</label>
-                        <input type="checkbox" /><br />
-                        <label>Business Development</label>
-                        <input type="checkbox" /><br />
-                        <label>Business Development</label>
-                        <input type="checkbox" /><br />
-                        <label>Business Development</label>
-                        <input type="checkbox" /><br />
+                        <input name = "design" checked = {inp.design} type="checkbox" /><br />
+                        <label>Marketing</label>
+                        <input name = "marketing" checked = {inp.marketing} type="checkbox" /><br />
+                        <label>Programming</label>
+                        <input name = "programming" type="checkbox" checked = {inp.programming} /><br />
+                        <label>project Management</label>
+                        <input name = "projectMan" checked = {inp.projectMan} type="checkbox" /><br />
 
                     </div>
-
-
-
                     <button onClick={handleSubmit}>submit</button>
                 </form>
-
 
             </div>
 
