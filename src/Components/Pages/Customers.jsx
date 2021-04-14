@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const PendingAprroval = () => {
+export default function Customers() {
     return (
         <div>
             

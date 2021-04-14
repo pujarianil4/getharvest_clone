@@ -1,9 +1,9 @@
 import React from 'react'
 
-export const Archive = () => {
+export const PendingAprroval = () => {
     return (
         <div>
-            
+            <h1>Pending Approval</h1>
         </div>
     )
 }

@@ -1,0 +1,12 @@
+a {
+    padding: 0px 10px;
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    
+}
+a:hover{
+    cursor: pointer;
+}

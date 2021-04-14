@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Timesheet = () => {
+export default function Features() {
     return (
         <div>
             
