@@ -2,6 +2,11 @@ import React from "react"
 import { Feature_card, Start_trial_button } from "../../../Library/Custom_UI"
 import style from "./Home.module.css"
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import Carousel from "./Carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import ImportContactsIcon from '@material-ui/icons/ImportContacts';
+import ComputerIcon from '@material-ui/icons/Computer';
+import RecordVoiceOverIcon from '@material-ui/icons/RecordVoiceOver';
 export function Home(){
 
     return(
@@ -26,8 +31,9 @@ export function Home(){
         
         </div>
     
-    
+   
         </section>
+   
         <div className={style.companies}>
             <h3><span>70,000+</span> COMPANIES TRACK TIME WITH HARVEST</h3>
          <img src="https://www.getharvest.com/assets/customers/featured/featured-vw-51c3fc513c16fde99676892d424629144585ff6db226254ed6a05fbfcd48101d.png" alt=""/>
@@ -91,6 +97,72 @@ export function Home(){
            </div>
            </div>
         </div>
+        <div className={style.all_feature} >
+             <span>Browse all feature </span><ArrowForwardIcon style={{color:"orange",margin:"0px"}}/>
+
+            
+           </div>
+
+            {/* customer spotlight */}
+           <div className={style.customer_spotlight}>
+           <div className={style.feature}>
+              <h2>CUSTOMER SPOTLIGHT</h2>
+              <h1>Time tracking that helps businesses thrive</h1>
+              <h3>From consultancies to internal departments, and across industries, we help growth-minded organizations make the most of time.</h3>
+        </div>
+    
+           </div>
+
+           {/* Learning Resources */}
+
+           <div className={style.learning_resources}>
+              <div className={style.learning_title}>
+                 <h2>LEARNING RESOURCES</h2>
+                 <h1>Supporting you along the way</h1>
+              </div>
+              <div className={style.resource_card}>
+                 <div className={style.r_card}>
+                   <div className={style.icon}>
+                     <ImportContactsIcon style={{color:"white",fontSize:"40"}}/>
+                   </div>
+                   <div className={style.r_title}>
+                     <h2>Guide & Templete</h2>
+                     <h4>Learn how to introduce your team to time tracking and make the most of Harvest </h4>
+                   </div>
+                   <div className={style.arrow}>
+                   <ArrowForwardIcon style={{color:"orange",fontSize:"35"}}/>
+                   </div>
+                 </div>
+
+                 <div className={style.r_card}>
+                   <div className={style.icon} style={{backgroundColor:"#21A5A0"}}>
+                     <ComputerIcon style={{color:"white",fontSize:"40"}}/>
+                   </div>
+                   <div className={style.r_title} >
+                     <h2>Guide & Templete</h2>
+                     <h4>Learn how to introduce your team to time tracking and make the most of Harvest </h4>
+                   </div>
+                   <div className={style.arrow}>
+                   <ArrowForwardIcon style={{color:"orange",fontSize:"35"}}/>
+                   </div>
+                 </div>
+
+                 <div className={style.r_card}>
+                   <div className={style.icon} style={{backgroundColor:"#F18D2A"}} >
+                     <RecordVoiceOverIcon style={{color:"white",fontSize:"40"}}/>
+                   </div>
+                   <div className={style.r_title}>
+                     <h2>Guide & Templete</h2>
+                     <h4>Learn how to introduce your team to time tracking and make the most of Harvest </h4>
+                   </div>
+                   <div className={style.arrow}>
+                   <ArrowForwardIcon style={{color:"orange",fontSize:"35"}}/>
+                   </div>
+                 </div>
+
+
+              </div>
+           </div>
      </>   
     )
 }
