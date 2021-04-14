@@ -1,18 +1,11 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 // import styled from "styled-components"
-import { submitSignUpData } from '../../../Redux/Auth/authAction';
-
-
-// const Section = styled.section`
-//     display: flex;
-//     flex-flow: column;
-// `
-
+import { signUp } from '../../../Redux/Auth/authAction';
 
 
 export default function Signup() {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch()
     const [inp, setInp] = useState({})
 
     const handleInp = (e) => {
@@ -27,7 +20,7 @@ export default function Signup() {
 
     const submitSignUp = (e) => {
         e.preventDefault ();
-        const action = submitSignUpData(inp);
+        const action = signUp(inp);
         dispatch(action); 
     }
 
