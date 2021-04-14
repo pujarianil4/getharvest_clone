@@ -1,0 +1,177 @@
+.mainCont{
+    width: 70%;
+    margin: auto;
+}
+
+.heading{
+   
+    height: 50px;
+    width: 100%;
+    border-bottom: 0.5px solid black;
+}
+.InputBoxes{
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    
+    padding-bottom: 20px;
+    border-bottom: 0.5px solid black;
+}
+.labels{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    
+}
+.labels>div{
+    height: 35px;
+}
+
+.inputs{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+   
+}
+.inputs>div>input{
+    border-radius: 3px;
+    height: 30px;
+    border:0.5px solid black;
+    padding-left: 10px;
+}
+
+.inputs>div:nth-child(1)>input,.inputs>div:nth-child(2)>input{
+  width: 400px;  
+  
+}
+
+.inputs>div>textarea{
+    width: 600px;
+    height: 70px;
+}
+
+.projectypesBox{
+    margin-top: 10px;
+    width: 100%;
+    padding-bottom: 20px;
+    border-bottom: 0.5px solid black;
+    display: flex;
+}
+.projectLeft{
+    width: 20%;
+}
+
+.projectRight{
+    width: 60%;
+    
+}
+.projectButtons>button{
+    height: 40px;
+    width: 200px;
+    border: 0.2px solid black;
+    background: none;
+}
+.projectButtons>button:focus{
+    background-color: #f37510;
+    color: white;
+    outline: none;
+    border: none;
+}
+
+.projectButtons{
+    display: flex;
+    justify-content: space-between;
+}
+
+.ProjectTypeCategory{
+   padding-top: 10px;
+    width: 100%;
+    height: 200px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    border-bottom:0.2px solid black;
+  
+}
+.ProjectTypeCategory>div>label{
+    padding:10px 0 0 10px;
+    margin-right: 40px;
+}
+.ProjectTypeCategory>div>input{
+   
+    height: 30px;
+}
+.ProjectTypeCategory>div{
+    display: flex;
+   
+}
+.ProjectTaskHeading{
+    margin-top: 20px;
+    padding-left: 20px;
+    height: 50px;
+    width: 98.3%;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    background-color: #f4f4f4;
+    display: flex;
+    gap: 85%;
+}
+.ProjectTaskHeading>div>p{
+    font-size: 10px;
+    line-height: 1;
+}
+.projectTasks{
+    margin-left: 20px;
+    padding-top: 10px;
+    width: 90%;
+    height: 200px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.projectTasks>div{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.Buttons{
+    margin-top:10px;
+    display:flex;
+    gap:4px;
+}
+
+
+
+.Buttons>button:nth-child(1){
+        background-color:green;
+        height:40px;
+        color:white;
+        width:150px;
+        border:none;
+        background: linear-gradient(#14a000,#1a8d08);
+        font-weight: 500;
+        border-radius: 3px;
+    }
+    .Buttons>button:nth-child(2){
+        height:40px;
+        width:100px;
+        border:none;
+        background: linear-gradient(#f0f0f0,#d3d3d3);
+        font-weight: 500;
+        border-radius: 3px;
+    }
+    .Buttons>button:focus{
+        outline:none;
+        
+    }
+    .Buttons>button:hover{
+        background:#f37510;
+        color:white;
+        
+    }
