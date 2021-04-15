@@ -104,6 +104,7 @@ export const getProjectData =()=>(dispatch)=>{
                 arrdata.push(res.data[k])
             }
             dispatch(getProjectSuccess(arrdata))
+            console.log(arrdata)
     }).catch((err)=>{
         dispatch(getProjectFailure(err))
     })

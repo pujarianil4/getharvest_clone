@@ -6,6 +6,10 @@ import styles from './TimeSheet.module.css';
 import AddIcon from '@material-ui/icons/Add';
 import {useDispatch,useSelector} from 'react-redux';
 import { createTaskTimer, getTaskTimer,getProjectData } from '../../../../Redux/Timer/timeAction';
+// import { createTaskTimer, getTaskTimer } from '../../../../Redux/Timer/timeAction';
+import { DayTabs} from './TimeDayTab';
+
+
 
 const TimeSheetWrapper = styled.div`
 margin-left:18%;
@@ -85,11 +89,11 @@ const initTaskObj ={
 
 
 export const Timesheet = () => {
-    var dated = new Date();
+ 
     const [formData,setFormData] =React.useState(initTaskObj)
     const {projectName,taskName,notes,timer,dating} = formData
-  
-    var date = dated.toDateString();
+    const [billable,setBillable]=React.useState([])
+
     const [openCreateTAsk,setopenCreateTAsk]=React.useState(false)
     const handleChange=(e)=>{
         const {name,value}=e.target
@@ -102,48 +106,68 @@ export const Timesheet = () => {
 
      
     const clientObj =state.projectData[6]
-    console.log(clientObj)
-
-    const billable =Object.keys(clientObj.tasks).filter((item)=>clientObj.tasks[item]===true)
-    console.log(billable)
-    const nonbillable =Object.keys(clientObj.tasks).filter((item)=>clientObj.tasks[item]!==true)
-    console.log(nonbillable)    
-    
     const dispatch = useDispatch()
+ 
+    React.useEffect(()=>{
+        dispatch(getProjectData())
+        if(!data.isLoading){
+            console.log(clientObj)
+            const bill =Object.keys(clientObj.tasks).filter((item)=>clientObj.tasks[item]===true)
+            setBillable(bill)
+        
+        
+            const nonbill =Object.keys(clientObj.tasks).filter((item)=>clientObj.tasks[item]!==true)
+            // setBillable(nonbill) 
+        } 
+        
+     
+    },[openCreateTAsk])
+
+  
     const handleSubmit =(e)=>{
         e.preventDefault()
         console.log(formData)
         // dispatch(createTaskTimer(formData))
-        // dispatch(getTaskTimer())
-        dispatch(getProjectData())
+        dispatch(getTaskTimer())
+        
     }
     
-    return(
+    return (
        
             <div >
             {
                 openCreateTAsk &&<AddTask>
                         <div className={styles.createTaskHeader}>
                             <h3>New Time Entry</h3>
-                            <p>{date}</p>
+                            <p>
+                            
+                            </p>
                         </div>
                         <form onSubmit={handleSubmit}>
                             <div><label htmlFor="">Project/Task</label></div>
                             <div className={styles.projectName}>
                             <select name="projectName" id="" onChange={handleChange} value={projectName}>
-                                <option value="Project Name-1" >Project Name-1</option>
-                                <option value="Project Name-2" >Project Name-2</option>
+                                <option value="Task Name-1">Project Name-1</option>
+                                <option value="Task Name-2">{clientObj? clientObj.pname:"Task Name-2"}</option>
                             </select>
                             </div>
                             <div className={styles.TaskName}>
                             <select name="taskName" id="" onChange={handleChange} value={taskName}>
                             <optgroup label="BILLABLE">
-                                <option value="Task Name-1" >Task Name-1</option>
-                                <option value="Task Name-2">Task Name-2</option>
+                                {
+                                     console.log(billable)
+                                  
+                                }
+                                {
+                                   
+                                 !data.isLoading && billable.map((item)=><option value={item}>{item}</option>)
+
+                                }
                             </optgroup>
                             <optgroup label="NON BILLABLE">
                                 <option value="Task Name-1" >Task Name-1</option>
                                 <option value="Task Name-2">Task Name-2</option>
+                                
                             </optgroup>
                                 
                             </select>
@@ -165,9 +189,7 @@ export const Timesheet = () => {
             <TimeSheetContainer>
                 <LeftBox><AddButton onClick={()=>setopenCreateTAsk(true)}> <div>+</div></AddButton></LeftBox>
                 <TaskWrapper>
-                  <ArrowForwardIosIcon className={styles.btn}/>
-                  <ArrowBackIosIcon className={styles.btn}/>
-                  <input type="date" name="" id="" />
+                    <DayTabs/>
                 </TaskWrapper>
             </TimeSheetContainer>
 
