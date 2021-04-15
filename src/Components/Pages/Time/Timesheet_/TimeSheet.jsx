@@ -5,7 +5,7 @@ import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import styles from './TimeSheet.module.css';
 import AddIcon from '@material-ui/icons/Add';
 import {useDispatch} from 'react-redux';
-import { createTaskTimer } from '../../../../Redux/Timer/timeAction';
+import { createTaskTimer, getTaskTimer } from '../../../../Redux/Timer/timeAction';
 
 const TimeSheetWrapper = styled.div`
 margin-left:18%;
@@ -38,7 +38,7 @@ border-radius:5px;
 cursor: pointer;
 div{
     font-size:80px;
-    margin-bottom:20px;
+    margin-bottom:5px;
 }
 `
 
@@ -97,7 +97,8 @@ export const Timesheet = () => {
     const handleSubmit =(e)=>{
         e.preventDefault()
         console.log(formData)
-        dispatch(createTaskTimer(formData))
+        // dispatch(createTaskTimer(formData))
+        dispatch(getTaskTimer())
     }
     
     return(
@@ -119,8 +120,15 @@ export const Timesheet = () => {
                             </div>
                             <div className={styles.TaskName}>
                             <select name="taskName" id="" onChange={handleChange} value={taskName}>
+                            <optgroup label="BILLABLE">
                                 <option value="Task Name-1" >Task Name-1</option>
                                 <option value="Task Name-2">Task Name-2</option>
+                            </optgroup>
+                            <optgroup label="NON BILLABLE">
+                                <option value="Task Name-1" >Task Name-1</option>
+                                <option value="Task Name-2">Task Name-2</option>
+                            </optgroup>
+                                
                             </select>
                             </div>
                             <div className={styles.InputBoxes}> 
