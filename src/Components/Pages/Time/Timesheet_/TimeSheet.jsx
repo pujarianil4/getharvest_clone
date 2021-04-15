@@ -4,8 +4,8 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import styles from './TimeSheet.module.css';
 import AddIcon from '@material-ui/icons/Add';
-import {useDispatch} from 'react-redux';
-import { createTaskTimer, getTaskTimer } from '../../../../Redux/Timer/timeAction';
+import {useDispatch,useSelector} from 'react-redux';
+import { createTaskTimer, getTaskTimer,getProjectData } from '../../../../Redux/Timer/timeAction';
 
 const TimeSheetWrapper = styled.div`
 margin-left:18%;
@@ -38,7 +38,7 @@ border-radius:5px;
 cursor: pointer;
 div{
     font-size:80px;
-    margin-bottom:5px;
+    margin-bottom:3px;
 }
 `
 
@@ -78,27 +78,44 @@ const initTaskObj ={
     projectName:"",
     taskName:"",
     notes:"",
-    timer:""
+    timer:"",
+    dating:""
 }
 
 
 
 export const Timesheet = () => {
+    var dated = new Date();
     const [formData,setFormData] =React.useState(initTaskObj)
-    const {projectName,taskName,notes,timer} = formData
-    var d = new Date();
-    var date = d.toDateString();
+    const {projectName,taskName,notes,timer,dating} = formData
+  
+    var date = dated.toDateString();
     const [openCreateTAsk,setopenCreateTAsk]=React.useState(false)
     const handleChange=(e)=>{
         const {name,value}=e.target
         setFormData({...formData,[name]:value})
     }
+    
+    const state = useSelector(state => state.time)
+    const data =useSelector(state=>state.time)
+    console.log(data.isLoading)
+
+     
+    const clientObj =state.projectData[6]
+    console.log(clientObj)
+
+    const billable =Object.keys(clientObj.tasks).filter((item)=>clientObj.tasks[item]===true)
+    console.log(billable)
+    const nonbillable =Object.keys(clientObj.tasks).filter((item)=>clientObj.tasks[item]!==true)
+    console.log(nonbillable)    
+    
     const dispatch = useDispatch()
     const handleSubmit =(e)=>{
         e.preventDefault()
         console.log(formData)
         // dispatch(createTaskTimer(formData))
-        dispatch(getTaskTimer())
+        // dispatch(getTaskTimer())
+        dispatch(getProjectData())
     }
     
     return(
