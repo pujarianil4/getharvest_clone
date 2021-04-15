@@ -10,6 +10,7 @@ import { CreateInvoice } from '../Pages/Invoices_/CreateInvoice'
 
 import HomeHeader from './Header/HomeHeader'
 import { Footer } from '../Pages/Footer/Footer'
+import Time from '../Pages/Reports/Time'
 
 export default function Router() {
     return (
@@ -37,6 +38,9 @@ export default function Router() {
 
                 <Route path="/projects">
                     <CreateProject />
+                </Route>
+                <Route path = "/reports">
+                    <Time />
                 </Route>
 
             </Switch>

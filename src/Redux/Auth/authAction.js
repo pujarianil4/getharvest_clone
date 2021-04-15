@@ -1,6 +1,6 @@
 import { LOGIN_FAILURE, LOGIN_SUCCESS, SIGNUP_SUCCESS, SIGNUP_FAILURE } from "./authActionType"
 import Axios from "axios"
-// import { auth } from "../../Components/Auth/firebase"
+import { auth } from "../../Components/Auth/firebase"
 
 
 
@@ -32,59 +32,28 @@ const registerFailure = () => {
 
 const signUp = (inp) => (dispatch) => {
 
-    // const {wemail,password} = inp
+    const {wemail,password} = inp
 
-    // try {
-    //     auth.createUserWithEmailAndPassword(wemail, password)
-    //     .then(dataBeforeEmail => {
-    //         auth().onAuthStateChanged(function (user) {
-    //             user.sendEmailVerification();
-    //         });
-    //     })
-    //         .then(dataAfterEmail => {
-    //             auth().onAuthStateChanged(function (user) {
-    //                 if (user.emailVerified) {
-    //                     // Email is verified
-    //                     dispatch(registerSuccess());
-    //                 }
-    //                 else {
-    //                     // email is not varified
-    //                     dispatch(registerFailure())
-    //                 }
-    //             })
-    //         })
-    //         .catch(function (error) {
-    //             dispatch(registerFailure())
-    //         })
-    // }
-
-    // catch (err) {
-    //     dispatch(registerFailure())
-    // }
-
+        auth.createUserWithEmailAndPassword(wemail, password)
+        
+            .then( (res) => {
+               console.log(res)
+            })
+            .catch((error) => {
+                console.log(error);
+                dispatch(registerFailure())
+            })
+    
 }
 
 ///    login auth is getting done here
 
-const submitSignInData = (inp) => (dispatch) => {
+const submitSignInData = ({wemail,password}) => (dispatch) => {
 
-    const axios = Axios.create({
-        baseURL: "https://c2ec8.sse.codesandbox.io"
-    });
-    axios({
-        url: "/harvest",
-        method: "get"
-    })
-        .then((res) => {
-            res = res.data;
-            console.log(res);
+    auth.signInWithEmailAndPassword(wemail,password)
+    .then((res)=> console.log(res))
+    .catch((error) => console.log(error))
 
-            res.filter((item) => item.wemail == inp.wemail && item.password == inp.password ?
-                dispatch(loginSuccess()) :
-                dispatch(loginFailure())
-            )
-
-        })
 }
 
 
