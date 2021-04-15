@@ -6,6 +6,7 @@ import styles from './TimeSheet.module.css';
 import AddIcon from '@material-ui/icons/Add';
 import {useDispatch} from 'react-redux';
 import { createTaskTimer, getTaskTimer } from '../../../../Redux/Timer/timeAction';
+import { DayTabs } from './TimeDayTab';
 
 const TimeSheetWrapper = styled.div`
 margin-left:18%;
@@ -148,9 +149,7 @@ export const Timesheet = () => {
             <TimeSheetContainer>
                 <LeftBox><AddButton onClick={()=>setopenCreateTAsk(true)}> <div>+</div></AddButton></LeftBox>
                 <TaskWrapper>
-                  <ArrowForwardIosIcon className={styles.btn}/>
-                  <ArrowBackIosIcon className={styles.btn}/>
-                  <input type="date" name="" id="" />
+                    <DayTabs/>
                 </TaskWrapper>
             </TimeSheetContainer>
 

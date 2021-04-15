@@ -55,7 +55,7 @@ export default function Router() {
                 </Route>
 
             </Switch>
-            <Footer/>
+           
         </div>
     )
 }
