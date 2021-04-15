@@ -13,6 +13,7 @@ import { ProjectDisR } from './Components/Pages/ProjectDisplayR/ProjectDisR';
 
 
 import Router from './Components/Router/Router';
+import { Expenses } from './Components/Pages/expenses/Expenses';
 
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
     <div>
 
       <Router />
-
+       
     </div>
   );
 }
