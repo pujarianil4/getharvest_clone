@@ -6,7 +6,11 @@ import { Day} from "./Tab/Day"
 
 export function DayTabs(){
 
+    const [Prev,setPrev]=useState(0)
+  
+
    const d = new Date();
+   d.setDate(d.getDate()+Prev)
    var weekday = new Array(7);
    weekday[0] = "Su";
    weekday[1] = "M";
@@ -17,13 +21,22 @@ export function DayTabs(){
    weekday[6] = "S";
    
  let n = weekday[d.getDay()];
-const days=["M","T","W","Th","F","S","Su"]
 
+//const days=["M","T","W","Th","F","S","Su"]
+
+const days={
+    M:"0:00",
+    T: "0:00",
+    W:"0:00",
+    Th:"0:00",
+    F:"0:00",
+    S:"0:00",
+    Su:"0:00",
+}
+console.log(Object.entries(days));
 const [active,setactive]=useState(n)
 
 
-const [Prev,setPrev]=useState(0)
-d.setDate(d.getDate()+Prev)
 const handlechange=(title)=>{
     setactive(title)
  console.log(  Day(title));
@@ -34,26 +47,35 @@ const changeDate=(val)=>{
     setPrev(Prev+val)
 }
 
+useEffect(()=>{
+    n = weekday[d.getDay()];
+    console.log(n);
+    setactive(n)
+},[Prev])
+
     return (
-      
-        <div className={style.maindiv}>
-         <div>
-             <button onClick={()=>changeDate(-1)}><i class="fa fa-angle-left" style={{fontSize:"25px"}}></i></button>
-             <button onClick={()=>changeDate(1)}><i class="fa fa-angle-right" style={{fontSize:"25px"}}></i></button>
-         <h2>{d.toDateString()}</h2>
+       <div>
+            <div className={style.showdate}>
+             <button onClick={()=>changeDate(-1)} style={{width:"40px"}}><i class="fa fa-angle-left" style={{fontSize:"15px"}}></i></button>
+             <button onClick={()=>changeDate(1)} style={{width:"40px"}}><i class="fa fa-angle-right" style={{fontSize:"15px"}}></i></button>
+         <h2><span>{Prev==0&&"Today: "}</span>{d.toDateString()}</h2>
+          {Prev!==0&&<Link onClick={()=>setPrev(0)}>Return to Today</Link>}
          </div>
+        <div className={style.maindiv}>
+        
           <div className={style.daytabs}>
                 {
-                    days.map((title)=>
+                    Object.entries(days).map((title)=>
                       <Tab
                        key={title}
                        handlechange={handlechange}
-                       title={title}
-                       active={active===title}
+                       title={title[0]}
+                       time={title[1]}
+                       active={active===title[0]}
                       />
                     )
                 }
-               <div className={style.total}>Total</div>
+               <div className={style.total}>Total:0:00</div>
           </div>
           <div className={style.container} >
            <div className={style.arrow}>
@@ -67,6 +89,7 @@ const changeDate=(val)=>{
             <Link><h2>Got it! I don’t need this tip anymore.</h2></Link>
            </div>
           </div>
+        </div>
         </div>
     )
 }
