@@ -1,8 +1,7 @@
 import React from 'react'
 import { PROJECT_FAILURE, PROJECT_SUCCESS, PROJECT_REQUEST } from './projectActionType'
 import Axios from "axios"
-
-
+import app from "../../Components/Auth/firebase"
 
 
 const projectSuccess = (paylod) => {
@@ -29,11 +28,12 @@ const projectData = (inp) => (dispatch) => {
     dispatch(projectRequest());
 
     const axios = Axios.create({
-        baseURL: "https://c2ec8.sse.codesandbox.io"
+       // baseURL: "https://c2ec8.sse.codesandbox.io"
+        baseURL: "https://auth-dev-9137e-default-rtdb.firebaseio.com"
     });
 
     axios({
-        url: "/projects",
+        url: "/projects.json",
         method: "post",
         data: {
             client: inp.client,
@@ -65,7 +65,8 @@ const projectData = (inp) => (dispatch) => {
             }
         }
     })
-    .then((res) => console.log(res));
+    .then((res) => console.log(res))
+    .catch((error) => console.log(error))
 
 }
 
