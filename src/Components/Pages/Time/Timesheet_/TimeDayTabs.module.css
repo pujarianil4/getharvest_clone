@@ -1,0 +1,43 @@
+.maindiv{
+    width: 700px;
+    border: 1px solid black;
+}
+.daytabs{
+ display: flex;
+ width: 700px;
+ border: 1px solid black;
+}
+.container{
+    height: 450px;
+    background-color: #F0F0F0;
+}
+
+.total{
+    
+        height: 20px;
+        width: 50px;
+        border: 1px solid gray;
+        padding: 10px 50px 10px 10px;
+        background-color: #E6E6E6;
+    
+}
+.arrow{
+    height: 50px;
+}
+.main_img{
+    padding: 0px 190px;
+}
+.main_img> img{
+    width: 300px;
+}
+.ready{
+    text-align: center;
+    margin: 20px;
+}
+.ready> h2,.ready>a>h2{
+    margin: 0px;
+}
+.ready >a{
+    color: blue;
+    text-decoration: underline;
+}

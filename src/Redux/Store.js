@@ -1,8 +1,9 @@
 
 import { authReducer } from "./Auth/authReducer";
-import { createStore, applyMiddleware, compose } from 'redux'
+import { createStore, applyMiddleware, compose,combineReducers } from 'redux'
 import { reactReduxFirebase } from "react-redux-firebase"
 import firebase from "firebase/app"
+import { timeReducer } from "./Timer/timeReducer";
 
 
 const customMiddleware = (store) => (next) => (action) => {
@@ -19,7 +20,12 @@ const customMiddleware = (store) => (next) => (action) => {
 //     applyMiddleware(customMiddleware)
 //   );
 
-export const store = createStore(authReducer,
+const rootReducer = combineReducers({
+    time:timeReducer,
+    auth: authReducer
+  });
+
+export const store = createStore(rootReducer,
     compose(applyMiddleware(customMiddleware), reactReduxFirebase(firebase),
         window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
     ));
