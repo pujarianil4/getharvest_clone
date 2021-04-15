@@ -10,7 +10,11 @@ import { CreateInvoice } from '../Pages/Invoices_/CreateInvoice'
 
 import HomeHeader from './Header/HomeHeader'
 import { Footer } from '../Pages/Footer/Footer'
+
+import { Timesheet } from '../Pages/Time/Timesheet_/TimeSheet'
+
 import { DayTabs } from '../Pages/Time/Timesheet_/TimeDayTab'
+
 
 export default function Router() {
     return (
@@ -40,6 +44,9 @@ export default function Router() {
 
                 <Route path="/projects">
                     <CreateProject />
+                </Route>
+                <Route path="/time">
+                    <Timesheet/>
                 </Route>
 
             </Switch>
