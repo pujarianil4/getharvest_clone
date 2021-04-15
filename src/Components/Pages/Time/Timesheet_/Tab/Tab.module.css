@@ -1,0 +1,18 @@
+.tab{
+    height: 20px;
+    width: 50px;
+    background-color: #F2F2F2;
+    border: 1px solid gray;
+    padding: 10px 30px 10px 10px;
+    
+}
+.tab:hover{
+    background-color: #ebe7e7;
+}
+.active{
+    height: 20px;
+    width: 50px;
+    border: 1px solid gray;
+    padding: 10px 30px 10px 10px;
+    background-color: #dddada;
+}

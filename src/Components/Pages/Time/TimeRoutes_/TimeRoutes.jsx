@@ -11,7 +11,7 @@ export const TimeRoutes = () => {
         <div>
             <TimeNavBar/>
             <Switch>
-                <Route exact path="/time">
+                <Route path="/time">
                     <Timesheet/>
                 </Route>
                 <Route path="/approve">
@@ -31,3 +31,9 @@ export const TimeRoutes = () => {
         </div>
     )
 }
+
+
+
+
+
+
