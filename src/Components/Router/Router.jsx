@@ -32,9 +32,9 @@ export default function Router() {
                 <Route path="/invoice">
                   <CreateInvoice/>                  
                 </Route>
-                <Route path="/time">
+                {/* <Route path="/time">
                     <DayTabs/>           
-                </Route>
+                </Route> */}
 
                 <Route path="/sign-in">
                     <Signin />
@@ -48,6 +48,7 @@ export default function Router() {
                 </Route>
                 <Route path = "/reports">
                     <Time />
+                </Route>
                 <Route path="/time">
                     <Timesheet/>
 

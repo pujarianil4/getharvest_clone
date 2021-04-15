@@ -47,19 +47,28 @@ export const getTaskFailure=(payload)=>{
 
 
 export const createTaskTimer =(payload)=>(dispatch)=>{
+    console.log(payload)
     dispatch(createTaskRequest())
-    return axios.post("https://auth-dev-9137e-default-rtdb.firebaseio.com/TaskTimer",payload).then((res)=>
-        dispatch(createTaskSuccess(res.data))
+    return axios.post("https://1u30f.sse.codesandbox.io/timer",payload).then((res)=>
+        // dispatch(createTaskSuccess(res.data))
+        console.log(res)
     ).catch((err)=>{
         dispatch(createTaskFailure(err))
     })
 }
 
-export const getTaskTimer =(dispatch)=>(payload)=>{
+export const getTaskTimer =()=>(dispatch)=>{
     dispatch(getTaskRequest())
-    return axios.post("https://auth-dev-9137e-default-rtdb.firebaseio.com/TaskTimer").then((res)=>{
-        dispatch(getTaskSuccess(res.data))
+    return axios.get("https://1u30f.sse.codesandbox.io/timer").then((res)=>{
+        // dispatch(getTaskSuccess(res.data))
+        console.log(res.data)
     }).catch((err)=>{
         dispatch(getTaskFailure(err))
     })
 }
+
+
+
+
+
+
