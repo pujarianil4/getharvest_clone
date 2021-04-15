@@ -1,22 +1,50 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { Tab } from "./Tab/Tab"
 import style from "./TimeDayTabs.module.css"
+import { Day} from "./Tab/Day"
 
 export function DayTabs(){
-const day=["M","T","W","Th","F","S","Su"]
 
-const [active,setactive]=useState("M")
+   const d = new Date();
+   var weekday = new Array(7);
+   weekday[0] = "Su";
+   weekday[1] = "M";
+   weekday[2] = "T";
+   weekday[3] = "W";
+   weekday[4] = "Th";
+   weekday[5] = "F";
+   weekday[6] = "S";
+   
+ let n = weekday[d.getDay()];
+const days=["M","T","W","Th","F","S","Su"]
 
+const [active,setactive]=useState(n)
+
+
+const [Prev,setPrev]=useState(0)
+d.setDate(d.getDate()+Prev)
 const handlechange=(title)=>{
     setactive(title)
+ console.log(  Day(title));
+setPrev(Day(title))
 }
+
+const changeDate=(val)=>{
+    setPrev(Prev+val)
+}
+
     return (
+      
         <div className={style.maindiv}>
-        
+         <div>
+             <button onClick={()=>changeDate(-1)}><i class="fa fa-angle-left" style={{fontSize:"25px"}}></i></button>
+             <button onClick={()=>changeDate(1)}><i class="fa fa-angle-right" style={{fontSize:"25px"}}></i></button>
+         <h2>{d.toDateString()}</h2>
+         </div>
           <div className={style.daytabs}>
                 {
-                    day.map((title)=>
+                    days.map((title)=>
                       <Tab
                        key={title}
                        handlechange={handlechange}
