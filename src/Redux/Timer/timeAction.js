@@ -1,5 +1,5 @@
 import axios from "axios"
-import { CREATETASK_FAILURE, CREATETASK_REQUEST, CREATETASK_SUCCESS,GETTASK_FAILURE, GETTASK_REQUEST, GETTASK_SUCCESS } from "./actionType"
+import { CREATETASK_FAILURE, CREATETASK_REQUEST, CREATETASK_SUCCESS,GETPROJECT_FAILURE,GETPROJECT_REQUEST,GETPROJECT_SUCCESS,GETTASK_FAILURE, GETTASK_REQUEST, GETTASK_SUCCESS } from "./actionType"
 
 export const createTaskRequest =()=>{
     return {
@@ -46,6 +46,32 @@ export const getTaskFailure=(payload)=>{
 
 
 
+
+
+
+
+export const getProjectRequest =()=>{
+    return {
+        type:GETPROJECT_REQUEST
+    }
+}
+
+export const getProjectSuccess=(payload)=>{
+    return {
+
+        type:GETPROJECT_SUCCESS,
+        payload
+    }
+}
+
+export const getProjectFailure=(payload)=>{
+    return {
+        type:GETPROJECT_FAILURE,
+        payload
+    }
+}
+
+
 export const createTaskTimer =(payload)=>(dispatch)=>{
     console.log(payload)
     dispatch(createTaskRequest())
@@ -69,6 +95,20 @@ export const getTaskTimer =()=>(dispatch)=>{
 
 
 
+
+export const getProjectData =()=>(dispatch)=>{
+    // dispatch(getProjectRequest())
+    return axios.get('https://auth-dev-9137e-default-rtdb.firebaseio.com/projects.json').then((res)=>{
+            let arrdata =[]
+            for(let k in res.data){
+                arrdata.push(res.data[k])
+            }
+            dispatch(getProjectSuccess(arrdata))
+            console.log(arrdata)
+    }).catch((err)=>{
+        dispatch(getProjectFailure(err))
+    })
+}
 
 
 

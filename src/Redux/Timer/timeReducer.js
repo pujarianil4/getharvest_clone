@@ -1,10 +1,9 @@
-import { CREATETASK_FAILURE, CREATETASK_REQUEST, CREATETASK_SUCCESS, GETTASK_FAILURE, GETTASK_REQUEST, GETTASK_SUCCESS } from "./actionType"
+import { CREATETASK_FAILURE, CREATETASK_REQUEST, CREATETASK_SUCCESS, GETPROJECT_FAILURE, GETPROJECT_REQUEST, GETPROJECT_SUCCESS, GETTASK_FAILURE, GETTASK_REQUEST, GETTASK_SUCCESS } from "./actionType"
 
 const initTaskState ={
-    projectName:"",
-    taskName:"",
-    notes:"",
-    timer:""
+    isLoading:true,
+    isError:false,
+    projectData:[]
 }
 
 export const timeReducer=(state=initTaskState,{type,payload})=>{
@@ -39,6 +38,29 @@ export const timeReducer=(state=initTaskState,{type,payload})=>{
                 ...state,
             }
         }
+
+        case GETPROJECT_REQUEST: {
+            return{
+                ...state,
+                isLoading:true
+            }
+        }
+        case GETPROJECT_SUCCESS: {
+            return{
+                
+                ...state,
+                projectData:payload,
+                isLoading:false
+            }
+        }
+        case GETPROJECT_FAILURE: {
+            return{
+                ...state,
+            }
+        }
+
+
+
         default:{
             return state
         }
