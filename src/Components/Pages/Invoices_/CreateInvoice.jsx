@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import styles from './CreateInvoice.module.css'
 import CloseIcon from '@material-ui/icons/Close';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
-
+import {useSelector,useDispatch} from 'react-redux'
+import { getTaskTimer } from '../../../Redux/Timer/timeAction';
 
 const InvoiceCont=styled.div`
     width:70%;
@@ -110,6 +111,13 @@ export const CreateInvoice = () => {
         const updatedTaskItemCount=TaskItemCount.filter((item)=>item!==id)
         setTaskItemCount(updatedTaskItemCount)
     }
+
+    const dispatch = useDispatch()
+    React.useEffect(()=>{
+        
+    },[])
+    const state = useSelector(state => state.time)
+    console.log(state)
     return (
         <InvoiceCont>
             <HeadingBox>
