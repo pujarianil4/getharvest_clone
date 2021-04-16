@@ -18,7 +18,10 @@ import {HomeAfterLogin} from "../Pages/HomeAfterLogin_/HomeAfterLogin"
 
 import { DayTabs } from '../Pages/Time/Timesheet_/TimeDayTab'
 import { useSelector } from 'react-redux'
-// import {Expenses} from "../../Components/Pages/expenses/Expenses"
+
+import { Expenses } from '../Pages/expenses/Expenses'
+
+
 
 export default function Router() {
 
@@ -63,9 +66,14 @@ export default function Router() {
                 <Route path="/time">
                     <Timesheet/>
                 </Route>
-                <Route path="/expences">
-                   {/* <Expenses/> */}
+
+
+
+                <Route path="/expense">
+                    <Expenses/>
                 </Route>
+
+
             </Switch>
            
         </div>

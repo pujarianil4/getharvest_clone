@@ -14,7 +14,7 @@ import { TimeRoutes } from './Components/Pages/Time/TimeRoutes_/TimeRoutes.jsx';
 
 import Router from './Components/Router/Router';
 
-import { Home } from './Components/Pages/Home/Home';
+
 
 
 function App() {
