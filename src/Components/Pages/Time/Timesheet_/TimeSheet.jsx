@@ -165,7 +165,7 @@ export const Timesheet = () => {
         dispatch(createTaskTimer(formData))
         setopenCreateTAsk(false)
         
-       
+        dispatch(getTaskTimer())
         
     }
    
