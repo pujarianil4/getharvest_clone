@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { submitSignInData } from '../../../Redux/Auth/authAction';
 import style from "../SIgnUp/Signupstyle.module.css"
 import styled from "styled-components"
+import { Redirect } from 'react-router';
 
 
 export default function Signin() {
 
     const dispatch = useDispatch()
     const [inp, setInp] = useState();
+    const isAuth = useSelector(state => state.auth.isAuth)
 
     const handleInp = (e) => {
         const { name, value } = e.target;
@@ -38,6 +40,10 @@ export default function Signin() {
     font-weight: 600;
 
 `
+
+if (isAuth == true) {
+   return <Redirect to ="/welcome"/>
+}
 
 
     return (

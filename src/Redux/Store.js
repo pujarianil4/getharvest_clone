@@ -4,11 +4,10 @@ import { createStore, applyMiddleware, compose,combineReducers } from 'redux'
 import { reactReduxFirebase } from "react-redux-firebase"
 import firebase from "firebase/app";
 import { reportReducer } from "./Reports/reportsReducer";
-import firebase from "firebase/app"
 import { timeReducer } from "./Timer/timeReducer";
 import { reducerExpense } from "./Expenses/reducerExpense";
 import { projectReducer } from "./Project/projectReducer";
-import { reportReducer } from "./Reports/reportsReducer";
+
 
 
 
@@ -23,7 +22,7 @@ const rootReducer = combineReducers({
     auth: authReducer,
     expense:reducerExpense,
     reports: reportReducer,
-    projects: projectReducer
+    // projects: projectReducer
 
   });
 export const store = createStore(rootReducer,

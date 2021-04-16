@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
+import { Redirect, useHistory } from "react-router-dom"
 import { projectData } from "../../../Redux/Project/projectAction";
 import styles from './CreateProject.module.css'
 
@@ -20,11 +21,13 @@ export default function CreateProject() {
         }
         setInp(payload);
     }
+    const history = useHistory()
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const action = projectData(inp);
         dispatch(action);
+       history.replace("/time") 
 
     }
 

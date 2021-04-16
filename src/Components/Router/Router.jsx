@@ -9,20 +9,28 @@ import CreateProject from '../Pages/Project/CreateProject'
 import { CreateInvoice } from '../Pages/Invoices_/CreateInvoice'
 
 import HomeHeader from './Header/HomeHeader'
+import Header_login from "./Header/Header_login"
 import { Footer } from '../Pages/Footer/Footer'
 import Time from '../Pages/Reports/Time'
 
 import { Timesheet } from '../Pages/Time/Timesheet_/TimeSheet'
+import {HomeAfterLogin} from "../Pages/HomeAfterLogin_/HomeAfterLogin"
 
 import { DayTabs } from '../Pages/Time/Timesheet_/TimeDayTab'
+import { useSelector } from 'react-redux'
 
 
 export default function Router() {
+
+    const isAuth = useSelector(state => state.auth.isAuth)
+
+
     return (
         <div>
-           
-            <HomeHeader/>
-        
+           {
+               isAuth ? <Header_login /> : <HomeHeader/>
+           }
+            
         
             <Switch>
                 <Route exact path="/">
@@ -42,6 +50,9 @@ export default function Router() {
                 <Route path="/Signup">
                     <Signup />
                 </Route>
+                <Route path = "/welcome">
+                    <HomeAfterLogin />
+                </Route>
 
                 <Route path="/projects">
                     <CreateProject />
@@ -51,7 +62,6 @@ export default function Router() {
                 </Route>
                 <Route path="/time">
                     <Timesheet/>
-
                 </Route>
 
             </Switch>
