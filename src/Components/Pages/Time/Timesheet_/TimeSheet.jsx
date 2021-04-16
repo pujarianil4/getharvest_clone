@@ -61,22 +61,22 @@ input{
 }
 `
 
-const AddTask =styled.div`
-    width:33%;
-    height:300px;
-    /* background-color:#f37510; */
-    background-color:white;
-    position:absolute;
-    left:33%;
-    top:100px;
-    z-index:1;
-    border-radius:12px;
-    box-shadow:2px 2px 2px 2px grey;
-    form{
-        width:90%;
-        margin:auto;
-    }
-    `
+// const AddTask =styled.div`
+//     width:33%;
+//     height:300px;
+//     /* background-color:#f37510; */
+//     background-color:white;
+//     position:absolute;
+//     left:33%;
+//     top:100px;
+//     z-index:1;
+//     border-radius:12px;
+//     box-shadow:2px 2px 2px 2px grey;
+//     form{
+//         width:90%;
+//         margin:auto;
+//     }
+//     `
 
 
 
@@ -89,7 +89,7 @@ export const Timesheet = () => {
     d.setDate(d.getDate()+changeDate)
     var date = d.toDateString()
    
-    const [dt,setdt]=useState("")
+    //const [dt,setdt]=useState("")
 
    
     const initTaskObj ={
@@ -100,11 +100,11 @@ export const Timesheet = () => {
         date: ""
     }
 
-    useEffect(()=>{
-    console.log(dt);
-    setFormData({...formData,date:dt})
+    // useEffect(()=>{
+    // console.log(dt);
+    // setFormData({...formData,date:dt})
   
-    },[dt])
+    // },[dt])
 
     const [formData,setFormData] =React.useState(initTaskObj)
     const {projectName,taskName,notes,timer} = formData
@@ -163,11 +163,22 @@ export const Timesheet = () => {
     return (
        
             <div >
+                          <TimeSheetWrapper>
+            <TimeSheetContainer>
+                <LeftBox><AddButton onClick={()=>setopenCreateTAsk(true)}> <div>+</div></AddButton></LeftBox>
+                <TaskWrapper>
+                    <DayTabs setChangeDate={setChangeDate}/>
+                </TaskWrapper>
+            </TimeSheetContainer>
+
+           
+        </TimeSheetWrapper>
             {
-                openCreateTAsk &&<AddTask>
+                openCreateTAsk && <div className={styles.form_div}>
+                <div className={styles.timer_form}>
                         <div className={styles.createTaskHeader}>
                             <h3>New Time Entry</h3>
-                            <p><input type="date" onChange={(e)=>setdt(e.target.value)}/></p>
+                            <p>{date}</p>
 
                             <p>
                             
@@ -215,18 +226,10 @@ export const Timesheet = () => {
                             </div>
 
                         </form>
-                </AddTask>
+                        </div>
+                        </div>  
             }
-            <TimeSheetWrapper>
-            <TimeSheetContainer>
-                <LeftBox><AddButton onClick={()=>setopenCreateTAsk(true)}> <div>+</div></AddButton></LeftBox>
-                <TaskWrapper>
-                    <DayTabs setChangeDate={setChangeDate}/>
-                </TaskWrapper>
-            </TimeSheetContainer>
-
-           
-        </TimeSheetWrapper>
+  
         </div>
     )
 }

@@ -1,3 +1,24 @@
+.form_div{
+    background-color: rgba(0, 0, 0, 0.405);
+   
+    width: 100%;
+    height: 85%;
+    padding-top: 150px;
+   position: absolute;
+   top: 0px;
+}
+.timer_form{
+   width: 500px;
+   background-color: white;
+   margin: auto;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+.timer_form > form {
+    width:90%;
+    margin:auto;
+}
+
 .btn{
     
 }
