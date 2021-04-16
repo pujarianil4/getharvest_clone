@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
@@ -75,20 +75,38 @@ const AddTask =styled.div`
     }
     `
 
-const initTaskObj ={
-    projectName:"",
-    taskName:"",
-    notes:"",
-    timer:""
-}
+
 
 
 
 export const Timesheet = () => {
+    var d = new Date();
+
+    const [changeDate,setChangeDate]=useState(0)
+    d.setDate(d.getDate()+changeDate)
+    var date = d.toDateString()
+   
+    const [dt,setdt]=useState("")
+
+   
+    const initTaskObj ={
+        projectName:"",
+        taskName:"",
+        notes:"",
+        timer:"",
+        date: ""
+    }
+
+    useEffect(()=>{
+    console.log(dt);
+    setFormData({...formData,date:dt})
+    console.log(dt==d.toLocaleString());
+    },[dt])
+
     const [formData,setFormData] =React.useState(initTaskObj)
     const {projectName,taskName,notes,timer} = formData
-    var d = new Date();
-    var date = d.toDateString();
+ 
+   
     const [openCreateTAsk,setopenCreateTAsk]=React.useState(false)
     const handleChange=(e)=>{
         const {name,value}=e.target
@@ -101,6 +119,7 @@ export const Timesheet = () => {
         // dispatch(createTaskTimer(formData))
         dispatch(getTaskTimer())
     }
+   
     
     return(
        
@@ -109,7 +128,7 @@ export const Timesheet = () => {
                 openCreateTAsk &&<AddTask>
                         <div className={styles.createTaskHeader}>
                             <h3>New Time Entry</h3>
-                            <p>{date}</p>
+                            <p><input type="date" onChange={(e)=>setdt(e.target.value)}/></p>
                         </div>
                         <form onSubmit={handleSubmit}>
                             <div><label htmlFor="">Project/Task</label></div>
@@ -149,7 +168,7 @@ export const Timesheet = () => {
             <TimeSheetContainer>
                 <LeftBox><AddButton onClick={()=>setopenCreateTAsk(true)}> <div>+</div></AddButton></LeftBox>
                 <TaskWrapper>
-                    <DayTabs/>
+                    <DayTabs setChangeDate={setChangeDate}/>
                 </TaskWrapper>
             </TimeSheetContainer>
 
