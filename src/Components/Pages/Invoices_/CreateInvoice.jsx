@@ -109,7 +109,7 @@ export const CreateInvoice = () => {
     return (
         <InvoiceCont>
             <HeadingBox>
-            <h1>Invoice for "KLKLLKLKLKLKLKLK"</h1>
+            <h1>Invoice for KAMAL</h1>
             </HeadingBox>
           <form onSubmit={handleSubmit}>
             
@@ -128,10 +128,10 @@ export const CreateInvoice = () => {
             <RightBox>
 
             <div><label htmlFor="">Invoice For</label>
-            <input type="text" value="KLKLLKLKLKLKLKLK" style={{width:'200px'}}/>
+            <input type="text" value="KAMAL" style={{width:'200px'}}/>
                 </div>
             <div><label htmlFor="">Discount</label>
-            <input type="text" value="KLKLLKLKLKLKLKLK" style={{width:'200px'}}/>
+            <input type="text" value="KAMAL" style={{width:'200px'}}/>
             </div>            
             <div><label htmlFor="">Due Date</label>
             <select name="" id="" style={{width:'208px'}}>
@@ -165,10 +165,17 @@ export const CreateInvoice = () => {
 
             </FormBox>
 
-            <label htmlFor="">Subject</label>
-            <input type="text" style={{width:'78.6%',margin:'5px 0 0 175px',height:'30px'}}/>
+            <div className={styles.subjectInput}>
+                 <div>
+                        <label htmlFor="">Subject</label>
+                 </div>
+                <div>
+                    <input type="text"/>
+                </div>
 
 
+            </div>
+           
             <TaskItem className={styles.taskitems}>
                 <TaskItemHeading className={styles.TaskItemHeading}>
                     <div>
@@ -183,7 +190,7 @@ export const CreateInvoice = () => {
               {
                   TaskItemCount.map((item)=>  <TaskItemBody className={styles.TaskItemBody}>
                   <div>
-                      <div onClick={(e)=>handleDelete(item)}><CloseIcon/></div>
+                      <div onClick={(e)=>handleDelete(item)}><CloseIcon style={{fontSize:'18px'}}/></div>
                   </div>
                   <div>
                       <select name="" id="">
@@ -208,12 +215,39 @@ export const CreateInvoice = () => {
                   <div>
                       <input type="text"/>
                   </div>
-                  <div>$0:00</div>
+                  <div>$0.00</div>
                   
               </TaskItemBody>  )
               }
 
-                <button className={styles.AdditemButton} onClick={handleAdd}>+ Add Item</button>
+               <div className={styles.totolsection}>
+               <div>
+               <button className={styles.AdditemButton} onClick={handleAdd}>+ Add Item</button>
+               </div>
+
+               <div >
+                   <div><p>Subtotal</p></div>
+                   <div><p>$0.00</p></div>
+               </div>
+               </div>
+
+             
+
+
+               <div className={styles.totolsection}>
+
+               <div >
+
+               </div>
+               <div>
+                   <div><h3>Amount Due</h3></div>
+                   <div><h3>$0.00</h3></div>
+               </div>
+
+               </div>
+
+               
+              
             </TaskItem>
 
 

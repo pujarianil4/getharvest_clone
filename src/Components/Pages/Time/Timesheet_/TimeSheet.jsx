@@ -8,6 +8,7 @@ import {useDispatch,useSelector} from 'react-redux';
 import { createTaskTimer, getTaskTimer,getProjectData } from '../../../../Redux/Timer/timeAction';
 // import { createTaskTimer, getTaskTimer } from '../../../../Redux/Timer/timeAction';
 import { DayTabs} from './TimeDayTab';
+import {TimeNavBar} from '../TimeNavBar_/TimeNavBar'
 
 
 
@@ -169,6 +170,7 @@ export const Timesheet = () => {
     return (
        
             <div >
+                <TimeNavBar/>
             {
                 openCreateTAsk &&<AddTask>
                         <div className={styles.createTaskHeader}>

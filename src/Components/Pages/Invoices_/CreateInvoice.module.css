@@ -114,3 +114,49 @@
 .TaskItemBody>div:nth-child(1)>div:hover{
     background: linear-gradient(#f0f0f0,#fff);
 }
+
+
+.totolsection{
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.totolsection>div:nth-child(1){
+
+
+}
+.totolsection>div:nth-child(2){
+    width: 20%;
+    display: flex;
+    justify-content: space-between;
+}
+.totolsection>div:nth-child(2)>div{
+    /* background-color: blanchedalmond; */
+    width: 50%;
+    text-align: right;
+    
+
+}
+
+.subjectInput{
+    margin-top: 10px;
+    width: 100%;
+  
+    display: flex;
+    align-items: center;
+
+}
+.subjectInput>div:nth-child(1){
+    width: 20.7%;
+  
+}
+.subjectInput>div:nth-child(2){
+   width: 78.7%;
+
+}
+.subjectInput>div:nth-child(2)>input{
+    height: 30px;
+    width: 100%;
+}
