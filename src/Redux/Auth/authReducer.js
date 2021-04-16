@@ -1,11 +1,10 @@
 import { LOGIN_FAILURE, LOGIN_SUCCESS, SIGNUP_FAILURE, SIGNUP_SUCCESS } from "./authActionType"
 import { auth } from "../../Components/Auth/firebase"
 
-
 const init = {
     isAuth: false,
     isRegistered: false,
-   // currentUser: 
+    uid: ""
 }
 
 export const authReducer = (state = init, { type, payload }) => {
@@ -18,9 +17,12 @@ export const authReducer = (state = init, { type, payload }) => {
                 isAuth: false
             }
         case LOGIN_SUCCESS:
+
+           
             return {
                 ...state,
-                isAuth: true
+                isAuth: true,
+                uid: payload
             }
         case SIGNUP_FAILURE:
             return {

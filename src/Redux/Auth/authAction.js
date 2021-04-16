@@ -4,9 +4,12 @@ import { auth } from "../../Components/Auth/firebase"
 
 
 
-const loginSuccess = () => {
+const loginSuccess = (payload) => {
+    
+    
     return {
-        type: LOGIN_SUCCESS
+        type: LOGIN_SUCCESS,
+        payload: payload,
     }
 }
 const loginFailure = () => {
@@ -37,6 +40,7 @@ const signUp = (inp) => (dispatch) => {
         auth.createUserWithEmailAndPassword(wemail, password)
         
             .then( (res) => {
+                
                dispatch(registerSuccess())
             })
             .catch((error) => {
@@ -51,7 +55,7 @@ const signUp = (inp) => (dispatch) => {
 const submitSignInData = ({wemail,password}) => (dispatch) => {
 
     auth.signInWithEmailAndPassword(wemail,password)
-    .then((res)=> console.log(res))
+    .then((res)=> dispatch(loginSuccess(res.user.uid)))
     .catch((error) => console.log(error))
 
 }
