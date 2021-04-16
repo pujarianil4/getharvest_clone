@@ -20,14 +20,16 @@ const FormBox =styled.div`
 margin-top:20px;
 width:100%;
 display:flex;
-gap:10%;
+justify-content:space-between;
 `
 const RightBox =styled.div`
 display:flex;
 flex-direction:column;
 gap:10px;
+width :50%;
+
   
-    width :50%;
+   
     div>input,select{
         height:30px;
     }
@@ -40,10 +42,12 @@ const LeftBox =styled.div`
 display:flex;
 flex-direction:column;
 gap:10px;
-    width:40%;
+width:40%;
+
     
     div>input{
         height:30px;
+        
     }
     div{
         display:flex;
@@ -115,26 +119,26 @@ export const CreateInvoice = () => {
             
             <FormBox>
                 <LeftBox>
-            <div><label htmlFor="">Invoice ID</label>
-            <input type="text" style={{width:'200px'}}/>
+            <div><label htmlFor="" style={{marginTop:'14px'}}>Invoice ID</label>
+            <input type="text" style={{width:'200px',height:'20px'}}/>
             </div>            
-            <div><label htmlFor="">PO Number</label>
-            <input type="text" style={{width:'200px'}}/>
+            <div><label htmlFor="" style={{marginTop:'14px'}}>PO Number</label>
+            <input type="text" style={{width:'200px',height:'20px'}}/>
                 </div>
-            <div><label htmlFor="">Issue Date</label>
-            <input type="text" style={{width:'200px'}}/>
+            <div><label htmlFor="" style={{marginTop:'14px'}}>Issue Date</label>
+            <input type="text" style={{width:'200px',height:'20px'}}/>
             </div>            </LeftBox>
 
             <RightBox>
 
-            <div><label htmlFor="">Invoice For</label>
-            <input type="text" value="KAMAL" style={{width:'200px'}}/>
+            <div><label htmlFor="" style={{marginTop:'14px'}}>Invoice For</label>
+            <input type="text" value="KAMAL" style={{width:'200px',height:'20px'}}/>
                 </div>
-            <div><label htmlFor="">Discount</label>
-            <input type="text" value="KAMAL" style={{width:'200px'}}/>
+            <div><label htmlFor="" style={{marginTop:'14px'}}>Discount</label>
+            <input type="text" value="KAMAL" style={{width:'200px',height:'20px'}}/>
             </div>            
-            <div><label htmlFor="">Due Date</label>
-            <select name="" id="" style={{width:'208px'}}>
+            <div><label htmlFor="" style={{}}>Due Date</label>
+            <select name="" id="" style={{width:'200px'}}>
             <option value="">
                     Upon Reciept
                 </option>
@@ -221,14 +225,14 @@ export const CreateInvoice = () => {
               }
 
                <div className={styles.totolsection}>
-               <div>
-               <button className={styles.AdditemButton} onClick={handleAdd}>+ Add Item</button>
-               </div>
+                    <div>
+                            <button className={styles.AdditemButton} onClick={handleAdd}>+ Add Item</button>
+                    </div>
 
-               <div >
-                   <div><p>Subtotal</p></div>
-                   <div><p>$0.00</p></div>
-               </div>
+                    <div >
+                        <div><p>Subtotal</p></div>
+                        <div><p>$0.00</p></div>
+                    </div>
                </div>
 
              

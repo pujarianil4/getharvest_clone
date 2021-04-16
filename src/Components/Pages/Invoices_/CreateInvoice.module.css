@@ -67,12 +67,14 @@
     width: 12%;
 }
 .TaskItemBody>div:nth-child(3){
-    width: 55%;
+    width: 54%;
 }
 .TaskItemBody>div:nth-child(4){
+    margin-top: -1%;
     width: 12%;
 }
 .TaskItemBody>div:nth-child(5){
+    margin-top: -1%;
     width: 12%;
 }
 /* .TaskItemBody>div:nth-child(1){
@@ -146,7 +148,6 @@
   
     display: flex;
     align-items: center;
-
 }
 .subjectInput>div:nth-child(1){
     width: 20.7%;
