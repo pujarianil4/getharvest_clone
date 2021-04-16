@@ -96,7 +96,7 @@ export const Timesheet = () => {
         projectName:"",
         taskName:"",
         notes:"",
-        timer:"",
+        timer:0,
         date: ""
     }
 
