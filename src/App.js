@@ -21,6 +21,7 @@ function App() {
     <div>
 
       <Router />
+      {/* <Expenses /> */}
        
     </div>
   );
