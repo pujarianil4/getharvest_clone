@@ -77,13 +77,13 @@ const AddTask =styled.div`
         margin:auto;
     }
     `
-
+const date =new Date()
 const initTaskObj ={
     projectName:"",
     taskName:"",
     notes:"",
-    timer:"",
-    dating:""
+    timer:"00:00",
+    date:date.toDateString()
 }
 
 
@@ -103,6 +103,10 @@ export const Timesheet = () => {
     const state = useSelector(state => state.time)
     const data =useSelector(state=>state.time)
     console.log(data.isLoading)
+
+    //_____________________________ This the UseSelector for getting tha New Time Entries_________________________________//
+    const TaskEntries = useSelector(state=>state.time.TaskEntries)
+    !data.isLoading && console.log(TaskEntries)
 
      
     const clientObj =state.projectData[6]
@@ -126,9 +130,10 @@ export const Timesheet = () => {
   
     const handleSubmit =(e)=>{
         e.preventDefault()
-        console.log(formData)
+        // console.log(formData)
         // dispatch(createTaskTimer(formData))
         dispatch(getTaskTimer())
+       
         
     }
     
@@ -177,7 +182,8 @@ export const Timesheet = () => {
                             <input type="text" placeholder="0:00" name="timer" onChange={handleChange} value={timer}/>
                             </div>
                             <div className={styles.Buttons}>
-                            <input type="submit" value="Start Timer" />
+                            <input type="submit" value={timer==="00:00" ?"Start Timer":"Save Entry"}/>
+                           
                             <button onClick={()=>setopenCreateTAsk(false)}>Cancel</button>
                             
                             </div>

@@ -3,11 +3,13 @@ import { CREATETASK_FAILURE, CREATETASK_REQUEST, CREATETASK_SUCCESS, GETPROJECT_
 const initTaskState ={
     isLoading:true,
     isError:false,
-    projectData:[]
+    projectData:[],
+    TaskEntries:[]
 }
 
 export const timeReducer=(state=initTaskState,{type,payload})=>{
     switch(type){
+        
         case CREATETASK_REQUEST: {
             return{
                 ...state,
@@ -23,6 +25,8 @@ export const timeReducer=(state=initTaskState,{type,payload})=>{
                 ...state,
             }
         }
+// ______________________GETTING TASK__________________________________//
+
         case GETTASK_REQUEST: {
             return{
                 ...state,
@@ -31,6 +35,8 @@ export const timeReducer=(state=initTaskState,{type,payload})=>{
         case GETTASK_SUCCESS: {
             return{
                 ...state,
+                TaskEntries:payload,
+                isLoading:false
             }
         }
         case GETTASK_FAILURE: {
@@ -38,7 +44,7 @@ export const timeReducer=(state=initTaskState,{type,payload})=>{
                 ...state,
             }
         }
-
+// _________________________PROJECTS_______________________________//
         case GETPROJECT_REQUEST: {
             return{
                 ...state,
