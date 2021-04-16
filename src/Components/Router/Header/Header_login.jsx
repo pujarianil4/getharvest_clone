@@ -57,7 +57,7 @@ export default function HomeHeader() {
             </Logo>
             <Menu className={style.menu}>
                 <Link to="/time">Time</Link>
-                <Link to="/expences">Expenses</Link>
+                <Link to="/expense">Expenses</Link>
                 <Link to="/projects">Projects</Link>
                 <Link to="/reports">Reports</Link>
                 <Link to="/invoice">Invoices</Link>
