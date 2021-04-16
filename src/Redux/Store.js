@@ -22,9 +22,9 @@ const rootReducer = combineReducers({
     auth: authReducer,
     expense:reducerExpense,
 
-    // reports: reportReducer,
+    reports: reportReducer,
 
-    // projects: projectReducer
+    //projects: projectReducer
 
   });
 export const store = createStore(rootReducer,

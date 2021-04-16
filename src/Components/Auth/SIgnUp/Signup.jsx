@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router';
 import styled from "styled-components"
 import { signUp } from '../../../Redux/Auth/authAction';
 import style from "./Signupstyle.module.css"
@@ -50,12 +51,13 @@ export default function Signup() {
         }
         setInp(payload);
     }
-
+   const history = useHistory()
     const submitSignUp = (e) => {
         e.preventDefault ();
         const action = signUp(inp);
         dispatch(action); 
-    }
+        history.replace("/sign-in")
+    }  
 
 
     return (
