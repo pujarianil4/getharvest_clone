@@ -1,5 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import styles from './CreateInvoice.module.css'
+import CloseIcon from '@material-ui/icons/Close';
+import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 
 
 const InvoiceCont=styled.div`
@@ -50,6 +53,7 @@ gap:10px;
 
 const Notes =styled.div`
     margin-top:20px;
+    width:100%;
 `
 
 const Buttons =styled.div`
@@ -85,14 +89,29 @@ margin-top:10px;
     }
 `
 
+const TaskItem =styled.div``
+const TaskItemHeading=styled.div``
+const TaskItemBody=styled.div``
+
 
 export const CreateInvoice = () => {
+    const [TaskItemCount,setTaskItemCount]=React.useState([])
+    const handleAdd=()=>{
+        setTaskItemCount([...TaskItemCount,`item${TaskItemCount.length+1}`])
+    }
+    const handleSubmit=(e)=>{
+        e.preventDefault()
+    }
+    const handleDelete=(id)=>{
+        const updatedTaskItemCount=TaskItemCount.filter((item)=>item!==id)
+        setTaskItemCount(updatedTaskItemCount)
+    }
     return (
         <InvoiceCont>
             <HeadingBox>
             <h1>Invoice for "KLKLLKLKLKLKLKLK"</h1>
             </HeadingBox>
-          <form>
+          <form onSubmit={handleSubmit}>
             
             <FormBox>
                 <LeftBox>
@@ -147,11 +166,60 @@ export const CreateInvoice = () => {
             </FormBox>
 
             <label htmlFor="">Subject</label>
-            <input type="text" style={{width:'78.5%',margin:'5px 0 0 170px',height:'30px'}}/>
+            <input type="text" style={{width:'78.6%',margin:'5px 0 0 175px',height:'30px'}}/>
+
+
+            <TaskItem className={styles.taskitems}>
+                <TaskItemHeading className={styles.TaskItemHeading}>
+                    <div>
+                        <div>Item Type</div>
+                        <div>Description</div>
+                        <div>Quantity</div>
+                        <div>Unit Price</div>
+                        <div>Amount</div>
+                    </div>
+                </TaskItemHeading>
+
+              {
+                  TaskItemCount.map((item)=>  <TaskItemBody className={styles.TaskItemBody}>
+                  <div>
+                      <div onClick={(e)=>handleDelete(item)}><CloseIcon/></div>
+                  </div>
+                  <div>
+                      <select name="" id="">
+                          <option value="">Product</option>
+                          <option value="">Service</option>
+                      </select>
+                  </div>
+                  <div>
+                      <textarea name="" id="" cols="75" rows="3"></textarea>
+                      <div>
+                          <label htmlFor="">Linked project</label>
+                      <select name="" id="">
+                          <option value="">--None--</option>
+                          <option value="">Project</option>
+                      </select>
+                      <HelpOutlineIcon style={{color:'#b3adad',fontSize:'20px',borderRadius:'5px'}}/>
+                      </div>
+                  </div>
+                  <div>
+                      <input type="text"/>
+                  </div>
+                  <div>
+                      <input type="text"/>
+                  </div>
+                  <div>$0:00</div>
+                  
+              </TaskItemBody>  )
+              }
+
+                <button className={styles.AdditemButton} onClick={handleAdd}>+ Add Item</button>
+            </TaskItem>
+
 
             <Notes>
                 <label htmlFor="">Notes (optional, displayed on invoice)</label>
-                <textarea name="" id="" cols="146" rows="5"></textarea> 
+                <textarea name="" id="" cols="145" rows="5"></textarea> 
                 <label htmlFor="">Formatting tips: *bold* _italics_</label> 
             </Notes>
 

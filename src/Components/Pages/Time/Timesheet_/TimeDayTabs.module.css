@@ -1,0 +1,62 @@
+.maindiv{
+ width: 895px;
+    height: 600px;
+}
+
+.showdate{
+    display: flex;
+    margin: 0px 0px 20px 0px;
+}
+.showdate > h2{
+    font-weight: 500;
+}
+.showdate > h2 > span{
+    font-weight: 700;
+}
+.showdate > a{
+    color: blue;
+    text-decoration:underline;
+    margin-top: 10px;
+}
+.daytabs{
+ display: flex;
+ width: 900px;
+
+}
+.container{
+    height: 450px;
+    background-color: #F0F0F0;
+    border: 1px solid black;
+   
+}
+
+.total{
+    
+        height: 20px;
+        width: 50px;
+        border: 1px solid gray;
+        padding: 10px 50px 20px 10px;
+        background-color: #E6E6E6;
+    
+}
+.arrow{
+    height: 50px;
+}
+.main_img{
+    padding: 0px 300px;
+}
+.main_img> img{
+    width: 300px;
+}
+.ready{
+    text-align: center;
+    margin: 20px;
+}
+.ready> h2,.ready>a>h2{
+    margin: 0px;
+}
+.ready >a{
+    color: blue;
+    text-decoration: underline;
+}
+
