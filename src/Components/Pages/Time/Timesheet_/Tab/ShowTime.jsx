@@ -5,7 +5,7 @@ import { TimeRing } from "./Ring"
 export function ShowTime({ id, notes, projectName, taskName, timer }) {
 const [start,setStart]= useState(false)
 
-
+ 
     return (
         <div className={style.ShowTime}>
             <div className={style.title}>
@@ -14,8 +14,8 @@ const [start,setStart]= useState(false)
             </div>
             <div className={style.start_time}>
                 <h1>{timer}:00</h1>
-            { !start? <button>START</button>
-                :<div className={style.Start_button}>
+            { !start? <button onClick={()=>setStart(true)}>START</button>
+                :<div onClick={()=>setStart(false)} className={style.Start_button}>
                     <TimeRing />
                     <p>START</p>
                 </div>
