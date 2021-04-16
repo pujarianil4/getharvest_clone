@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {v4 as uuid} from 'uuid';
 import { addExpense } from "../../../Redux/Expenses/action";
 import { DisplayExpense } from "./DisplayExpense";
+import styles from './Expense.module.css'
 
 const initvalue = {
   date: new Date().toLocaleDateString(),
@@ -39,7 +40,7 @@ const SaveExpense = ({ handleButton }) => {
     setFormState({ ...formState, [name]: val });
   };
   const handleSubmit = () => {
-      setFormState({...formState,id:uuid()})
+      setFormState({...formState,id:uuid(),status:false})
       const addexpenseaction=addExpense(formState);
       dispatch(addexpenseaction);
       console.log(expenseList);
@@ -49,13 +50,13 @@ const SaveExpense = ({ handleButton }) => {
   return (
     <>
       {/* <button onClick={handleButton}>Change</button> */}
-      <div style={{ display: "flex" }}>
-        <div>
-          <p>Date</p>
-          <input type="date" value={date} onChange={handleChange} />
+      <div style={{ display: "flex" }} className={styles.ExpenssForm}>
+        <div className={styles.DateClass}>
+          <p style={{color:"#626262", background: "#f4f4f4"}}>Date</p>
+          <input type="date" value={date} onChange={handleChange}  className={styles.dateInput}/>
         </div>
-        <div>
-          <p>Project/Category</p>
+        <div style={{background:"#f4f4f4",width:"400px",margin:"10px"}}>
+          <p style={{color:"#626262", background: "#f4f4f4"}}>Project/Category</p>
           {/* <option value=""></option> */}
           <select
             name=""
@@ -63,6 +64,7 @@ const SaveExpense = ({ handleButton }) => {
             placeholder="Choose a project..."
             name="projectName"
             onChange={handleChange}
+            className={styles.ProjectSelection}
           >
             <option value="" disabled={true}>
               Choose a project...
@@ -78,33 +80,37 @@ const SaveExpense = ({ handleButton }) => {
             placeholder="Choose a category..."
             name="category"
             onChange={handleChange}
+            className={styles.ProjectSelection}
           >
-            <option>{<input type="text" />}</option>
+           
             {categories?.map((items) => (
               <option key={items} value={items}>
                 {items}
               </option>
             ))}
           </select>
-          <br></br>
-          <input
-            type="text"
+          
+           <div style={{marginTop:"10px",height:"60px"}}>
+             <textarea  type="text"
             placeholder="Notes(optional)"
             value={notes}
             name="notes"
-            onChange={handleChange}
-          />
-          <br></br>
-          <p>
-            {" "}
+            onChange={handleChange} 
+            className={styles.NotesInputbox}
+            ></textarea>
+           </div>
+        
+          <p style={{background:"#f4f4f4",width:"400px",margin:"10px"}}>
             <input type="checkbox" value={billable} name="billable" /> This
             Expense is Billable
           </p>
+          <button onClick={handleSubmit} className={styles.Expensebtn} >Save Expense</button>
+        <button onClick={handleButton} className={styles.cancelBtn}>Cancel</button>
         </div>
-        <div>
-          <p>Amount</p>
-          <div>
-            ${" "}
+        <div style={{background:"#f4f4f4"}}>
+          <p style={{color:"#626262", background: "#f4f4f4"}}>Amount</p>
+          <div className={styles.amountbox}>
+            $
             <input
               type="text"
               value={amount}
@@ -114,8 +120,7 @@ const SaveExpense = ({ handleButton }) => {
           </div>
         </div>
       </div>
-      <button onClick={handleSubmit}>Save Expense</button>
-      <button onClick={handleButton}>Cancel</button>
+     
       {/* {
           expenseList?.map((item)=>(<div key={item.id}>
               {item.projectName}
