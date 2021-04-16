@@ -93,6 +93,7 @@ export const Timesheet = () => {
     const [formData,setFormData] =React.useState(initTaskObj)
     const {projectName,taskName,notes,timer,dating} = formData
     const [billable,setBillable]=React.useState([])
+    const [nonbillable,setnonBillable]=React.useState([])
 
     const [openCreateTAsk,setopenCreateTAsk]=React.useState(false)
     const handleChange=(e)=>{
@@ -121,18 +122,23 @@ export const Timesheet = () => {
         
         
             const nonbill =Object.keys(clientObj.tasks).filter((item)=>clientObj.tasks[item]!==true)
-            // setBillable(nonbill) 
+            setnonBillable(nonbill) 
         } 
         
      
     },[openCreateTAsk])
 
+
+    React.useEffect(()=>{
+        dispatch(getTaskTimer())
+    },[])
+
   
     const handleSubmit =(e)=>{
         e.preventDefault()
         // console.log(formData)
-        // dispatch(createTaskTimer(formData))
-        dispatch(getTaskTimer())
+        dispatch(createTaskTimer(formData))
+        
        
         
     }
@@ -170,6 +176,9 @@ export const Timesheet = () => {
                                 }
                             </optgroup>
                             <optgroup label="NON BILLABLE">
+                                {
+                                    !data.isLoading && nonbillable.map((item)=><option value={item}>{item}</option>)
+                                }
                                 <option value="Task Name-1" >Task Name-1</option>
                                 <option value="Task Name-2">Task Name-2</option>
                                 
