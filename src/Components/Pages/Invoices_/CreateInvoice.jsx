@@ -17,44 +17,7 @@ const HeadingBox =styled.div`
     border-bottom:1px solid black;
 `
 
-const FormBox =styled.div`
-margin-top:20px;
-width:100%;
-display:flex;
-justify-content:space-between;
-`
-const RightBox =styled.div`
-display:flex;
-flex-direction:column;
-gap:10px;
-width :50%;
 
-  
-   
-    div>input,select{
-        height:30px;
-    }
-    div{
-        display:flex;
-        justify-content:space-between;
-    }
-`
-const LeftBox =styled.div`
-display:flex;
-flex-direction:column;
-gap:10px;
-width:40%;
-
-    
-    div>input{
-        height:30px;
-        
-    }
-    div{
-        display:flex;
-        justify-content:space-between;
-    }
-`
 
 const Notes =styled.div`
     margin-top:20px;
@@ -62,10 +25,12 @@ const Notes =styled.div`
 `
 
 const Buttons =styled.div`
+margin-bottom:100px;
 margin-top:10px;
     display:flex;
     gap:4px;
     input:nth-child(1){
+        text-align:center;
         background-color:green;
         height:40px;
         color:white;
@@ -76,6 +41,7 @@ margin-top:10px;
         border-radius: 3px;
     }
     input:nth-child(2){
+        text-align:center;
         height:40px;
         width:100px;
         border:none;
@@ -125,68 +91,98 @@ export const CreateInvoice = () => {
             </HeadingBox>
           <form onSubmit={handleSubmit}>
             
-            <FormBox>
-                <LeftBox>
-            <div><label htmlFor="" style={{marginTop:'14px'}}>Invoice ID</label>
-            <input type="text" style={{width:'200px',height:'20px'}}/>
-            </div>            
-            <div><label htmlFor="" style={{marginTop:'14px'}}>PO Number</label>
-            <input type="text" style={{width:'200px',height:'20px'}}/>
+            <div className={styles.FormBox}>
+              {/* ===================================================================== */} 
+                <div className={styles.InvidInput}>
+                    <div>
+                        <div>
+                            <label htmlFor="">Invoice ID</label>
+                        </div>
+                        <input type="text"/>
+                    </div> 
+
+                    <div>
+                        <div>
+                            <label htmlFor="">Invoice For</label>
+                        </div>
+                        <input type="text" value="KAMAL"/>
+                    </div>
                 </div>
-            <div><label htmlFor="" style={{marginTop:'14px'}}>Issue Date</label>
-            <input type="text" style={{width:'200px',height:'20px'}}/>
-            </div>            </LeftBox>
 
-            <RightBox>
+               <div className={styles.InvidInput}>
+                    <div>
+                        <div>
+                            <label htmlFor="">PO Number</label>
+                        </div>
+                        <input type="text"/>
+                    </div>
 
-            <div><label htmlFor="" style={{marginTop:'14px'}}>Invoice For</label>
-            <input type="text" value="KAMAL" style={{width:'200px',height:'20px'}}/>
-                </div>
-            <div><label htmlFor="" style={{marginTop:'14px'}}>Discount</label>
-            <input type="text" value="KAMAL" style={{width:'200px',height:'20px'}}/>
-            </div>            
-            <div><label htmlFor="" style={{}}>Due Date</label>
-            <select name="" id="" style={{width:'200px'}}>
-            <option value="">
-                    Upon Reciept
-                </option>
-                <option value="">
-                Net 15 
-                </option>
-                <option value="">
-                    Net 30 
-                </option>
-                <option value="">
-                    Net 45 
-                </option>
-                <option value="">
-                    Net 60 
-                </option>
-                <option value="">
-                    Custom
-                </option>
-            </select>
+                    <div>
+                        <div>
+                            <label htmlFor="">Discount</label>
+                        </div>
+                        <input type="text" value="KAMAL"/>
+                    </div> 
+                </div> 
 
-            </div>  
+                <div className={styles.InvidInput}> 
+                   
+                   <div>
+                        <div>
+                            <label htmlFor="">Issue Date</label>
+                        </div>
+                        <input type="text"/>
+                   </div>
+                   <div>
+                       <div>
+                             <label htmlFor="" style={{}}>Due Date</label>
+                       </div>
+                        <select name="" id="" >
+                                <option value="">
+                                    Upon Reciept
+                                </option>
+                                <option value="">
+                                Net 15 
+                                </option>
+                                <option value="">
+                                    Net 30 
+                                </option>
+                                <option value="">
+                                    Net 45 
+                                </option>
+                                <option value="">
+                                    Net 60 
+                                </option>
+                                <option value="">
+                                    Custom
+                                </option>
+                        </select>
+
+                    </div>  
+
+                </div>            
+                      
             
             
-            
-            </RightBox>
-
-           
-
-            </FormBox>
-
-            <div className={styles.subjectInput}>
-                 <div>
+            <div className={styles.SubInvidInput}>
+                 <div >
                         <label htmlFor="">Subject</label>
                  </div>
-                <div>
-                    <input type="text"/>
-                </div>
+            
+                    <input type="text" /> 
+               
 
 
             </div>
+            
+            {/* _______________________________________________ */}
+           
+
+           
+
+            </div>
+
+            
            
             <TaskItem className={styles.taskitems}>
                 <TaskItemHeading className={styles.TaskItemHeading}>
@@ -211,7 +207,7 @@ export const CreateInvoice = () => {
                       </select>
                   </div>
                   <div>
-                      <textarea name="" id="" cols="75" rows="3"></textarea>
+                      <textarea name="" id="" rows="3" style={{width:'95%'}}></textarea>
                       <div>
                           <label htmlFor="">Linked project</label>
                       <select name="" id="">
@@ -265,7 +261,7 @@ export const CreateInvoice = () => {
 
             <Notes>
                 <label htmlFor="">Notes (optional, displayed on invoice)</label>
-                <textarea name="" id="" cols="145" rows="5"></textarea> 
+                <textarea name="" id=""  rows="4" style={{width:'100%'}}></textarea> 
                 <label htmlFor="">Formatting tips: *bold* _italics_</label> 
             </Notes>
 
