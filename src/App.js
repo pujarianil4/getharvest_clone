@@ -20,8 +20,8 @@ function App() {
   return (
     <div>
 
-      {/* <Router /> */}
-      <Expenses />
+      <Router />
+      {/* <Expenses /> */}
        
     </div>
   );
