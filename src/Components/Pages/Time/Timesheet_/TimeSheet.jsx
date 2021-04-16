@@ -8,6 +8,7 @@ import {useDispatch,useSelector} from 'react-redux';
 import { createTaskTimer, getTaskTimer,getProjectData } from '../../../../Redux/Timer/timeAction';
 // import { createTaskTimer, getTaskTimer } from '../../../../Redux/Timer/timeAction';
 import { DayTabs} from './TimeDayTab';
+import {TimeNavBar} from '../TimeNavBar_/TimeNavBar'
 
 
 
@@ -97,7 +98,7 @@ export const Timesheet = () => {
         taskName:"",
         notes:"",
         timer:"",
-        date: ""
+        date: date
     }
 
     // useEffect(()=>{
@@ -117,6 +118,7 @@ export const Timesheet = () => {
 
 
     const [openCreateTAsk,setopenCreateTAsk]=React.useState(false)
+
     const handleChange=(e)=>{
         const {name,value}=e.target
         setFormData({...formData,[name]:value})
@@ -160,6 +162,7 @@ export const Timesheet = () => {
         e.preventDefault()
         // console.log(formData)
         dispatch(createTaskTimer(formData))
+        setopenCreateTAsk(false)
         
        
         
@@ -168,7 +171,10 @@ export const Timesheet = () => {
     
     return (
        
-            <div >
+            <div>
+
+                <TimeNavBar/>
+
                           <TimeSheetWrapper>
             <TimeSheetContainer>
                 <LeftBox><AddButton onClick={()=>setopenCreateTAsk(true)}> <div>+</div></AddButton></LeftBox>
@@ -179,6 +185,7 @@ export const Timesheet = () => {
 
            
         </TimeSheetWrapper>
+
             {
                 openCreateTAsk && <div className={styles.form_div}>
                 <div className={styles.timer_form}>
