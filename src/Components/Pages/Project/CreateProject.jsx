@@ -159,7 +159,7 @@ export default function CreateProject() {
                     </div>
                     <div>
                         <div className={styles.taskwidth}><label>Design</label></div>
-                        <input onChange = {handleInp} name = "design" checked = {inp.design} type="checkbox" />
+                        <input onChange = {handleInp} name = "design" checked = {inp.design} type="checkbox" className={styles.myCheckbox} />
                     </div>
 
                     <div>

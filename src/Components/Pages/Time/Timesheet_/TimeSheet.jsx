@@ -4,9 +4,12 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import styles from './TimeSheet.module.css';
 import AddIcon from '@material-ui/icons/Add';
-import {useDispatch} from 'react-redux';
-import { createTaskTimer, getTaskTimer } from '../../../../Redux/Timer/timeAction';
-import { DayTabs } from './TimeDayTab';
+import {useDispatch,useSelector} from 'react-redux';
+import { createTaskTimer, getTaskTimer,getProjectData } from '../../../../Redux/Timer/timeAction';
+// import { createTaskTimer, getTaskTimer } from '../../../../Redux/Timer/timeAction';
+import { DayTabs} from './TimeDayTab';
+
+
 
 const TimeSheetWrapper = styled.div`
 margin-left:18%;
@@ -39,7 +42,7 @@ border-radius:5px;
 cursor: pointer;
 div{
     font-size:80px;
-    margin-bottom:5px;
+    margin-bottom:3px;
 }
 `
 
@@ -78,8 +81,8 @@ const AddTask =styled.div`
 
 
 
-
 export const Timesheet = () => {
+
     var d = new Date();
 
     const [changeDate,setChangeDate]=useState(0)
@@ -107,21 +110,56 @@ export const Timesheet = () => {
     const {projectName,taskName,notes,timer} = formData
  
    
+
+
+    const [billable,setBillable]=React.useState([])
+
+
     const [openCreateTAsk,setopenCreateTAsk]=React.useState(false)
     const handleChange=(e)=>{
         const {name,value}=e.target
         setFormData({...formData,[name]:value})
     }
+    
+    const state = useSelector(state => state.time)
+    const data =useSelector(state=>state.time)
+    console.log(data.isLoading)
+
+    //_____________________________ This the UseSelector for getting tha New Time Entries_________________________________//
+    const TaskEntries = useSelector(state=>state.time.TaskEntries)
+    !data.isLoading && console.log(TaskEntries)
+
+     
+    const clientObj =state.projectData[6]
     const dispatch = useDispatch()
+ 
+    React.useEffect(()=>{
+        dispatch(getProjectData())
+        if(!data.isLoading){
+            console.log(clientObj)
+            const bill =Object.keys(clientObj.tasks).filter((item)=>clientObj.tasks[item]===true)
+            setBillable(bill)
+        
+        
+            const nonbill =Object.keys(clientObj.tasks).filter((item)=>clientObj.tasks[item]!==true)
+            // setBillable(nonbill) 
+        } 
+        
+     
+    },[openCreateTAsk])
+
+  
     const handleSubmit =(e)=>{
         e.preventDefault()
-        console.log(formData)
+        // console.log(formData)
         // dispatch(createTaskTimer(formData))
         dispatch(getTaskTimer())
+       
+        
     }
    
     
-    return(
+    return (
        
             <div >
             {
@@ -129,24 +167,37 @@ export const Timesheet = () => {
                         <div className={styles.createTaskHeader}>
                             <h3>New Time Entry</h3>
                             <p><input type="date" onChange={(e)=>setdt(e.target.value)}/></p>
+
+                            <p>
+                            
+                            </p>
+
                         </div>
                         <form onSubmit={handleSubmit}>
                             <div><label htmlFor="">Project/Task</label></div>
                             <div className={styles.projectName}>
                             <select name="projectName" id="" onChange={handleChange} value={projectName}>
-                                <option value="Project Name-1" >Project Name-1</option>
-                                <option value="Project Name-2" >Project Name-2</option>
+                                <option value="Task Name-1">Project Name-1</option>
+                                <option value="Task Name-2">{clientObj? clientObj.pname:"Task Name-2"}</option>
                             </select>
                             </div>
                             <div className={styles.TaskName}>
                             <select name="taskName" id="" onChange={handleChange} value={taskName}>
                             <optgroup label="BILLABLE">
-                                <option value="Task Name-1" >Task Name-1</option>
-                                <option value="Task Name-2">Task Name-2</option>
+                                {
+                                     console.log(billable)
+                                  
+                                }
+                                {
+                                   
+                                 !data.isLoading && billable.map((item)=><option value={item}>{item}</option>)
+
+                                }
                             </optgroup>
                             <optgroup label="NON BILLABLE">
                                 <option value="Task Name-1" >Task Name-1</option>
                                 <option value="Task Name-2">Task Name-2</option>
+                                
                             </optgroup>
                                 
                             </select>
@@ -156,7 +207,8 @@ export const Timesheet = () => {
                             <input type="text" placeholder="0:00" name="timer" onChange={handleChange} value={timer}/>
                             </div>
                             <div className={styles.Buttons}>
-                            <input type="submit" value="Start Timer" />
+                            <input type="submit" value={timer==="00:00" ?"Start Timer":"Save Entry"}/>
+                           
                             <button onClick={()=>setopenCreateTAsk(false)}>Cancel</button>
                             
                             </div>

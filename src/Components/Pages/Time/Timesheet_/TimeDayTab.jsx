@@ -3,13 +3,14 @@ import { Link } from "react-router-dom"
 import { Tab } from "./Tab/Tab"
 import style from "./TimeDayTabs.module.css"
 import { Day} from "./Tab/Day"
+import { Timesheet } from "./TimeSheet"
 
 export function DayTabs({setChangeDate}){
 
     const [Prev,setPrev]=useState(0)
-  
+    
 
-   const d = new Date();
+  const d = new Date();
    d.setDate(d.getDate()+Prev)
    var weekday = new Array(7);
    weekday[0] = "Su";
@@ -56,6 +57,7 @@ useEffect(()=>{
 
     return (
        <div>
+           
             <div className={style.showdate}>
              <button onClick={()=>changeDate(-1)} style={{width:"40px"}}><i class="fa fa-angle-left" style={{fontSize:"15px"}}></i></button>
              <button onClick={()=>changeDate(1)} style={{width:"40px"}}><i class="fa fa-angle-right" style={{fontSize:"15px"}}></i></button>
@@ -94,3 +96,5 @@ useEffect(()=>{
         </div>
     )
 }
+
+

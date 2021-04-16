@@ -5,15 +5,17 @@ import { reactReduxFirebase } from "react-redux-firebase"
 import firebase from "firebase/app"
 import { timeReducer } from "./Timer/timeReducer";
 
+import { reducerExpense } from "./Expenses/reducerExpense";
+
+
+
 
 const customMiddleware = (store) => (next) => (action) => {
     return typeof action == "function" ? action(store.dispatch, store.getState) : next(action)
 }
-
 // const createStoreWithFirebase = compose(reactReduxFirebase(firebase))(
 //     createStore
 //   );
-
 // export const store = createStoreWithFirebase(
 //     authReducer,
 //     {},
@@ -22,11 +24,10 @@ const customMiddleware = (store) => (next) => (action) => {
 
 const rootReducer = combineReducers({
     time:timeReducer,
-    auth: authReducer
+    auth: authReducer,
+    expense:reducerExpense
   });
-
 export const store = createStore(rootReducer,
     compose(applyMiddleware(customMiddleware), reactReduxFirebase(firebase),
         window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
     ));
-

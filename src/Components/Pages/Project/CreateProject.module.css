@@ -97,10 +97,10 @@
 }
 .ProjectTypeCategory>div>label{
     padding:10px 0 0 10px;
-    margin-right: 40px;
+    margin-right: 5px;
 }
 .ProjectTypeCategory>div>input{
-   
+    width: 200px;
     height: 30px;
 }
 .ProjectTypeCategory>div{
@@ -126,7 +126,7 @@
     margin-left: 20px;
     padding-top: 10px;
     width: 90%;
-    height: 200px;
+    height: 200px; 
 
     display: flex;
     flex-direction: column;
@@ -174,4 +174,9 @@
         background:#f37510;
         color:white;
         
+    }
+
+    .myCheckbox{
+        color: red;
+        background-color: black;
     }
