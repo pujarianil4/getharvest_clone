@@ -103,7 +103,7 @@ export const Timesheet = () => {
     useEffect(()=>{
     console.log(dt);
     setFormData({...formData,date:dt})
-    console.log(dt==d.toLocaleString());
+  
     },[dt])
 
     const [formData,setFormData] =React.useState(initTaskObj)
@@ -135,6 +135,7 @@ export const Timesheet = () => {
  
     React.useEffect(()=>{
         dispatch(getProjectData())
+        dispatch(getTaskTimer())
         if(!data.isLoading){
             console.log(clientObj)
             const bill =Object.keys(clientObj.tasks).filter((item)=>clientObj.tasks[item]===true)

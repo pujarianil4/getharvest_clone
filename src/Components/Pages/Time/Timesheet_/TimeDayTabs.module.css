@@ -1,6 +1,6 @@
 .maindiv{
  width: 895px;
-    border: 1px solid black;
+    height: 600px;
 }
 
 .showdate{
@@ -26,6 +26,8 @@
 .container{
     height: 450px;
     background-color: #F0F0F0;
+    border: 1px solid black;
+   
 }
 
 .total{
