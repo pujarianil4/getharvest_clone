@@ -5,7 +5,7 @@ import style from "./TimeDayTabs.module.css"
 import { Day} from "./Tab/Day"
 import { Timesheet } from "./TimeSheet"
 
-export function DayTabs(){
+export function DayTabs({setChangeDate}){
 
     const [Prev,setPrev]=useState(0)
     
@@ -34,7 +34,7 @@ const days={
     S:"0:00",
     Su:"0:00",
 }
-console.log(Object.entries(days));
+
 const [active,setactive]=useState(n)
 
 
@@ -42,6 +42,7 @@ const handlechange=(title)=>{
     setactive(title)
  console.log(  Day(title));
 setPrev(Day(title))
+setChangeDate(Day(title))
 }
 
 const changeDate=(val)=>{
@@ -50,7 +51,7 @@ const changeDate=(val)=>{
 
 useEffect(()=>{
     n = weekday[d.getDay()];
-    console.log(n);
+  
     setactive(n)
 },[Prev])
 
