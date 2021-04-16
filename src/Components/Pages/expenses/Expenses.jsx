@@ -10,14 +10,14 @@ const Expenses =()=>
         setShow(!show)
     }
     return(
-        <>
+        <div className={styles.bodyC}>
           <div style={{display:"flex"}} >
           <div className={styles.NewExpensebtn}> <button disabled={show} onClick={handleButton}>+ New Expense</button> </div>
            {show?<SaveExpense handleButton={handleButton}/>:<div></div>}
           </div>
         
            <DisplayExpense/>
-        </>
+        </div>
     )
 }
 export {Expenses}
