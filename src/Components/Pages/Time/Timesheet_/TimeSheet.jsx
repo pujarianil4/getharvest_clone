@@ -97,8 +97,9 @@ export const Timesheet = () => {
         projectName:"",
         taskName:"",
         notes:"",
-        timer:"",
+        timer:0,
         date: date
+
     }
 
     // useEffect(()=>{
@@ -164,7 +165,7 @@ export const Timesheet = () => {
         dispatch(createTaskTimer(formData))
         setopenCreateTAsk(false)
         
-       
+        dispatch(getTaskTimer())
         
     }
    

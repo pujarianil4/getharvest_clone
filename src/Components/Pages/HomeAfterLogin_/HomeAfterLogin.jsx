@@ -167,7 +167,7 @@ export const HomeAfterLogin = () => {
                         <Circles>
                             <DescriptionIcon style={{paddingTop:'3px'}}/>
                         </Circles>
-                        <h2>Create a project</h2>
+                        <Link style = {{color:"black"}} to ="/projects"><h2>Create a project</h2></Link>
                     </Started>
                     <Started>
                         <Circles>

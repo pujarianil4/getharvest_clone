@@ -21,7 +21,9 @@ const rootReducer = combineReducers({
     time:timeReducer,
     auth: authReducer,
     expense:reducerExpense,
+
     // reports: reportReducer,
+
     // projects: projectReducer
 
   });

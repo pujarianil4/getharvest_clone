@@ -12,17 +12,15 @@ const hours = 10;
 const Amount = 200;
 const uninvoiced_amount = 0.00;
 const billableHours = 8;
-const nonBillableHours = 2;
-const perbillAmnt = (billableHours/hours) * 100;
 
 
-const projectReportData = useSelector(state => state.projectReportData)
+
+const projectReportData = useSelector(state => state.reports.projectReportData)
 const dispatch = useDispatch()
-const isLoading = useSelector(state => state.isLoading)
+const isLoading = useSelector(state => state.reports.isLoading)
 
 const Keys = !isLoading && Object.keys(projectReportData.tasks);
-console.log(Keys)
-console.log(projectReportData);
+
 const [value, setValue] = useState(0)
 
 const handleChange = (e, val) => {

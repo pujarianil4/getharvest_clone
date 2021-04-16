@@ -19,3 +19,17 @@ margin: 10px 0px;
  margin: auto;
  margin-left: 10px;
 }
+
+.Start_button{
+    display: flex;
+    background-color: blue;
+    color: white;
+    cursor: pointer;
+    width: 70px;
+    height: 30px;
+    margin: auto;
+    margin-left: 10px;
+}
+.Start_button > P{
+    padding-top: 5px;
+}
