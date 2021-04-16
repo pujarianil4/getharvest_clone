@@ -1,0 +1,21 @@
+.ShowTime{
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+    padding: 10px;
+    border-bottom: 1px solid black;
+}
+.start_time{
+    display: flex;
+}
+.title > h4{
+margin: 10px 0px;
+}
+.title > h4 > span{
+    font-weight: 400;
+}
+.start_time > button{
+ height: 30px;
+ margin: auto;
+ margin-left: 10px;
+}

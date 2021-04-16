@@ -4,11 +4,15 @@ import { Tab } from "./Tab/Tab"
 import style from "./TimeDayTabs.module.css"
 import { Day} from "./Tab/Day"
 import { Timesheet } from "./TimeSheet"
+import { ShowTime } from "./Tab/ShowTime"
+import { useSelector } from "react-redux"
 
 export function DayTabs({setChangeDate}){
 
     const [Prev,setPrev]=useState(0)
     
+    const TaskEntries = useSelector(state=>state.time.TaskEntries)
+
 
   const d = new Date();
    d.setDate(d.getDate()+Prev)
@@ -49,6 +53,11 @@ const changeDate=(val)=>{
     setPrev(Prev+val)
 }
 
+
+let todays_data= TaskEntries.filter((task)=> task.date===d.toDateString())
+
+console.log(todays_data);
+
 useEffect(()=>{
     n = weekday[d.getDay()];
   
@@ -80,7 +89,10 @@ useEffect(()=>{
                 }
                <div className={style.total}>Total:0:00</div>
           </div>
-          <div className={style.container} >
+       {
+           todays_data.map(task=> <ShowTime key={task.id} {...task}/>)
+       }
+          {/* <div className={style.container} >
            <div className={style.arrow}>
                 <img src="/start arrow.png" alt="img"/>
            </div>
@@ -91,7 +103,7 @@ useEffect(()=>{
             <h2>You’re ready to track time! Let’s get to work.</h2>
             <Link><h2>Got it! I don’t need this tip anymore.</h2></Link>
            </div>
-          </div>
+          </div> */}
         </div>
         </div>
     )

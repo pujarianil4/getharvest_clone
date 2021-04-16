@@ -105,7 +105,7 @@ export const getTaskTimer =()=>(dispatch)=>{
     dispatch(getTaskRequest())
     return axios.get("https://1u30f.sse.codesandbox.io/timer").then((res)=>{
         dispatch(getTaskSuccess(res.data))
-        // console.log(res.data)
+         console.log(res.data)
     }).catch((err)=>{
         dispatch(getTaskFailure(err))
     })
