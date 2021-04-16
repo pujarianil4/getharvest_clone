@@ -9,7 +9,7 @@ export function ShowTime({id,notes,projectName,taskName,timer}){
                 <p>{taskName}-{notes}</p>
             </div>
             <div className={style.start_time}>
-                <h1>{timer}</h1>
+                <h1>{timer}:00</h1>
                 <button>START</button>
                 <button>Edit</button>
             </div>

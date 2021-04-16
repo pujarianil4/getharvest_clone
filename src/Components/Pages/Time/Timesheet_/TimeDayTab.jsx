@@ -55,7 +55,23 @@ const changeDate=(val)=>{
 
 
 let todays_data= TaskEntries.filter((task)=> task.date===d.toDateString())
+let todays_timers
+let todays_total
+ if(todays_data.length !=0 ){
+    todays_timers= todays_data.map((el)=>Number(el.timer))
+ todays_total= todays_timers.reduce((ac,el)=>{return ac+el})
+ }
 
+ let total_timers
+let total
+ if(TaskEntries.length !=0 ){
+    total_timers= TaskEntries.map((el)=>Number(el.timer))
+ total= total_timers.reduce((ac,el)=>{return ac+el})
+ }
+
+
+
+console.log(total);
 console.log(todays_data);
 
 useEffect(()=>{
@@ -82,17 +98,22 @@ useEffect(()=>{
                        key={title}
                        handlechange={handlechange}
                        title={title[0]}
-                       time={title[1]}
+                       time={n==title[0]?todays_total:title[1]}
                        active={active===title[0]}
                       />
                     )
                 }
-               <div className={style.total}>Total:0:00</div>
+               <div className={style.total}> Total:  {total}:00</div>
           </div>
        {
            todays_data.map(task=> <ShowTime key={task.id} {...task}/>)
+           
        }
-          {/* <div className={style.container} >
+      { todays_data.length !==0&& <div className={style.total_timer}>
+        <h1>Total:     <span>{todays_total}:00</span></h1>
+        </div>}
+     
+          { todays_data.length==0&& <div className={style.container} >
            <div className={style.arrow}>
                 <img src="/start arrow.png" alt="img"/>
            </div>
@@ -103,7 +124,7 @@ useEffect(()=>{
             <h2>You’re ready to track time! Let’s get to work.</h2>
             <Link><h2>Got it! I don’t need this tip anymore.</h2></Link>
            </div>
-          </div> */}
+          </div> }
         </div>
         </div>
     )
