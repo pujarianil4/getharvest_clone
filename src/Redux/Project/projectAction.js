@@ -65,7 +65,11 @@ const projectData = (inp) => (dispatch) => {
             }
         }
     })
-    .then((res) => console.log(res))
+    .then((res) => {
+       res = res.status
+        dispatch(projectSuccess("project successfully added"))
+
+    })
     .catch((error) => console.log(error))
 
 }

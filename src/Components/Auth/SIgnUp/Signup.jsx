@@ -1,7 +1,40 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-// import styled from "styled-components"
+import styled from "styled-components"
 import { signUp } from '../../../Redux/Auth/authAction';
+import style from "./Signupstyle.module.css"
+
+const Section = styled.section`
+    background-color: #F26314;
+    height: 170px;
+    margin-top: -16px;
+    justify-content: center;
+
+`
+const Heading = styled.p`
+
+    color: ${props => props.primary ? "white" : "white"};
+    font-size: ${props => props.primary ? "40px" : "20px"};
+    line-height: ${props => props.primary ? "40px" : "30px"};
+    font-weight: ${props => props.primary ? "700" : "500"};
+    margin: ${props => props.primary ? "0px" : null};
+    text-align: ${props => props.primary ? "center" : "center"};
+    padding-top: ${props => props.primary ? "40px" : "0px"};
+
+`
+const Button = styled.button`
+
+    width: 100%;
+    margin-top: 20px;
+    padding: 15px 30px;
+    background-color: #20960B;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+
+`
 
 
 export default function Signup() {
@@ -27,22 +60,77 @@ export default function Signup() {
 
     return (
         <div>
-            <form style={{ margin: "10% 30%" }}>
-                <div >
-                    <label>First Name</label>
-                    <input name="fname" onChange={handleInp} /><br />
-                    <label>Last Name</label>
-                    <input name="lname" onChange={handleInp} /><br />
-                    <label>Company Name</label>
-                    <input name="cname" onChange={handleInp} /><br />
-                    <label>Work Email</label>
-                    <input name="wemail" onChange={handleInp} /><br />
-                    <label>Password</label>
-                    <input name="password" onChange={handleInp} /><br />
 
+            <Section>
+                
+                <Heading primary>Start your free 30-day trial.</Heading>
+                <Heading> Fully functional. No credit card required.</Heading>
+                
+            </Section>
+
+
+            <form style={{ margin: "5% 30%" }}>
+                <div >
+                    <table>
+                    
+                    <tbody>
+                        <tr>
+                            <td colSpan= "2">
+                                <h5> Sign up with your email below </h5>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                            <label >First Name</label>
+                            </td>
+                            <td>
+                            <input name="fname" onChange={handleInp} />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            <label>Last Name</label>
+                            </td>
+                            <td>
+                            <input name="lname" onChange={handleInp} />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            <label>Company Name</label>
+                            </td>
+                            <td>
+                            <input name="cname" onChange={handleInp} />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            <label>Work Email</label>
+                            </td>
+                            <td>
+                            <input name="wemail" onChange={handleInp} />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            <label>Password</label>
+                            </td>
+                            <td>
+                            <input name="password" onChange={handleInp} />
+                            </td>
+                         </tr>
+                         <tr>
+                             <td colSpan="2">
+                             <Button onClick={submitSignUp}>Create My Account</Button>
+                             </td>
+                         </tr>
+                    </tbody>
+                    </table>
                 </div>
-                <button onClick={submitSignUp}>Create my account</button>
+               
             </form>
+
         </div>
     )
 }

@@ -1,0 +1,49 @@
+label {
+    font-size: 20px ;
+    margin: 0px 10px;
+    
+}
+input {
+    padding: 10px;
+    margin: 10px 10px;
+    width: 250px;
+}
+h5 {
+    display: flex;
+    flex-direction: row;
+    color: #9999A9;
+    padding: 3px;
+    
+}
+h5:before,
+h5:after {
+    content: "";
+    flex: 1 1;
+    border-bottom: 2px solid #9999A9;
+    margin: auto;
+}
+
+.signin_card {
+
+    border: 1px solid red;
+    border-radius: 8px;
+    width: 74%;
+    margin-top: 10%;
+    margin-bottom: 10%; 
+    padding: 30px 30px;
+    
+
+}
+.signin_card input {
+    padding: 6px;
+    margin: 8px 10px;
+    width: 310px; 
+}
+.heading {
+    text-align: center;
+    margin-bottom: 0px;
+    
+}
+.heading h2 {
+    color: rgb(43, 39, 39);
+}
