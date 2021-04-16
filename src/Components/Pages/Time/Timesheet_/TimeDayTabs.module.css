@@ -1,6 +1,6 @@
 .maindiv{
  width: 895px;
-    height: 600px;
+
 }
 
 .showdate{
@@ -60,3 +60,13 @@
     text-decoration: underline;
 }
 
+.total_timer{
+    text-align: right;
+    padding-right: 130px;
+}
+.total_timer > h1{
+    font-weight: 400;
+}
+.total_timer > h1 > span{
+    font-weight: 700;
+}

@@ -1,4 +1,4 @@
-import { ADD_EXPENSE, EDIT_EXPENSE } from "./actionTypes"
+import { ADD_EXPENSE, DELETE_EXPENSE, EDIT_EXPENSE, EDIT_POP } from "./actionTypes"
 
 const addExpense =(payload)=>
 {
@@ -14,4 +14,18 @@ const editExpense =(payload)=>
         payload
     }
 }
-export {addExpense ,editExpense}
+const deleteExpense=(payload)=>
+{
+     return{
+         type:DELETE_EXPENSE,
+         payload
+     }
+}
+const editPop=(payload)=>
+{
+    return{
+        type:EDIT_POP,
+        payload
+    }
+}
+export {addExpense ,editExpense,deleteExpense,editPop}

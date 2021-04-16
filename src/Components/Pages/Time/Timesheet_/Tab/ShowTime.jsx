@@ -1,16 +1,25 @@
-import React from "react"
+import React, { useState } from "react"
 import style from "./ShowTime.module.css"
-export function ShowTime({id,notes,projectName,taskName,timer}){
+import { Ring } from "react-awesome-spinners"
+import { TimeRing } from "./Ring"
+export function ShowTime({ id, notes, projectName, taskName, timer }) {
+const [start,setStart]= useState(false)
 
-    return(
+ 
+    return (
         <div className={style.ShowTime}>
             <div className={style.title}>
                 <h4>{projectName} <span>(Client)</span></h4>
                 <p>{taskName}-{notes}</p>
             </div>
             <div className={style.start_time}>
-                <h1>{timer}</h1>
-                <button>START</button>
+                <h1>{timer}:00</h1>
+            { !start? <button onClick={()=>setStart(true)}>START</button>
+                :<div onClick={()=>setStart(false)} className={style.Start_button}>
+                    <TimeRing />
+                    <p>START</p>
+                </div>
+            }    
                 <button>Edit</button>
             </div>
         </div>
