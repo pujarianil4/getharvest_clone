@@ -20,14 +20,16 @@ const FormBox =styled.div`
 margin-top:20px;
 width:100%;
 display:flex;
-gap:10%;
+justify-content:space-between;
 `
 const RightBox =styled.div`
 display:flex;
 flex-direction:column;
 gap:10px;
+width :50%;
+
   
-    width :50%;
+   
     div>input,select{
         height:30px;
     }
@@ -40,10 +42,12 @@ const LeftBox =styled.div`
 display:flex;
 flex-direction:column;
 gap:10px;
-    width:40%;
+width:40%;
+
     
     div>input{
         height:30px;
+        
     }
     div{
         display:flex;
@@ -109,32 +113,32 @@ export const CreateInvoice = () => {
     return (
         <InvoiceCont>
             <HeadingBox>
-            <h1>Invoice for "KLKLLKLKLKLKLKLK"</h1>
+            <h1>Invoice for KAMAL</h1>
             </HeadingBox>
           <form onSubmit={handleSubmit}>
             
             <FormBox>
                 <LeftBox>
-            <div><label htmlFor="">Invoice ID</label>
-            <input type="text" style={{width:'200px'}}/>
+            <div><label htmlFor="" style={{marginTop:'14px'}}>Invoice ID</label>
+            <input type="text" style={{width:'200px',height:'20px'}}/>
             </div>            
-            <div><label htmlFor="">PO Number</label>
-            <input type="text" style={{width:'200px'}}/>
+            <div><label htmlFor="" style={{marginTop:'14px'}}>PO Number</label>
+            <input type="text" style={{width:'200px',height:'20px'}}/>
                 </div>
-            <div><label htmlFor="">Issue Date</label>
-            <input type="text" style={{width:'200px'}}/>
+            <div><label htmlFor="" style={{marginTop:'14px'}}>Issue Date</label>
+            <input type="text" style={{width:'200px',height:'20px'}}/>
             </div>            </LeftBox>
 
             <RightBox>
 
-            <div><label htmlFor="">Invoice For</label>
-            <input type="text" value="KLKLLKLKLKLKLKLK" style={{width:'200px'}}/>
+            <div><label htmlFor="" style={{marginTop:'14px'}}>Invoice For</label>
+            <input type="text" value="KAMAL" style={{width:'200px',height:'20px'}}/>
                 </div>
-            <div><label htmlFor="">Discount</label>
-            <input type="text" value="KLKLLKLKLKLKLKLK" style={{width:'200px'}}/>
+            <div><label htmlFor="" style={{marginTop:'14px'}}>Discount</label>
+            <input type="text" value="KAMAL" style={{width:'200px',height:'20px'}}/>
             </div>            
-            <div><label htmlFor="">Due Date</label>
-            <select name="" id="" style={{width:'208px'}}>
+            <div><label htmlFor="" style={{}}>Due Date</label>
+            <select name="" id="" style={{width:'200px'}}>
             <option value="">
                     Upon Reciept
                 </option>
@@ -165,10 +169,17 @@ export const CreateInvoice = () => {
 
             </FormBox>
 
-            <label htmlFor="">Subject</label>
-            <input type="text" style={{width:'78.6%',margin:'5px 0 0 175px',height:'30px'}}/>
+            <div className={styles.subjectInput}>
+                 <div>
+                        <label htmlFor="">Subject</label>
+                 </div>
+                <div>
+                    <input type="text"/>
+                </div>
 
 
+            </div>
+           
             <TaskItem className={styles.taskitems}>
                 <TaskItemHeading className={styles.TaskItemHeading}>
                     <div>
@@ -183,7 +194,7 @@ export const CreateInvoice = () => {
               {
                   TaskItemCount.map((item)=>  <TaskItemBody className={styles.TaskItemBody}>
                   <div>
-                      <div onClick={(e)=>handleDelete(item)}><CloseIcon/></div>
+                      <div onClick={(e)=>handleDelete(item)}><CloseIcon style={{fontSize:'18px'}}/></div>
                   </div>
                   <div>
                       <select name="" id="">
@@ -208,12 +219,39 @@ export const CreateInvoice = () => {
                   <div>
                       <input type="text"/>
                   </div>
-                  <div>$0:00</div>
+                  <div>$0.00</div>
                   
               </TaskItemBody>  )
               }
 
-                <button className={styles.AdditemButton} onClick={handleAdd}>+ Add Item</button>
+               <div className={styles.totolsection}>
+                    <div>
+                            <button className={styles.AdditemButton} onClick={handleAdd}>+ Add Item</button>
+                    </div>
+
+                    <div >
+                        <div><p>Subtotal</p></div>
+                        <div><p>$0.00</p></div>
+                    </div>
+               </div>
+
+             
+
+
+               <div className={styles.totolsection}>
+
+               <div >
+
+               </div>
+               <div>
+                   <div><h3>Amount Due</h3></div>
+                   <div><h3>$0.00</h3></div>
+               </div>
+
+               </div>
+
+               
+              
             </TaskItem>
 
 

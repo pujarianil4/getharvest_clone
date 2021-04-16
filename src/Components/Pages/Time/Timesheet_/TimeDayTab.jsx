@@ -70,7 +70,7 @@ let total
  }
 
 
-
+console.log(total_timers)
 console.log(total);
 console.log(todays_data);
 
