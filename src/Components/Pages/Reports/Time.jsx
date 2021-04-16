@@ -1,5 +1,9 @@
-import React, {useState} from 'react'
-import { Grid, Box, Container,Tabs,Tab,AppBar } from "@material-ui/core"
+import React, {useState, useEffect} from 'react'
+import { Grid, Box, Container,Tabs,Tab,AppBar, TableRow } from "@material-ui/core"
+import { useDispatch, useSelector } from 'react-redux';
+import { getProjectData } from "../../../Redux/Reports/reportsAction"
+import { Table, TableBody,TableCell, TableHead, TableContainer } from "@material-ui/core"
+
 
 
 export default function Time() {
@@ -11,12 +15,26 @@ const billableHours = 8;
 const nonBillableHours = 2;
 const perbillAmnt = (billableHours/hours) * 100;
 
+
+const projectReportData = useSelector(state => state.projectReportData)
+const dispatch = useDispatch()
+const isLoading = useSelector(state => state.isLoading)
+
+const Keys = !isLoading && Object.keys(projectReportData.tasks);
+console.log(Keys)
+console.log(projectReportData);
 const [value, setValue] = useState(0)
 
 const handleChange = (e, val) => {
-    console.log(val);
     setValue(val)
 }
+
+useEffect(()=>{
+
+    const action = getProjectData ();
+    dispatch(action);
+
+},[])
 
 function TabPanel ({children, value, index}) {
 
@@ -43,13 +61,8 @@ function TabPanel ({children, value, index}) {
                     </Grid>
                     <Grid item lg={3}>
                         <Box >
-                        {/* <div style = {{display: "flex"}}> */}
-                        {/* <h3>{perbillAmnt}</h3> */}
-                            <div style={{display: "flex", flexFlow: "column", marginLeft: "10px"}}>
-                                <p>Billable Hours</p>
-                                <h3>some data</h3>
-                            </div>
-                            {/* </div> */}
+                            <p>Billable Hours</p>
+                            <h3>some data</h3>
                         </Box>
                     </Grid>
                     <Grid item lg={3}>
@@ -65,13 +78,11 @@ function TabPanel ({children, value, index}) {
                         </Box>
                     </Grid>
                 </Grid>
+            </Container>
 
-                </Container>
+            <Container style = {{width:"75%", margin: "auto"}}>
 
-<Container style = {{width:"75%", margin: "auto"}}>
-                    
                     <AppBar position="static">
-
                         <Tabs value = {value} onChange={handleChange}>
                         <Tab label = "Clients" />
                         <Tab label = "Projects" />
@@ -79,11 +90,93 @@ function TabPanel ({children, value, index}) {
                         </Tabs>
                         
                     </AppBar>
-                        <TabPanel value = {value} index = {0}>item 1</TabPanel>
-                        <TabPanel value = {value} index = {1}>item 2</TabPanel>
-                        <TabPanel value = {value} index = {2}>item 3</TabPanel>
-                    </Container>     
-</div>
+                   
+                    <TabPanel value = {value} index = {0}>
+                            <TableContainer>
+                                <Table>
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell>Name</TableCell>
+                                            <TableCell>Hours</TableCell>
+                                            <TableCell>Billable Hours</TableCell>
+                                            <TableCell>Billable Amount</TableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                        <TableRow>
+                                            <TableCell>{projectReportData.client}</TableCell>
+                                            <TableCell>25</TableCell>
+                                            <TableCell>20</TableCell>
+                                            <TableCell>2000$</TableCell>
+                                            {/* <TableCell>${projectReportData.projectType[0].hourlyRates}</TableCell> */}
+                                            
+                                        </TableRow>
+                                    </TableBody>
+                                </Table>
+                            </TableContainer>
+
+                    </TabPanel>
+
+                    <TabPanel value = {value} index = {1}>
+                            
+                        <TableContainer>
+                                <Table>
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell>Name</TableCell>
+                                            <TableCell>Clients</TableCell>
+                                            <TableCell>Hours</TableCell>
+                                            <TableCell>Billable Hours</TableCell>
+                                            <TableCell>Billable Amount</TableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                        <TableRow>
+                                            <TableCell>{projectReportData.pname}</TableCell>
+                                            <TableCell>{projectReportData.client}</TableCell>
+                                            <TableCell>25</TableCell>
+                                            <TableCell>20</TableCell>
+                                            <TableCell>1500$</TableCell>
+                                            {/* <TableCell></TableCell> */}
+                                        </TableRow>
+                                    </TableBody>
+                                </Table>
+                            </TableContainer>
+                    </TabPanel>
+                    <TabPanel value = {value} index = {2}>
+                            
+                        <TableContainer>
+                                <Table>
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell>Name</TableCell>
+                                            <TableCell>Hours</TableCell>
+                                            <TableCell>Billable Hours</TableCell>
+                                            <TableCell>Billable Amount</TableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                        
+                                        { 
+                                            Keys &&
+                                            Keys.map((item) => 
+
+                                                <TableRow>
+                                                <TableCell>{item}</TableCell>
+                                                <TableCell>25</TableCell>
+                                                <TableCell>20</TableCell>
+                                                <TableCell>1500$</TableCell>
+                                                </TableRow>
+                                            )     
+                                        }
+                                            
+                                    </TableBody>
+                                </Table>
+                            </TableContainer>
+                    </TabPanel>
+                       
+                </Container>     
+        </div>
 
     )
 }

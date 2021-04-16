@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { submitSignInData } from '../../../Redux/Auth/authAction';
+import style from "../SIgnUp/Signupstyle.module.css"
+import styled from "styled-components"
+
 
 export default function Signin() {
 
@@ -22,18 +25,65 @@ export default function Signin() {
         const action = submitSignInData(inp);
         dispatch(action)
     }
+    const Button = styled.button`
+
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px 30px;
+    background-color: #5ea551;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+
+`
 
 
     return (
-        <div>
+        <div style={{margin: "0px 32%"}}>
 
-            <div >
-                <label>Work Email</label>
-                <input name="wemail" onChange={handleInp} /><br />
-                <label>Password</label>
-                <input name="password" onChange={handleInp} /><br />
-            </div>
-            <button onClick = {submitSignIn}>Sign In</button>
+            <div className={style.signin_card}>
+
+            <table>
+                    
+                    <tbody className={style.signin_card}>
+                        <tr>
+                            <td className={style.heading}>
+                                <h2>Harvest Id</h2>
+                                <h4>Sign in to a Harvest or Forecast account</h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >
+                                <h5> Login With Your Harvest Email </h5>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            
+                            <td>
+                            <input name="wemail" onChange={handleInp} />
+                            </td>
+                        </tr>
+                        <tr>
+                            
+                            <td>
+                            <input name="password" onChange={handleInp} />
+                            </td>
+                        </tr>
+                        <tr>
+                             <td>
+                             <Button onClick = {submitSignIn}>Sign In</Button>
+                             </td>
+                         </tr>
+                       
+                    </tbody>
+                    </table>
+                    </div>
+
+
+            
 
 
         </div>
