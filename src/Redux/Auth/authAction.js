@@ -17,7 +17,7 @@ const loginFailure = () => {
 const registerSuccess = () => {
     return {
         type: SIGNUP_SUCCESS,
-        payload: "Your account was successfully created! Now you need to verify your e-mail address, please go check your inbox."
+        payload: "Your account was successfully created! please sign in "
     }
 }
 const registerFailure = () => {
@@ -37,7 +37,7 @@ const signUp = (inp) => (dispatch) => {
         auth.createUserWithEmailAndPassword(wemail, password)
         
             .then( (res) => {
-               console.log(res)
+               dispatch(registerSuccess())
             })
             .catch((error) => {
                 console.log(error);

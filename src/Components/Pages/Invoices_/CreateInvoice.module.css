@@ -1,0 +1,116 @@
+.taskitems{
+    margin-top: 30px;
+ 
+    width: 100%;
+  
+}
+
+.TaskItemHeading{
+    height: 30px;
+    background-color:#f2f2f2;
+    border-bottom: 0.5px solid #9e9e9e ;
+    border-top: 0.5px solid #9e9e9e;
+    
+}
+
+.TaskItemHeading>div{
+    height: 100%;
+    margin-left: 5%;
+    width: 94%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.TaskItemHeading>div>div:nth-child(2){
+    width: 50%;
+    font-size: 10px;
+}
+.TaskItemHeading>div>div{
+    font-family: "Fakt","Helvetica Neue",arial,sans-serif;
+
+    color: #888;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.AdditemButton{
+    background: linear-gradient(#fff,#f0f0f0);
+    align-items: center;
+    border-radius: 3px;
+    box-shadow: inset 0 0 0 1px rgb(34 34 34 / 25%);
+    color: #545454;
+    font-weight: 400;
+    height: 30px;
+    border: none;
+}
+
+.AdditemButton:focus{
+    outline: none;
+   
+}
+.AdditemButton:hover{
+    background: linear-gradient(#f0f0f0,#fff);
+}
+
+.TaskItemBody{
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+ 
+}
+
+.TaskItemBody>div:nth-child(1){
+    width: 5%;
+}
+.TaskItemBody>div:nth-child(2){
+ 
+    width: 12%;
+}
+.TaskItemBody>div:nth-child(3){
+    width: 55%;
+}
+.TaskItemBody>div:nth-child(4){
+    width: 12%;
+}
+.TaskItemBody>div:nth-child(5){
+    width: 12%;
+}
+/* .TaskItemBody>div:nth-child(1){
+    
+} */
+.TaskItemBody>div:nth-child(3)>div{
+    display: flex;
+    gap: 3px;
+}
+
+.TaskItemBody>div:nth-child(3)>div>select{
+    width: 120px;
+}
+.TaskItemBody>div:nth-child(4)>input,.TaskItemBody>div:nth-child(5)>input{
+    width: 80px;
+    height: 30px;
+    border-radius: 3px;
+
+}
+.TaskItemBody>div:nth-child(2)>select{
+    width: 90px;
+    height: 30px;
+    border-radius: 3px;
+    background: linear-gradient(#fff,#f0f0f0);
+    
+}
+.TaskItemBody>div:nth-child(2)>select:hover{
+    background: linear-gradient(#f0f0f0,#fff);
+}
+.TaskItemBody>div:nth-child(1)>div{
+    width: 25px;
+    height: 25px;
+    background: linear-gradient(#fff,#f0f0f0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #c9c5c5;
+}
+.TaskItemBody>div:nth-child(1)>div:hover{
+    background: linear-gradient(#f0f0f0,#fff);
+}

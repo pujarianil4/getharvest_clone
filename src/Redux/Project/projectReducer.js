@@ -2,7 +2,8 @@ import React from 'react'
 
 
 const init = {
-    isLoading = false,
+    isLoading: false,
+    successRes: ""
 }
 
 export const projectReducer = (state = init, {type, payload}) => {
@@ -12,7 +13,8 @@ export const projectReducer = (state = init, {type, payload}) => {
         case PROJECT_SUCCESS:
             return {
                 ...state,
-                isLoading: false
+                isLoading: false,
+                successRes: payload
             }
             
             case PROJECT_FAILURE:

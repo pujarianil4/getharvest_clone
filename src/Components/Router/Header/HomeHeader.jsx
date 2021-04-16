@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import style from './Style.module.css'
 // import {
@@ -48,6 +48,7 @@ const Button = styled.button`
 `
 
 export default function HomeHeader() {
+
     return (
         // <AppBar position="sticky">
         <Section>
@@ -64,7 +65,7 @@ export default function HomeHeader() {
             </Menu>
             <Icon className={style.icon}>
                 <Link to="/sign-in">Sign In</Link>
-                <Button>Try Harvest Free</Button>
+                <Link to ="/Signup" >Try Harvest Free</Link>
                 
             </Icon>
             
