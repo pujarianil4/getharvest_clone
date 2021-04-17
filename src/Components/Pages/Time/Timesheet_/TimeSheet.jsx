@@ -12,6 +12,7 @@ import {TimeNavBar} from '../TimeNavBar_/TimeNavBar'
 
 
 
+
 const TimeSheetWrapper = styled.div`
 margin-left:18%;
 width:60%;
@@ -30,6 +31,7 @@ display:flex;
 const AddButton =styled.div`
 
 position:relative;
+top:65px;
 width:60px;
 height:60px;
 background:linear-gradient(#14a000,#1a8d08);
@@ -97,7 +99,7 @@ export const Timesheet = () => {
         projectName:"",
         taskName:"",
         notes:"",
-        timer:0,
+        timer:"",
         date: date
 
     }
@@ -139,7 +141,7 @@ export const Timesheet = () => {
  
     React.useEffect(()=>{
         dispatch(getProjectData())
-        dispatch(getTaskTimer())
+        // dispatch(getTaskTimer())
         if(!data.isLoading){
             console.log(clientObj)
             const bill =Object.keys(clientObj.tasks).filter((item)=>clientObj.tasks[item]===true)

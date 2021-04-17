@@ -18,6 +18,8 @@ margin: 10px 0px;
  height: 30px;
  margin: auto;
  margin-left: 10px;
+ background: linear-gradient(#f0f0f0,#d3d3d3);
+ border: 1px solid gray;
 }
 
 .Start_button{

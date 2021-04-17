@@ -25,6 +25,7 @@ useEffect(()=>{
             <div className={style.title}>
                 <h4>{projectName} <span>(Client)</span></h4>
                 <p>{taskName}-{notes}</p>
+               
             </div>
             <div className={style.start_time}>
                 <h1>{timer}:00</h1>
