@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import { projectData } from "../../../Redux/Project/projectAction";
 import styles from './CreateProject.module.css'
 
@@ -11,6 +11,8 @@ export default function CreateProject() {
     const [tm, setTm] = useState(true)
     const [ff, setFf] = useState(false)
     //const [nb, setNb] = useState(false)
+
+    const userId = useSelector(state => state.auth.uid);
 
     const handleInp = (e) => {
         const { name, value, type, checked } = e.target;
@@ -25,7 +27,7 @@ export default function CreateProject() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const action = projectData(inp);
+        const action = projectData(inp,userId);
         dispatch(action);
        history.replace("/time") 
 
