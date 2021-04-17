@@ -9,6 +9,7 @@ import RecordVoiceOverIcon from '@material-ui/icons/RecordVoiceOver';
 import { Footer } from "../Footer/Footer";
 import { useSelector } from "react-redux";
 import { Redirect } from "react-router";
+import { Carousel } from "./Carousel";
 export function Home(){
   const isAuth = useSelector(state => state.auth.isAuth)
   if(isAuth){
@@ -115,6 +116,9 @@ export function Home(){
               <h1>Time tracking that helps businesses thrive</h1>
               <h3>From consultancies to internal departments, and across industries, we help growth-minded organizations make the most of time.</h3>
         </div>
+           <div>
+             <Carousel/>
+           </div>
     
            </div>
 
