@@ -14,7 +14,7 @@ const projectReportData = (paylaod) => {
 
 const getProjectData = (userId) => (dispatch) => {
 
-    console.log(userId);
+    
     const axios = Axios.create({
         baseURL: "https://c2ec8.sse.codesandbox.io"
     });
@@ -29,7 +29,6 @@ const getProjectData = (userId) => (dispatch) => {
     .then((res) => {
 
         res = res.data;
-        console.log(res)
         dispatch(projectReportData(res))
     })
     .catch((error) => 

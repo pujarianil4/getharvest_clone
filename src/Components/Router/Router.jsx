@@ -20,7 +20,11 @@ import { DayTabs } from '../Pages/Time/Timesheet_/TimeDayTab'
 import { useSelector } from 'react-redux'
 
 import { Expenses } from '../Pages/expenses/Expenses'
+
+import PrivateRoute from './PrivateRoute'
+
 import { FinalInvoice } from '../Pages/Invoices_/FinalInvoice'
+
 
 
 
@@ -54,28 +58,28 @@ export default function Router() {
                 <Route path="/Signup">
                     <Signup />
                 </Route>
-                <Route path = "/welcome">
+                <PrivateRoute path = "/welcome">
                     <HomeAfterLogin />
-                </Route>
-
-                <Route path="/projects">
+                </PrivateRoute>
+                <PrivateRoute path="/projects">
                     <CreateProject />
-                </Route>
-                <Route path = "/reports">
+                </PrivateRoute>
+                <PrivateRoute path = "/reports">
                     <Time />
-                </Route>
-                <Route path="/time">
+                </PrivateRoute>
+                <PrivateRoute path="/time">
                     <Timesheet/>
-                </Route>
-
-
-
-                <Route path="/expense">
+                </PrivateRoute>
+                <PrivateRoute path="/expense">
                     <Expenses/>
-                </Route>
+
+                </PrivateRoute>
+
+               
                 <Route path="/finalinvoice">
                     <FinalInvoice/>
                 </Route>
+
 
             </Switch>
            
