@@ -10,15 +10,15 @@ import { Footer } from "../Footer/Footer";
 
 import { useDispatch } from "react-redux";
 import { logoutSuccess } from "../../../Redux/Auth/authAction";
-export function Home(){
+// export function Home(){
 
-  // ------------------------ user is logged out when visiting home page ----------------------------//
+//   // ------------------------ user is logged out when visiting home page ----------------------------//
 
-    const dispatch = useDispatch();
-    useEffect(() => {
-      const action = logoutSuccess();
-      dispatch(action)
-    },[])
+//     const dispatch = useDispatch();
+//     useEffect(() => {
+//       const action = logoutSuccess();
+//       dispatch(action)
+//     },[])
 
 import { useSelector } from "react-redux";
 import { Redirect } from "react-router";
