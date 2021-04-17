@@ -1,10 +1,14 @@
-import { LOGIN_FAILURE, LOGIN_SUCCESS, SIGNUP_FAILURE, SIGNUP_SUCCESS } from "./authActionType"
+import { LOGIN_FAILURE, LOGIN_SUCCESS, LOGOUT_SUCCESS, SIGNUP_FAILURE, SIGNUP_SUCCESS } from "./authActionType"
 import { auth } from "../../Components/Auth/firebase"
+import { saveData, loadData } from "../../Components/Auth/localStorage"
+
+const isAuth = loadData("token") || false;
+const uid = loadData("user") || "";
 
 const init = {
-    isAuth: false,
+    isAuth: isAuth,
     isRegistered: false,
-    uid: ""
+    uid
 }
 
 export const authReducer = (state = init, { type, payload }) => {
@@ -18,7 +22,8 @@ export const authReducer = (state = init, { type, payload }) => {
             }
         case LOGIN_SUCCESS:
 
-           
+            saveData("token",true);
+            saveData("user", payload)
             return {
                 ...state,
                 isAuth: true,
@@ -33,12 +38,16 @@ export const authReducer = (state = init, { type, payload }) => {
             return {
                 ...state,
                 isRegistered: true
-              
+            }
+        case LOGOUT_SUCCESS:
+            localStorage.clear();
+            return {
+                ...state,
+                isAuth: false
             }
 
         default: return state
 
     }
-
 
 }

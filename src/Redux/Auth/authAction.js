@@ -1,4 +1,4 @@
-import { LOGIN_FAILURE, LOGIN_SUCCESS, SIGNUP_SUCCESS, SIGNUP_FAILURE } from "./authActionType"
+import { LOGIN_FAILURE, LOGIN_SUCCESS, SIGNUP_SUCCESS, SIGNUP_FAILURE, LOGOUT_SUCCESS } from "./authActionType"
 import Axios from "axios"
 import { auth } from "../../Components/Auth/firebase"
 
@@ -29,6 +29,12 @@ const registerFailure = () => {
         payload: "we couldn't create your account. Please try again."
     }
 }
+const logoutSuccess = () => {
+    return {
+        type: LOGOUT_SUCCESS,
+
+    }
+}
 
 /// user registration data
 
@@ -40,7 +46,6 @@ const signUp = (inp) => (dispatch) => {
         auth.createUserWithEmailAndPassword(wemail, password)
         
             .then( (res) => {
-                
                dispatch(registerSuccess())
             })
             .catch((error) => {
@@ -62,5 +67,4 @@ const submitSignInData = ({wemail,password}) => (dispatch) => {
 
 
 
-
-export { loginSuccess, loginFailure, signUp, submitSignInData }
+export { loginSuccess, loginFailure, signUp, submitSignInData, logoutSuccess }

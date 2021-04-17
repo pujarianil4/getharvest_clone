@@ -13,7 +13,7 @@ const Amount = 200;
 const uninvoiced_amount = 0.00;
 const billableHours = 8;
 
-
+const userId = useSelector(state => state.auth.uid)
 
 const projectReportData = useSelector(state => state.reports.projectReportData)
 const dispatch = useDispatch()
@@ -29,7 +29,7 @@ const handleChange = (e, val) => {
 
 useEffect(()=>{
 
-    const action = getProjectData ();
+    const action = getProjectData (userId);
     dispatch(action);
 
 },[])
