@@ -36,7 +36,7 @@ const DisplayExpense =()=>
                              {items.date}
                              </td>
                              <td className={styles.colmeta} style={{width:"600px"}}>
-                                 <strong style={{marginLeft:"5px"}}>{items.projectName}</strong>
+                                 <strong className={styles.strong} style={{marginLeft:"5px"}}>{items.projectName}</strong>
                                  <span>{"("+`${items.category}`+")"}</span>
                                  <div className={styles.ExpenseNotes} style={{margin:"10px"}}>
                                        <span className={styles.BillClass}>{items.billable?"Billable":""}</span>
@@ -44,7 +44,7 @@ const DisplayExpense =()=>
                                  </div>
                              </td>
                              <td className={styles.amountList}>
-                               <strong> {"$"+`${items.amount}`}</strong>
+                               <strong className={styles.strong}> {"$"+`${items.amount}`}</strong>
                              </td>
                              <td className={styles.editbtn}>
                              <button onClick={()=>handleEdit(items.id)} className={styles.editbtn1}><EditIcon /></button>
