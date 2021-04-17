@@ -120,7 +120,7 @@ export const getTaskTimer =()=>(dispatch)=>{
 // ________________________________________NETWORK REQUEST FOR GETTING PROJECT DETAILS______________________________________________//
 export const getProjectData =()=>(dispatch)=>{
     // dispatch(getProjectRequest())
-    return axios.get('https://auth-dev-9137e-default-rtdb.firebaseio.com/projects.json').then((res)=>{
+    return axios.get('https://c2ec8.sse.codesandbox.io/harvest?userId=lIuAIgIxp3ZKoCY4KwmgVpyrlxB3').then((res)=>{
             let arrdata =[]
             for(let k in res.data){
                 arrdata.push(res.data[k])
