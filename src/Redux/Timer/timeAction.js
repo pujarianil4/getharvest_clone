@@ -1,5 +1,5 @@
 import axios from "axios"
-import { CREATETASK_FAILURE, CREATETASK_REQUEST, CREATETASK_SUCCESS,EDITTASK_FAILURE,EDITTASK_REQUEST,EDITTASK_SUCCESS,GETPROJECT_FAILURE,GETPROJECT_REQUEST,GETPROJECT_SUCCESS,GETTASK_FAILURE, GETTASK_REQUEST, GETTASK_SUCCESS } from "./actionType"
+import { CREATETASK_FAILURE, CREATETASK_REQUEST, CREATETASK_SUCCESS,DELETETASK_REQUEST,EDITTASK_FAILURE,EDITTASK_REQUEST,EDITTASK_SUCCESS,GETPROJECT_FAILURE,GETPROJECT_REQUEST,GETPROJECT_SUCCESS,GETTASK_FAILURE, GETTASK_REQUEST, GETTASK_SUCCESS,DELETETASK_FAILURE,DELETETASK_SUCCESS } from "./actionType"
 
 
 
@@ -161,6 +161,42 @@ export const edittask=(id,payload)=>(dispatch)=>{
         dispatch(edittasksuccess(res.data))
         dispatch(getTaskTimer())
     })
+    .catch((error)=>{
+        dispatch(edittaskfailure())
+    })
 
 }
-// ________________________________________NETWORK REQUEST FOR EDIT THE TASK______________________________________________//
+// ________________________________________NETWORK REQUEST FOR DELETE THE TIMER______________________________________________//
+
+export const deletetaskreq=()=>{
+    return {
+        type:DELETETASK_REQUEST,
+        
+    }
+}
+export const deletetasksuccess=()=>{
+    return {
+        type:DELETETASK_SUCCESS,
+        
+    }
+}
+
+export const deletetaskfailure=()=>{
+    return {
+        type:DELETETASK_FAILURE,
+      
+    }
+}
+
+export const deletetask=(id)=>(dispatch)=>{
+    dispatch(deletetaskreq())
+    axios.delete(`https://1u30f.sse.codesandbox.io/timer/${id}`)
+    .then((res)=>{
+        dispatch(deletetasksuccess())
+        dispatch(getTaskTimer())
+    })
+    .catch((error)=>{
+        dispatch(deletetaskfailure())
+    })
+
+}
