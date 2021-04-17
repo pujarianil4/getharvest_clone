@@ -59,3 +59,7 @@ margin-top: 20px;
     border: 0px;
     color: white;
 }
+.close{
+    background: linear-gradient(#f0f0f0,#d3d3d3);
+    border: 1px solid gray;
+}

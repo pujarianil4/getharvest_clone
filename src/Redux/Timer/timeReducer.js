@@ -14,11 +14,13 @@ export const timeReducer=(state=initTaskState,{type,payload})=>{
         case CREATETASK_REQUEST: {
             return{
                 ...state,
+                taskloading:true
             }
         }
         case CREATETASK_SUCCESS: {
             return{
                 ...state,
+                taskloading: true
             }
         }
         case CREATETASK_FAILURE: {
@@ -31,13 +33,15 @@ export const timeReducer=(state=initTaskState,{type,payload})=>{
         case GETTASK_REQUEST: {
             return{
                 ...state,
+                taskloading:true
             }
         }
         case GETTASK_SUCCESS: {
             return{
                 ...state,
                 TaskEntries:payload,
-                isLoading:false
+                isLoading:false,
+                taskloading: false
             }
         }
         case GETTASK_FAILURE: {
@@ -90,13 +94,13 @@ case EDITTASK_FAILURE: {
 case DELETETASK_REQUEST: {
     return{
         ...state,
-        taskloading: true
+        //taskloading: true
     }
 }
 case DELETETASK_SUCCESS: {
     return{
         ...state,
-        taskloading:false
+        //taskloading:false
     }
 }
 case DELETETASK_FAILURE: {

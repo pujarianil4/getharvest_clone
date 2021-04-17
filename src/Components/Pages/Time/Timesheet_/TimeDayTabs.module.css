@@ -27,7 +27,8 @@
     height: 450px;
     background-color: #F0F0F0;
     border: 1px solid black;
-   
+    position: relative;
+    top: -2px;
 }
 
 .total{
@@ -69,4 +70,9 @@
 }
 .total_timer > h1 > span{
     font-weight: 700;
+}
+
+.ring{
+    width: 100px;
+    margin: auto;
 }

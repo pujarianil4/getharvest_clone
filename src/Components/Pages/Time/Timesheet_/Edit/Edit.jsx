@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { deletetask, edittask } from "../../../../../Redux/Timer/timeAction"
+import { TimeRing } from "../Tab/Ring"
 import style from "./Edit.module.css"
 export function Edit( {id,date,timer,setOpenedit}) {
     const dispatch=useDispatch()
@@ -8,7 +9,7 @@ export function Edit( {id,date,timer,setOpenedit}) {
     const payload={
         timer:input
     }
-   const isLoading= useSelector((state)=> state.time.isLoading)
+   const taskloading= useSelector((state)=> state.time.taskloading)
    const TaskEntries = useSelector((state)=>state.time.TaskEntries)
     const handleUpdate=()=>{
        
@@ -31,6 +32,7 @@ export function Edit( {id,date,timer,setOpenedit}) {
             <div className={style.nav}>
              <h5>Edit Your Task</h5>
              <p>{date}</p>
+             <button className={style.close} onClick={()=>setOpenedit(false)}>Close</button>
             </div>
             <div className={style.input}>
                 <input type="text" placeholder="00:00"   onChange={(e)=>setInput(e.target.value)}/>
@@ -38,6 +40,7 @@ export function Edit( {id,date,timer,setOpenedit}) {
             <div className={style.btn}>
              <button onClick={handleUpdate} style={{backgroundColor:"green"}}>Update</button>
              <button onClick={handleDelete} style={{backgroundColor:"red"}}>Delete</button>
+            { taskloading&& <TimeRing color="blue" size="10px"/>}
             </div>
           </div>
         </div>
