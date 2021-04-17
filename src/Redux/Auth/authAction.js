@@ -17,10 +17,10 @@ const loginFailure = () => {
         type: LOGIN_FAILURE
     }
 }
-const registerSuccess = () => {
+const registerSuccess = (payload) => {
     return {
         type: SIGNUP_SUCCESS,
-        payload: "Your account was successfully created! please sign in "
+        payload: payload
     }
 }
 const registerFailure = () => {
@@ -48,7 +48,7 @@ const signUp = (inp) => (dispatch) => {
         auth.createUserWithEmailAndPassword(wemail, password)
         
             .then( (res) => {
-               dispatch(registerSuccess())
+               dispatch(registerSuccess(fname))
             })
             .catch((error) => {
                 console.log(error);

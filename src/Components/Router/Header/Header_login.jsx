@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { logoutSuccess } from '../../../Redux/Auth/authAction';
 import style from './Style.module.css'
 import HomeIcon from '@material-ui/icons/Home';
+import { loadData } from '../../Auth/localStorage';
 // import {
 //     AppBar, Toolbar
 // } from "@material-ui/core"
@@ -42,6 +43,8 @@ export default function HomeHeader() {
     const history = useHistory();
     const dispatch = useDispatch();
 
+    const userName = loadData("user_name") || "user"
+
     const handleLogout = () => {  
         const action = logoutSuccess();
         dispatch (action)
@@ -69,7 +72,7 @@ export default function HomeHeader() {
             <Accounts>
                 <Link>Help</Link>
                 <Link>Settings</Link>
-                <Link>User Name</Link>
+                <Link>{userName}</Link>
                 <Button onClick = {handleLogout}>Logout</Button>
             </Accounts>       
         </Section>
