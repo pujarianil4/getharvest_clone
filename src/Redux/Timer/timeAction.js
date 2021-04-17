@@ -101,9 +101,9 @@ export const createTaskTimer =(payload)=>(dispatch)=>{
 
 
 // ________________________________________NETWORK REQUEST FOR GETTING TIMER______________________________________________//
-export const getTaskTimer =()=>(dispatch)=>{
+export const getTaskTimer =(payload)=>(dispatch)=>{
     dispatch(getTaskRequest())
-    return axios.get("https://1u30f.sse.codesandbox.io/timer").then((res)=>{
+    return axios.get(`https://1u30f.sse.codesandbox.io/timer?userId=${payload}`).then((res)=>{
         dispatch(getTaskSuccess(res.data))
          console.log(res.data)
     }).catch((err)=>{
@@ -114,9 +114,9 @@ export const getTaskTimer =()=>(dispatch)=>{
 
 
 // ________________________________________NETWORK REQUEST FOR GETTING PROJECT DETAILS______________________________________________//
-export const getProjectData =()=>(dispatch)=>{
+export const getProjectData =(payload)=>(dispatch)=>{
     // dispatch(getProjectRequest())
-    return axios.get('https://c2ec8.sse.codesandbox.io/harvest?userId=lIuAIgIxp3ZKoCY4KwmgVpyrlxB3').then((res)=>{
+    return axios.get(`https://c2ec8.sse.codesandbox.io/harvest?userId=${payload}`).then((res)=>{
             let arrdata =[]
             for(let k in res.data){
                 arrdata.push(res.data[k])

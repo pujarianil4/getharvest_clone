@@ -4,7 +4,7 @@ import styles from './CreateInvoice.module.css'
 import CloseIcon from '@material-ui/icons/Close';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import {useSelector,useDispatch} from 'react-redux'
-import { getTaskTimer } from '../../../Redux/Timer/timeAction';
+import { getProjectData, getTaskTimer } from '../../../Redux/Timer/timeAction';
 
 const InvoiceCont=styled.div`
     width:70%;
@@ -66,6 +66,29 @@ const TaskItemBody=styled.div``
 
 
 export const CreateInvoice = () => {
+    const dispatch = useDispatch()
+    React.useEffect(()=>{
+        
+        dispatch(getProjectData(userID))
+        dispatch(getTaskTimer(userID))       
+     
+    },[])
+
+// ______________________________________________________FETCHING DATA__________________________________//
+    const userID = useSelector(state => state.auth.uid)
+    // console.log(userID)
+    const state = useSelector(state => state.time.projectData)
+    const TaskEntries = useSelector(state=>state.time.TaskEntries)
+    // console.log(state)
+    // console.log(TaskEntries)
+    state.map((item)=>{
+        console.log(item)
+    })
+    TaskEntries.map((item)=>{
+        console.log(item)
+    })
+//__________________________________________________________________________________________________________________________________//
+
     const [TaskItemCount,setTaskItemCount]=React.useState([])
     const handleAdd=()=>{
         setTaskItemCount([...TaskItemCount,`item${TaskItemCount.length+1}`])
@@ -78,12 +101,8 @@ export const CreateInvoice = () => {
         setTaskItemCount(updatedTaskItemCount)
     }
 
-    const dispatch = useDispatch()
-    React.useEffect(()=>{
-        
-    },[])
-    const state = useSelector(state => state.time)
-    console.log(state)
+  
+  
     return (
         <InvoiceCont>
             <HeadingBox>

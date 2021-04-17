@@ -84,6 +84,14 @@ input{
 
 export const Timesheet = () => {
 
+
+    
+// _____________________________________________________________________USERID________________________________________//
+
+    const userID = useSelector(state => state.auth.uid)
+    console.log(userID)
+
+
     var d = new Date();
 
     const [changeDate,setChangeDate]=useState(0)
@@ -94,11 +102,13 @@ export const Timesheet = () => {
 
    
     const initTaskObj ={
+        userID:userID,
         projectName:"",
         taskName:"",
         notes:"",
         timer:0,
         date: date
+        
 
     }
 
@@ -138,8 +148,8 @@ export const Timesheet = () => {
     const dispatch = useDispatch()
  
     React.useEffect(()=>{
-        dispatch(getProjectData())
-        dispatch(getTaskTimer())
+        dispatch(getProjectData(userID))
+        dispatch(getTaskTimer(userID))
         if(!data.isLoading){
             console.log(clientObj)
             const bill =Object.keys(clientObj.tasks).filter((item)=>clientObj.tasks[item]===true)
@@ -169,7 +179,7 @@ export const Timesheet = () => {
         
     }
    
-    
+
     return (
        
             <div>
@@ -204,8 +214,10 @@ export const Timesheet = () => {
                             <div><label htmlFor="">Project/Task</label></div>
                             <div className={styles.projectName}>
                             <select name="projectName" id="" onChange={handleChange} value={projectName}>
-                                <option value="Task Name-1">Project Name-1</option>
+                                
+                                <optgroup label={clientObj? clientObj.client:"Task Name-2"} >
                                 <option value="Task Name-2">{clientObj? clientObj.pname:"Task Name-2"}</option>
+                                </optgroup>
                             </select>
                             </div>
                             <div className={styles.TaskName}>
@@ -225,8 +237,7 @@ export const Timesheet = () => {
                                 {
                                     !data.isLoading && nonbillable.map((item)=><option value={item}>{item}</option>)
                                 }
-                                <option value="Task Name-1" >Task Name-1</option>
-                                <option value="Task Name-2">Task Name-2</option>
+                                
                                 
                             </optgroup>
                                 
