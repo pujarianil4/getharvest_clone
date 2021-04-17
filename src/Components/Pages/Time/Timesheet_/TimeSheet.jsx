@@ -195,12 +195,10 @@ export const Timesheet = () => {
                             <h3>New Time Entry</h3>
                             <p>{date}</p>
 
-                            <p>
-                            
-                            </p>
+                         
 
                         </div>
-                        <form onSubmit={handleSubmit}>
+                        <form>
                             <div><label htmlFor="">Project/Task</label></div>
                             <div className={styles.projectName}>
                             <select name="projectName" id="" onChange={handleChange} value={projectName}>
@@ -237,9 +235,9 @@ export const Timesheet = () => {
                             <input type="text" placeholder="0:00" name="timer" onChange={handleChange} value={timer}/>
                             </div>
                             <div className={styles.Buttons}>
-                            <input type="submit" value={timer==="00:00" ?"Start Timer":"Save Entry"}/>
-                           
-                            <button onClick={()=>setopenCreateTAsk(false)}>Cancel</button>
+                          
+                            <button  className={styles.submit_btn} onClick={handleSubmit}>{timer==="00:00" ?"Start Timer":"Save Entry"}</button>
+                            <button className={styles.cancel_btn} onClick={()=>setopenCreateTAsk(false)}>Cancel</button>
                             
                             </div>
 

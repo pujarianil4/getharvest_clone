@@ -1,5 +1,5 @@
 import axios from "axios"
-import { CREATETASK_FAILURE, CREATETASK_REQUEST, CREATETASK_SUCCESS,GETPROJECT_FAILURE,GETPROJECT_REQUEST,GETPROJECT_SUCCESS,GETTASK_FAILURE, GETTASK_REQUEST, GETTASK_SUCCESS } from "./actionType"
+import { CREATETASK_FAILURE, CREATETASK_REQUEST, CREATETASK_SUCCESS,EDITTASK_FAILURE,EDITTASK_REQUEST,EDITTASK_SUCCESS,GETPROJECT_FAILURE,GETPROJECT_REQUEST,GETPROJECT_SUCCESS,GETTASK_FAILURE, GETTASK_REQUEST, GETTASK_SUCCESS } from "./actionType"
 
 
 
@@ -132,5 +132,35 @@ export const getProjectData =()=>(dispatch)=>{
     })
 }
 
+// ________________________________________NETWORK REQUEST FOR EDIT THE TASK______________________________________________//
 
+export const edittaskreq=()=>{
+    return {
+        type:EDITTASK_REQUEST,
+        
+    }
+}
+export const edittaskfailure=()=>{
+    return {
+        type:EDITTASK_FAILURE,
+        
+    }
+}
 
+export const edittasksuccess=(payload)=>{
+    return {
+        type:EDITTASK_SUCCESS,
+        payload
+    }
+}
+
+export const edittask=(id,payload)=>(dispatch)=>{
+    dispatch(edittaskreq())
+    axios.patch(`https://1u30f.sse.codesandbox.io/timer/${id}`,payload)
+    .then((res)=>{
+        dispatch(edittasksuccess(res.data))
+        dispatch(getTaskTimer())
+    })
+
+}
+// ________________________________________NETWORK REQUEST FOR EDIT THE TASK______________________________________________//

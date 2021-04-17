@@ -1,4 +1,4 @@
-import { CREATETASK_FAILURE, CREATETASK_REQUEST, CREATETASK_SUCCESS, GETPROJECT_FAILURE, GETPROJECT_REQUEST, GETPROJECT_SUCCESS, GETTASK_FAILURE, GETTASK_REQUEST, GETTASK_SUCCESS } from "./actionType"
+import { CREATETASK_FAILURE, CREATETASK_REQUEST, CREATETASK_SUCCESS, EDITTASK_FAILURE, EDITTASK_REQUEST, EDITTASK_SUCCESS, GETPROJECT_FAILURE, GETPROJECT_REQUEST, GETPROJECT_SUCCESS, GETTASK_FAILURE, GETTASK_REQUEST, GETTASK_SUCCESS } from "./actionType"
 
 const initTaskState ={
     isLoading:true,
@@ -64,8 +64,25 @@ export const timeReducer=(state=initTaskState,{type,payload})=>{
                 ...state,
             }
         }
-
-
+// _________________________EDIT TASK_______________________________//
+case EDITTASK_REQUEST: {
+    return{
+        ...state,
+        isLoading: true
+    }
+}
+case EDITTASK_SUCCESS: {
+    return{
+        ...state,
+        isLoading:false
+    }
+}
+case EDITTASK_FAILURE: {
+    return{
+        ...state,
+        isError:true
+    }
+}
 
         default:{
             return state
