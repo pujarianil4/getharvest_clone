@@ -1,4 +1,5 @@
 import Axios from "axios";
+import { useSelector } from "react-redux";
 import { PROJECTREPORTDATA } from "./reportsActionType";
 
 
@@ -11,20 +12,24 @@ const projectReportData = (paylaod) => {
 }
 
 
-const getProjectData = () => (dispatch) => {
+const getProjectData = (userId) => (dispatch) => {
 
+    console.log(userId);
     const axios = Axios.create({
-        baseURL: "https://auth-dev-9137e-default-rtdb.firebaseio.com"
+        baseURL: "https://c2ec8.sse.codesandbox.io"
     });
 
     axios({
-        url: "/projects.json",
-        method: "get"
+        url: "/harvest",
+        method: "get",
+        params: {
+            userId
+        }
     })
     .then((res) => {
 
-        res = res.data[5];
-        
+        res = res.data;
+        console.log(res)
         dispatch(projectReportData(res))
     })
     .catch((error) => 

@@ -23,19 +23,20 @@ const projectRequest = () => {
 }
 
 
-const projectData = (inp) => (dispatch) => {
+const projectData = (inp,userId) => (dispatch) => {
 
     dispatch(projectRequest());
 
     const axios = Axios.create({
        // baseURL: "https://c2ec8.sse.codesandbox.io"
-        baseURL: "https://auth-dev-9137e-default-rtdb.firebaseio.com"
+        baseURL: "https://c2ec8.sse.codesandbox.io"
     });
 
     axios({
-        url: "/projects.json",
+        url: "/harvest",
         method: "post",
         data: {
+            userId: userId,
             client: inp.client,
             pname: inp.pname,
             pcode: inp.pcode,

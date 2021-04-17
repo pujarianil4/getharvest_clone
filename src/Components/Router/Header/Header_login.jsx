@@ -1,6 +1,8 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Link, Redirect, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+import { logoutSuccess } from '../../../Redux/Auth/authAction';
 import style from './Style.module.css'
 // import {
 //     AppBar, Toolbar
@@ -49,6 +51,17 @@ const Button = styled.button`
 
 export default function HomeHeader() {
 
+    const history = useHistory();
+    const dispatch = useDispatch();
+
+    const handleLogout = () => {
+        
+        const action = logoutSuccess();
+        dispatch (action)
+        history.replace("/sign-in");
+
+    }
+
     return (
         // <AppBar position="sticky">
         <Section>
@@ -64,8 +77,8 @@ export default function HomeHeader() {
 
             </Menu>
             <Icon className={style.icon}>
-                <Link to="/sign-in">Sign In</Link>
-                <Link to ="/Signup" >Try Harvest Free</Link>
+                {/* <Link to="/sign-in">Sign In</Link> */}
+                <Button onClick = {handleLogout}>Logout</Button>
                 
             </Icon>
             
