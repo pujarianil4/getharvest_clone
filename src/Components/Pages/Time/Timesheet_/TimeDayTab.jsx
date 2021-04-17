@@ -80,6 +80,8 @@ useEffect(()=>{
     setactive(n)
 },[Prev])
 
+const [disable,setDisable]= useState(false)
+
     return (
        <div>
            
@@ -100,13 +102,14 @@ useEffect(()=>{
                        title={title[0]}
                        time={n==title[0]?todays_total:title[1]}
                        active={active===title[0]}
+                       
                       />
                     )
                 }
                <div className={style.total}> Total:  {total}:00</div>
           </div>
        {
-           todays_data.map(task=> <ShowTime key={task.id} {...task}/>)
+           todays_data.map(task=> <ShowTime key={task.id} {...task} setDisable={setDisable} disable={disable}/>)
            
        }
       { todays_data.length !==0&& <div className={style.total_timer}>
