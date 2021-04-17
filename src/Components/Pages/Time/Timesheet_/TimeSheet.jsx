@@ -14,7 +14,7 @@ import {TimeNavBar} from '../TimeNavBar_/TimeNavBar'
 
 
 const TimeSheetWrapper = styled.div`
-margin-left:18%;
+margin-left:12%;
 width:60%;
 
 height:500px;
