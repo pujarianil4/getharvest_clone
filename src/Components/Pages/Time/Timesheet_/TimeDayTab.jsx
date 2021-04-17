@@ -6,7 +6,8 @@ import { Day} from "./Tab/Day"
 import { Timesheet } from "./TimeSheet"
 import { ShowTime } from "./Tab/ShowTime"
 import { useSelector } from "react-redux"
-
+import { Edit } from "./Edit/Edit"
+import { Ring } from "react-awesome-spinners"
 export function DayTabs({setChangeDate}){
 
     const [Prev,setPrev]=useState(0)
@@ -30,13 +31,13 @@ export function DayTabs({setChangeDate}){
 //const days=["M","T","W","Th","F","S","Su"]
 
 const days={
-    M:"0:00",
-    T: "0:00",
-    W:"0:00",
-    Th:"0:00",
-    F:"0:00",
-    S:"0:00",
-    Su:"0:00",
+    M:"0",
+    T: "0",
+    W:"0",
+    Th:"0",
+    F:"0",
+    S:"0",
+    Su:"0",
 }
 
 const [active,setactive]=useState(n)
@@ -80,6 +81,11 @@ useEffect(()=>{
     setactive(n)
 },[Prev])
 
+const [disable,setDisable]= useState(false)
+
+const taskloading= useSelector((state)=> state.time.taskloading)
+
+
     return (
        <div>
            
@@ -100,20 +106,21 @@ useEffect(()=>{
                        title={title[0]}
                        time={n==title[0]?todays_total:title[1]}
                        active={active===title[0]}
+                       
                       />
                     )
                 }
                <div className={style.total}> Total:  {total}:00</div>
           </div>
        {
-           todays_data.map(task=> <ShowTime key={task.id} {...task}/>)
-           
+          !taskloading? todays_data.map(task=> <ShowTime key={task.id}  {...task} setDisable={setDisable} disable={disable}/>)
+           : <div className={style.ring}><Ring color="#F26314"/></div>
        }
-      { todays_data.length !==0&& <div className={style.total_timer}>
+      { !taskloading&&todays_data.length !==0&& <div className={style.total_timer}>
         <h1>Total:     <span>{todays_total}:00</span></h1>
         </div>}
      
-          { todays_data.length==0&& <div className={style.container} >
+          {!taskloading&& todays_data.length==0&& <div className={style.container} >
            <div className={style.arrow}>
                 <img src="/start arrow.png" alt="img"/>
            </div>
@@ -126,6 +133,7 @@ useEffect(()=>{
            </div>
           </div> }
         </div>
+      
         </div>
     )
 }

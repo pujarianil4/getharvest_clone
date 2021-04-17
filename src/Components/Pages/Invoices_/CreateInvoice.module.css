@@ -68,13 +68,17 @@
 }
 .TaskItemBody>div:nth-child(3){
     width: 54%;
+   
 }
+/* .TaskItemBody>div:nth-child(3)>div>textarea{
+    width: 100%;
+} */
 .TaskItemBody>div:nth-child(4){
-    margin-top: -1%;
+    
     width: 12%;
 }
 .TaskItemBody>div:nth-child(5){
-    margin-top: -1%;
+
     width: 12%;
 }
 .TaskItemBody>div:nth-child(6){
@@ -130,7 +134,7 @@
 
 }
 .totolsection>div:nth-child(2){
-    width: 22%;
+    width: 25%;
     display: flex;
     justify-content: space-between;
 }
@@ -143,22 +147,55 @@
 
 }
 
-.subjectInput{
+
+.FormBox{
+    width: 100%;
     margin-top: 10px;
+}
+.InvidInput{
+    margin-bottom: 10px;
     width: 100%;
   
     display: flex;
-    align-items: center;
+    justify-content: space-between;
 }
-.subjectInput>div:nth-child(1){
-    width: 17%;
-  
+.InvidInput>div:nth-child(1),.InvidInput>div:nth-child(2){
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
 }
-.subjectInput>div:nth-child(2){
-   width: 79%;
 
+.InvidInput>div:nth-child(1)>div,.InvidInput>div:nth-child(2)>div{
+  width: 50%;
+    
 }
-.subjectInput>div:nth-child(2)>input{
-    height: 20px;
+.InvidInput>div>input{
+    height: 30px;
+}
+.InvidInput>div>select{
+    height: 30px;
+    width:      200px;
+    
+}
+
+.SubInvidInput{
+    height: 30px;
     width: 100%;
+    
+    display: flex;
+    
+   
+    
+}
+.SubInvidInput>div:nth-child(1){
+    width: 24%;
+   
+   
+}
+
+.SubInvidInput>input{
+    width: 75%;
+    height: 30px;
+
+
 }

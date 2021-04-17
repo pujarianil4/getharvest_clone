@@ -1,5 +1,5 @@
 import axios from "axios"
-import { CREATETASK_FAILURE, CREATETASK_REQUEST, CREATETASK_SUCCESS,GETPROJECT_FAILURE,GETPROJECT_REQUEST,GETPROJECT_SUCCESS,GETTASK_FAILURE, GETTASK_REQUEST, GETTASK_SUCCESS } from "./actionType"
+import { CREATETASK_FAILURE, CREATETASK_REQUEST, CREATETASK_SUCCESS,DELETETASK_REQUEST,EDITTASK_FAILURE,EDITTASK_REQUEST,EDITTASK_SUCCESS,GETPROJECT_FAILURE,GETPROJECT_REQUEST,GETPROJECT_SUCCESS,GETTASK_FAILURE, GETTASK_REQUEST, GETTASK_SUCCESS,DELETETASK_FAILURE,DELETETASK_SUCCESS } from "./actionType"
 
 
 
@@ -90,9 +90,13 @@ export const getProjectFailure=(payload)=>{
 export const createTaskTimer =(payload)=>(dispatch)=>{
     console.log(payload)
     dispatch(createTaskRequest())
-    return axios.post("https://1u30f.sse.codesandbox.io/timer",payload).then((res)=>
-        // dispatch(createTaskSuccess(res.data))
-        console.log(res)
+    return axios.post("https://1u30f.sse.codesandbox.io/timer",payload)
+    .then((res)=>
+        //dispatch(createTaskSuccess(res.data))
+
+        dispatch(getTaskTimer())
+       
+       
     ).catch((err)=>{
         dispatch(createTaskFailure(err))
     })
@@ -116,7 +120,7 @@ export const getTaskTimer =()=>(dispatch)=>{
 // ________________________________________NETWORK REQUEST FOR GETTING PROJECT DETAILS______________________________________________//
 export const getProjectData =()=>(dispatch)=>{
     // dispatch(getProjectRequest())
-    return axios.get('https://auth-dev-9137e-default-rtdb.firebaseio.com/projects.json').then((res)=>{
+    return axios.get('https://c2ec8.sse.codesandbox.io/harvest?userId=lIuAIgIxp3ZKoCY4KwmgVpyrlxB3').then((res)=>{
             let arrdata =[]
             for(let k in res.data){
                 arrdata.push(res.data[k])
@@ -128,5 +132,71 @@ export const getProjectData =()=>(dispatch)=>{
     })
 }
 
+// ________________________________________NETWORK REQUEST FOR EDIT THE TASK______________________________________________//
 
+export const edittaskreq=()=>{
+    return {
+        type:EDITTASK_REQUEST,
+        
+    }
+}
+export const edittaskfailure=()=>{
+    return {
+        type:EDITTASK_FAILURE,
+        
+    }
+}
 
+export const edittasksuccess=(payload)=>{
+    return {
+        type:EDITTASK_SUCCESS,
+        payload
+    }
+}
+
+export const edittask=(id,payload)=>(dispatch)=>{
+    dispatch(edittaskreq())
+    axios.patch(`https://1u30f.sse.codesandbox.io/timer/${id}`,payload)
+    .then((res)=>{
+        dispatch(edittasksuccess(res.data))
+        dispatch(getTaskTimer())
+    })
+    .catch((error)=>{
+        dispatch(edittaskfailure())
+    })
+
+}
+// ________________________________________NETWORK REQUEST FOR DELETE THE TIMER______________________________________________//
+
+export const deletetaskreq=()=>{
+    return {
+        type:DELETETASK_REQUEST,
+        
+    }
+}
+export const deletetasksuccess=()=>{
+    return {
+        type:DELETETASK_SUCCESS,
+        
+    }
+}
+
+export const deletetaskfailure=()=>{
+    return {
+        type:DELETETASK_FAILURE,
+      
+    }
+}
+
+export const deletetask=(id)=>(dispatch)=>{
+    dispatch(deletetaskreq())
+    axios.delete(`https://1u30f.sse.codesandbox.io/timer/${id}`)
+    .then((res)=>{
+        dispatch(deletetasksuccess())
+        dispatch(getTaskTimer())
+    })
+    .catch((error)=>{
+        dispatch(deletetaskfailure())
+    })
+
+}

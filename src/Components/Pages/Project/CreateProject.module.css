@@ -37,20 +37,25 @@
    
 }
 .inputs>div>input{
+
+    width: 40%;
     border-radius: 3px;
     height: 30px;
-    border:0.5px solid black;
+    border:0.5px solid silver;
     padding-left: 10px;
+    color: silver;
 }
 
-.inputs>div:nth-child(1)>input,.inputs>div:nth-child(2)>input{
-  width: 400px;  
+.inputs>div:nth-child(1)>input,.inputs>div:nth-child(2)>input,.inputs>div:nth-child(3)>input{
+  width: 40%;  
+  border:0.5px solid silver;
   
 }
 
 .inputs>div>textarea{
-    width: 600px;
+    width: 85%;
     height: 70px;
+    border:0.5px solid silver;
 }
 
 .projectypesBox{
@@ -71,7 +76,7 @@
 .projectButtons>button{
     height: 40px;
     width: 200px;
-    border: 0.2px solid black;
+    border: 0.2px solid silver;
     background: none;
 }
 .projectButtons>button:focus{
@@ -92,21 +97,30 @@
     height: 200px;
     background-color: #f4f4f4;
     border-radius: 10px;
-    border-bottom:0.2px solid black;
+    border-bottom:0.2px solid silver;
   
 }
-.ProjectTypeCategory>div>label{
-    padding:10px 0 0 10px;
-    margin-right: 5px;
-}
-.ProjectTypeCategory>div>input{
-    width: 200px;
-    height: 30px;
-}
-.ProjectTypeCategory>div{
+.ProjectTypeCategoryChild{
+    height: 90%;
     display: flex;
+    flex-direction: column;
+    
+    gap: 20%;
    
 }
+.ProjectTypeCategoryChild>div{
+    display: flex;
+
+   
+}
+.ProjectTypeCategoryChild>div>div>input{
+    height: 30px;
+    border: 1px solid silver;
+}
+.ProjectTypeCategoryChild>div>div:nth-child(1){
+    width: 40%;
+}
+
 .ProjectTaskHeading{
     margin-top: 20px;
     padding-left: 20px;
@@ -116,16 +130,17 @@
     border-bottom: 1px solid black;
     background-color: #f4f4f4;
     display: flex;
-    gap: 85%;
+    gap: 80%;
 }
 .ProjectTaskHeading>div>p{
+    margin-top: 5px;
     font-size: 10px;
-    line-height: 1;
+    line-height: 2;
 }
 .projectTasks{
-    margin-left: 20px;
+   
     padding-top: 10px;
-    width: 90%;
+    width: 100%;
     height: 200px; 
 
     display: flex;
@@ -135,11 +150,20 @@
 
 
 .projectTasks>div{
+    width: 100%;
     display: flex;
     justify-content: space-between;
 
 }
-
+.taskwidth{
+    /* background-color: red; */
+    
+}
+.myCheckbox{
+    
+    /* color: red; */
+    /* background-color: black; */
+}
 .Buttons{
     margin-top:10px;
     display:flex;
@@ -176,7 +200,4 @@
         
     }
 
-    .myCheckbox{
-        color: red;
-        background-color: black;
-    }
+   

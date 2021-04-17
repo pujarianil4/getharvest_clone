@@ -20,7 +20,11 @@ import { DayTabs } from '../Pages/Time/Timesheet_/TimeDayTab'
 import { useSelector } from 'react-redux'
 
 import { Expenses } from '../Pages/expenses/Expenses'
+
 import PrivateRoute from './PrivateRoute'
+
+import { FinalInvoice } from '../Pages/Invoices_/FinalInvoice'
+
 
 
 
@@ -68,7 +72,14 @@ export default function Router() {
                 </PrivateRoute>
                 <PrivateRoute path="/expense">
                     <Expenses/>
+
                 </PrivateRoute>
+
+                </Route>
+                <Route path="/finalinvoice">
+                    <FinalInvoice/>
+                </Route>
+
 
             </Switch>
            

@@ -120,23 +120,35 @@ export default function CreateProject() {
 
                  <div className={styles.ProjectTypeCategory}>
                         {
-                            tm ? <div>
-                                <label>HourlyRates</label>
-                                <input onChange={handleInp} name="hourlyrates" value={inp.hourlyrates} placeholder="hourlyRates" /> <br />
+                            tm ? <div  className={styles.ProjectTypeCategoryChild}>
+                                <div>
+                                    <div><label>Hourly Rates</label> </div>
+                                    <div><input onChange={handleInp} name="hourlyrates" value={inp.hourlyrates} placeholder="Hourly Rates" /></div>
+                                </div>
 
-                                <label>Budgets</label>
-                                <input onChange={handleInp} name="budget" value={inp.budget} placeholder="budget" /> <br />
+                                <div>
+                                    <div> <label>Budgets</label></div>
+                                    <div><input onChange={handleInp} name="budget" value={inp.budget} placeholder="Budget" /> </div>
+                                </div>
                             </div> :
-                                ff ? <div>
-                                    <label>projectFee</label>
-                                    <input onChange={handleInp} name="projectfee" value={inp.projectfee} placeholder="projectFee" /> <br />
-
-                                    <label>fixedFeeBudget</label>
-                                    <input onChange={handleInp} name="fixedfeebudget" value={inp.fixedfeebudget} placeholder="fixedFeeBudget" /> <br />
-                                </div> :
+                                ff ? <div  className={styles.ProjectTypeCategoryChild}>
                                     <div>
-                                        <label>NonBillableBudget</label>
-                                        <input onChange={handleInp} name="nonbillablebudget" value={inp.nonbillablebudget} placeholder="nonBillableBudget" /> <br />
+                                       <div> <label>Project Fee</label></div>
+                                        <div> <input onChange={handleInp} name="projectfee" value={inp.projectfee} placeholder="Project Fee" /></div> 
+
+                                    </div>
+
+                                   <div>
+                                        <div><label>Fixed FeeBudget</label></div>
+                                        <div>  <input onChange={handleInp} name="fixedfeebudget" value={inp.fixedfeebudget} placeholder="Fixed FeeBudget" /></div> 
+                                   </div>
+                                </div> :
+                                    <div className={styles.ProjectTypeCategoryChild}>
+                                       <div>
+
+                                            <div><label>Non-Billable Budget</label></div>
+                                               <div> <input onChange={handleInp} name="nonbillablebudget" value={inp.nonbillablebudget} placeholder="Non-Billable Budget" /> </div>
+                                       </div>
 
                                     </div>
                         }
@@ -158,24 +170,24 @@ export default function CreateProject() {
                     <div className={styles.projectTasks}>
                     <div>
                         <div className={styles.taskwidth}><label>Business Development</label></div>
-                        <input onChange = {handleInp} name = "bd" checked = {inp.bd} type="checkbox" />
+                        <div className={styles.myCheckbox}><input onChange = {handleInp} name = "bd" checked = {inp.bd} type="checkbox" /></div>
                     </div>
                     <div>
                         <div className={styles.taskwidth}><label>Design</label></div>
-                        <input onChange = {handleInp} name = "design" checked = {inp.design} type="checkbox" className={styles.myCheckbox} />
+                        <div className={styles.myCheckbox}><input onChange = {handleInp} name = "design" checked = {inp.design} type="checkbox"  /></div>
                     </div>
 
                     <div>
                         <div className={styles.taskwidth}><label>Business Development</label></div>
-                        <input onChange = {handleInp} name = "marketing" checked = {inp.marketing} type="checkbox" />
+                        <div className={styles.myCheckbox}><input onChange = {handleInp} name = "marketing" checked = {inp.marketing} type="checkbox" /></div>
                     </div>
                     <div>
                     <div className={styles.taskwidth}><label>Business Development</label></div>
-                        <input onChange = {handleInp} name = "programming" type="checkbox" checked = {inp.programming} />
+                        <div className={styles.myCheckbox}><input onChange = {handleInp} name = "programming" type="checkbox" checked = {inp.programming} /></div>
                     </div>
                     <div>
                     <div className={styles.taskwidth}><label>project Management</label></div>
-                        <input onChange = {handleInp} name = "projectMan" checked = {inp.projectMan} type="checkbox" />
+                       <div className={styles.myCheckbox}>  <input onChange = {handleInp} name = "projectMan" checked = {inp.projectMan} type="checkbox" /></div>
                     </div>
                     </div>
                     

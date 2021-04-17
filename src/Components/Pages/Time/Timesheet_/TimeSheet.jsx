@@ -12,8 +12,9 @@ import {TimeNavBar} from '../TimeNavBar_/TimeNavBar'
 
 
 
+
 const TimeSheetWrapper = styled.div`
-margin-left:18%;
+margin-left:12%;
 width:60%;
 
 height:500px;
@@ -30,6 +31,7 @@ display:flex;
 const AddButton =styled.div`
 
 position:relative;
+top:65px;
 width:60px;
 height:60px;
 background:linear-gradient(#14a000,#1a8d08);
@@ -43,7 +45,7 @@ border-radius:5px;
 cursor: pointer;
 div{
     font-size:80px;
-    margin-bottom:3px;
+    margin-bottom:15px;
 }
 `
 
@@ -97,7 +99,7 @@ export const Timesheet = () => {
         projectName:"",
         taskName:"",
         notes:"",
-        timer:0,
+        timer:"",
         date: date
 
     }
@@ -134,12 +136,12 @@ export const Timesheet = () => {
     !data.isLoading && console.log(TaskEntries)
 
      
-    const clientObj =state.projectData[6]
+    const clientObj =state.projectData[0]
     const dispatch = useDispatch()
  
     React.useEffect(()=>{
         dispatch(getProjectData())
-        dispatch(getTaskTimer())
+        // dispatch(getTaskTimer())
         if(!data.isLoading){
             console.log(clientObj)
             const bill =Object.keys(clientObj.tasks).filter((item)=>clientObj.tasks[item]===true)
@@ -177,15 +179,16 @@ export const Timesheet = () => {
                 <TimeNavBar/>
 
                           <TimeSheetWrapper>
-            <TimeSheetContainer>
-                <LeftBox><AddButton onClick={()=>setopenCreateTAsk(true)}> <div>+</div></AddButton></LeftBox>
-                <TaskWrapper>
-                    <DayTabs setChangeDate={setChangeDate}/>
-                </TaskWrapper>
-            </TimeSheetContainer>
+                            <TimeSheetContainer>
+                                <LeftBox>
+                                    <AddButton onClick={()=>setopenCreateTAsk(true)}> <div>+</div></AddButton></LeftBox>
+                                <TaskWrapper>
+                                        <DayTabs setChangeDate={setChangeDate}/>
+                                </TaskWrapper>
+                            </TimeSheetContainer>
 
            
-        </TimeSheetWrapper>
+                        </TimeSheetWrapper>
 
             {
                 openCreateTAsk && <div className={styles.form_div}>
@@ -194,12 +197,10 @@ export const Timesheet = () => {
                             <h3>New Time Entry</h3>
                             <p>{date}</p>
 
-                            <p>
-                            
-                            </p>
+                         
 
                         </div>
-                        <form onSubmit={handleSubmit}>
+                        <form>
                             <div><label htmlFor="">Project/Task</label></div>
                             <div className={styles.projectName}>
                             <select name="projectName" id="" onChange={handleChange} value={projectName}>
@@ -236,9 +237,9 @@ export const Timesheet = () => {
                             <input type="text" placeholder="0:00" name="timer" onChange={handleChange} value={timer}/>
                             </div>
                             <div className={styles.Buttons}>
-                            <input type="submit" value={timer==="00:00" ?"Start Timer":"Save Entry"}/>
-                           
-                            <button onClick={()=>setopenCreateTAsk(false)}>Cancel</button>
+                          
+                            <button  className={styles.submit_btn} onClick={handleSubmit}>{timer==="00:00" ?"Start Timer":"Save Entry"}</button>
+                            <button className={styles.cancel_btn} onClick={()=>setopenCreateTAsk(false)}>Cancel</button>
                             
                             </div>
 
