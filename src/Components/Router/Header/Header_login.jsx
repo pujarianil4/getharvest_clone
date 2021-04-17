@@ -4,6 +4,7 @@ import { Link, Redirect, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { logoutSuccess } from '../../../Redux/Auth/authAction';
 import style from './Style.module.css'
+import HomeIcon from '@material-ui/icons/Home';
 // import {
 //     AppBar, Toolbar
 // } from "@material-ui/core"
@@ -11,34 +12,17 @@ import style from './Style.module.css'
 const Section = styled.section`
     display: flex;
     flex-flow: row;
-    background-color: #F26314;
-    padding: 5px 0px;
-`
-const Logo = styled.section`
-    flex-basis: 25%;
-    margin-left: 8%;
-`
-const Htitle = styled.p`
-    font-size: 35px;
-    color: white;
-    text-transform: capitalize; 
-    line-height: 65px;
-    font-weight: 600;
-    margin: 0px auto;
-
+    background-color: #F4862E;
+    padding: 10px;
 `
 const Menu = styled.section`
     flex-basis: 50%;
-    padding: 20px 0px;
     align-content: right;
     
 `
 const Icon = styled.section`
-    flex-basis: 25%;
-    padding: 25px 0px;
-    display: flex;
-    flex-direction: row;
-    margin-right: 80px;
+    flex-basis: 18%;
+    margin-left: 4%;
 `
 const Button = styled.button`
     background: #f07544;
@@ -46,7 +30,11 @@ const Button = styled.button`
   border: 1px solid white;
   color: white;
   margin: 0em 1em;
-  //padding: ;
+`
+const Accounts = styled.section`
+    justify-content: flex-end;
+    margin-left: 0%;
+
 `
 
 export default function HomeHeader() {
@@ -54,36 +42,33 @@ export default function HomeHeader() {
     const history = useHistory();
     const dispatch = useDispatch();
 
-    const handleLogout = () => {
-        
+    const handleLogout = () => {  
         const action = logoutSuccess();
         dispatch (action)
         history.replace("/sign-in");
-
     }
 
     return (
-        // <AppBar position="sticky">
         <Section>
-            <Logo>
-                <Htitle></Htitle>
-            </Logo>
+            <Icon>
+                <HomeIcon style={{ color: "white", marginLeft: "80%"}} />
+
+                
+            </Icon>
             <Menu className={style.menu}>
                 <Link to="/time">Time</Link>
                 <Link to="/expense">Expenses</Link>
                 <Link to="/projects">Projects</Link>
                 <Link to="/reports">Reports</Link>
                 <Link to="/invoice">Invoices</Link>
-
             </Menu>
-            <Icon className={style.icon}>
-                {/* <Link to="/sign-in">Sign In</Link> */}
+            <Accounts>
+                <Link>Help</Link>
+                <Link>Settings</Link>
+                <Link>User Name</Link>
                 <Button onClick = {handleLogout}>Logout</Button>
-                
-            </Icon>
-            
+            </Accounts>       
         </Section>
         
-        // </AppBar>
     )
 }

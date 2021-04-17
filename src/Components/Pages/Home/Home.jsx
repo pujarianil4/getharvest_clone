@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Feature_card, Start_trial_button } from "../../../Library/Custom_UI"
 import style from "./Home.module.css"
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
@@ -7,7 +7,17 @@ import ImportContactsIcon from '@material-ui/icons/ImportContacts';
 import ComputerIcon from '@material-ui/icons/Computer';
 import RecordVoiceOverIcon from '@material-ui/icons/RecordVoiceOver';
 import { Footer } from "../Footer/Footer";
+import { useDispatch } from "react-redux";
+import { logoutSuccess } from "../../../Redux/Auth/authAction";
 export function Home(){
+
+  // ------------------------ user is logged out when visiting home page ----------------------------//
+
+    const dispatch = useDispatch();
+    useEffect(() => {
+      const action = logoutSuccess();
+      dispatch(action)
+    },[])
 
     return(
         <>

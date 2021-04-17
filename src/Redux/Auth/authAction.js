@@ -41,7 +41,9 @@ const logoutSuccess = () => {
 
 const signUp = (inp) => (dispatch) => {
 
-    const {wemail,password} = inp
+    const {wemail,password,fname} = inp
+
+    localStorage.setItem("userName",fname);
 
         auth.createUserWithEmailAndPassword(wemail, password)
         

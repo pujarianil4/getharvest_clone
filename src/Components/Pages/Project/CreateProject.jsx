@@ -10,7 +10,6 @@ export default function CreateProject() {
     const [inp, setInp] = useState({})
     const [tm, setTm] = useState(true)
     const [ff, setFf] = useState(false)
-    //const [nb, setNb] = useState(false)
 
     const userId = useSelector(state => state.auth.uid);
 
@@ -29,8 +28,7 @@ export default function CreateProject() {
         e.preventDefault();
         const action = projectData(inp,userId);
         dispatch(action);
-       history.replace("/time") 
-
+       history.replace("/time")
     }
 
     const handleTimeAndMaterials = (e) => {
