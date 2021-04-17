@@ -10,20 +10,22 @@ import { Footer } from "../Footer/Footer";
 
 import { useDispatch } from "react-redux";
 import { logoutSuccess } from "../../../Redux/Auth/authAction";
-export function Home(){
+
 
   // ------------------------ user is logged out when visiting home page ----------------------------//
 
-    const dispatch = useDispatch();
-    useEffect(() => {
-      const action = logoutSuccess();
-      dispatch(action)
-    },[])
 
 import { useSelector } from "react-redux";
 import { Redirect } from "react-router";
 import { Carousel } from "./Carousel";
 export function Home(){
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const action = logoutSuccess();
+    dispatch(action)
+  },[])
+
   const isAuth = useSelector(state => state.auth.isAuth)
   if(isAuth){
     return <Redirect to="/welcome"/>
