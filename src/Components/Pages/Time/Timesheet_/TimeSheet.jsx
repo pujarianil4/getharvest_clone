@@ -43,7 +43,7 @@ border-radius:5px;
 cursor: pointer;
 div{
     font-size:80px;
-    margin-bottom:3px;
+    margin-bottom:15px;
 }
 `
 
@@ -134,7 +134,7 @@ export const Timesheet = () => {
     !data.isLoading && console.log(TaskEntries)
 
      
-    const clientObj =state.projectData[6]
+    const clientObj =state.projectData[0]
     const dispatch = useDispatch()
  
     React.useEffect(()=>{
@@ -177,15 +177,16 @@ export const Timesheet = () => {
                 <TimeNavBar/>
 
                           <TimeSheetWrapper>
-            <TimeSheetContainer>
-                <LeftBox><AddButton onClick={()=>setopenCreateTAsk(true)}> <div>+</div></AddButton></LeftBox>
-                <TaskWrapper>
-                    <DayTabs setChangeDate={setChangeDate}/>
-                </TaskWrapper>
-            </TimeSheetContainer>
+                            <TimeSheetContainer>
+                                <LeftBox>
+                                    <AddButton onClick={()=>setopenCreateTAsk(true)}> <div>+</div></AddButton></LeftBox>
+                                <TaskWrapper>
+                                        <DayTabs setChangeDate={setChangeDate}/>
+                                </TaskWrapper>
+                            </TimeSheetContainer>
 
            
-        </TimeSheetWrapper>
+                        </TimeSheetWrapper>
 
             {
                 openCreateTAsk && <div className={styles.form_div}>

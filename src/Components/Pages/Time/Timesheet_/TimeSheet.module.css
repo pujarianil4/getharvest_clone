@@ -8,6 +8,7 @@
    top: 0px;
 }
 .timer_form{
+    height: 340px;
    width: 500px;
    background-color: white;
    margin: auto;
@@ -15,8 +16,9 @@
   border-radius: 10px;
 }
 .timer_form > form {
+
     width:90%;
-    margin:auto;
+    margin: 10px auto;
 }
 
 
@@ -71,7 +73,10 @@
       border-radius: 5px;
       margin-bottom: 10px;
   }
-  
+  .InputBoxes{
+      display: flex;
+      justify-content: space-between;
+  }
   .InputBoxes>input:nth-child(1){
       width: 65%;
       height: 50px;
@@ -83,8 +88,8 @@
   .InputBoxes>input:nth-child(2){
       font-size: 30px;
       text-align: right;
-      margin-left: 5%;
-    width: 25%;
+      
+    width: 28%;
     height: 50px;
     border-radius: 5px;
     margin-bottom: 10px;
@@ -105,6 +110,7 @@
     font-weight: 500;
     border-radius: 3px;
     cursor: pointer;
+    text-align: center;
 }
 .Buttons>button{
     margin-left: 10px;
@@ -115,6 +121,7 @@
     font-weight: 500;
     border-radius: 3px;
     cursor: pointer;
+    text-align: center;
 }
 .Buttons>button:focus,.Buttons>input:focus{
     outline:none;
