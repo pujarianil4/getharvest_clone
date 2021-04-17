@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { Link, Redirect, useHistory } from 'react-router-dom';
+import { Link, Redirect, useHistory,NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { logoutSuccess } from '../../../Redux/Auth/authAction';
 import style from './Style.module.css'
@@ -69,11 +69,11 @@ export default function HomeHeader() {
                 <Htitle></Htitle>
             </Logo>
             <Menu className={style.menu}>
-                <Link to="/time">Time</Link>
-                <Link to="/expense">Expenses</Link>
-                <Link to="/projects">Projects</Link>
-                <Link to="/reports">Reports</Link>
-                <Link to="/invoice">Invoices</Link>
+                <NavLink activeStyle={{color:"black"}} to="/time">Time</NavLink>
+                <NavLink activeStyle={{color:"black"}} to="/expense">Expenses</NavLink>
+                <NavLink activeStyle={{color:"black"}} to="/projects">Projects</NavLink>
+                <NavLink activeStyle={{color:"black"}} to="/reports">Reports</NavLink>
+                <NavLink activeStyle={{color:"black"}} to="/invoice">Invoices</NavLink>
 
             </Menu>
             <Icon className={style.icon}>
