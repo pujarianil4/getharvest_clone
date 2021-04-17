@@ -1,10 +1,11 @@
-import { CREATETASK_FAILURE, CREATETASK_REQUEST, CREATETASK_SUCCESS, EDITTASK_FAILURE, EDITTASK_REQUEST, EDITTASK_SUCCESS, GETPROJECT_FAILURE, GETPROJECT_REQUEST, GETPROJECT_SUCCESS, GETTASK_FAILURE, GETTASK_REQUEST, GETTASK_SUCCESS } from "./actionType"
+import { CREATETASK_FAILURE, CREATETASK_REQUEST, CREATETASK_SUCCESS, DELETETASK_FAILURE, DELETETASK_REQUEST, DELETETASK_SUCCESS, EDITTASK_FAILURE, EDITTASK_REQUEST, EDITTASK_SUCCESS, GETPROJECT_FAILURE, GETPROJECT_REQUEST, GETPROJECT_SUCCESS, GETTASK_FAILURE, GETTASK_REQUEST, GETTASK_SUCCESS } from "./actionType"
 
 const initTaskState ={
     isLoading:true,
     isError:false,
     projectData:[],
-    TaskEntries:[]
+    TaskEntries:[],
+    taskloading:false
 }
 
 export const timeReducer=(state=initTaskState,{type,payload})=>{
@@ -64,23 +65,45 @@ export const timeReducer=(state=initTaskState,{type,payload})=>{
                 ...state,
             }
         }
-// _________________________EDIT TASK_______________________________//
+// _________________________EDIT TIMER_______________________________//
 case EDITTASK_REQUEST: {
     return{
         ...state,
-        isLoading: true
+        taskloading: true
     }
 }
 case EDITTASK_SUCCESS: {
     return{
         ...state,
-        isLoading:false
+        taskloading:false
     }
 }
 case EDITTASK_FAILURE: {
     return{
         ...state,
-        isError:true
+        isError:true,
+        taskloading:false
+    }
+}
+// _________________________DELETE TIMER_______________________________//
+
+case DELETETASK_REQUEST: {
+    return{
+        ...state,
+        taskloading: true
+    }
+}
+case DELETETASK_SUCCESS: {
+    return{
+        ...state,
+        taskloading:false
+    }
+}
+case DELETETASK_FAILURE: {
+    return{
+        ...state,
+        isError:true,
+        taskloading:false
     }
 }
 

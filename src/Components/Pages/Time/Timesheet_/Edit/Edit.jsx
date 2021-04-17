@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { edittask } from "../../../../../Redux/Timer/timeAction"
+import { deletetask, edittask } from "../../../../../Redux/Timer/timeAction"
 import style from "./Edit.module.css"
 export function Edit( {id,date,timer,setOpenedit}) {
     const dispatch=useDispatch()
@@ -13,14 +13,14 @@ export function Edit( {id,date,timer,setOpenedit}) {
     const handleUpdate=()=>{
        
         dispatch(edittask(id,payload))
-        setOpenedit(false)
+      
          
         
 
         
     }
     const handleDelete=()=>{
-
+          dispatch(deletetask(id))
     }
 
   

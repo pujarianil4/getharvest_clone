@@ -1,8 +1,9 @@
-import React, { useState } from "react"
+import React, { useState,useEffect } from "react"
 import style from "./ShowTime.module.css"
 import { Ring } from "react-awesome-spinners"
 import { TimeRing } from "./Ring"
 import { Edit } from "../Edit/Edit"
+import { useDispatch, useSelector } from "react-redux"
 export function ShowTime({ id, notes,date, projectName, taskName, timer,setDisable,disable }) {
 const [start,setStart]= useState(false)
  const handlestart=(val)=>{
@@ -14,7 +15,11 @@ const [start,setStart]= useState(false)
 const handleEdit=(val)=>{
  setOpenedit(val)
 }
- 
+const TaskEntries = useSelector((state)=>state.time.TaskEntries)
+
+useEffect(()=>{
+  setOpenedit(false)
+},[TaskEntries]) 
     return (
         <div className={style.ShowTime}>
             <div className={style.title}>
