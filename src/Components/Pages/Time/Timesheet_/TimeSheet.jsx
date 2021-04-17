@@ -12,8 +12,9 @@ import {TimeNavBar} from '../TimeNavBar_/TimeNavBar'
 
 
 
+
 const TimeSheetWrapper = styled.div`
-margin-left:18%;
+margin-left:12%;
 width:60%;
 
 height:500px;
@@ -30,6 +31,7 @@ display:flex;
 const AddButton =styled.div`
 
 position:relative;
+top:65px;
 width:60px;
 height:60px;
 background:linear-gradient(#14a000,#1a8d08);
@@ -106,7 +108,7 @@ export const Timesheet = () => {
         projectName:"",
         taskName:"",
         notes:"",
-        timer:0,
+        timer:"",
         date: date
         
 
@@ -148,8 +150,10 @@ export const Timesheet = () => {
     const dispatch = useDispatch()
  
     React.useEffect(()=>{
+
         dispatch(getProjectData(userID))
         dispatch(getTaskTimer(userID))
+
         if(!data.isLoading){
             console.log(clientObj)
             const bill =Object.keys(clientObj.tasks).filter((item)=>clientObj.tasks[item]===true)
@@ -205,18 +209,17 @@ export const Timesheet = () => {
                             <h3>New Time Entry</h3>
                             <p>{date}</p>
 
-                            <p>
-                            
-                            </p>
+                         
 
                         </div>
-                        <form onSubmit={handleSubmit}>
+                        <form>
                             <div><label htmlFor="">Project/Task</label></div>
                             <div className={styles.projectName}>
                             <select name="projectName" id="" onChange={handleChange} value={projectName}>
                                 
                                 <optgroup label={clientObj? clientObj.client:"Task Name-2"} >
-                                <option value="Task Name-2">{clientObj? clientObj.pname:"Task Name-2"}</option>
+                                  <option value="None">--None</option>  
+                                <option value={clientObj.pname}>{clientObj? clientObj.pname:"Task Name-2"}</option>
                                 </optgroup>
                             </select>
                             </div>
@@ -248,9 +251,9 @@ export const Timesheet = () => {
                             <input type="text" placeholder="0:00" name="timer" onChange={handleChange} value={timer}/>
                             </div>
                             <div className={styles.Buttons}>
-                            <input type="submit" value={timer==="00:00" ?"Start Timer":"Save Entry"}/>
-                           
-                            <button onClick={()=>setopenCreateTAsk(false)}>Cancel</button>
+                          
+                            <button  className={styles.submit_btn} onClick={handleSubmit}>{timer==="00:00" ?"Start Timer":"Save Entry"}</button>
+                            <button className={styles.cancel_btn} onClick={()=>setopenCreateTAsk(false)}>Cancel</button>
                             
                             </div>
 

@@ -15,6 +15,7 @@
     border: 1px solid gray;
     padding: 10px 40px 20px 20px;
     background-color: #dddada;
+    border-bottom: 2.5px solid green;
 }
 p{
     margin: 0px;

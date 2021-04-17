@@ -7,6 +7,7 @@ import DescriptionIcon from '@material-ui/icons/Description';
 import TimerIcon from '@material-ui/icons/Timer';
 import PhoneAndroidIcon from '@material-ui/icons/PhoneAndroid';
 import CloseIcon from '@material-ui/icons/Close';
+import styles from './HomeAfterLogin.module.css'
 
 
 
@@ -63,6 +64,8 @@ display:flex;`
 
 
 const LeftBox =styled.div`
+margin-top:10px;
+
 width:65%;
 /* background-color:beige; */
 height:100%;
@@ -80,6 +83,7 @@ const StartedBox =styled.div`
 display:flex;
 flex-direction:column;
 gap:10px;
+
 
 `
 const Circles = styled.div`
@@ -106,7 +110,7 @@ const Started =styled.div`
 `
 const WebinarCont =styled.div`
     width:100%;
-    height:150px;
+    height:130px;
     /* background-color:aliceblue; */
     display:flex;
     justify-content:space-between;
@@ -122,6 +126,10 @@ h4{
     font-size:18px;
     font-weight:400;
     line-height:1;
+}
+h4:hover{
+    color:#1d557a;
+    
 }
 p{
     font-size:14px;
@@ -154,28 +162,28 @@ export const HomeAfterLogin = () => {
             </HeadingCont>
             <LeftRight>
                 <LeftBox>
-                    <p>Here's how to get started:</p>
+                    <p style={{marginBottom:'10px'}}>Here's how to get started:</p>
                     <StartedBox>
-                    <Started>
+                    <Started className={styles.tobeHover}>
                         <Circles>
                             <PlayArrowIcon style={{paddingTop:'3px'}}/>
                         </Circles>
                         <h2>Learn the basics of time tracking</h2>
                     </Started>
 
-                    <Started>
+                    <Started className={styles.tobeHover}>
                         <Circles>
                             <DescriptionIcon style={{paddingTop:'3px'}}/>
                         </Circles>
                         <Link style = {{color:"black"}} to ="/projects"><h2>Create a project</h2></Link>
                     </Started>
-                    <Started>
+                    <Started className={styles.tobeHover}>
                         <Circles>
                             <TimerIcon style={{paddingTop:'3px'}}/>
                         </Circles>
                         <h2>Track your first hour</h2>
                     </Started>
-                    <Started>
+                    <Started className={styles.tobeHover}>
                         <Circles>
                             <PhoneAndroidIcon style={{paddingTop:'3px'}}/>
                         </Circles>
@@ -198,10 +206,7 @@ export const HomeAfterLogin = () => {
                         </WebinarBox>
                     </WebinarCont>
 
-                    <Inputs>
-                    <input type="checkbox" name="" id=""/>
-                    <p>Email me occasional updates, tips, and interesting stories</p>
-                    </Inputs>
+                   
                 </LeftBox>
 
                 

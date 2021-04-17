@@ -7,8 +7,13 @@ import ImportContactsIcon from '@material-ui/icons/ImportContacts';
 import ComputerIcon from '@material-ui/icons/Computer';
 import RecordVoiceOverIcon from '@material-ui/icons/RecordVoiceOver';
 import { Footer } from "../Footer/Footer";
+import { useSelector } from "react-redux";
+import { Redirect } from "react-router";
 export function Home(){
-
+  const isAuth = useSelector(state => state.auth.isAuth)
+  if(isAuth){
+    return <Redirect to="/welcome"/>
+  }
     return(
         <>
         <section className={style.front_section} >

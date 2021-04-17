@@ -5,7 +5,7 @@ export function Tab({title,handlechange,active,time}){
     return (
         <div className={activestyle} onClick={()=>handlechange(title)}>
          {title}
-         <p>{time}</p>
+         <p>{time}:00</p>
         </div>
     )
 }

@@ -112,7 +112,7 @@
     cursor: pointer;
     text-align: center;
 }
-.Buttons>button{
+.Buttons>.cancel_btn{
     margin-left: 10px;
     height:40px;
     width:100px;
@@ -122,6 +122,17 @@
     border-radius: 3px;
     cursor: pointer;
     text-align: center;
+}
+.Buttons>.submit_btn{
+    margin-left: 10px;
+    height:40px;
+    width:100px;
+    border:none;
+    background: green;
+    color: white;
+    font-weight: 500;
+    border-radius: 3px;
+    cursor: pointer;
 }
 .Buttons>button:focus,.Buttons>input:focus{
     outline:none;
