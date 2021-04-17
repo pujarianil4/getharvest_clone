@@ -90,9 +90,13 @@ export const getProjectFailure=(payload)=>{
 export const createTaskTimer =(payload)=>(dispatch)=>{
     console.log(payload)
     dispatch(createTaskRequest())
-    return axios.post("https://1u30f.sse.codesandbox.io/timer",payload).then((res)=>
+    return axios.post("https://1u30f.sse.codesandbox.io/timer",payload)
+    .then((res)=>
         // dispatch(createTaskSuccess(res.data))
-        console.log(res)
+
+        dispatch(getTaskTimer())
+       
+       
     ).catch((err)=>{
         dispatch(createTaskFailure(err))
     })
