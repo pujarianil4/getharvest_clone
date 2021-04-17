@@ -4,6 +4,7 @@ import { Ring } from "react-awesome-spinners"
 import { TimeRing } from "./Ring"
 import { Edit } from "../Edit/Edit"
 import { useDispatch, useSelector } from "react-redux"
+import EditIcon from '@material-ui/icons/Edit';
 export function ShowTime({ id, notes,date, projectName, taskName, timer,setDisable,disable }) {
 const [start,setStart]= useState(false)
  const handlestart=(val)=>{
@@ -35,7 +36,7 @@ useEffect(()=>{
                     <p>START</p>
                 </div>
             }    
-                <button onClick={()=>handleEdit(true)}>Edit</button>
+                <button onClick={()=>handleEdit(true)}><EditIcon style={{fontSize:"15px"}}/></button>
             </div>
             { openedit&& <Edit id={id} date={date} timer={timer} setOpenedit={setOpenedit}/>}
         </div>
