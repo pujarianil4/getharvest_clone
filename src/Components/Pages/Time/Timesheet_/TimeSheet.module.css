@@ -106,12 +106,23 @@
     border-radius: 3px;
     cursor: pointer;
 }
-.Buttons>button{
+.Buttons>.cancel_btn{
     margin-left: 10px;
     height:40px;
     width:100px;
     border:none;
     background: linear-gradient(#f0f0f0,#d3d3d3);
+    font-weight: 500;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.Buttons>.submit_btn{
+    margin-left: 10px;
+    height:40px;
+    width:100px;
+    border:none;
+    background: green;
+    color: white;
     font-weight: 500;
     border-radius: 3px;
     cursor: pointer;

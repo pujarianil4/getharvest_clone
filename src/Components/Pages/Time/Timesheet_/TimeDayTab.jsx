@@ -6,6 +6,7 @@ import { Day} from "./Tab/Day"
 import { Timesheet } from "./TimeSheet"
 import { ShowTime } from "./Tab/ShowTime"
 import { useSelector } from "react-redux"
+import { Edit } from "./Edit/Edit"
 
 export function DayTabs({setChangeDate}){
 
@@ -30,13 +31,13 @@ export function DayTabs({setChangeDate}){
 //const days=["M","T","W","Th","F","S","Su"]
 
 const days={
-    M:"0:00",
-    T: "0:00",
-    W:"0:00",
-    Th:"0:00",
-    F:"0:00",
-    S:"0:00",
-    Su:"0:00",
+    M:"0",
+    T: "0",
+    W:"0",
+    Th:"0",
+    F:"0",
+    S:"0",
+    Su:"0",
 }
 
 const [active,setactive]=useState(n)
@@ -82,6 +83,9 @@ useEffect(()=>{
 
 const [disable,setDisable]= useState(false)
 
+
+
+
     return (
        <div>
            
@@ -109,7 +113,7 @@ const [disable,setDisable]= useState(false)
                <div className={style.total}> Total:  {total}:00</div>
           </div>
        {
-           todays_data.map(task=> <ShowTime key={task.id} {...task} setDisable={setDisable} disable={disable}/>)
+           todays_data.map(task=> <ShowTime key={task.id}  {...task} setDisable={setDisable} disable={disable}/>)
            
        }
       { todays_data.length !==0&& <div className={style.total_timer}>
@@ -129,6 +133,7 @@ const [disable,setDisable]= useState(false)
            </div>
           </div> }
         </div>
+      
         </div>
     )
 }

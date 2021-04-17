@@ -2,12 +2,18 @@ import React, { useState } from "react"
 import style from "./ShowTime.module.css"
 import { Ring } from "react-awesome-spinners"
 import { TimeRing } from "./Ring"
-export function ShowTime({ id, notes, projectName, taskName, timer,setDisable,disable }) {
+import { Edit } from "../Edit/Edit"
+export function ShowTime({ id, notes,date, projectName, taskName, timer,setDisable,disable }) {
 const [start,setStart]= useState(false)
  const handlestart=(val)=>{
      setStart(val)
      setDisable(val)
  }
+ const [openedit,setOpenedit] = useState(false)
+
+const handleEdit=(val)=>{
+ setOpenedit(val)
+}
  
     return (
         <div className={style.ShowTime}>
@@ -23,8 +29,9 @@ const [start,setStart]= useState(false)
                     <p>START</p>
                 </div>
             }    
-                <button>Edit</button>
+                <button onClick={()=>handleEdit(true)}>Edit</button>
             </div>
+            { openedit&& <Edit id={id} date={date} timer={timer} setOpenedit={setOpenedit}/>}
         </div>
     )
 }
