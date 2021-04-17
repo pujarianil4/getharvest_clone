@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { deletetask, edittask } from "../../../../../Redux/Timer/timeAction"
 import { TimeRing } from "../Tab/Ring"
 import style from "./Edit.module.css"
+import CloseIcon from '@material-ui/icons/Close';
 export function Edit( {id,date,timer,setOpenedit}) {
     const dispatch=useDispatch()
     const [input,setInput]=useState("")
@@ -30,9 +31,9 @@ export function Edit( {id,date,timer,setOpenedit}) {
         <div className={style.maindiv}>
           <div className={style.edit}>
             <div className={style.nav}>
-             <h5>Edit Your Task</h5>
+             <h5>Edit Your Working Hours</h5>
              <p>{date}</p>
-             <button className={style.close} onClick={()=>setOpenedit(false)}>Close</button>
+             <button className={style.close} onClick={()=>setOpenedit(false)}><CloseIcon/></button>
             </div>
             <div className={style.input}>
                 <input type="text" placeholder="00:00"   onChange={(e)=>setInput(e.target.value)}/>
