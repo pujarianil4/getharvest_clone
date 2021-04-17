@@ -7,7 +7,7 @@ const ProjectDisR =()=>
     const [showt,setShowt]=useState(true);
     const [showI,setShowI]=useState(false);
     return(
-        <>
+        <div className={styles.body} >
         {/* Top Bar Starting */}
           <div className={styles.topBarR}>
               <div className={styles.BackProject}>
@@ -74,7 +74,7 @@ const ProjectDisR =()=>
               <div className={styles.trailBox}>29 days left in your free trial <button>Upgrade</button></div>
               <div><h1 style={{color:"grey"}}>HARVEST</h1></div>
          </div>
-        </>
+        </div>
     )
 };
 export {ProjectDisR}
