@@ -4,11 +4,18 @@ import styles from './CreateInvoice.module.css'
 import CloseIcon from '@material-ui/icons/Close';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import {useSelector,useDispatch} from 'react-redux'
-import { getTaskTimer } from '../../../Redux/Timer/timeAction';
+import { getProjectData, getTaskTimer } from '../../../Redux/Timer/timeAction';
 
 const InvoiceCont=styled.div`
     width:70%;
     margin:auto;
+    label{
+        font-size:14px;
+    }
+    input,select,textarea{
+        border:1px solid silver;
+        border-radius:3px;
+    }
 `
 // const HeadingBox =styled.div``
 const HeadingBox =styled.div`
@@ -64,30 +71,86 @@ const TaskItem =styled.div``
 const TaskItemHeading=styled.div``
 const TaskItemBody=styled.div``
 
+//_________________________________________________________________________INITIAL OBJECT_____________________________________________________________//
+
+
+const initInvoice ={
+    invId:"",
+    issueDate:"",
+    poNum:"",
+    discount:"",
+    invFor:"",
+    dueDate:"",
+    subject:"",
+    subtotal:"",
+    amountDue:""
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
 
 export const CreateInvoice = () => {
+    const [formState,setFormstate]=React.useState(initInvoice)
+    const {invId,issueDate,poNum,discount,invFor,dueDate,subject,subtotal,amountDue}=formState
+
+    const handleChange =(e)=>{
+        const {name,value} =e.target;
+        const val =value
+        setFormstate({...formState,[name]:val})
+    } 
+
+    const handleSubmit=(e)=>{
+        e.preventDefault()
+    }
+    const dispatch = useDispatch()
+    React.useEffect(()=>{
+        
+        dispatch(getProjectData(userID))
+        dispatch(getTaskTimer(userID))       
+     
+    },[])
+
+// ______________________________________________________FETCHING DATA__________________________________//
+    const userID = useSelector(state => state.auth.uid)
+    // console.log(userID)
+    const state = useSelector(state => state.time.projectData)
+    const TaskEntries = useSelector(state=>state.time.TaskEntries)
+    // console.log(state)
+    // console.log(TaskEntries)
+    state.map((item)=>{
+        console.log(item)
+    })
+    TaskEntries.map((item)=>{
+        console.log(item)
+    })
+//__________________________________________________________________________________________________________________________________//
+
     const [TaskItemCount,setTaskItemCount]=React.useState([])
     const handleAdd=()=>{
         setTaskItemCount([...TaskItemCount,`item${TaskItemCount.length+1}`])
     }
-    const handleSubmit=(e)=>{
-        e.preventDefault()
-    }
+   
     const handleDelete=(id)=>{
         const updatedTaskItemCount=TaskItemCount.filter((item)=>item!==id)
         setTaskItemCount(updatedTaskItemCount)
     }
 
-    const dispatch = useDispatch()
-    React.useEffect(()=>{
-        
-    },[])
-    const state = useSelector(state => state.time)
-    console.log(state)
+  
+  
     return (
         <InvoiceCont>
             <HeadingBox>
-            <h1>Invoice for KAMAL</h1>
+            <h1>Invoice for {state?.map(item=>item.client+"/")}</h1>
             </HeadingBox>
           <form onSubmit={handleSubmit}>
             
@@ -103,9 +166,13 @@ export const CreateInvoice = () => {
 
                     <div>
                         <div>
+                            <label htmlFor="">Issue Date</label>
+                        </div>
+                        <input type="text"/>
+                        {/* <div>
                             <label htmlFor="">Invoice For</label>
                         </div>
-                        <input type="text" value="KAMAL"/>
+                        <input type="text" value="KAMAL"/> */}
                     </div>
                 </div>
 
@@ -121,17 +188,33 @@ export const CreateInvoice = () => {
                         <div>
                             <label htmlFor="">Discount</label>
                         </div>
-                        <input type="text" value="KAMAL"/>
+                        <input type="text" value=""/>
                     </div> 
                 </div> 
 
                 <div className={styles.InvidInput}> 
                    
                    <div>
-                        <div>
+
+                         <div>
+                            <label htmlFor="">Invoice For</label>
+                        </div>
+                        <select name="" id=""  value="">
+                            
+                                
+                                {
+                                    state?.map((item)=>
+                                    <option value={item.client}>
+                                    {item.client}
+                                         </option>
+                                    )
+                                }
+                               
+                        </select>
+                        {/* <div>
                             <label htmlFor="">Issue Date</label>
                         </div>
-                        <input type="text"/>
+                        <input type="text"/> */}
                    </div>
                    <div>
                        <div>
