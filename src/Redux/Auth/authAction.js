@@ -63,7 +63,7 @@ const submitSignInData = ({wemail,password}) => (dispatch) => {
 
     auth.signInWithEmailAndPassword(wemail,password)
     .then((res)=> dispatch(loginSuccess(res.user.uid)))
-    .catch((error) => console.log(error))
+    .catch((error) => alert(error.message))
 
 }
 
