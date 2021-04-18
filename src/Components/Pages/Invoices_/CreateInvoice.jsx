@@ -10,6 +10,7 @@ import axios from 'axios';
 import {Ring} from 'react-awesome-spinners';
 import { grey } from '@material-ui/core/colors';
 import { useHistory } from 'react-router';
+// import ReactToPdf from "react-to-pdf"
 
 const InvoiceCont=styled.div`
     width:70%;
@@ -93,7 +94,7 @@ const TaskItemBody=styled.div``
 
 
 export const CreateInvoice = () => {
-
+  
     // ______________________________________________________FETCHING DATA__________________________________//
     const userID = useSelector(state => state.auth.uid)
     // console.log(userID)
@@ -298,13 +299,24 @@ React.useEffect(()=>{
 
 
     }
-  
  
+    // const ref = React.createRef();
+    // const options = {
+       
+    //     unit: 'in',
+        
+    // };
 
     return (
         
-        <InvoiceCont>
-            {/* <h1>
+        <InvoiceCont ref={ref}>
+           
+          {/* <ReactToPdf targetRef={ref} options={options} x={.8} y={.8} scale={0.8} filename="invoice.pdf">
+        {({toPdf}) => (
+            <button onClick={toPdf}>Generate pdf</button>
+        )}
+    </ReactToPdf> */}
+            {/* <h1> 
                 {
                     hoursData.map((item)=>
                         <div>
@@ -334,7 +346,7 @@ React.useEffect(()=>{
 
 
             {/* <Ring color={'#9e9e9e'} /> */}
-            <HeadingBox>
+            <HeadingBox >
             <h1>Invoice for {clientname}</h1>
             </HeadingBox>
           <form onSubmit={handleSubmit}>
