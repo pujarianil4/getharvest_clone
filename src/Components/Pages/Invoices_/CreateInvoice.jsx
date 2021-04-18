@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import styles from './CreateInvoice.module.css'
 import CloseIcon from '@material-ui/icons/Close';
@@ -167,8 +167,9 @@ const getExpenseData=(payload,projName)=>{
     setIsLoading(true)
     return axios.get(`https://gor1f.sse.codesandbox.io/expences?userId=${payload}&&projectName=${projName}`)
     .then((res)=>{setExpenseEntries(res.data)
+        console.log(res.data);
         setIsLoading(false)
-     
+       
     })
 }
 
@@ -177,7 +178,7 @@ const getHoursData=(payload,projName)=>{
     setIsLoading(true)
     return axios.get(`https://1u30f.sse.codesandbox.io/timer?userId=${payload}&&projectName=${projName}`)
     .then((res)=>{setHoursData(res.data)
-        
+     
         setIsLoading(false)
         
     })
@@ -196,15 +197,6 @@ React.useEffect(()=>{
     
   },[clientname])
 
-  React.useEffect(()=>{
-   console.log(expenseEntries)
-   
-  },[expenseEntries])
-
-  React.useEffect(()=>{
-    
-    console.log(hoursData)
-  },[hoursData])
 
   
 //____________________________________GETTING EXPENSE DATA FROM AXIOS__________________________________________//
@@ -220,25 +212,39 @@ React.useEffect(()=>{
     const [quantity,setQuantity]=React.useState(0.00)
     const [price,setprice]=React.useState(0.00)
     const [TaskItemCount,setTaskItemCount]=React.useState([])
+   
     const [totalAmount,setTotalAmount]=React.useState(0)
     const [hours,setHours]=React.useState([])
+    const [subtotals,setSubtotal]=useState([])
+    useEffect(()=>{
+      let data1=  hoursData.map(item=>Number(item.timer)*Number(state?.filter((item)=>item.client===clientname).map((item)=>
+        item.projectType[0].hourlyRates)))
+        setHours(data1)
+    
+    },[hoursData])
 
-   React.useEffect(()=>{
+    useEffect(()=>{
+        let data2= expenseEntries.map(item=>Number(item.amount))
+        console.log(data2);
+        setAmount(data2)
+    },[expenseEntries])
 
-            
-           setHours(hoursData.map((item)=>Number(item.timer)*Number(state?.filter((item)=>item.client===clientname).map((item)=>
-           item.projectType[0].hourlyRates)) ))
-        //    const expe =expenseEntries.map((item)=>
-        
-        //            Number(item.amount)
-        //        )
-               setAmount([...amount,...hours])
-               
-   },[clientname])
+    useEffect(()=>{
+        setSubtotal([...TaskItemCount,...hours,...amount])
+    },[hours])
 
-    React.useEffect(()=>{
-        setTotalAmount(amount.reduce((accumulator, currentValue) => accumulator + currentValue,0))
+    useEffect(()=>{
+        setSubtotal([...TaskItemCount,...amount,...hours])
     },[amount])
+
+
+    useEffect(()=>{
+      if(subtotals.length>0){
+        let total= subtotals.reduce((acu,item)=>acu+item)
+        setTotalAmount(total)
+      }
+    },[subtotals])
+
 
 
     const handleAdd=()=>{
@@ -288,7 +294,7 @@ React.useEffect(()=>{
             }
 
 
-            <Ring color={'#9e9e9e'} />
+            {/* <Ring color={'#9e9e9e'} /> */}
             <HeadingBox>
             <h1>Invoice for {clientname}</h1>
             </HeadingBox>

@@ -19,10 +19,10 @@ export function Home(){
 
 
   const dispatch = useDispatch();
-  useEffect(() => {
-    const action = logoutSuccess();
-    dispatch(action)
-  },[])
+  // useEffect(() => {
+  //   const action = logoutSuccess();
+  //   dispatch(action)
+  // },[])
   const history=useHistory()
 
   const signup=()=>{
@@ -30,6 +30,7 @@ export function Home(){
   }
 
   const isAuth = useSelector(state => state.auth.isAuth)
+  
   if(isAuth){
     return <Redirect to="/welcome"/>
   }
