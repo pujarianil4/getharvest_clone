@@ -9,6 +9,7 @@ import axios from 'axios';
 // import {useDispatch,useSelector} from 'react-redux';
 import {Ring} from 'react-awesome-spinners';
 import { grey } from '@material-ui/core/colors';
+import { useHistory } from 'react-router';
 
 const InvoiceCont=styled.div`
     width:70%;
@@ -78,22 +79,7 @@ const TaskItemBody=styled.div``
 //_________________________________________________________________________INITIAL OBJECT_____________________________________________________________//
 
 
-const initInvoice ={
-    invId:"",
-    issueDate:"",
-    poNum:"",
-    discount:"",
-    invFor:"",
-    dueDate:"",
-    subject:"",
-    subtotal:"",
-    amountDue:"",
-    clientname:"",
-    pname:'',
-    userId:""
 
-
-}
 
 
 
@@ -122,9 +108,35 @@ export const CreateInvoice = () => {
         // console.log(item)
     })
 
-    //___________________________________________________________________________________________________________//
+    //____________  _______________________________________________________________________________________________//
+
+    const initInvoice ={
+        invId:"",
+        issueDate:"",
+        poNum:"",
+        discount:"",
+        invFor:"",
+        dueDate:"",
+        subject:"",
+        subtotal:[],
+        amountDue:"",
+        clientname:"",
+        pname:'',
+        userId:"",
+        incoice_deatls:[],
+        hourlyRates:""
+    
+    
+    }
+   
+
+    //-------------------------------------------------------------------------------------------------------//
     const [formState,setFormstate]=React.useState(initInvoice)
     const {invId,issueDate,poNum,discount,invFor,dueDate,subject,subtotal,amountDue,clientname,pname}=formState
+   
+    const fixed = (state?.filter((item)=>item.client===clientname).map((item)=>
+    item.projectType[0].hourlyRates))
+    console.log(fixed);
 
     const handleChange =(e)=>{
         const {name,value} =e.target;
@@ -137,11 +149,7 @@ export const CreateInvoice = () => {
 
 
 
-    const handleSubmit=(e)=>{
-        e.preventDefault()
-        saveinvoiceInfo(formState)
 
-    }
     const dispatch = useDispatch()
     React.useEffect(()=>{
         
@@ -260,6 +268,14 @@ React.useEffect(()=>{
     },[subtotals])
 
 
+    useEffect(()=>{
+      
+      
+        
+   
+
+ setFormstate({...formState,hourlyRates:fixed[0],subtotal:totalAmount,incoice_deatls:[...subtotals]})
+    },[totalAmount])
 
     const handleAdd=()=>{
         setTaskItemCount([...TaskItemCount,`item${TaskItemCount.length+1}`])
@@ -273,6 +289,15 @@ React.useEffect(()=>{
         setTaskItemCount(updatedTaskItemCount)
     }
 
+    const history= useHistory()
+    const handleSubmit=(e)=>{
+        e.preventDefault()
+        saveinvoiceInfo(formState)
+
+      history.replace(`/finalinvoice?pname=${pname}`)
+
+
+    }
   
  
 
