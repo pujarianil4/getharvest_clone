@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import style from './Style.module.css'
 import {
@@ -48,11 +48,15 @@ const Button = styled.button`
 `
 
 export default function HomeHeader() {
+  const history= useHistory()
+  const home=()=>{
+      history.replace("/")
+  }
 
     return (
         <AppBar position="sticky">
         <Section>
-            <Logo>
+            <Logo onClick={home} style={{cursor:"pointer"}}>
                 <Htitle>HARVEST</Htitle>
             </Logo>
             <Menu className={style.menu}>
