@@ -72,7 +72,7 @@ export default function Signup() {
 
 
             <form style={{ margin: "5% 30%" }}>
-                <div >
+                <div className={style.formdiv}>
                     <table>
                     
                     <tbody>
