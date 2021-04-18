@@ -1,3 +1,7 @@
+
+label {
+    font-size: 20px ;
+
 .signin > input {
     padding: 10px;
     margin: 10px 10px;
@@ -7,6 +11,7 @@
 .formdiv label {
 
     font-size: 20px;
+
     margin: 0px 10px;
 }
 
@@ -24,7 +29,7 @@ h5 {
     color: #9999A9;
     padding: 3px;
     
-}
+} 
 h5:before,
 h5:after {
     content: "";
