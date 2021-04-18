@@ -5,6 +5,9 @@ import { TimeRing } from "../Tab/Ring"
 import style from "./Edit.module.css"
 import CloseIcon from '@material-ui/icons/Close';
 export function Edit( {id,date,timer,setOpenedit}) {
+
+    const userID = useSelector(state => state.auth.uid)
+
     const dispatch=useDispatch()
     const [input,setInput]=useState("")
     const payload={
@@ -14,7 +17,7 @@ export function Edit( {id,date,timer,setOpenedit}) {
    const TaskEntries = useSelector((state)=>state.time.TaskEntries)
     const handleUpdate=()=>{
        
-        dispatch(edittask(id,payload))
+        dispatch(edittask(id,payload,userID))
       
          
         
@@ -22,7 +25,7 @@ export function Edit( {id,date,timer,setOpenedit}) {
         
     }
     const handleDelete=()=>{
-          dispatch(deletetask(id))
+          dispatch(deletetask(id,userID))
     }
 
   
