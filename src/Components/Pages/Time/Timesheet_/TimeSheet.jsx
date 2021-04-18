@@ -161,10 +161,10 @@ export const Timesheet = () => {
             console.log(clientObj)
             
 
-            const bill =Object.keys(clientObj[0].tasks).filter((item)=>item===true)
-            setBillable(bill)
+            // const bill =Object.keys(clientObj[0].tasks).filter((item)=>item===true)
+            // setBillable(bill)
         
-            console.log(bill)        
+            // console.log(bill)        
             // const nonbill =Object.keys(clientObj.tasks).filter((item)=>clientObj.tasks[item]!==true)
             // setnonBillable(nonbill) 
 
@@ -204,17 +204,17 @@ export const Timesheet = () => {
 
 
     React.useEffect(()=>{
-        dispatch(getTaskTimer())
+        dispatch(getTaskTimer(userID))
     },[])
 
   
     const handleSubmit =(e)=>{
         e.preventDefault()
         // console.log(formData)
-        dispatch(createTaskTimer(formData))
+        dispatch(createTaskTimer(formData,userID))
         setopenCreateTAsk(false)
         
-        dispatch(getTaskTimer())
+       setFormData(initTaskObj)
         
     }
    
