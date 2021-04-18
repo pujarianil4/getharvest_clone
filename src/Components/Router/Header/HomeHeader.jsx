@@ -2,9 +2,9 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import style from './Style.module.css'
-// import {
-//     AppBar, Toolbar
-// } from "@material-ui/core"
+import {
+    AppBar
+} from "@material-ui/core"
 
 const Section = styled.section`
     display: flex;
@@ -50,7 +50,7 @@ const Button = styled.button`
 export default function HomeHeader() {
 
     return (
-        // <AppBar position="sticky">
+        <AppBar position="sticky">
         <Section>
             <Logo>
                 <Htitle>HARVEST</Htitle>
@@ -71,6 +71,6 @@ export default function HomeHeader() {
             
         </Section>
         
-        // </AppBar>
+         </AppBar>
     )
 }

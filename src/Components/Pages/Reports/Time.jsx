@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { Grid, Box, Container,Tabs,Tab,AppBar, TableRow } from "@material-ui/core"
 import { useDispatch, useSelector } from 'react-redux';
-import { getProjectData } from "../../../Redux/Reports/reportsAction"
+import { getProjectData, getTaskData } from "../../../Redux/Reports/reportsAction"
 import { Table, TableBody,TableCell, TableHead, TableContainer } from "@material-ui/core"
 import styled from 'styled-components'
 import style from "../Time/Timesheet_/TimeDayTabs.module.css"
@@ -22,26 +22,35 @@ const Button = styled.button`
 
 export default function Time() {
 
-const hours = 10;
-const Amount = 200;
 const uninvoiced_amount = 0.00;
 const billableHours = 8;
-const isLoading = useSelector(state => state.reports.isLoading)
+const isLoadingProject = useSelector(state => state.reports.isLoadingProject)
+const isLoadingTask = useSelector(state => state.reports.isLoadingTask)
+
 const userId = useSelector(state => state.auth.uid)
 
 const projectReportData = useSelector(state => state.reports.projectReportData);
-const TaskData = useSelector(state => state.time.TaskEntries)
-console.log(projectReportData);
-console.log(TaskData);
+const projectTaskData = useSelector(state => state.reports.projectTaskData);
+let taskObj = {}
+!isLoadingTask && !isLoadingProject && projectTaskData.map((item) => {
+    if (!taskObj[item.taskName]) {
+        taskObj[item.taskName] = Number(item.timer);
+    }
+    else {
+        taskObj[item.taskName] = taskObj[item.taskName] + Number(item.timer)
+    }
+})
+
+//console.log(projectReportData[0].projectType[0].hourlyRates);
+let rates = !isLoadingProject && !isLoadingTask && Number(projectReportData[0].projectType[0].hourlyRates) || 0
+
+
 const dispatch = useDispatch()
 
-let arry = [];
+let arry = Object.values(taskObj);
 
-!isLoading && projectReportData.map((item) => 
-    arry.push(Object.keys(item.tasks))
-)
-let newArray = arry.flat();
-// const Keys = !isLoading && Object.keys(projectReportData.tasks);
+let totalHours = !isLoadingProject && !isLoadingTask && arry.reduce((e,a) => e + a) || 0;
+
 
 const [value, setValue] = useState(0)
 
@@ -51,7 +60,14 @@ const handleChange = (e, val) => {
 
 useEffect(()=>{
 
-    const action = getProjectData (userId);
+    const action = getProjectData(userId);
+    dispatch(action);
+
+},[])
+
+useEffect(()=>{
+
+    const action = getTaskData(userId);
     dispatch(action);
 
 },[])
@@ -84,8 +100,6 @@ function TabPanel ({children, value, index}) {
          </div>
             </Container>
 
-
-
             <Container style={{width: "75%", margin: "auto"}}>
 
                 <Hr />
@@ -93,19 +107,19 @@ function TabPanel ({children, value, index}) {
                     <Grid item lg={3}>
                         <Box >
                             <p>Hours Tracked</p>
-                            <h3>{hours}</h3>
+                            <h3>{totalHours}</h3>
                         </Box>
                     </Grid>
                     <Grid item lg={3}>
                         <Box >
                             <p>Billable Hours</p>
-                            <h3>some data</h3>
+                            <h3>{totalHours}</h3>
                         </Box>
                     </Grid>
                     <Grid item lg={3}>
                         <Box >
                             <p>Billable Amount</p>
-                            <h3>{Amount}</h3>
+                            <h3>{totalHours * rates}$</h3>
                         </Box>
                     </Grid>
                     <Grid item lg={3}>
@@ -140,19 +154,16 @@ function TabPanel ({children, value, index}) {
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
-                                        { !isLoading &&
+                                        { !isLoadingProject && !isLoadingTask &&
                                         projectReportData.map((item) => 
-
                                             <TableRow>
                                                 <TableCell>{item.client}</TableCell>
                                                 <TableCell>25</TableCell>
                                                 <TableCell>20</TableCell>
                                                 <TableCell>2000$</TableCell>                                                
                                             </TableRow>
-                                            
                                             )
                                         }
-                                        
                                     </TableBody>
                                 </Table>
                             </TableContainer>
@@ -174,7 +185,7 @@ function TabPanel ({children, value, index}) {
                                     </TableHead>
                                     <TableBody>
                                         
-                                        {   !isLoading &&
+                                        {   !isLoadingTask && !isLoadingProject &&
                                             projectReportData.map((item) => 
 
                                             <TableRow>
@@ -205,19 +216,39 @@ function TabPanel ({children, value, index}) {
                                     </TableHead>
                                     <TableBody>
                                         
-                                        { 
-                                           
-                                            newArray.map((item) => 
+                                            <TableRow>
+                                                <TableCell>Business Development</TableCell>
+                                                <TableCell>{taskObj.businessDevelopment || 0 }</TableCell>
+                                                <TableCell>{taskObj.businessDevelopment || 0 }</TableCell>
+                                                <TableCell>{taskObj.businessDevelopment * rates}$</TableCell>
+                                            </TableRow>
+                                            <TableRow>
+                                                <TableCell>Programming</TableCell>
+                                                <TableCell>{taskObj.programming || 0}</TableCell>
+                                                <TableCell>{taskObj.programming || 0}</TableCell>
+                                                <TableCell>{taskObj.programming * rates}$</TableCell>
+                                            </TableRow>
+                                            <TableRow>
+                                                <TableCell>Marketing</TableCell>
+                                                <TableCell>{taskObj.marketing || 0 }</TableCell>
+                                                <TableCell>{taskObj.marketing || 0 }</TableCell>
+                                                <TableCell>{taskObj.marketing * rates}$</TableCell>
+                                            </TableRow>
+                                            <TableRow>
+                                                <TableCell>Design</TableCell>
+                                                <TableCell>{taskObj.design || 0 }</TableCell>
+                                                <TableCell>{taskObj.design || 0 }</TableCell>
+                                                <TableCell>{taskObj.design * rates}$</TableCell>
+                                            </TableRow>
+                                            <TableRow>
+                                                <TableCell>project Management</TableCell>
+                                                <TableCell>
+                                                        {taskObj.projectManagement || 0 }
+                                                </TableCell>
+                                                <TableCell>{taskObj.projectManagement || 0 }</TableCell>
+                                                <TableCell>{taskObj.projectManagement * rates}$</TableCell>
+                                            </TableRow>
 
-                                                <TableRow>
-                                                <TableCell>{item}</TableCell>
-                                                <TableCell>25</TableCell>
-                                                <TableCell>20</TableCell>
-                                                <TableCell>1500$</TableCell>
-                                                </TableRow>
-                                            )     
-                                        }
-                                            
                                     </TableBody>
                                 </Table>
                             </TableContainer>
