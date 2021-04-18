@@ -9,6 +9,7 @@ import { createTaskTimer, getTaskTimer,getProjectData } from '../../../../Redux/
 // import { createTaskTimer, getTaskTimer } from '../../../../Redux/Timer/timeAction';
 import { DayTabs} from './TimeDayTab';
 import {TimeNavBar} from '../TimeNavBar_/TimeNavBar';
+import axios from 'axios';
 
 
 
@@ -91,7 +92,7 @@ export const Timesheet = () => {
 // _____________________________________________________________________USERID________________________________________//
 
     const userID = useSelector(state => state.auth.uid)
-    console.log(userID)
+   
 
 
     var d = new Date();
@@ -105,6 +106,7 @@ export const Timesheet = () => {
    
     const initTaskObj ={
         userID:userID,
+        
         projectName:"",
         taskName:"",
         notes:"",
@@ -114,11 +116,7 @@ export const Timesheet = () => {
 
     }
 
-    // useEffect(()=>{
-    // console.log(dt);
-    // setFormData({...formData,date:dt})
-  
-    // },[dt])
+
 
     const [formData,setFormData] =React.useState(initTaskObj)
     const {projectName,taskName,notes,timer} = formData
@@ -134,12 +132,12 @@ export const Timesheet = () => {
     const handleChange=(e)=>{
         const {name,value}=e.target
         setFormData({...formData,[name]:value})
+       
     }
     
     const state = useSelector(state => state.time)
     const data =useSelector(state=>state.time)
-    console.log(data.isLoading)
-
+  
     //_____________________________ This the UseSelector for getting tha New Time Entries_________________________________//
     const TaskEntries = useSelector(state=>state.time.TaskEntries)
     !data.isLoading && console.log(TaskEntries)
@@ -147,57 +145,53 @@ export const Timesheet = () => {
      
     const clientObj =state.projectData
     const dispatch = useDispatch()
-    console.log(clientObj)
+  console.log(clientObj);
+
+
     const [billable,setBillable]=React.useState([])
     const [nonbillable,setnonBillable]=React.useState([])
     const [clientName,setClientName]=React.useState(0)
- 
+
+
+    useEffect(()=>{
+       project_fun()
+  
+    },[formData])
+    const [project,setProject]=useState(0)
+    const project_fun=()=>{
+        console.log(formData.projectName);
+        let project=clientObj.filter(item=> item.pname===formData.projectName)
+
+        setProject(project)
+    }
+    useEffect(()=>{
+        if(project!=0){
+            let bill =Object.keys(project[0].tasks)
+            console.log(bill);
+           setBillable(bill)
+          
+
+          }
+    },[project])
+
+     
+    const task_arr=["businessDevelopment","design","marketing","programming","projectManagement"]
     React.useEffect(()=>{
 
         dispatch(getProjectData(userID))
         dispatch(getTaskTimer(userID))
+
+      
        
         if(!data.isLoading){
        
             
-
-            const bill =Object.keys(clientObj[0].tasks)
-            console.log(bill);
-            setBillable(bill)
-        
-            // console.log(bill)        
-            // const nonbill =Object.keys(clientObj.tasks).filter((item)=>clientObj.tasks[item]!==true)
-            // setnonBillable(nonbill) 
-
-
-
-
+        console.log();
             
-//   {
-//     "userId": "qkjaCcvcDmhVLVOZuxh3OuxGMn13",
-//     "client": "Kamal",
-//     "pname": "ZEE",
-//     "pcode": "ZEE101",
-//     "starton": "2021-04-05",
-//     "endson": "2021-04-30",
-//     "notes": "EK MIN",
-//     "projectType": [
-//       {
-//         "hourlyRates": "1000",
-//         "budget": "10"
-//       },
-//       {},
-//       {}
-//     ],
-//     "tasks": {
-//       "businessDevelopment": true,
-//       "design": true,
-//       "marketing": true,
-//       "programming": true,
-//       "projectManagement": true
-//     },
-//     "id": 15
-//   }
+
+            //setnonBillable(nonbill) 
+
+
         } 
         
      

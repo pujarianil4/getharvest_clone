@@ -28,7 +28,7 @@ useEffect(()=>{
     return (
         <div className={style.ShowTime}>
             <div className={style.title}>
-                <h4>{projectName} <span>{clientname&&clientname[0].client}</span></h4>
+                <h4>{projectName} <span>{clientname.length>0&&clientname[0].client}</span></h4>
                 <p>{taskName}-{notes}</p>
                
             </div>

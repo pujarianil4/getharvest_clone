@@ -7,6 +7,8 @@ import {useSelector,useDispatch} from 'react-redux'
 import { getProjectData, getTaskTimer } from '../../../Redux/Timer/timeAction';
 import axios from 'axios';
 // import {useDispatch,useSelector} from 'react-redux';
+import {Ring} from 'react-awesome-spinners';
+import { grey } from '@material-ui/core/colors';
 
 const InvoiceCont=styled.div`
     width:70%;
@@ -87,6 +89,7 @@ const initInvoice ={
     subtotal:"",
     amountDue:"",
     clientname:"",
+    pname:''
 
 
 }
@@ -103,15 +106,35 @@ const initInvoice ={
 
 
 export const CreateInvoice = () => {
+
+    // ______________________________________________________FETCHING DATA__________________________________//
+    const userID = useSelector(state => state.auth.uid)
+    // console.log(userID)
+    const state = useSelector(state => state.time.projectData)
+    const TaskEntries = useSelector(state=>state.time.TaskEntries)
+    // console.log(state)
+    // // console.log(TaskEntries)
+    state.map((item)=>{
+        // console.log(item)
+    })
+    TaskEntries.map((item)=>{
+        // console.log(item)
+    })
+
+    //___________________________________________________________________________________________________________//
     const [formState,setFormstate]=React.useState(initInvoice)
-    const {invId,issueDate,poNum,discount,invFor,dueDate,subject,subtotal,amountDue,clientname}=formState
+    const {invId,issueDate,poNum,discount,invFor,dueDate,subject,subtotal,amountDue,clientname,pname}=formState
 
     const handleChange =(e)=>{
         const {name,value} =e.target;
         const val =value
         setFormstate({...formState,[name]:val})
         console.log(clientname)
+        
+        
     } 
+
+
 
     const handleSubmit=(e)=>{
         e.preventDefault()
@@ -124,34 +147,66 @@ export const CreateInvoice = () => {
      
     },[])
 
-// ______________________________________________________FETCHING DATA__________________________________//
-    const userID = useSelector(state => state.auth.uid)
-    // console.log(userID)
-    const state = useSelector(state => state.time.projectData)
-    const TaskEntries = useSelector(state=>state.time.TaskEntries)
-    // console.log(state)
-    // // console.log(TaskEntries)
-    state.map((item)=>{
-        console.log(item)
-    })
-    TaskEntries.map((item)=>{
-        console.log(item)
-    })
+
 
 
 //____________________________________GETTING EXPENSE DATA FROM AXIOS__________________________________________//
-React.useEffect(()=>{
-    getExpenseData(userID)
-},[])
-
+// React.useEffect(()=>{
+//     getExpenseData(userID,projName)
+// },[])
 const [expenseEntries,setExpenseEntries]=React.useState([])
-console.log(expenseEntries)
-console.log(state)
-console.log(TaskEntries)
-const getExpenseData=(payload)=>{
-    return axios.get(`https://gor1f.sse.codesandbox.io/expences?userId=${payload}`)
-    .then((res)=>{setExpenseEntries(res.data)})
+const [isLoading,setIsLoading]=React.useState(false)
+const [hoursData,setHoursData]=React.useState([])
+
+
+
+// console.log(expenseEntries)
+// console.log(state)
+// console.log(TaskEntries)
+const getExpenseData=(payload,projName)=>{
+    setIsLoading(true)
+    return axios.get(`https://gor1f.sse.codesandbox.io/expences?userId=${payload}&&projectName=${projName}`)
+    .then((res)=>{setExpenseEntries(res.data)
+        setIsLoading(false)
+     
+    })
 }
+
+
+const getHoursData=(payload,projName)=>{
+    setIsLoading(true)
+    return axios.get(`https://1u30f.sse.codesandbox.io/timer?userId=${payload}&&projectName=${projName}`)
+    .then((res)=>{setHoursData(res.data)
+        
+        setIsLoading(false)
+        
+    })
+}
+
+React.useEffect(()=>{
+    const projName = state?.filter((item)=>item.client===clientname).map((item)=>item.pname)
+    console.log(clientname,projName)
+    getExpenseData(userID,projName)
+    getHoursData(userID,projName)
+  
+    return function cleanup() {
+        
+      };
+  
+    
+  },[clientname])
+
+  React.useEffect(()=>{
+   console.log(expenseEntries)
+   
+  },[expenseEntries])
+
+  React.useEffect(()=>{
+    
+    console.log(hoursData)
+  },[hoursData])
+
+  
 //____________________________________GETTING EXPENSE DATA FROM AXIOS__________________________________________//
 
 
@@ -166,13 +221,29 @@ const getExpenseData=(payload)=>{
     const [price,setprice]=React.useState(0.00)
     const [TaskItemCount,setTaskItemCount]=React.useState([])
     const [totalAmount,setTotalAmount]=React.useState(0)
+    const [hours,setHours]=React.useState([])
+
+   React.useEffect(()=>{
+
+            
+           setHours(hoursData.map((item)=>Number(item.timer)*Number(state?.filter((item)=>item.client===clientname).map((item)=>
+           item.projectType[0].hourlyRates)) ))
+        //    const expe =expenseEntries.map((item)=>
+        
+        //            Number(item.amount)
+        //        )
+               setAmount([...amount,...hours])
+               
+   },[clientname])
 
     React.useEffect(()=>{
         setTotalAmount(amount.reduce((accumulator, currentValue) => accumulator + currentValue,0))
     },[amount])
+
+
     const handleAdd=()=>{
         setTaskItemCount([...TaskItemCount,`item${TaskItemCount.length+1}`])
-        setAmount([...amount,Number(quantity)+Number(price)])
+        setAmount([...amount,Number(quantity)*Number(price)])
         
     }
    
@@ -186,7 +257,38 @@ const getExpenseData=(payload)=>{
  
 
     return (
+        
         <InvoiceCont>
+            {/* <h1>
+                {
+                    hoursData.map((item)=>
+                        <div>
+                            {Number(item.timer)*Number(state?.filter((item)=>item.client===clientname).map((item)=>
+                    item.projectType[0].hourlyRates))
+                    
+                    }
+                    
+                        </div>
+                    )
+                }
+            </h1>
+            <div>
+                        {
+                           expenseEntries.map((item)=>
+                           <h1>
+                               {
+                                   item.amount
+                               }
+                           </h1> )
+                        }
+            </div> */}
+         
+            {
+                     
+            }
+
+
+            <Ring color={'#9e9e9e'} />
             <HeadingBox>
             <h1>Invoice for {clientname}</h1>
             </HeadingBox>
@@ -316,6 +418,131 @@ const getExpenseData=(payload)=>{
                     </div>
                 </TaskItemHeading>
 
+
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+                {
+                  hoursData.map((item,i)=>  <TaskItemBody className={styles.TaskItemBody}>
+                  <div>
+                      <div onClick={(e)=>handleDelete(item)}><CloseIcon style={{fontSize:'18px'}}/></div>
+                  </div>
+                  <div>
+                      <select name="" id="">
+                          <option value="">Product</option>
+                          <option value="">Service</option>
+                      </select>
+                  </div>
+                  <div>
+                      <textarea name="" id="" rows="3" style={{width:'95%'}}></textarea>
+                      <div>
+                          <label htmlFor="">Linked project</label>
+                      <select name="pname" id="" value={pname} onChange={handleChange}>
+                          <option value="">--None--</option>
+                          {
+                                    state?.filter((item)=>item.client===clientname).map((item)=>
+                                    <option value={item.pname}>
+                                    {item.pname}</option>)
+                                    }
+                      </select>
+                      <HelpOutlineIcon style={{color:'#b3adad',fontSize:'20px',borderRadius:'5px'}}/>
+                      </div>
+                  </div>
+                  <div>
+                      <input type="text" value={item.timer} onChange={(e)=>setQuantity(e.target.value)}/>
+                  </div>
+                  <div>
+                      <input type="text" value={state?.filter((item)=>item.client===clientname).map((item)=>
+                      item.projectType[0].hourlyRates)} onChange={(e)=>setprice(e.target.value)}/>
+                  </div>
+                  <div>${Number(item.timer)*Number(state?.filter((item)=>item.client===clientname).map((item)=>
+                    item.projectType[0].hourlyRates))}</div>
+                  
+              </TaskItemBody>  )
+              }
+
+
+
+
+
+
+            {
+                
+                  expenseEntries.map((item,i)=>  <TaskItemBody className={styles.TaskItemBody}>
+                  <div>
+                      <div onClick={(e)=>handleDelete(item)}><CloseIcon style={{fontSize:'18px'}}/></div>
+                  </div>
+                  <div>
+                      <select name="" id="">
+                          <option value="">Product</option>
+                          <option value="">Service</option>
+                      </select>
+                  </div>
+                  <div>
+                      <textarea name="" id="" rows="3" style={{width:'95%'}}></textarea>
+                      <div>
+                          <label htmlFor="">Linked project</label>
+                      <select name="pname" id="" value={pname} onChange={handleChange}>
+                          <option value="">--None--</option>
+                          {
+                                    state?.filter((item)=>item.client===clientname).map((item)=>
+                                    <option value={item.pname}>
+                                    {item.pname}</option>)
+                                    }
+                      </select>
+                      <HelpOutlineIcon style={{color:'#b3adad',fontSize:'20px',borderRadius:'5px'}}/>
+                      </div>
+                  </div>
+                  <div>
+                      <input type="text" value={1} onChange={(e)=>setQuantity(e.target.value)}/>
+                  </div>
+                  <div>
+                      <input type="text" value={item.amount}/>
+                  </div>
+                  <div>${item.amount}</div>
+                  
+              </TaskItemBody>  )
+              }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
               {
                   TaskItemCount.map((item,i)=>  <TaskItemBody className={styles.TaskItemBody}>
                   <div>
@@ -331,9 +558,13 @@ const getExpenseData=(payload)=>{
                       <textarea name="" id="" rows="3" style={{width:'95%'}}></textarea>
                       <div>
                           <label htmlFor="">Linked project</label>
-                      <select name="" id="">
+                      <select name="pname" id="" value={pname} onChange={handleChange}>
                           <option value="">--None--</option>
-                          <option value="">Project</option>
+                          {
+                                    state?.filter((item)=>item.client===clientname).map((item)=>
+                                    <option value={item.pname}>
+                                    {item.pname}</option>)
+                                    }
                       </select>
                       <HelpOutlineIcon style={{color:'#b3adad',fontSize:'20px',borderRadius:'5px'}}/>
                       </div>
@@ -348,6 +579,12 @@ const getExpenseData=(payload)=>{
                   
               </TaskItemBody>  )
               }
+
+
+
+
+
+
 
                <div className={styles.totolsection}>
                     <div>
