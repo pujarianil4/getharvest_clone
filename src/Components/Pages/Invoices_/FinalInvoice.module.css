@@ -6,7 +6,7 @@
 .invoiceBox{
     margin-top: 10px;
     width: 100%;
-    min-height: 600px;
+    height: 150vh;
     /* background-color: burlywood; */
     border-radius: 10px 10px 0 0;
     margin-bottom: 200px;
@@ -22,7 +22,7 @@
 
 .invoiceBody{
     width: 90%;
-    height: 80%;
+   
    
     margin: auto;
 }

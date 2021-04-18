@@ -4,21 +4,40 @@ import styles from './FinalInvoice.module.css';
 import {useSelector,useDispatch} from 'react-redux';
 import axios from 'axios';
 import { useParams } from 'react-router';
+import {Ring} from 'react-awesome-spinners';
+
+const paramString =window.location.search
+let params = new URLSearchParams(paramString)
+params =params.get('pname')
+
 
 export const FinalInvoice = () => {
-    const pname=useParams()
+   
+  
+    const [invoiceData,setInvoiceData]=React.useState()
+    const [isLoading,setIsLoading]=React.useState(false)
+    
+    // console.log(params.toString())
+    console.log(invoiceData)
     const userID = useSelector(state => state.auth.uid)
     React.useEffect(()=>{
-        getInvoiceData(userID)
+        getInvoiceData(userID,params)
     },[])
 
 
-    const getInvoiceData=(payload)=>{
-        axios.get(`https://oryjd.sse.codesandbox.io/Invoice?userId=${userID}`).then((res)=>
-            console.log(res.data)
+    const getInvoiceData=(payload,params)=>{
+        setIsLoading(true)
+        axios.get(`https://oryjd.sse.codesandbox.io/Invoice?userId=${userID}&&pname=${params}`).then((res)=>{
+            setInvoiceData(res.data[0])
+            console.log(`https://oryjd.sse.codesandbox.io/Invoice?userId=${userID}&&pname=${params}`)
+            setIsLoading(false)
+          
+        }
+
+            
         )
     }
-    return (
+    return isLoading?(<Ring/>): (
         <div className={styles.cont}>
             
 
@@ -41,7 +60,7 @@ export const FinalInvoice = () => {
                                 <div>
                                 </div> 
                                 <div>
-                                    <p>XYZ</p>
+                                    <p>Kamal</p>
                                 </div>
                         </div>
 
@@ -61,8 +80,8 @@ export const FinalInvoice = () => {
                             </div>
                             <div>
                                   <p>2</p>  
-                                  <p>16/04/2021</p>
-                                  <p>16/04/2021 (upon receipt)</p>
+                                  <p>{invoiceData.issueDate}</p>
+                                  <p>{invoiceData.dueDate}</p>
                             </div>
 
                         </div>
@@ -73,7 +92,7 @@ export const FinalInvoice = () => {
                             </div>
                             <div></div>
                             <div>
-                                <p>AMAR</p>
+                                <p>{invoiceData.clientname}</p>
                                 <p>EditInfo</p>
                             </div>
 
@@ -99,13 +118,37 @@ export const FinalInvoice = () => {
                                 </div>
 
                             </div>
+                            {invoiceData.incoice_deatls.map(((item,i)=>
+                            <div className={styles.table}>
+                            <div>
+                                <p>{i}</p>
+                            </div>
+                            <div>
+                                <p>{`[${invoiceData.pname}] PO-${invoiceData.poNum}`}</p>
+                            </div>
+                            <div>
+                                 <p>{item}</p>
+                            </div>
+                            <div>
+                                 <p>{invoiceData.hourlyRates}</p>
+                            </div>
+                            <div>
+                                 <p>{Number(item)*Number(invoiceData.hourlyRates)}</p>
+                            </div>
+
+                        </div> 
+                            ))}
+                               
+                            
+
+
                             <div className={styles.amountBox}>
                                 <div>
 
                                 </div>
                                 <div>
                                     <h3>Amount Due</h3>
-                                    <h3>$0.00</h3>
+                                    <h3>${invoiceData.subtotal}</h3>
                                 </div>
 
                             </div>

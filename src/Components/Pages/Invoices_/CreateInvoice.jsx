@@ -185,6 +185,7 @@ const [hoursData,setHoursData]=React.useState([])
 // console.log(state)
 // console.log(TaskEntries)
 const getExpenseData=(payload,projName)=>{
+    
     setIsLoading(true)
     return axios.get(`https://gor1f.sse.codesandbox.io/expences?userId=${payload}&&projectName=${projName}`)
     .then((res)=>{setExpenseEntries(res.data)
@@ -207,7 +208,7 @@ const getHoursData=(payload,projName)=>{
 
 React.useEffect(()=>{
     const projName = state?.filter((item)=>item.client===clientname).map((item)=>item.pname)
-    setFormstate({...formState,pname:[...projName],userId:userID})
+    setFormstate({...formState,pname:projName[0],userId:userID})
     console.log(clientname,projName)
     getExpenseData(userID,projName)
     getHoursData(userID,projName)
