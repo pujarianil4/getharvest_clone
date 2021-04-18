@@ -147,7 +147,7 @@ export const Timesheet = () => {
      
     const clientObj =state.projectData
     const dispatch = useDispatch()
-
+    console.log(clientObj)
     const [billable,setBillable]=React.useState([])
     const [nonbillable,setnonBillable]=React.useState([])
     const [clientName,setClientName]=React.useState(0)
@@ -156,13 +156,14 @@ export const Timesheet = () => {
 
         dispatch(getProjectData(userID))
         dispatch(getTaskTimer(userID))
-
+       
         if(!data.isLoading){
-            console.log(clientObj)
+       
             
 
-            // const bill =Object.keys(clientObj[0].tasks).filter((item)=>item===true)
-            // setBillable(bill)
+            const bill =Object.keys(clientObj[0].tasks)
+            console.log(bill);
+            setBillable(bill)
         
             // console.log(bill)        
             // const nonbill =Object.keys(clientObj.tasks).filter((item)=>clientObj.tasks[item]!==true)
@@ -261,11 +262,8 @@ export const Timesheet = () => {
                             </div>
                             <div className={styles.TaskName}>
                             <select name="taskName" id="" onChange={handleChange} value={taskName}>
-                            {/* <optgroup label="BILLABLE">
-                                {
-                                     console.log(billable)
-                                  
-                                }
+                            <optgroup label="BILLABLE">
+                            
                                 {
                                    
                                  !data.isLoading && billable.map((item)=><option value={item}>{item}</option>)
@@ -278,7 +276,7 @@ export const Timesheet = () => {
                                 }
                                 
                                 
-                            </optgroup> */}
+                            </optgroup>
                                 
                             </select>
                             </div>

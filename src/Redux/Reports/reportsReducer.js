@@ -1,8 +1,10 @@
-import { PROJECTREPORTDATA } from "./reportsActionType"
+import { PROJECTIMERDATA, PROJECTREPORTDATA, PROJECTTASKDATA } from "./reportsActionType"
 
 const initReportsTime = {
     projectReportData: {},
-    isLoading: true
+    projectTaskData: [],
+    isLoadingProject: true,
+    isLoadingTask: true
 }
 
 export const reportReducer = (state = initReportsTime, {type, payload}) => {
@@ -13,8 +15,15 @@ export const reportReducer = (state = initReportsTime, {type, payload}) => {
             return {
                 ...state,
                 projectReportData: payload,
-                isLoading: false
+                isLoadingProject: false
             }
+            case PROJECTTASKDATA:
+                return {
+                    ...state,
+                    projectTaskData: payload,
+                    isLoadingTask: false
+
+                }
             default: 
                 return state; 
     }
