@@ -48,7 +48,7 @@ export default function HomeHeader() {
     const handleLogout = () => {  
         const action = logoutSuccess();
         dispatch (action)
-        history.replace("/sign-in");
+        history.replace("/");
     }
 
     return (

@@ -12,15 +12,22 @@ import { useDispatch } from "react-redux";
 import { logoutSuccess } from "../../../Redux/Auth/authAction";
 
 import { useSelector } from "react-redux";
-import { Redirect } from "react-router";
+import { Redirect, useHistory } from "react-router";
 import { Carousel } from "./Carousel";
 export function Home(){
+
+
 
   const dispatch = useDispatch();
   useEffect(() => {
     const action = logoutSuccess();
     dispatch(action)
   },[])
+  const history=useHistory()
+
+  const signup=()=>{
+    history.replace("/Signup")
+  }
 
   const isAuth = useSelector(state => state.auth.isAuth)
   if(isAuth){
@@ -39,7 +46,7 @@ export function Home(){
                <h2>Harvest is modern time tracking software – for less effort, more joy, and improved profitability.</h2>
           </div>
           <div className={style.title}>
-             <Start_trial_button color="#3E3A63">Start Your Free Trial</Start_trial_button>
+             <Start_trial_button onClick={signup} color="#3E3A63">Start Your Free Trial</Start_trial_button>
              <h3>Fully functional 30-day trial. No credit card required.</h3>
           </div>
     
@@ -191,7 +198,7 @@ export function Home(){
              <div className={style.t_title}>
                <h1>Start tracking time for free</h1>
                <h2>See if Harvest is right for you with a fully functional 30-day trial. No credit card required.</h2>
-               <Start_trial_button color="#24A90C">Start Your Free Trial</Start_trial_button>
+               <Start_trial_button onClick={signup} color="#24A90C">Start Your Free Trial</Start_trial_button>
              </div>
              <div className={style.t_img}>
               <img src="https://www.getharvest.com/assets/illustrations/timesheets-medium-857db8f1310d74ce1a0d2ef066ce09f1a0354b7a9eb40e02449d8a18942734b1.png" alt="img"/>

@@ -150,12 +150,20 @@ display:flex;
 
 `
 
+
 export const HomeAfterLogin = () => {
+    // const UserName= localStorage.getItem("Username")
+    let userid= localStorage.getItem("user")
+    userid=JSON.parse(userid)
+    if(userid=="BiA7vDMHjAMYfSYj38hyF3N2J5m2"){
+    localStorage.setItem("user_name",JSON.stringify("Anil Pujari"))
+    }
+    const username= JSON.parse(localStorage.getItem("user_name"))
     return (
         <Container>
             <HeadingCont>
             <Heading>
-                <h1>Welcome to Harvest, Username!</h1>
+                <h1>Welcome to Harvest, {username}!</h1>
                 <div><CloseIcon style={{fontSize:"14px",fontWeight:900}}/> <p>I’m a pro at Harvest, hide this page forever</p></div>
 
             </Heading>
