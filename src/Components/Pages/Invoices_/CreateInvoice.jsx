@@ -595,7 +595,7 @@ React.useEffect(()=>{
                   <div>
                       <input type="text" onChange={(e)=>setprice(e.target.value)}/>
                   </div>
-                  <div>${amount[i+1]?amount[i+1]:"0.00"}</div>
+                  <div>${amount[i+1]?amount[i+1]:0.00}</div>
                   
               </TaskItemBody>  )
               }

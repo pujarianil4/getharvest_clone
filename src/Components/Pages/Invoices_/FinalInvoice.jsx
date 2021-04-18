@@ -3,8 +3,10 @@ import React from 'react';
 import styles from './FinalInvoice.module.css';
 import {useSelector,useDispatch} from 'react-redux';
 import axios from 'axios';
+import { useParams } from 'react-router';
 
 export const FinalInvoice = () => {
+    const pname=useParams()
     const userID = useSelector(state => state.auth.uid)
     React.useEffect(()=>{
         getInvoiceData(userID)
@@ -12,7 +14,9 @@ export const FinalInvoice = () => {
 
 
     const getInvoiceData=(payload)=>{
-        axios.get(`https://oryjd.sse.codesandbox.io/Invoice?userId=`)
+        axios.get(`https://oryjd.sse.codesandbox.io/Invoice?userId=${userID}`).then((res)=>
+            console.log(res.data)
+        )
     }
     return (
         <div className={styles.cont}>
