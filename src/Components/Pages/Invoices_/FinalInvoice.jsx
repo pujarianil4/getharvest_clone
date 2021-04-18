@@ -15,7 +15,8 @@ export const FinalInvoice = () => {
    
   
     const [invoiceData,setInvoiceData]=React.useState()
-    const [isLoading,setIsLoading]=React.useState(false)
+    const [isLoading,setIsLoading]=React.useState(true)
+    const [isError,setisError]=React.useState(false)
     
     // console.log(params.toString())
     console.log(invoiceData)
@@ -30,11 +31,14 @@ export const FinalInvoice = () => {
         axios.get(`https://oryjd.sse.codesandbox.io/Invoice?userId=${userID}&&pname=${params}`).then((res)=>{
             setInvoiceData(res.data[0])
             console.log(`https://oryjd.sse.codesandbox.io/Invoice?userId=${userID}&&pname=${params}`)
-            setIsLoading(false)
-          
-        }
-
             
+          
+        }).then((res)=>setIsLoading(false)
+        
+        )
+        
+        .then((err)=>
+            setisError(true)
         )
     }
     return isLoading?(<Ring/>): (
