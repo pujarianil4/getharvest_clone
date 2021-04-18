@@ -5,6 +5,8 @@ import CloseIcon from '@material-ui/icons/Close';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import {useSelector,useDispatch} from 'react-redux'
 import { getProjectData, getTaskTimer } from '../../../Redux/Timer/timeAction';
+import axios from 'axios';
+// import {useDispatch,useSelector} from 'react-redux';
 
 const InvoiceCont=styled.div`
     width:70%;
@@ -83,7 +85,8 @@ const initInvoice ={
     dueDate:"",
     subject:"",
     subtotal:"",
-    amountDue:""
+    amountDue:"",
+    clientname:"",
 
 
 }
@@ -101,12 +104,13 @@ const initInvoice ={
 
 export const CreateInvoice = () => {
     const [formState,setFormstate]=React.useState(initInvoice)
-    const {invId,issueDate,poNum,discount,invFor,dueDate,subject,subtotal,amountDue}=formState
+    const {invId,issueDate,poNum,discount,invFor,dueDate,subject,subtotal,amountDue,clientname}=formState
 
     const handleChange =(e)=>{
         const {name,value} =e.target;
         const val =value
         setFormstate({...formState,[name]:val})
+        console.log(clientname)
     } 
 
     const handleSubmit=(e)=>{
@@ -126,13 +130,36 @@ export const CreateInvoice = () => {
     const state = useSelector(state => state.time.projectData)
     const TaskEntries = useSelector(state=>state.time.TaskEntries)
     // console.log(state)
-    // console.log(TaskEntries)
+    // // console.log(TaskEntries)
     state.map((item)=>{
         console.log(item)
     })
     TaskEntries.map((item)=>{
         console.log(item)
     })
+
+
+//____________________________________GETTING EXPENSE DATA FROM AXIOS__________________________________________//
+React.useEffect(()=>{
+    getExpenseData(userID)
+},[])
+
+const [expenseEntries,setExpenseEntries]=React.useState([])
+console.log(expenseEntries)
+console.log(state)
+console.log(TaskEntries)
+const getExpenseData=(payload)=>{
+    return axios.get(`https://gor1f.sse.codesandbox.io/expences?userId=${payload}`)
+    .then((res)=>{setExpenseEntries(res.data)})
+}
+//____________________________________GETTING EXPENSE DATA FROM AXIOS__________________________________________//
+
+
+
+
+
+
+
 //__________________________________________________________________________________________________________________________________//
     const [amount,setAmount]=React.useState([])
     const [quantity,setQuantity]=React.useState(0.00)
@@ -156,11 +183,12 @@ export const CreateInvoice = () => {
     }
 
   
-  
+ 
+
     return (
         <InvoiceCont>
             <HeadingBox>
-            <h1>Invoice for {state?.map(item=>item.client+"/")}</h1>
+            <h1>Invoice for {clientname}</h1>
             </HeadingBox>
           <form onSubmit={handleSubmit}>
             
@@ -209,9 +237,9 @@ export const CreateInvoice = () => {
                          <div>
                             <label htmlFor="">Invoice For</label>
                         </div>
-                        <select name="" id=""  value="">
+                        <select name="clientname" id=""  value={clientname} onChange={handleChange}>
                             
-                                
+                                <option value="none">--None</option>
                                 {
                                     state?.map((item)=>
                                     <option value={item.client}>

@@ -251,7 +251,7 @@ export const Timesheet = () => {
                         <form>
                             <div><label htmlFor="">Project/Task</label></div>
                             <div className={styles.projectName}>
-                            <select name="projectName" id="" onChange={handleChange} value={projectName}>
+                            <select name="projectName" id="" onChange={handleChange} value={projectName}>  
                                 
                                 <optgroup label={clientObj? clientObj.client:"Task Name-2"} >
                                   <option value="None">--None</option>  
