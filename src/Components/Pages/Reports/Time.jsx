@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { Grid, Box, Container,Tabs,Tab,AppBar, TableRow } from "@material-ui/core"
 import { useDispatch, useSelector } from 'react-redux';
-import { getProjectData } from "../../../Redux/Reports/reportsAction"
+import { getProjectData, getTaskData } from "../../../Redux/Reports/reportsAction"
 import { Table, TableBody,TableCell, TableHead, TableContainer } from "@material-ui/core"
 import styled from 'styled-components'
 import style from "../Time/Timesheet_/TimeDayTabs.module.css"
@@ -26,18 +26,32 @@ const hours = 10;
 const Amount = 200;
 const uninvoiced_amount = 0.00;
 const billableHours = 8;
-const isLoading = useSelector(state => state.reports.isLoading)
+const isLoadingProject = useSelector(state => state.reports.isLoadingProject)
+const isLoadingTask = useSelector(state => state.reports.isLoadingTask)
+
 const userId = useSelector(state => state.auth.uid)
 
 const projectReportData = useSelector(state => state.reports.projectReportData);
-const TaskData = useSelector(state => state.time.TaskEntries)
-console.log(projectReportData);
-console.log(TaskData);
+const projectTaskData = useSelector(state => state.reports.projectTaskData);
+let taskObj = {}
+!isLoadingTask && !isLoadingProject && projectTaskData.map((item) => {
+    if (!taskObj[item.taskName]) {
+        taskObj[item.taskName] = Number(item.timer);
+    }
+    else {
+        taskObj[item.taskName] = taskObj[item.taskName] + Number(item.timer)
+    }
+})
+
+console.log(projectTaskData, taskObj);
+
+
+
 const dispatch = useDispatch()
 
 let arry = [];
 
-!isLoading && projectReportData.map((item) => 
+!isLoadingProject && !isLoadingTask && projectReportData.map((item) => 
     arry.push(Object.keys(item.tasks))
 )
 let newArray = arry.flat();
@@ -51,7 +65,14 @@ const handleChange = (e, val) => {
 
 useEffect(()=>{
 
-    const action = getProjectData (userId);
+    const action = getProjectData(userId);
+    dispatch(action);
+
+},[])
+
+useEffect(()=>{
+
+    const action = getTaskData(userId);
     dispatch(action);
 
 },[])
@@ -83,8 +104,6 @@ function TabPanel ({children, value, index}) {
           
          </div>
             </Container>
-
-
 
             <Container style={{width: "75%", margin: "auto"}}>
 
@@ -140,19 +159,16 @@ function TabPanel ({children, value, index}) {
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
-                                        { !isLoading &&
+                                        { !isLoadingProject && !isLoadingTask &&
                                         projectReportData.map((item) => 
-
                                             <TableRow>
                                                 <TableCell>{item.client}</TableCell>
                                                 <TableCell>25</TableCell>
                                                 <TableCell>20</TableCell>
                                                 <TableCell>2000$</TableCell>                                                
                                             </TableRow>
-                                            
                                             )
                                         }
-                                        
                                     </TableBody>
                                 </Table>
                             </TableContainer>
@@ -174,7 +190,7 @@ function TabPanel ({children, value, index}) {
                                     </TableHead>
                                     <TableBody>
                                         
-                                        {   !isLoading &&
+                                        {   !isLoadingTask && !isLoadingProject &&
                                             projectReportData.map((item) => 
 
                                             <TableRow>
@@ -205,19 +221,39 @@ function TabPanel ({children, value, index}) {
                                     </TableHead>
                                     <TableBody>
                                         
-                                        { 
-                                           
-                                            newArray.map((item) => 
-
-                                                <TableRow>
-                                                <TableCell>{item}</TableCell>
-                                                <TableCell>25</TableCell>
-                                                <TableCell>20</TableCell>
+                                            <TableRow>
+                                                <TableCell>Business Development</TableCell>
+                                                <TableCell>{taskObj.businessDev || "nil"}</TableCell>
+                                                <TableCell>{taskObj.businessDev || "nil"}</TableCell>
                                                 <TableCell>1500$</TableCell>
-                                                </TableRow>
-                                            )     
-                                        }
-                                            
+                                            </TableRow>
+                                            <TableRow>
+                                                <TableCell>Programming</TableCell>
+                                                <TableCell>{taskObj.programming || "nil"}</TableCell>
+                                                <TableCell>{taskObj.programming || "nil"}</TableCell>
+                                                <TableCell>1500$</TableCell>
+                                            </TableRow>
+                                            <TableRow>
+                                                <TableCell>Marketing</TableCell>
+                                                <TableCell>{taskObj.marketing || "nil"}</TableCell>
+                                                <TableCell>{taskObj.marketing || "nil"}</TableCell>
+                                                <TableCell>1500$</TableCell>
+                                            </TableRow>
+                                            <TableRow>
+                                                <TableCell>Design</TableCell>
+                                                <TableCell>{taskObj.design || "nil"}</TableCell>
+                                                <TableCell>{taskObj.design || "nil"}</TableCell>
+                                                <TableCell>1500$</TableCell>
+                                            </TableRow>
+                                            <TableRow>
+                                                <TableCell>project Management</TableCell>
+                                                <TableCell>
+                                                        {taskObj.projectManagement || "nil"}
+                                                </TableCell>
+                                                <TableCell>{taskObj.projectManagement || "nil"}</TableCell>
+                                                <TableCell>1500$</TableCell>
+                                            </TableRow>
+
                                     </TableBody>
                                 </Table>
                             </TableContainer>
