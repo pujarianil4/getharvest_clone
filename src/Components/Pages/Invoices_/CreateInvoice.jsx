@@ -254,7 +254,7 @@ React.useEffect(()=>{
 
     useEffect(()=>{
       if(subtotals.length>0){
-        let total= subtotals.reduce((acu,item)=>acu+item)
+        let total= subtotals.reduce((acu,item)=>Number(acu)+Number(item))
         setTotalAmount(total)
       }
     },[subtotals])
