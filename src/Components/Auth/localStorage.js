@@ -3,7 +3,14 @@ const saveData = (key, data) => {
 
 }
 const loadData = (key) => {
-    return JSON.parse(localStorage.getItem(key))
+    try{
+        let data= localStorage.getItem(key)
+        data= JSON.parse(data)
+        return data
+    }
+    catch{
+         return
+    }
 }
 
 export { saveData, loadData }

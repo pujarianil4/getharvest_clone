@@ -13,7 +13,7 @@ import { loadData } from '../../Auth/localStorage';
 const Section = styled.section`
     display: flex;
     flex-flow: row;
-    background-color: #F4862E;
+    background-color: #F37714;
     padding: 10px;
 `
 const Menu = styled.section`
@@ -48,12 +48,15 @@ export default function HomeHeader() {
     const handleLogout = () => {  
         const action = logoutSuccess();
         dispatch (action)
-        history.replace("/sign-in");
+        history.replace("/");
+    }
+    const home=()=>{
+        history.replace("/welcome")
     }
 
     return (
         <Section>
-            <Icon>
+            <Icon onClick={home}>
                 <HomeIcon style={{ color: "white", marginLeft: "80%"}} />
 
                 
