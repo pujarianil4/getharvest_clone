@@ -89,7 +89,8 @@ const initInvoice ={
     subtotal:"",
     amountDue:"",
     clientname:"",
-    pname:''
+    pname:'',
+    userId:""
 
 
 }
@@ -138,6 +139,8 @@ export const CreateInvoice = () => {
 
     const handleSubmit=(e)=>{
         e.preventDefault()
+        saveinvoiceInfo(formState)
+
     }
     const dispatch = useDispatch()
     React.useEffect(()=>{
@@ -146,6 +149,16 @@ export const CreateInvoice = () => {
         dispatch(getTaskTimer(userID))       
      
     },[])
+
+//___________________________________________Sending Invoice form to server_________________________________________//
+const saveinvoiceInfo=(payload)=>{
+    axios.post('https://oryjd.sse.codesandbox.io/Invoice/',payload).then((res)=>{
+        console.log(res.data)
+    })
+}
+
+
+
 
 
 
@@ -186,6 +199,7 @@ const getHoursData=(payload,projName)=>{
 
 React.useEffect(()=>{
     const projName = state?.filter((item)=>item.client===clientname).map((item)=>item.pname)
+    setFormstate({...formState,pname:[...projName],userId:userID})
     console.log(clientname,projName)
     getExpenseData(userID,projName)
     getHoursData(userID,projName)
@@ -240,7 +254,7 @@ React.useEffect(()=>{
 
     useEffect(()=>{
       if(subtotals.length>0){
-        let total= subtotals.reduce((acu,item)=>acu+item)
+        let total= subtotals.reduce((acu,item)=>Number(acu)+Number(item))
         setTotalAmount(total)
       }
     },[subtotals])
@@ -307,14 +321,14 @@ React.useEffect(()=>{
                         <div>
                             <label htmlFor="">Invoice ID</label>
                         </div>
-                        <input type="text"/>
+                        <input type="text" value={invId} name="invId" onChange={handleChange}/>
                     </div> 
 
                     <div>
                         <div>
                             <label htmlFor="">Issue Date</label>
                         </div>
-                        <input type="text"/>
+                        <input type="Date" name="issueDate" value={issueDate} onChange={handleChange}/>
                         {/* <div>
                             <label htmlFor="">Invoice For</label>
                         </div>
@@ -327,14 +341,14 @@ React.useEffect(()=>{
                         <div>
                             <label htmlFor="">PO Number</label>
                         </div>
-                        <input type="text"/>
+                        <input type="text" name="poNum" value={poNum} onChange={handleChange}/>
                     </div>
 
                     <div>
                         <div>
                             <label htmlFor="">Discount</label>
                         </div>
-                        <input type="text" value=""/>
+                        <input type="text" value={discount} name="discount" onChange={handleChange}/>
                     </div> 
                 </div> 
 
@@ -364,25 +378,25 @@ React.useEffect(()=>{
                    </div>
                    <div>
                        <div>
-                             <label htmlFor="" style={{}}>Due Date</label>
+                             <label htmlFor="" >Due Date</label>
                        </div>
-                        <select name="" id="" >
-                                <option value="">
+                        <select  id="" value={dueDate} name="dueDate" onChange={handleChange} >
+                                <option value="Upon Reciept">
                                     Upon Reciept
                                 </option>
-                                <option value="">
+                                <option value="Net 15">
                                 Net 15 
                                 </option>
-                                <option value="">
+                                <option value="Net 30 ">
                                     Net 30 
                                 </option>
-                                <option value="">
+                                <option value="Net 45">
                                     Net 45 
                                 </option>
-                                <option value="">
+                                <option value="Net 60">
                                     Net 60 
                                 </option>
-                                <option value="">
+                                <option value="Custom">
                                     Custom
                                 </option>
                         </select>
@@ -398,7 +412,7 @@ React.useEffect(()=>{
                         <label htmlFor="">Subject</label>
                  </div>
             
-                    <input type="text" /> 
+                    <input type="text"  value={subject} name="subject" onChange={handleChange}/> 
                
 
 
@@ -454,7 +468,7 @@ React.useEffect(()=>{
                       <textarea name="" id="" rows="3" style={{width:'95%'}}></textarea>
                       <div>
                           <label htmlFor="">Linked project</label>
-                      <select name="pname" id="" value={pname} onChange={handleChange}>
+                      <select name="pname" id="" value={state?.filter((item)=>item.client===clientname).map((item)=>item.pname)} onChange={handleChange}>
                           <option value="">--None--</option>
                           {
                                     state?.filter((item)=>item.client===clientname).map((item)=>
