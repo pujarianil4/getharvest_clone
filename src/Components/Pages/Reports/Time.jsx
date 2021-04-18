@@ -133,8 +133,8 @@ function TabPanel ({children, value, index}) {
 
             <Container style = {{width:"75%", margin: "auto"}}>
                     
-                    <AppBar style={{backgroundColor:"#F26314", color: "white", marginTop: "40px"}} position="static">
-                        <Tabs inkBarStyle={{backgroundColor: "white"}} value = {value} onChange={handleChange}>
+                    <AppBar style={{backgroundColor:"#F37714", color: "white", marginTop: "40px"}} position="static">
+                        <Tabs value = {value} onChange={handleChange}>
                         <Tab label = "Clients" />
                         <Tab label = "Projects" />
                         <Tab label = "Tasks" />

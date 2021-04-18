@@ -13,7 +13,7 @@ import { loadData } from '../../Auth/localStorage';
 const Section = styled.section`
     display: flex;
     flex-flow: row;
-    background-color: #F4862E;
+    background-color: #F37714;
     padding: 10px;
 `
 const Menu = styled.section`
