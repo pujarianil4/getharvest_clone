@@ -1,8 +1,19 @@
 import { StylesProvider } from '@material-ui/styles';
 import React from 'react';
 import styles from './FinalInvoice.module.css';
+import {useSelector,useDispatch} from 'react-redux';
+import axios from 'axios';
 
 export const FinalInvoice = () => {
+    const userID = useSelector(state => state.auth.uid)
+    React.useEffect(()=>{
+        getInvoiceData(userID)
+    },[])
+
+
+    const getInvoiceData=(payload)=>{
+        axios.get(`https://oryjd.sse.codesandbox.io/Invoice?userId=`)
+    }
     return (
         <div className={styles.cont}>
             
