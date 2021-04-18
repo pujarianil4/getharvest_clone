@@ -8,7 +8,7 @@ import {useDispatch,useSelector} from 'react-redux';
 import { createTaskTimer, getTaskTimer,getProjectData } from '../../../../Redux/Timer/timeAction';
 // import { createTaskTimer, getTaskTimer } from '../../../../Redux/Timer/timeAction';
 import { DayTabs} from './TimeDayTab';
-import {TimeNavBar} from '../TimeNavBar_/TimeNavBar'
+import {TimeNavBar} from '../TimeNavBar_/TimeNavBar';
 
 
 
@@ -86,6 +86,14 @@ input{
 
 export const Timesheet = () => {
 
+
+    
+// _____________________________________________________________________USERID________________________________________//
+
+    const userID = useSelector(state => state.auth.uid)
+    console.log(userID)
+
+
     var d = new Date();
 
     const [changeDate,setChangeDate]=useState(0)
@@ -96,11 +104,13 @@ export const Timesheet = () => {
 
    
     const initTaskObj ={
+        userID:userID,
         projectName:"",
         taskName:"",
         notes:"",
         timer:"",
         date: date
+        
 
     }
 
@@ -116,8 +126,7 @@ export const Timesheet = () => {
    
 
 
-    const [billable,setBillable]=React.useState([])
-    const [nonbillable,setnonBillable]=React.useState([])
+    
 
 
     const [openCreateTAsk,setopenCreateTAsk]=React.useState(false)
@@ -136,20 +145,58 @@ export const Timesheet = () => {
     !data.isLoading && console.log(TaskEntries)
 
      
-    const clientObj =state.projectData[0]
+    const clientObj =state.projectData
     const dispatch = useDispatch()
+
+    const [billable,setBillable]=React.useState([])
+    const [nonbillable,setnonBillable]=React.useState([])
+    const [clientName,setClientName]=React.useState(0)
  
     React.useEffect(()=>{
-        dispatch(getProjectData())
-        // dispatch(getTaskTimer())
+
+        dispatch(getProjectData(userID))
+        dispatch(getTaskTimer(userID))
+
         if(!data.isLoading){
             console.log(clientObj)
-            const bill =Object.keys(clientObj.tasks).filter((item)=>clientObj.tasks[item]===true)
+            
+
+            const bill =Object.keys(clientObj[0].tasks).filter((item)=>item===true)
             setBillable(bill)
         
-        
-            const nonbill =Object.keys(clientObj.tasks).filter((item)=>clientObj.tasks[item]!==true)
-            setnonBillable(nonbill) 
+            console.log(bill)        
+            // const nonbill =Object.keys(clientObj.tasks).filter((item)=>clientObj.tasks[item]!==true)
+            // setnonBillable(nonbill) 
+
+
+
+
+            
+//   {
+//     "userId": "qkjaCcvcDmhVLVOZuxh3OuxGMn13",
+//     "client": "Kamal",
+//     "pname": "ZEE",
+//     "pcode": "ZEE101",
+//     "starton": "2021-04-05",
+//     "endson": "2021-04-30",
+//     "notes": "EK MIN",
+//     "projectType": [
+//       {
+//         "hourlyRates": "1000",
+//         "budget": "10"
+//       },
+//       {},
+//       {}
+//     ],
+//     "tasks": {
+//       "businessDevelopment": true,
+//       "design": true,
+//       "marketing": true,
+//       "programming": true,
+//       "projectManagement": true
+//     },
+//     "id": 15
+//   }
         } 
         
      
@@ -171,7 +218,7 @@ export const Timesheet = () => {
         
     }
    
-    
+
     return (
        
             <div>
@@ -204,13 +251,17 @@ export const Timesheet = () => {
                             <div><label htmlFor="">Project/Task</label></div>
                             <div className={styles.projectName}>
                             <select name="projectName" id="" onChange={handleChange} value={projectName}>
-                                <option value="Task Name-1">Project Name-1</option>
-                                <option value="Task Name-2">{clientObj? clientObj.pname:"Task Name-2"}</option>
+                                
+                                <optgroup label={clientObj? clientObj.client:"Task Name-2"} >
+                                  <option value="None">--None</option>  
+                                  {clientObj?.map((item)=>
+                                <option value={clientObj.pname}>{item.pname}</option>)}
+                                </optgroup>
                             </select>
                             </div>
                             <div className={styles.TaskName}>
                             <select name="taskName" id="" onChange={handleChange} value={taskName}>
-                            <optgroup label="BILLABLE">
+                            {/* <optgroup label="BILLABLE">
                                 {
                                      console.log(billable)
                                   
@@ -225,10 +276,9 @@ export const Timesheet = () => {
                                 {
                                     !data.isLoading && nonbillable.map((item)=><option value={item}>{item}</option>)
                                 }
-                                <option value="Task Name-1" >Task Name-1</option>
-                                <option value="Task Name-2">Task Name-2</option>
                                 
-                            </optgroup>
+                                
+                            </optgroup> */}
                                 
                             </select>
                             </div>

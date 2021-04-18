@@ -68,13 +68,13 @@ if (isAuth == true) {
 
                         <tr>
                             
-                            <td>
+                            <td className={style.signin}>
                             <input name="wemail" onChange={handleInp} />
                             </td>
                         </tr>
                         <tr>
                             
-                            <td>
+                            <td className={style.signin}>
                             <input name="password" onChange={handleInp} />
                             </td>
                         </tr>

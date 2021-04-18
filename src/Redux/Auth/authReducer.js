@@ -43,7 +43,8 @@ export const authReducer = (state = init, { type, payload }) => {
             localStorage.clear();
             return {
                 ...state,
-                isAuth: false
+                isAuth: false,
+                uid: ""
             }
 
         default: return state
