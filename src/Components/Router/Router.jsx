@@ -75,11 +75,7 @@ export default function Router() {
 
                 </PrivateRoute>
 
-<<<<<<< HEAD
-                {/* </Route> */}
-=======
-               
->>>>>>> ae0d7e28c09dee4ef6794df4f57cda9b85c79ac4
+
                 <Route path="/finalinvoice">
                     <FinalInvoice/>
                 </Route>

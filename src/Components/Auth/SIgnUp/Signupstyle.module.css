@@ -1,4 +1,4 @@
-label {
+/* label {
     font-size: 20px ;
     margin: 0px 10px;
     
@@ -14,7 +14,7 @@ h5 {
     color: #9999A9;
     padding: 3px;
     
-}
+} */
 h5:before,
 h5:after {
     content: "";
