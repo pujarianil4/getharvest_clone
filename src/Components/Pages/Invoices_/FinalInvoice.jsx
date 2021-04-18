@@ -23,6 +23,10 @@ export const FinalInvoice = () => {
     const userID = useSelector(state => state.auth.uid)
     React.useEffect(()=>{
         getInvoiceData(userID,params)
+
+        return function cleanup(){
+            getInvoiceData(userID,params)
+        }
     },[])
 
 
@@ -41,7 +45,7 @@ export const FinalInvoice = () => {
             setisError(true)
         )
     }
-    return isLoading?(<Ring/>): (
+    return isLoading?(<Ring/>):invoiceData && (
         <div className={styles.cont}>
             
 
@@ -84,8 +88,8 @@ export const FinalInvoice = () => {
                             </div>
                             <div>
                                   <p>2</p>  
-                                  <p>{invoiceData.issueDate}</p>
-                                  <p>{invoiceData.dueDate}</p>
+                                  <p>{invoiceData && invoiceData.issueDate}</p>
+                                  <p>{invoiceData && invoiceData.dueDate}</p>
                             </div>
 
                         </div>
@@ -96,7 +100,7 @@ export const FinalInvoice = () => {
                             </div>
                             <div></div>
                             <div>
-                                <p>{invoiceData.clientname}</p>
+                                <p>{invoiceData && invoiceData.clientname}</p>
                                 <p>EditInfo</p>
                             </div>
 
@@ -122,22 +126,22 @@ export const FinalInvoice = () => {
                                 </div>
 
                             </div>
-                            {invoiceData.incoice_deatls.map(((item,i)=>
+                            {invoiceData && invoiceData.incoice_deatls.map(((item,i)=>
                             <div className={styles.table}>
                             <div>
                                 <p>{i}</p>
                             </div>
                             <div>
-                                <p>{`[${invoiceData.pname}] PO-${invoiceData.poNum}`}</p>
+                                <p>{`[${invoiceData && invoiceData.pname}] PO-${invoiceData && invoiceData.poNum}`}</p>
                             </div>
                             <div>
                                  <p>{item}</p>
                             </div>
                             <div>
-                                 <p>{invoiceData.hourlyRates}</p>
+                                 <p>{invoiceData && invoiceData.hourlyRates}</p>
                             </div>
                             <div>
-                                 <p>{Number(item)*Number(invoiceData.hourlyRates)}</p>
+                                 <p>{Number(item)*Number(invoiceData && invoiceData.hourlyRates)}</p>
                             </div>
 
                         </div> 
