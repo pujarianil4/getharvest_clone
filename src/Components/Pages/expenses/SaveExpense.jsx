@@ -1,4 +1,5 @@
 import { SatelliteSharp } from "@material-ui/icons";
+import axios from "axios";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuid } from "uuid";
@@ -31,9 +32,28 @@ const SaveExpense = ({ handleButton }) => {
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.expense.isLoading);
   const isError = useSelector((state) => state.expense.isError);
- //const userID = useSelector(state => state.auth.uid)
- const userID=useSelector(state=>state.auth.uid);
- console.log(userID);
+  //const userID = useSelector(state => state.auth.uid)
+  const userID = useSelector((state) => state.auth.uid);
+  
+  const ProjectDet = () => {
+    let obj=[]
+    let status=true
+    let newar=[];
+    axios.get(`https://c2ec8.sse.codesandbox.io/harvest?userId=${userID}`)
+      .then((res) => { status=false; 
+        obj=res.data;
+        // newar = obj?.filter((items)=>items.userID===userID);
+        console.log(res.data);
+        // console.log(obj);
+        // console.log(newar);
+      })
+      .catch((er) => console.log(er));
+   
+   
+  };
+  ProjectDet();
+
+  console.log(userID);
   if (isError) {
     alert("Error in Uploading");
   }
@@ -49,7 +69,7 @@ const SaveExpense = ({ handleButton }) => {
     const addexpenseaction = addExpense(formState);
     dispatch(addexpenseaction);
     console.log(expenseList);
-    const upLoad = savedExpense(formState ,userID);
+    const upLoad = savedExpense(formState, userID);
     dispatch(upLoad);
     //console.log(formState);
   };
@@ -115,14 +135,14 @@ const SaveExpense = ({ handleButton }) => {
             ></textarea>
           </div>
           {/* style={{ background: "#f4f4f4", width: "400px", margin: "10px" }} */}
-          <p >
+          <p>
             <input
               type="checkbox"
               value={billable}
               name="billable"
               onChange={handleChange}
             />{" "}
-           <span>This Expense is Billable</span> 
+            <span>This Expense is Billable</span>
           </p>
           <button onClick={handleSubmit} className={styles.Expensebtn}>
             Save Expense
@@ -141,7 +161,7 @@ const SaveExpense = ({ handleButton }) => {
               value={amount}
               name="amount"
               onChange={handleChange}
-              className={styles.input,styles.inputamount}
+              className={(styles.input, styles.inputamount)}
             />
           </div>
         </div>
