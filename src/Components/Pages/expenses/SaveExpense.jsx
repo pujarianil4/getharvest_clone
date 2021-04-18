@@ -1,6 +1,6 @@
 import { SatelliteSharp } from "@material-ui/icons";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuid } from "uuid";
 import { addExpense, savedExpense } from "../../../Redux/Expenses/action";
@@ -10,7 +10,7 @@ import styles from "./Expense.module.css";
 const initvalue = {
   date: new Date().toLocaleDateString(),
   projectName: "",
-  category: "",
+  category: "Entertainment",
   notes: "",
   billable: true,
   amount: "",
@@ -34,7 +34,7 @@ const SaveExpense = ({ handleButton }) => {
   const isError = useSelector((state) => state.expense.isError);
   //const userID = useSelector(state => state.auth.uid)
   const userID = useSelector((state) => state.auth.uid);
-  
+  const [clientObj,setClientObj]=useState([]);
   const ProjectDet = () => {
     let obj=[]
     let status=true
@@ -44,6 +44,9 @@ const SaveExpense = ({ handleButton }) => {
         obj=res.data;
         // newar = obj?.filter((items)=>items.userID===userID);
         console.log(res.data);
+        setClientObj(res.data);
+      
+
         // console.log(obj);
         // console.log(newar);
       })
@@ -51,19 +54,24 @@ const SaveExpense = ({ handleButton }) => {
    
    
   };
-  ProjectDet();
+  // ProjectDet();
+  useEffect(()=>{
+    ProjectDet();
+  },[])
 
   console.log(userID);
-  if (isError) {
-    alert("Error in Uploading");
-  }
+  // if (isError) {
+  //   alert("Error in Uploading");
+  // }
   const date1 = new Date().toLocaleDateString();
   const [dat, setDat] = useState(date1);
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     let val = type === "checkbox" ? checked : value;
     setFormState({ ...formState, [name]: val });
   };
+
   const handleSubmit = () => {
     setFormState({ ...formState, id: uuid(), status: false });
     const addexpenseaction = addExpense(formState);
@@ -94,21 +102,22 @@ const SaveExpense = ({ handleButton }) => {
           </p>
           {/* <option value=""></option> */}
           <select
-            name=""
-            id=""
+          
             placeholder="Choose a project..."
             name="projectName"
             onChange={handleChange}
             className={styles.ProjectSelection}
           >
-            <option value="" disabled={true}>
+            <option value="" >
               Choose a project...
             </option>
-            {projectNames?.map((items) => (
+            {/* {projectNames?.map((items) => (
               <option key={items} value={items}>
                 {items}
               </option>
-            ))}
+            ))} */}
+            {clientObj?.map((item)=>
+                                <option value={item.pname} >{item.pname}</option>)}
           </select>
           <br></br>
           <select
@@ -138,7 +147,7 @@ const SaveExpense = ({ handleButton }) => {
           <p>
             <input
               type="checkbox"
-              value={billable}
+              checked={billable}
               name="billable"
               onChange={handleChange}
             />{" "}
