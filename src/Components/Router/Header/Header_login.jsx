@@ -50,10 +50,13 @@ export default function HomeHeader() {
         dispatch (action)
         history.replace("/");
     }
+    const home=()=>{
+        history.replace("/welcome")
+    }
 
     return (
         <Section>
-            <Icon>
+            <Icon onClick={home}>
                 <HomeIcon style={{ color: "white", marginLeft: "80%"}} />
 
                 
