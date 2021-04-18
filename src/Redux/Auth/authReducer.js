@@ -35,9 +35,10 @@ export const authReducer = (state = init, { type, payload }) => {
                 isRegistered: false
             }
         case SIGNUP_SUCCESS:
+            saveData("user_name", payload)
             return {
                 ...state,
-                isRegistered: true
+                isRegistered: true,
             }
         case LOGOUT_SUCCESS:
             localStorage.clear();
