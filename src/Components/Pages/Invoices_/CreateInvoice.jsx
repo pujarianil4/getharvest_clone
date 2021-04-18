@@ -310,7 +310,7 @@ React.useEffect(()=>{
 
     return (
         
-        <InvoiceCont ref={ref}>
+        <InvoiceCont >
            
           {/* <ReactToPdf targetRef={ref} options={options} x={.8} y={.8} scale={0.8} filename="invoice.pdf">
         {({toPdf}) => (
