@@ -126,8 +126,7 @@ export const Timesheet = () => {
    
 
 
-    const [billable,setBillable]=React.useState([])
-    const [nonbillable,setnonBillable]=React.useState([])
+    
 
 
     const [openCreateTAsk,setopenCreateTAsk]=React.useState(false)
@@ -146,8 +145,12 @@ export const Timesheet = () => {
     !data.isLoading && console.log(TaskEntries)
 
      
-    const clientObj =state.projectData[0]
+    const clientObj =state.projectData
     const dispatch = useDispatch()
+
+    const [billable,setBillable]=React.useState([])
+    const [nonbillable,setnonBillable]=React.useState([])
+    const [clientName,setClientName]=React.useState(0)
  
     React.useEffect(()=>{
 
@@ -156,12 +159,44 @@ export const Timesheet = () => {
 
         if(!data.isLoading){
             console.log(clientObj)
-            const bill =Object.keys(clientObj.tasks).filter((item)=>clientObj.tasks[item]===true)
-            setBillable(bill)
+            
+
+            // const bill =Object.keys(clientObj[0].tasks).filter((item)=>item===true)
+            // setBillable(bill)
         
-        
-            const nonbill =Object.keys(clientObj.tasks).filter((item)=>clientObj.tasks[item]!==true)
-            setnonBillable(nonbill) 
+            // console.log(bill)        
+            // const nonbill =Object.keys(clientObj.tasks).filter((item)=>clientObj.tasks[item]!==true)
+            // setnonBillable(nonbill) 
+
+
+
+
+            
+//   {
+//     "userId": "qkjaCcvcDmhVLVOZuxh3OuxGMn13",
+//     "client": "Kamal",
+//     "pname": "ZEE",
+//     "pcode": "ZEE101",
+//     "starton": "2021-04-05",
+//     "endson": "2021-04-30",
+//     "notes": "EK MIN",
+//     "projectType": [
+//       {
+//         "hourlyRates": "1000",
+//         "budget": "10"
+//       },
+//       {},
+//       {}
+//     ],
+//     "tasks": {
+//       "businessDevelopment": true,
+//       "design": true,
+//       "marketing": true,
+//       "programming": true,
+//       "projectManagement": true
+//     },
+//     "id": 15
+//   }
         } 
         
      
@@ -169,17 +204,17 @@ export const Timesheet = () => {
 
 
     React.useEffect(()=>{
-        dispatch(getTaskTimer())
+        dispatch(getTaskTimer(userID))
     },[])
 
   
     const handleSubmit =(e)=>{
         e.preventDefault()
         // console.log(formData)
-        dispatch(createTaskTimer(formData))
+        dispatch(createTaskTimer(formData,userID))
         setopenCreateTAsk(false)
         
-        dispatch(getTaskTimer())
+       setFormData(initTaskObj)
         
     }
    
@@ -219,13 +254,14 @@ export const Timesheet = () => {
                                 
                                 <optgroup label={clientObj? clientObj.client:"Task Name-2"} >
                                   <option value="None">--None</option>  
-                                <option value={clientObj.pname}>{clientObj? clientObj.pname:"Task Name-2"}</option>
+                                  {clientObj?.map((item)=>
+                                <option value={clientObj.pname}>{item.pname}</option>)}
                                 </optgroup>
                             </select>
                             </div>
                             <div className={styles.TaskName}>
                             <select name="taskName" id="" onChange={handleChange} value={taskName}>
-                            <optgroup label="BILLABLE">
+                            {/* <optgroup label="BILLABLE">
                                 {
                                      console.log(billable)
                                   
@@ -242,7 +278,7 @@ export const Timesheet = () => {
                                 }
                                 
                                 
-                            </optgroup>
+                            </optgroup> */}
                                 
                             </select>
                             </div>

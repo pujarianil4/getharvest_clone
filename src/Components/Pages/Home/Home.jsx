@@ -11,10 +11,6 @@ import { Footer } from "../Footer/Footer";
 import { useDispatch } from "react-redux";
 import { logoutSuccess } from "../../../Redux/Auth/authAction";
 
-
-  // ------------------------ user is logged out when visiting home page ----------------------------//
-
-
 import { useSelector } from "react-redux";
 import { Redirect } from "react-router";
 import { Carousel } from "./Carousel";

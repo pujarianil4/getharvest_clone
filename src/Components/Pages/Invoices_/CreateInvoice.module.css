@@ -183,18 +183,19 @@
     width: 100%;
     
     display: flex;
+    justify-content: space-between;
     
    
     
 }
 .SubInvidInput>div:nth-child(1){
-    width: 24%;
+    width: 28%;
    
    
 }
 
 .SubInvidInput>input{
-    width: 75%;
+    width: 70%;
     height: 30px;
 
 

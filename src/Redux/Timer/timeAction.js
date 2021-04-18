@@ -1,4 +1,6 @@
 import axios from "axios"
+import { useSelector } from "react-redux"
+
 import { CREATETASK_FAILURE, CREATETASK_REQUEST, CREATETASK_SUCCESS,DELETETASK_REQUEST,EDITTASK_FAILURE,EDITTASK_REQUEST,EDITTASK_SUCCESS,GETPROJECT_FAILURE,GETPROJECT_REQUEST,GETPROJECT_SUCCESS,GETTASK_FAILURE, GETTASK_REQUEST, GETTASK_SUCCESS,DELETETASK_FAILURE,DELETETASK_SUCCESS } from "./actionType"
 
 
@@ -87,14 +89,15 @@ export const getProjectFailure=(payload)=>{
 
 
 // ________________________________________NETWORK REQUEST FOR ADDING TIMER______________________________________________//
-export const createTaskTimer =(payload)=>(dispatch)=>{
+export const createTaskTimer =(payload,userID)=>(dispatch)=>{
+   
     console.log(payload)
     dispatch(createTaskRequest())
     return axios.post("https://1u30f.sse.codesandbox.io/timer",payload)
     .then((res)=>
         //dispatch(createTaskSuccess(res.data))
-
-        dispatch(getTaskTimer())
+       
+        dispatch(getTaskTimer(userID))
        
        
     ).catch((err)=>{
@@ -106,10 +109,13 @@ export const createTaskTimer =(payload)=>(dispatch)=>{
 
 // ________________________________________NETWORK REQUEST FOR GETTING TIMER______________________________________________//
 export const getTaskTimer =(payload)=>(dispatch)=>{
+    
+    const url =`https://1u30f.sse.codesandbox.io/timer?userID=${payload}`
     dispatch(getTaskRequest())
-    return axios.get(`https://1u30f.sse.codesandbox.io/timer?userId=${payload}`).then((res)=>{
+    return axios.get(url).then((res)=>{
         dispatch(getTaskSuccess(res.data))
          console.log(res.data)
+         console.log(url)
     }).catch((err)=>{
         dispatch(getTaskFailure(err))
     })
@@ -119,7 +125,7 @@ export const getTaskTimer =(payload)=>(dispatch)=>{
 
 // ________________________________________NETWORK REQUEST FOR GETTING PROJECT DETAILS______________________________________________//
 export const getProjectData =(payload)=>(dispatch)=>{
-    // dispatch(getProjectRequest())
+    dispatch(getProjectRequest())
     return axios.get(`https://c2ec8.sse.codesandbox.io/harvest?userId=${payload}`).then((res)=>{
             let arrdata =[]
             for(let k in res.data){
@@ -154,12 +160,13 @@ export const edittasksuccess=(payload)=>{
     }
 }
 
-export const edittask=(id,payload)=>(dispatch)=>{
+export const edittask=(id,payload,userID)=>(dispatch)=>{
+   
     dispatch(edittaskreq())
-    axios.patch(`https://1u30f.sse.codesandbox.io/timer/${id}`,payload)
+   return axios.patch(`https://1u30f.sse.codesandbox.io/timer/${id}`,payload)
     .then((res)=>{
         dispatch(edittasksuccess(res.data))
-        dispatch(getTaskTimer())
+        dispatch(getTaskTimer(userID))
     })
     .catch((error)=>{
         dispatch(edittaskfailure())
@@ -188,12 +195,14 @@ export const deletetaskfailure=()=>{
     }
 }
 
-export const deletetask=(id)=>(dispatch)=>{
+export const deletetask=(id,userID)=>(dispatch)=>{
+   
     dispatch(deletetaskreq())
-    axios.delete(`https://1u30f.sse.codesandbox.io/timer/${id}`)
+   return axios.delete(`https://1u30f.sse.codesandbox.io/timer/${id}`)
     .then((res)=>{
+     
         dispatch(deletetasksuccess())
-        dispatch(getTaskTimer())
+        dispatch(getTaskTimer(userID))
     })
     .catch((error)=>{
         dispatch(deletetaskfailure())
