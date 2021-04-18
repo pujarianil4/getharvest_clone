@@ -134,11 +134,21 @@ export const CreateInvoice = () => {
         console.log(item)
     })
 //__________________________________________________________________________________________________________________________________//
-
+    const [amount,setAmount]=React.useState([])
+    const [quantity,setQuantity]=React.useState(0.00)
+    const [price,setprice]=React.useState(0.00)
     const [TaskItemCount,setTaskItemCount]=React.useState([])
+    const [totalAmount,setTotalAmount]=React.useState(0)
+
+    React.useEffect(()=>{
+        setTotalAmount(amount.reduce((accumulator, currentValue) => accumulator + currentValue,0))
+    },[amount])
     const handleAdd=()=>{
         setTaskItemCount([...TaskItemCount,`item${TaskItemCount.length+1}`])
+        setAmount([...amount,Number(quantity)+Number(price)])
+        
     }
+   
    
     const handleDelete=(id)=>{
         const updatedTaskItemCount=TaskItemCount.filter((item)=>item!==id)
@@ -279,7 +289,7 @@ export const CreateInvoice = () => {
                 </TaskItemHeading>
 
               {
-                  TaskItemCount.map((item)=>  <TaskItemBody className={styles.TaskItemBody}>
+                  TaskItemCount.map((item,i)=>  <TaskItemBody className={styles.TaskItemBody}>
                   <div>
                       <div onClick={(e)=>handleDelete(item)}><CloseIcon style={{fontSize:'18px'}}/></div>
                   </div>
@@ -301,12 +311,12 @@ export const CreateInvoice = () => {
                       </div>
                   </div>
                   <div>
-                      <input type="text"/>
+                      <input type="text" onChange={(e)=>setQuantity(e.target.value)}/>
                   </div>
                   <div>
-                      <input type="text"/>
+                      <input type="text" onChange={(e)=>setprice(e.target.value)}/>
                   </div>
-                  <div>$0.00</div>
+                  <div>${amount[i+1]?amount[i+1]:"0.00"}</div>
                   
               </TaskItemBody>  )
               }
@@ -318,7 +328,7 @@ export const CreateInvoice = () => {
 
                     <div >
                         <div><p>Subtotal</p></div>
-                        <div><p>$0.00</p></div>
+                        <div><p>${totalAmount}</p></div>
                     </div>
                </div>
 
@@ -332,7 +342,7 @@ export const CreateInvoice = () => {
                </div>
                <div>
                    <div><h3>Amount Due</h3></div>
-                   <div><h3>$0.00</h3></div>
+                   <div><h3>${totalAmount}</h3></div>
                </div>
 
                </div>
