@@ -255,7 +255,7 @@ export const Timesheet = () => {
                                 <optgroup label={clientObj? clientObj.client:"Task Name-2"} >
                                   <option value="None">--None</option>  
                                   {clientObj?.map((item)=>
-                                <option value={clientObj.pname}>{item.pname}</option>)}
+                                <option value={item.pname}>{item.pname}</option>)}
                                 </optgroup>
                             </select>
                             </div>
