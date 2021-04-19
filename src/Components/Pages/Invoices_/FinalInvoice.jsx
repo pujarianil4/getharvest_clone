@@ -19,6 +19,10 @@ export const FinalInvoice = () => {
     const userID = useSelector(state => state.auth.uid)
     React.useEffect(()=>{
         getInvoiceData(userID,params)
+
+        return function cleanup(){
+            getInvoiceData(userID,params)
+        }
     },[])
     const getInvoiceData=(payload,params)=>{
         setIsLoading(true)
@@ -31,13 +35,15 @@ export const FinalInvoice = () => {
             setisError(true)
         )
     }
+
        const ref = React.createRef();
     const options = {
        
         unit: 'in',
         
     };
-    return isLoading?(<Ring/>): (
+   return isLoading?(<Ring/>):invoiceData && ( 
+
         <div className={styles.cont}>
             <div className ={styles.invoiceBox}>
                 <div className={styles.headBox}>
@@ -74,8 +80,8 @@ export const FinalInvoice = () => {
                             </div>
                             <div>
                                   <p>2</p>  
-                                  <p>{invoiceData.issueDate}</p>
-                                  <p>{invoiceData.dueDate}</p>
+                                  <p>{invoiceData && invoiceData.issueDate}</p>
+                                  <p>{invoiceData && invoiceData.dueDate}</p>
                             </div>
                         </div>
                         <div className={styles.invoRightO}> 
@@ -84,7 +90,7 @@ export const FinalInvoice = () => {
                             </div>
                             <div></div>
                             <div>
-                                <p>{invoiceData.clientname}</p>
+                                <p>{invoiceData && invoiceData.clientname}</p>
                                 <p>EditInfo</p>
                             </div>
                         </div>
@@ -107,22 +113,22 @@ export const FinalInvoice = () => {
                                      <p>Amount</p>
                                 </div>
                             </div>
-                            {invoiceData.incoice_deatls.map(((item,i)=>
+                            {invoiceData && invoiceData.incoice_deatls.map(((item,i)=>
                             <div className={styles.table}>
                             <div>
                                 <p>{i}</p>
                             </div>
                             <div>
-                                <p>{`[${invoiceData.pname}] PO-${invoiceData.poNum}`}</p>
+                                <p>{`[${invoiceData && invoiceData.pname}] PO-${invoiceData && invoiceData.poNum}`}</p>
                             </div>
                             <div>
                                  <p>{item}</p>
                             </div>
                             <div>
-                                 <p>{invoiceData.hourlyRates}</p>
+                                 <p>{invoiceData && invoiceData.hourlyRates}</p>
                             </div>
                             <div>
-                                 <p>{Number(item)*Number(invoiceData.hourlyRates)}</p>
+                                 <p>{Number(item)*Number(invoiceData && invoiceData.hourlyRates)}</p>
                             </div>
                         </div> 
                             ))}
