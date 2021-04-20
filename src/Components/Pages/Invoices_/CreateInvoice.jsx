@@ -10,6 +10,7 @@ import axios from 'axios';
 import {Ring} from 'react-awesome-spinners';
 import { grey } from '@material-ui/core/colors';
 import { useHistory } from 'react-router';
+// import ReactToPdf from "react-to-pdf"
 
 const InvoiceCont=styled.div`
     width:70%;
@@ -93,7 +94,7 @@ const TaskItemBody=styled.div``
 
 
 export const CreateInvoice = () => {
-
+  
     // ______________________________________________________FETCHING DATA__________________________________//
     const userID = useSelector(state => state.auth.uid)
     // console.log(userID)
@@ -278,9 +279,10 @@ React.useEffect(()=>{
  setFormstate({...formState,hourlyRates:fixed[0],subtotal:totalAmount,incoice_deatls:[...subtotals]})
     },[totalAmount])
 
-    const handleAdd=()=>{
+    const handleAdd=(e)=>{
+        e.preventDefault()
         setTaskItemCount([...TaskItemCount,`item${TaskItemCount.length+1}`])
-        setAmount([...amount,Number(quantity)*Number(price)])
+        quantity && setAmount([...amount,Number(quantity)*Number(price)])
         
     }
    
@@ -293,52 +295,31 @@ React.useEffect(()=>{
     const history= useHistory()
     const handleSubmit=(e)=>{
         e.preventDefault()
+        localStorage.removeItem('ClientInvoice');
+        localStorage.setItem('ClientInvoice', JSON.stringify(formState));
         saveinvoiceInfo(formState)
 
-      history.replace(`/finalinvoice?pname=${pname}`)
+      history.replace(`/finalinvoice?pname=${invId}`)
 
 
     }
-  
  
+    // const ref = React.createRef();
+    // const options = {
+       
+    //     unit: 'in',
+        
+    // };
 
     return (
         
-        <InvoiceCont>
-            {/* <h1>
-                {
-                    hoursData.map((item)=>
-                        <div>
-                            {Number(item.timer)*Number(state?.filter((item)=>item.client===clientname).map((item)=>
-                    item.projectType[0].hourlyRates))
-                    
-                    }
-                    
-                        </div>
-                    )
-                }
-            </h1>
-            <div>
-                        {
-                           expenseEntries.map((item)=>
-                           <h1>
-                               {
-                                   item.amount
-                               }
-                           </h1> )
-                        }
-            </div> */}
+        <InvoiceCont >
+           
          
-            {
-                     
-            }
-
-
-            {/* <Ring color={'#9e9e9e'} /> */}
-            <HeadingBox>
+            <HeadingBox >
             <h1>Invoice for {clientname}</h1>
             </HeadingBox>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} autocomplete="off">
             
             <div className={styles.FormBox}>
               {/* ===================================================================== */} 
@@ -371,18 +352,7 @@ React.useEffect(()=>{
                     </div>
 
                     <div>
-                        <div>
-                            <label htmlFor="">Discount</label>
-                        </div>
-                        <input type="text" value={discount} name="discount" onChange={handleChange}/>
-                    </div> 
-                </div> 
-
-                <div className={styles.InvidInput}> 
-                   
-                   <div>
-
-                         <div>
+                    <div>
                             <label htmlFor="">Invoice For</label>
                         </div>
                         <select name="clientname" id=""  value={clientname} onChange={handleChange}>
@@ -397,6 +367,18 @@ React.useEffect(()=>{
                                 }
                                
                         </select>
+                        
+                    </div> 
+                </div> 
+
+                <div className={styles.InvidInput}> 
+                   
+                   <div>
+                   <div>
+                            <label htmlFor="">Discount</label>
+                        </div>
+                        <input type="text" value={discount} name="discount" onChange={handleChange}/>
+                         
                         {/* <div>
                             <label htmlFor="">Issue Date</label>
                         </div>

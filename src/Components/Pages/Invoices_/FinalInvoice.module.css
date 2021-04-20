@@ -6,7 +6,7 @@
 .invoiceBox{
     margin-top: 10px;
     width: 100%;
-    height: 150vh;
+    height: 90vh;
     /* background-color: burlywood; */
     border-radius: 10px 10px 0 0;
     margin-bottom: 200px;
@@ -18,6 +18,9 @@
     height: 50px;
     background-image: linear-gradient(#f4f4f4,#e4e4e4);
     border-radius: 10px 10px 0 0;
+}
+.headBox>button:hover{
+    color: #f37510;
 }
 
 .invoiceBody{
@@ -136,8 +139,14 @@
   }
   .invoRightO>div:nth-child(3)>p:nth-child(2){
     text-decoration: underline;
-    /* color: blue; */
+    color: rgb(20, 20, 110);
 }
+.invoRightO>div:nth-child(3)>p:nth-child(2):hover{
+
+
+    color: blue;
+}
+
 
 
 .invoLinesT{
