@@ -5,7 +5,8 @@ import {useSelector,useDispatch} from 'react-redux';
 import axios from 'axios';
 import { useParams } from 'react-router';
 import {Ring} from 'react-awesome-spinners';
-import ReactToPdf from "react-to-pdf"
+import ReactToPdf from "react-to-pdf";
+import CloudDownloadIcon from '@material-ui/icons/CloudDownload';
 
 const paramString =window.location.search
 let params = new URLSearchParams(paramString)
@@ -15,26 +16,28 @@ export const FinalInvoice = () => {
     const [isLoading,setIsLoading]=React.useState(true)
     const [isError,setisError]=React.useState(false)
     // console.log(params.toString())
-    console.log(invoiceData)
+    // console.log(invoiceData)
     const userID = useSelector(state => state.auth.uid)
     React.useEffect(()=>{
         getInvoiceData(userID,params)
+        setInvoiceData(JSON.parse(localStorage.getItem('ClientInvoice')))
 
-        return function cleanup(){
-            getInvoiceData(userID,params)
-        }
+        
     },[])
+
+
     const getInvoiceData=(payload,params)=>{
-        setIsLoading(true)
-        axios.get(`https://oryjd.sse.codesandbox.io/Invoice?userId=${userID}&&pname=${params}`).then((res)=>{
-            setInvoiceData(res.data[0])
-            console.log(`https://oryjd.sse.codesandbox.io/Invoice?userId=${userID}&&pname=${params}`)
-        }).then((res)=>setIsLoading(false)
-        )
-        .then((err)=>
+        return axios.get(`https://oryjd.sse.codesandbox.io/Invoice?userId=${payload}&&invId=${params}`)
+        .then((res)=>{
+            // setInvoiceData(res.data[0])
+            // console.log(res.data[0])
+        }).catch((err)=>{
             setisError(true)
-        )
+        }).finally(()=>{
+            setIsLoading(false)
+        })
     }
+
 
        const ref = React.createRef();
     const options = {
@@ -42,14 +45,18 @@ export const FinalInvoice = () => {
         unit: 'in',
         
     };
+
    return isLoading?(<Ring/>):invoiceData && ( 
 
         <div className={styles.cont}>
+            {
+                console.log(invoiceData)
+            }
             <div className ={styles.invoiceBox}>
                 <div className={styles.headBox}>
                       <ReactToPdf targetRef={ref} options={options} x={.8} y={.8} scale={0.8} filename="invoice.pdf">
         {({toPdf}) => (
-            <button onClick={toPdf}>Generate pdf</button>
+            <button onClick={toPdf} style={{border:'none',marginTop:'5px',marginLeft:'5px',background:'none'}}><CloudDownloadIcon /></button>
         )}
     </ReactToPdf>
                 </div>
@@ -65,7 +72,7 @@ export const FinalInvoice = () => {
                                 <div>
                                 </div> 
                                 <div>
-                                    <p>Kamal</p>
+                                    <p>Masai</p>
                                 </div>
                         </div>
                     </div>
@@ -79,7 +86,7 @@ export const FinalInvoice = () => {
                             <div>
                             </div>
                             <div>
-                                  <p>2</p>  
+                                  <p>{invoiceData.invId}</p>  
                                   <p>{invoiceData && invoiceData.issueDate}</p>
                                   <p>{invoiceData && invoiceData.dueDate}</p>
                             </div>
@@ -122,13 +129,17 @@ export const FinalInvoice = () => {
                                 <p>{`[${invoiceData && invoiceData.pname}] PO-${invoiceData && invoiceData.poNum}`}</p>
                             </div>
                             <div>
-                                 <p>{item}</p>
+                                 <p>{item/invoiceData.hourlyRates}</p>
+                                 {
+                                     console.log(item)
+                                 }
                             </div>
                             <div>
                                  <p>{invoiceData && invoiceData.hourlyRates}</p>
                             </div>
                             <div>
-                                 <p>{Number(item)*Number(invoiceData && invoiceData.hourlyRates)}</p>
+                                <p>{item}</p>
+                                 {/* <p>{Number(item)*Number(invoiceData && invoiceData.hourlyRates)}</p> */}
                             </div>
                         </div> 
                             ))}

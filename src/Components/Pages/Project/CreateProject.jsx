@@ -55,7 +55,7 @@ export default function CreateProject() {
                     <div className={styles.heading}>
                         <h1>New Project</h1>
                     </div>
-                <form>
+                <form autocomplete="off">
 
 
                     <div className={styles.InputBoxes}>
@@ -112,9 +112,9 @@ export default function CreateProject() {
                         </div>
                         <div className={styles.projectRight}>
                                 <div className={styles.projectButtons}>
-                                <button onClick={handleTimeAndMaterials}>Time & Materials</button>
-                                <button onClick={handleFixedFee}>Fixed Fee</button>
-                                <button onClick={handleNonBillable}>Non Billable</button>
+                                <button onClick={handleTimeAndMaterials} > <div></div>Time & Materials</button>
+                                <button onClick={handleFixedFee}> <div></div>Fixed Fee</button>
+                                <button onClick={handleNonBillable}> <div></div>Non Billable</button>
                                 </div>
 
 

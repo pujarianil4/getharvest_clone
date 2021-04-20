@@ -1,6 +1,7 @@
 .mainCont{
     width: 70%;
     margin: auto;
+    margin-bottom: 100px;
 }
 
 .heading{
@@ -38,19 +39,27 @@
 }
 .inputs>div>input{
 
-    width: 40%;
     border-radius: 3px;
     height: 30px;
     border:0.5px solid silver;
     padding-left: 10px;
-    color: silver;
+   
 }
 
 .inputs>div:nth-child(1)>input,.inputs>div:nth-child(2)>input,.inputs>div:nth-child(3)>input{
-  width: 40%;  
+    width: 39%;  
   border:0.5px solid silver;
   
 }
+.inputs>div:nth-child(4){
+    display: flex;
+    gap: 1.3%;
+}
+.inputs>div:nth-child(4)>input{
+    width: 39%;  
+    border:0.5px solid silver;
+    
+  }
 
 .inputs>div>textarea{
     width: 85%;
@@ -74,16 +83,29 @@
     
 }
 .projectButtons>button{
+    border-radius: 5px 5px 0px 0px;
     height: 40px;
     width: 200px;
     border: 0.2px solid silver;
     background: none;
+    border-bottom: none;
 }
 .projectButtons>button:focus{
     background-color: #f37510;
     color: white;
     outline: none;
     border: none;
+}
+.projectButtons>button:focus>div{
+    position: relative;
+    left: 70px;
+    top:30px;
+    width: 0;
+	height: 0;
+	border-left: 15px solid transparent;
+	border-right: 15px solid transparent;
+	border-bottom: 15px solid #f4f4f4;
+    
 }
 
 .projectButtons{
@@ -96,11 +118,14 @@
     width: 100%;
     height: 200px;
     background-color: #f4f4f4;
-    border-radius: 10px;
-    border-bottom:0.2px solid silver;
+    border-radius:0px 0px 5px 5px ;
+    /* border-radius: 10px; */
+    /* border-bottom:0.2px solid silver; */
   
 }
 .ProjectTypeCategoryChild{
+    margin-top: 30px;
+    margin-left: 20px;
     height: 90%;
     display: flex;
     flex-direction: column;
@@ -116,6 +141,8 @@
 .ProjectTypeCategoryChild>div>div>input{
     height: 30px;
     border: 1px solid silver;
+    border-radius: 5px;
+    text-align: center;
 }
 .ProjectTypeCategoryChild>div>div:nth-child(1){
     width: 40%;
@@ -156,12 +183,13 @@
 
 }
 .taskwidth{
+    padding-left: 2%;
     /* background-color: red; */
-    
+    width: 70%;
 }
 .myCheckbox{
     
-    /* color: red; */
+   width: 15%;
     /* background-color: black; */
 }
 .Buttons{
@@ -177,7 +205,7 @@
         height:40px;
         color:white;
         width:150px;
-        border:none;
+        border:1px solid silver;
         background: linear-gradient(#14a000,#1a8d08);
         font-weight: 500;
         border-radius: 3px;
@@ -185,7 +213,7 @@
     .Buttons>button:nth-child(2){
         height:40px;
         width:100px;
-        border:none;
+        border:1px solid silver;
         background: linear-gradient(#f0f0f0,#d3d3d3);
         font-weight: 500;
         border-radius: 3px;
