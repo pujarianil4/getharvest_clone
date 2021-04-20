@@ -39,19 +39,15 @@ export const FinalInvoice = () => {
     }
 
 
-
-    
-    
-
        const ref = React.createRef();
     const options = {
        
         unit: 'in',
         
     };
-    return isLoading?(<Ring/>):invoiceData && (
 
-        
+   return isLoading?(<Ring/>):invoiceData && ( 
+
         <div className={styles.cont}>
             {
                 console.log(invoiceData)
