@@ -220,7 +220,7 @@ function TabPanel ({children, value, index}) {
                                                 <TableCell>Business Development</TableCell>
                                                 <TableCell>{taskObj.businessDevelopment || 0 }</TableCell>
                                                 <TableCell>{taskObj.businessDevelopment || 0 }</TableCell>
-                                                <TableCell>{taskObj.businessDevelopment * rates}$</TableCell>
+                                                <TableCell>{taskObj.businessDevelopment * rates===NaN?taskObj.businessDevelopment * rates:0}$</TableCell>
                                             </TableRow>
                                             <TableRow>
                                                 <TableCell>Programming</TableCell>
@@ -232,7 +232,7 @@ function TabPanel ({children, value, index}) {
                                                 <TableCell>Marketing</TableCell>
                                                 <TableCell>{taskObj.marketing || 0 }</TableCell>
                                                 <TableCell>{taskObj.marketing || 0 }</TableCell>
-                                                <TableCell>{taskObj.marketing * rates}$</TableCell>
+                                                <TableCell>{taskObj.marketing * rates===NaN?taskObj.businessDevelopment * rates:0}$</TableCell>
                                             </TableRow>
                                             <TableRow>
                                                 <TableCell>Design</TableCell>
@@ -246,7 +246,7 @@ function TabPanel ({children, value, index}) {
                                                         {taskObj.projectManagement || 0 }
                                                 </TableCell>
                                                 <TableCell>{taskObj.projectManagement || 0 }</TableCell>
-                                                <TableCell>{taskObj.projectManagement * rates}$</TableCell>
+                                                <TableCell>{taskObj.projectManagement * rates===NaN?taskObj.businessDevelopment * rates:0}$</TableCell>
                                             </TableRow>
 
                                     </TableBody>
