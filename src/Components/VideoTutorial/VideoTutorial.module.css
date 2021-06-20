@@ -1,0 +1,34 @@
+.video{
+    width:50%;
+    height:400px;
+    background-color: white;
+    position: fixed;
+
+    top: 20%;
+    left: 25%;
+    right:25%;
+    opacity: 1 !important;
+    z-index:1000;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    
+}
+
+
+.videowrapper{
+    position:fixed;
+    top: 0;
+    right:0;
+    
+    width:100%;
+    height:100%;
+    background-color:rgba(128, 128, 128, 0.363);
+    z-index: 1000;
+   
+}
+
+.players{
+    height:100%  !important;
+}
