@@ -1,4 +1,4 @@
-.tobeHover:hover{
-        pointer:cursor;
-        background-color: rgba(255, 235, 205, 0.233);
+.links{
+        display: flex;
+        color:black;
 }
