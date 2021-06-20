@@ -1,11 +1,11 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { Link, Redirect, useHistory,NavLink } from 'react-router-dom';
+import { Link,useHistory,NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import { logoutSuccess } from '../../../Redux/Auth/authAction';
+import { logoutSuccess } from '../../Redux/Auth/authAction';
 import style from './Style.module.css'
 import HomeIcon from '@material-ui/icons/Home';
-import { loadData } from '../../Auth/localStorage';
+import { loadData } from '../../Pages/Auth/localStorage';
 // import {
 //     AppBar, Toolbar
 // } from "@material-ui/core"

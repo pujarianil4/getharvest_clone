@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { submitSignInData } from '../../../Redux/Auth/authAction';
+
 import style from "../SIgnUp/Signupstyle.module.css"
 import styled from "styled-components"
 import { Redirect } from 'react-router';
+import { submitSignInData } from '../../../Redux/Auth/authAction';
 
 
 export default function Signin() {
@@ -41,7 +42,7 @@ export default function Signin() {
 
 `
 
-if (isAuth == true) {
+if (isAuth===true) {
    return <Redirect to ="/welcome"/>
 }
 

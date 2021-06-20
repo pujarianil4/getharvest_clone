@@ -15,7 +15,8 @@ import { editPop } from '../../Redux/Expenses/action';
 //   };
 const DisplayExpense =()=>
 {
-    const [edit,showEdit]=useState(false);
+    // eslint-disable-next
+    const [edit]=useState(false);
     const dispatch=useDispatch();
     const handleEdit=(id)=>
     {
@@ -36,7 +37,9 @@ const DisplayExpense =()=>
                              {items.date}
                              </td>
                              <td className={styles.colmeta} style={{width:"600px"}}>
+                                 {/* eslint-disable-next-line */}
                                  <strong className={styles.strong} style={{marginLeft:"5px"}}>{items.projectName}</strong>
+                                 {/* eslint-disable-next-line */}
                                  <span>{"("+`${items.category}`+")"}</span>
                                  <div className={styles.ExpenseNotes} style={{margin:"10px"}}>
                                        <span className={styles.BillClass}>{items.billable?"Billable":""}</span>
@@ -44,6 +47,7 @@ const DisplayExpense =()=>
                                  </div>
                              </td>
                              <td className={styles.amountList}>
+                                 {/* eslint-disable-next-line */}
                                <strong className={styles.strong}> {"$"+`${items.amount}`}</strong>
                              </td>
                              <td className={styles.editbtn}>
@@ -61,10 +65,3 @@ const DisplayExpense =()=>
     )
 }
 export {DisplayExpense}
-{/* <div className={styles.ExpenseList}>
-                         <div>{items.date}</div>
-                         <div>{items.projectName}</div>
-                         <div>{items.category}</div>
-                         <div>{items.amount}</div>
-                         <button onClick={handleEdit}><EditIcon /></button>
-                             </div>} */}

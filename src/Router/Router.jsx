@@ -1,30 +1,32 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-import Signin from '../Auth/SignIn/Signin'
-import Signup from '../Auth/SIgnUp/Signup'
-import {Home} from '../../Pages/Home/Home'
+import Signin from '../Pages/Auth/SignIn/Signin'
+import Signup from '../Pages/Auth/SIgnUp/Signup'
+import {Home} from '../Pages/Home/Home'
 
-import CreateProject from '../../Pages/Project/CreateProject'
+import CreateProject from '../Pages/Project/CreateProject'
 
-import { CreateInvoice } from '../../Pages/Invoices_/CreateInvoice'
+import { CreateInvoice } from '../Pages/Invoices_/CreateInvoice'
 
-import HomeHeader from './Header/HomeHeader'
-import Header_login from "./Header/Header_login"
+import HomeHeader from '../Components/Header/HomeHeader'
+import Header_login from "../Components/Header/Header_login"
 
-import Time from '../../Pages/Reports/Time'
+import {HomeAfterLogin} from "../Pages/HomeAfterLogin_/HomeAfterLogin";
 
-import { Timesheet } from '../../Pages/Time/Timesheet_/TimeSheet'
-import {HomeAfterLogin} from "../../Pages/HomeAfterLogin_/HomeAfterLogin"
+import { Timesheet } from '../Pages/Time/Timesheet_/TimeSheet'
 
-import { DayTabs } from '../../Pages/Time/Timesheet_/TimeDayTab'
+import Time from '../Pages/Reports/Time'
+
+//import { DayTabs } from '../Pages/Time/Timesheet_/TimeDayTab'
 import { useSelector } from 'react-redux'
 
-import { Expenses } from '../../Pages/expenses/Expenses'
+import { Expenses } from '../Pages/expenses/Expenses'
 
 import PrivateRoute from './PrivateRoute'
 
-import { FinalInvoice } from '../../Pages/Invoices_/FinalInvoice'
-import { Footer } from '../../Pages/Footer/Footer'
+import { FinalInvoice } from '../Pages/Invoices_/FinalInvoice'
+
+
 
 
 
@@ -37,6 +39,7 @@ export default function Router() {
     return (
         <div>
            {
+               //eslint-disable-next-line
                isAuth ? <Header_login /> : <HomeHeader/>
            }
             
@@ -60,7 +63,7 @@ export default function Router() {
                     <Signup />
                 </Route>
                 <PrivateRoute path = "/welcome">
-                    <HomeAfterLogin />
+                <HomeAfterLogin />
                 </PrivateRoute>
                 <PrivateRoute path="/projects">
                     <CreateProject />

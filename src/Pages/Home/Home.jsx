@@ -6,10 +6,10 @@ import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import ImportContactsIcon from '@material-ui/icons/ImportContacts';
 import ComputerIcon from '@material-ui/icons/Computer';
 import RecordVoiceOverIcon from '@material-ui/icons/RecordVoiceOver';
-import { Footer } from "../Footer/Footer";
+import { Footer } from "../../Components/Footer/Footer";
 
-import { useDispatch } from "react-redux";
-import { logoutSuccess } from "../../Redux/Auth/authAction";
+//import { useDispatch } from "react-redux";
+// import { logoutSuccess } from "../../../Redux/Auth/authAction";
 
 import { useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router";
@@ -18,7 +18,7 @@ export function Home(){
 
 
 
-  const dispatch = useDispatch();
+ // const dispatch = useDispatch();
   // useEffect(() => {
   //   const action = logoutSuccess();
   //   dispatch(action)
@@ -47,6 +47,7 @@ export function Home(){
                <h2>Harvest is modern time tracking software – for less effort, more joy, and improved profitability.</h2>
           </div>
           <div className={style.title}>
+            {/* eslint-disable-next-line */}
              <Start_trial_button onClick={signup} color="#3E3A63">Start Your Free Trial</Start_trial_button>
              <h3>Fully functional 30-day trial. No credit card required.</h3>
           </div>
@@ -199,6 +200,7 @@ export function Home(){
              <div className={style.t_title}>
                <h1>Start tracking time for free</h1>
                <h2>See if Harvest is right for you with a fully functional 30-day trial. No credit card required.</h2>
+               {/* eslint-disable-next-line */}
                <Start_trial_button onClick={signup} color="#24A90C">Start Your Free Trial</Start_trial_button>
              </div>
              <div className={style.t_img}>

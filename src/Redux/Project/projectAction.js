@@ -1,7 +1,7 @@
-import React from 'react'
+//import React from 'react'
 import { PROJECT_FAILURE, PROJECT_SUCCESS, PROJECT_REQUEST } from './projectActionType'
 import Axios from "axios"
-import app from "../../Components/Auth/firebase"
+//import app from "../../Components/Auth/firebase"
 
 
 const projectSuccess = (paylod) => {

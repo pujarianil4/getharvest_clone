@@ -1,5 +1,6 @@
 //import logo from './logo.svg';
 import './App.css';
+import Router from './Router/Router';
 
 
 
@@ -9,7 +10,7 @@ import './App.css';
 
 
 
-import Router from './Components/Router/Router';
+
 
 
 

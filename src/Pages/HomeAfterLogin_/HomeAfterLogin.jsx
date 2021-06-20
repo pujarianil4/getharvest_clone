@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
+// import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import DescriptionIcon from '@material-ui/icons/Description';
 import TimerIcon from '@material-ui/icons/Timer';
@@ -140,22 +140,23 @@ p{
 }
 
 `
-const Inputs=styled.div`
-display:flex;
-    height:40px;
-    width:100%;
-    align-items:center;
-    gap:5px;
+//eslint-disable-next-line
+// const Inputs=styled.div`
+// display:flex;
+//     height:40px;
+//     width:100%;
+//     align-items:center;
+//     gap:5px;
    
 
-`
+// `
 
 
 export const HomeAfterLogin = () => {
     // const UserName= localStorage.getItem("Username")
     let userid= localStorage.getItem("user")
     userid=JSON.parse(userid)
-    if(userid=="BiA7vDMHjAMYfSYj38hyF3N2J5m2"){
+    if(userid==="BiA7vDMHjAMYfSYj38hyF3N2J5m2"){
     localStorage.setItem("user_name",JSON.stringify("Anil Pujari"))
     }
     const username= JSON.parse(localStorage.getItem("user_name"))

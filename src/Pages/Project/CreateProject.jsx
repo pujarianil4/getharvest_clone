@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom"
-import { projectData } from "../../../Redux/Project/projectAction";
+import { projectData } from "../../Redux/Project/projectAction";
 import styles from './CreateProject.module.css'
 
 export default function CreateProject() {

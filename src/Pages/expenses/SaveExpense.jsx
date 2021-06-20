@@ -1,10 +1,10 @@
-import { SatelliteSharp } from "@material-ui/icons";
+//import { SatelliteSharp } from "@material-ui/icons";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuid } from "uuid";
 import { addExpense, savedExpense } from "../../Redux/Expenses/action";
-import { DisplayExpense } from "./DisplayExpense";
+// import { DisplayExpense } from "./DisplayExpense";
 import styles from "./Expense.module.css";
 
 const initvalue = {
@@ -16,6 +16,7 @@ const initvalue = {
   amount: "",
 };
 const SaveExpense = ({ handleButton }) => {
+  //eslint-disable-next-line
   const projectNames = ["Cloning", "Harvest", "Masai"];
   const categories = [
     "Entertainment",
@@ -26,22 +27,24 @@ const SaveExpense = ({ handleButton }) => {
     "Transportation",
   ];
   const [formState, setFormState] = useState(initvalue);
+  //eslint-disable-next-line
   const { date, projectName, category, notes, billable, amount } = formState;
 
   const expenseList = useSelector((state) => state.expense.expenseList);
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.expense.isLoading);
+  //eslint-disable-next-line
   const isError = useSelector((state) => state.expense.isError);
   //const userID = useSelector(state => state.auth.uid)
   const userID = useSelector((state) => state.auth.uid);
   const [clientObj,setClientObj]=useState([]);
   const ProjectDet = () => {
-    let obj=[]
-    let status=true
-    let newar=[];
+    // let obj=[]
+    // let status=true
+    // let newar=[];
     axios.get(`https://c2ec8.sse.codesandbox.io/harvest?userId=${userID}`)
-      .then((res) => { status=false; 
-        obj=res.data;
+      .then((res) => { 
+        
         // newar = obj?.filter((items)=>items.userID===userID);
         console.log(res.data);
         setClientObj(res.data);
@@ -55,16 +58,18 @@ const SaveExpense = ({ handleButton }) => {
    
   };
   // ProjectDet();
+  //eslint-disable-next-line
   useEffect(()=>{
     ProjectDet();
+    //eslint-disable-next-line
   },[])
 
-  console.log(userID);
+
   // if (isError) {
   //   alert("Error in Uploading");
   // }
-  const date1 = new Date().toLocaleDateString();
-  const [dat, setDat] = useState(date1);
+  
+  //const date1 = new Date().toLocaleDateString();
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
