@@ -431,7 +431,7 @@ export const CreateInvoice = () => {
             <TaskItemBody className={styles.TaskItemBody}>
               <div>
                 <div onClick={(e) => handleDelete(item)}>
-                  <CloseIcon style={{ fontSize: "18px" }} />
+                  <CloseIcon className={styles.close_icon} />
                 </div>
               </div>
               <div>
@@ -445,7 +445,7 @@ export const CreateInvoice = () => {
                   name=""
                   id=""
                   rows="3"
-                  style={{ width: "95%" }}
+                  className={styles.text_area}
                 ></textarea>
                 <div>
                   <label htmlFor="">Linked project</label>
@@ -465,11 +465,7 @@ export const CreateInvoice = () => {
                       ))}
                   </select>
                   <HelpOutlineIcon
-                    style={{
-                      color: "#b3adad",
-                      fontSize: "20px",
-                      borderRadius: "5px",
-                    }}
+                    className={styles.help_outline}
                   />
                 </div>
               </div>
@@ -505,7 +501,7 @@ export const CreateInvoice = () => {
             <TaskItemBody className={styles.TaskItemBody}>
               <div>
                 <div onClick={(e) => handleDelete(item)}>
-                  <CloseIcon style={{ fontSize: "18px" }} />
+                  <CloseIcon className={styles.close_icon} />
                 </div>
               </div>
               <div>
@@ -519,7 +515,7 @@ export const CreateInvoice = () => {
                   name=""
                   id=""
                   rows="3"
-                  style={{ width: "95%" }}
+                  className={styles.text_area}
                 ></textarea>
                 <div>
                   <label htmlFor="">Linked project</label>
@@ -537,11 +533,7 @@ export const CreateInvoice = () => {
                       ))}
                   </select>
                   <HelpOutlineIcon
-                    style={{
-                      color: "#b3adad",
-                      fontSize: "20px",
-                      borderRadius: "5px",
-                    }}
+                    className={styles.help_outline}
                   />
                 </div>
               </div>
@@ -563,7 +555,7 @@ export const CreateInvoice = () => {
             <TaskItemBody className={styles.TaskItemBody}>
               <div>
                 <div onClick={(e) => handleDelete(item)}>
-                  <CloseIcon style={{ fontSize: "18px" }} />
+                  <CloseIcon className={styles.close_icon} />
                 </div>
               </div>
               <div>
@@ -577,7 +569,7 @@ export const CreateInvoice = () => {
                   name=""
                   id=""
                   rows="3"
-                  style={{ width: "95%" }}
+                  className={styles.text_area}
                 ></textarea>
                 <div>
                   <label htmlFor="">Linked project</label>
@@ -595,11 +587,7 @@ export const CreateInvoice = () => {
                       ))}
                   </select>
                   <HelpOutlineIcon
-                    style={{
-                      color: "#b3adad",
-                      fontSize: "20px",
-                      borderRadius: "5px",
-                    }}
+                    className={styles.help_outline}
                   />
                 </div>
               </div>
@@ -648,7 +636,7 @@ export const CreateInvoice = () => {
 
         <Notes>
           <label htmlFor="">Notes (optional, displayed on invoice)</label>
-          <textarea name="" id="" rows="4" style={{ width: "100%" }}></textarea>
+          <textarea name="" id="" rows="4" className={styles.fullwidth}></textarea>
           <label htmlFor="">Formatting tips: *bold* _italics_</label>
         </Notes>
 

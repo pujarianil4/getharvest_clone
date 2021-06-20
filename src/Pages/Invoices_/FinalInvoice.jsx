@@ -58,7 +58,7 @@ export const FinalInvoice = () => {
                 <div className={styles.headBox}>
                       <ReactToPdf targetRef={ref} options={options} x={.8} y={.8} scale={0.8} filename="invoice.pdf">
         {({toPdf}) => (
-            <button onClick={toPdf} style={{border:'none',marginTop:'5px',marginLeft:'5px',background:'none'}}><CloudDownloadIcon /></button>
+            <button onClick={toPdf} className={styles.download_icon}><CloudDownloadIcon /></button>
         )}
     </ReactToPdf>
                 </div>

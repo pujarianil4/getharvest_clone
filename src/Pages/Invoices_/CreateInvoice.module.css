@@ -124,9 +124,10 @@
 
 .totolsection{
     margin-top: 10px;
-    width: 100%;
+    width: 98%;
     display: flex;
     justify-content: space-between;
+    
 }
 
 .totolsection>div:nth-child(1){
@@ -203,4 +204,24 @@
     position: relative;
 
 
+}
+
+
+.close_icon{
+    font-size: 18px;
+}
+
+.text_area{
+   width: 95%
+}
+
+.help_outline{
+   
+        color: #b3adad;
+        font-size: 20px;
+        border-radius: "5px"
+     
+}
+.fullwidth{
+    width: 100%;
 }

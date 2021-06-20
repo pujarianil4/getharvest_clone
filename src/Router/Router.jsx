@@ -26,7 +26,7 @@ import PrivateRoute from './PrivateRoute'
 
 import { FinalInvoice } from '../Pages/Invoices_/FinalInvoice'
 
-
+import {ProjectDisR} from '../Pages/ProjectDisplayR/ProjectDisR'
 
 
 
@@ -82,6 +82,10 @@ export default function Router() {
 
                 <Route path="/finalinvoice">
                     <FinalInvoice/>
+                </Route>
+
+                <Route path="/projectdisr">
+                    <ProjectDisR/>
                 </Route>
 
                
