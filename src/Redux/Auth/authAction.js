@@ -1,11 +1,12 @@
+import { auth } from "../../Pages/Auth/firebase"
 import { LOGIN_FAILURE, LOGIN_SUCCESS, SIGNUP_SUCCESS, SIGNUP_FAILURE, LOGOUT_SUCCESS } from "./authActionType"
-import Axios from "axios"
-import { auth } from "../../Components/Auth/firebase"
+//import Axios from "axios"
+
 
 
 
 const loginSuccess = (payload) => {
-    
+  
     
     return {
         type: LOGIN_SUCCESS,
