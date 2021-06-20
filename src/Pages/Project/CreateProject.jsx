@@ -68,9 +68,6 @@ export default function CreateProject() {
                             <div><label htmlFor="">Notes</label></div>
                         </div>
 
-
-
-
                         <div className={styles.inputs}>
                             <div><input onChange={handleInp} name="client" value={inp.client} type="text" placeholder="client" /></div>
                             <div><input onChange={handleInp} name="pname" value={inp.pname} type="text" placeholder="project name" /></div>
@@ -81,13 +78,9 @@ export default function CreateProject() {
                                 <input onChange={handleInp} name="endson" value={inp.endson} type="date" placeholder="ends on" />
                             </div>
                             <div>
-
                                 <textarea placeholder="Optional, but great for notes like invoice schedules. You can see notes when creating an invoice for Fixed Fee projects." rows="3" onChange={handleInp} name="notes" value={inp.notes}  ></textarea>
                             </div>
                         </div>
-
-
-
 
                     </div>
 
@@ -115,37 +108,27 @@ export default function CreateProject() {
                                             <div> <label>Budgets</label></div>
                                             <div><input onChange={handleInp} name="budget" value={inp.budget} placeholder="Budget" /> </div>
                                         </div>
-                                    </div> :
-                                        fixedFee ? <div className={styles.ProjectTypeCategoryChild}>
-                                            <div>
-                                                <div> <label>Project Fee</label></div>
-                                                <div> <input onChange={handleInp} name="projectfee" value={inp.projectfee} placeholder="Project Fee" /></div>
+                                    </div> : fixedFee ? <div className={styles.ProjectTypeCategoryChild}>
+                                        <div>
+                                            <div> <label>Project Fee</label></div>
+                                            <div> <input onChange={handleInp} name="projectfee" value={inp.projectfee} placeholder="Project Fee" /></div>
 
-                                            </div>
+                                        </div>
 
-                                            <div>
-                                                <div><label>Fixed FeeBudget</label></div>
-                                                <div>  <input onChange={handleInp} name="fixedfeebudget" value={inp.fixedfeebudget} placeholder="Fixed FeeBudget" /></div>
-                                            </div>
-                                        </div> :
-                                            <div className={styles.ProjectTypeCategoryChild}>
-                                                <div>
-
-                                                    <div><label>Non-Billable Budget</label></div>
-                                                    <div> <input onChange={handleInp} name="nonbillablebudget" value={inp.nonbillablebudget} placeholder="Non-Billable Budget" /> </div>
-                                                </div>
-
-                                            </div>
+                                        <div>
+                                            <div><label>Fixed FeeBudget</label></div>
+                                            <div>  <input onChange={handleInp} name="fixedfeebudget" value={inp.fixedfeebudget} placeholder="Fixed FeeBudget" /></div>
+                                        </div>
+                                    </div> : <div className={styles.ProjectTypeCategoryChild}>
+                                        <div>
+                                            <div><label>Non-Billable Budget</label></div>
+                                            <div> <input onChange={handleInp} name="nonbillablebudget" value={inp.nonbillablebudget} placeholder="Non-Billable Budget" /> </div>
+                                        </div>
+                                    </div>
                                 }
-
                             </div>
-
                         </div>
-
                     </div>
-
-
-
 
                     <div className={styles.ProjectTaskHeading}>
                         <div><h4>Tasks</h4></div>
