@@ -12,18 +12,18 @@ const Hr = styled.hr`
     margin: 30px 0px;
 
 `
-const Section = styled.section`
-    display: flex;
-`
-const Button = styled.button`
-    background-color: #EDEDED;
-`
+// const Section = styled.section`
+//     display: flex;
+// `
+// const Button = styled.button`
+//     background-color: #EDEDED;
+// `
 
 
 export default function Time() {
 
 const uninvoiced_amount = 0.00;
-const billableHours = 8;
+//const billableHours = 8;
 const isLoadingProject = useSelector(state => state.reports.isLoadingProject)
 const isLoadingTask = useSelector(state => state.reports.isLoadingTask)
 
@@ -34,21 +34,22 @@ const projectTaskData = useSelector(state => state.reports.projectTaskData);
 let taskObj = {}
 !isLoadingTask && !isLoadingProject && projectTaskData.map((item) => {
     if (!taskObj[item.taskName]) {
-        taskObj[item.taskName] = Number(item.timer);
+      return  taskObj[item.taskName] = Number(item.timer);
     }
     else {
-        taskObj[item.taskName] = taskObj[item.taskName] + Number(item.timer)
+       return taskObj[item.taskName] = taskObj[item.taskName] + Number(item.timer)
     }
 })
 
 //console.log(projectReportData[0].projectType[0].hourlyRates);
+//eslint-disable-next-line
 let rates = !isLoadingProject && !isLoadingTask && Number(projectReportData[0].projectType[0].hourlyRates) || 0
 
 
 const dispatch = useDispatch()
 
 let arry = Object.values(taskObj);
-
+//eslint-disable-next-line
 let totalHours = !isLoadingProject && !isLoadingTask && arry.reduce((e,a) => e + a) || 0;
 
 
@@ -62,14 +63,14 @@ useEffect(()=>{
 
     const action = getProjectData(userId);
     dispatch(action);
-
+//eslint-disable-next-line
 },[])
 
 useEffect(()=>{
 
     const action = getTaskData(userId);
     dispatch(action);
-
+//eslint-disable-next-line
 },[])
 
 function TabPanel ({children, value, index}) {

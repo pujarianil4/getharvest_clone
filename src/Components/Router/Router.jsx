@@ -10,13 +10,13 @@ import { CreateInvoice } from '../Pages/Invoices_/CreateInvoice'
 
 import HomeHeader from './Header/HomeHeader'
 import Header_login from "./Header/Header_login"
-import { Footer } from '../Pages/Footer/Footer'
+//import { Footer } from '../Pages/Footer/Footer'
 import Time from '../Pages/Reports/Time'
 
 import { Timesheet } from '../Pages/Time/Timesheet_/TimeSheet'
 import {HomeAfterLogin} from "../Pages/HomeAfterLogin_/HomeAfterLogin"
 
-import { DayTabs } from '../Pages/Time/Timesheet_/TimeDayTab'
+//import { DayTabs } from '../Pages/Time/Timesheet_/TimeDayTab'
 import { useSelector } from 'react-redux'
 
 import { Expenses } from '../Pages/expenses/Expenses'
@@ -36,6 +36,7 @@ export default function Router() {
     return (
         <div>
            {
+               //eslint-disable-next-line
                isAuth ? <Header_login /> : <HomeHeader/>
            }
             

@@ -41,7 +41,7 @@ export default function Signin() {
 
 `
 
-if (isAuth == true) {
+if (isAuth===true) {
    return <Redirect to ="/welcome"/>
 }
 

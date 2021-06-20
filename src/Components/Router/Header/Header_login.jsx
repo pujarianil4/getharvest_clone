@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { Link, Redirect, useHistory,NavLink } from 'react-router-dom';
+import { Link,useHistory,NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { logoutSuccess } from '../../../Redux/Auth/authAction';
 import style from './Style.module.css'

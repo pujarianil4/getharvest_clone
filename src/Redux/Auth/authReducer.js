@@ -1,5 +1,5 @@
 import { LOGIN_FAILURE, LOGIN_SUCCESS, LOGOUT_SUCCESS, SIGNUP_FAILURE, SIGNUP_SUCCESS } from "./authActionType"
-import { auth } from "../../Components/Auth/firebase"
+//import { auth } from "../../Components/Auth/firebase"
 import { saveData, loadData } from "../../Components/Auth/localStorage"
 
 const isAuth = loadData("token") || false;

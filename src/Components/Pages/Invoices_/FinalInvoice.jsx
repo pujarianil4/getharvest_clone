@@ -1,9 +1,9 @@
-import { StylesProvider } from '@material-ui/styles';
+// import { StylesProvider } from '@material-ui/styles';
 import React from 'react';
 import styles from './FinalInvoice.module.css';
-import {useSelector,useDispatch} from 'react-redux';
+import {useSelector} from 'react-redux';
 import axios from 'axios';
-import { useParams } from 'react-router';
+// import { useParams } from 'react-router';
 import {Ring} from 'react-awesome-spinners';
 import ReactToPdf from "react-to-pdf";
 import CloudDownloadIcon from '@material-ui/icons/CloudDownload';
@@ -14,15 +14,17 @@ params =params.get('pname')
 export const FinalInvoice = () => {
     const [invoiceData,setInvoiceData]=React.useState()
     const [isLoading,setIsLoading]=React.useState(true)
+    // eslint-disable-next-line
     const [isError,setisError]=React.useState(false)
     // console.log(params.toString())
     // console.log(invoiceData)
     const userID = useSelector(state => state.auth.uid)
+     // eslint-disable-next-line
     React.useEffect(()=>{
         getInvoiceData(userID,params)
         setInvoiceData(JSON.parse(localStorage.getItem('ClientInvoice')))
 
-        
+      //eslint-disable-next-line  
     },[])
 
 

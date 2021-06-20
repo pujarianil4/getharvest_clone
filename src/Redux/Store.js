@@ -6,7 +6,7 @@ import firebase from "firebase/app";
 import { reportReducer } from "./Reports/reportsReducer";
 import { timeReducer } from "./Timer/timeReducer";
 import { reducerExpense } from "./Expenses/reducerExpense";
-import { projectReducer } from "./Project/projectReducer";
+//import { projectReducer } from "./Project/projectReducer";
 
 
 

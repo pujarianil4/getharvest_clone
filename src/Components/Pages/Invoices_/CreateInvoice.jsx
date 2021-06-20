@@ -7,8 +7,8 @@ import {useSelector,useDispatch} from 'react-redux'
 import { getProjectData, getTaskTimer } from '../../../Redux/Timer/timeAction';
 import axios from 'axios';
 // import {useDispatch,useSelector} from 'react-redux';
-import {Ring} from 'react-awesome-spinners';
-import { grey } from '@material-ui/core/colors';
+// import {Ring} from 'react-awesome-spinners';
+// import { grey } from '@material-ui/core/colors';
 import { useHistory } from 'react-router';
 // import ReactToPdf from "react-to-pdf"
 
@@ -102,9 +102,11 @@ export const CreateInvoice = () => {
     const TaskEntries = useSelector(state=>state.time.TaskEntries)
     // console.log(state)
     // // console.log(TaskEntries)
+    //eslint-disable-next-line
     state.map((item)=>{
         // console.log(item)
     })
+    //eslint-disable-next-line
     TaskEntries.map((item)=>{
         // console.log(item)
     })
@@ -133,7 +135,7 @@ export const CreateInvoice = () => {
 
     //-------------------------------------------------------------------------------------------------------//
     const [formState,setFormstate]=React.useState(initInvoice)
-    const {invId,issueDate,poNum,discount,invFor,dueDate,subject,subtotal,amountDue,clientname,pname}=formState
+    const {invId,issueDate,poNum,discount,dueDate,subject,clientname,pname}=formState
    
     const fixed = (state?.filter((item)=>item.client===clientname).map((item)=>
     item.projectType[0].hourlyRates))
@@ -152,11 +154,12 @@ export const CreateInvoice = () => {
 
 
     const dispatch = useDispatch()
+    //eslint-disable-next-line
     React.useEffect(()=>{
         
         dispatch(getProjectData(userID))
         dispatch(getTaskTimer(userID))       
-     
+     //eslint-disable-next-line
     },[])
 
 //___________________________________________Sending Invoice form to server_________________________________________//
@@ -177,6 +180,7 @@ const saveinvoiceInfo=(payload)=>{
 //     getExpenseData(userID,projName)
 // },[])
 const [expenseEntries,setExpenseEntries]=React.useState([])
+//eslint-disable-next-line
 const [isLoading,setIsLoading]=React.useState(false)
 const [hoursData,setHoursData]=React.useState([])
 
@@ -206,7 +210,7 @@ const getHoursData=(payload,projName)=>{
         
     })
 }
-
+//eslint-disable-next-line
 React.useEffect(()=>{
     const projName = state?.filter((item)=>item.client===clientname).map((item)=>item.pname)
     setFormstate({...formState,pname:projName[0],userId:userID})
@@ -218,7 +222,7 @@ React.useEffect(()=>{
         
       };
   
-    
+    //eslint-disable-next-line
   },[clientname])
 
 
@@ -244,7 +248,7 @@ React.useEffect(()=>{
       let data1=  hoursData.map(item=>Number(item.timer)*Number(state?.filter((item)=>item.client===clientname).map((item)=>
         item.projectType[0].hourlyRates)))
         setHours(data1)
-    
+    //eslint-disable-next-line
     },[hoursData])
 
     useEffect(()=>{
@@ -255,10 +259,12 @@ React.useEffect(()=>{
 
     useEffect(()=>{
         setSubtotal([...TaskItemCount,...hours,...amount])
+        //eslint-disable-next-line
     },[hours])
 
     useEffect(()=>{
         setSubtotal([...TaskItemCount,...amount,...hours])
+        //eslint-disable-next-line
     },[amount])
 
 
@@ -267,6 +273,7 @@ React.useEffect(()=>{
         let total= subtotals.reduce((acu,item)=>Number(acu)+Number(item))
         setTotalAmount(total)
       }
+      //eslint-disable-next-line
     },[subtotals])
 
 
@@ -277,6 +284,7 @@ React.useEffect(()=>{
    
 
  setFormstate({...formState,hourlyRates:fixed[0],subtotal:totalAmount,incoice_deatls:[...subtotals]})
+ //eslint-disable-next-line
     },[totalAmount])
 
     const handleAdd=(e)=>{

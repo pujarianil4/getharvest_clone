@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+//import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+//import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import styles from './TimeSheet.module.css';
-import AddIcon from '@material-ui/icons/Add';
+//import AddIcon from '@material-ui/icons/Add';
 import {useDispatch,useSelector} from 'react-redux';
 import { createTaskTimer, getTaskTimer,getProjectData } from '../../../../Redux/Timer/timeAction';
 // import { createTaskTimer, getTaskTimer } from '../../../../Redux/Timer/timeAction';
 import { DayTabs} from './TimeDayTab';
 import {TimeNavBar} from '../TimeNavBar_/TimeNavBar';
-import axios from 'axios';
+//import axios from 'axios';
 
 
 
@@ -149,13 +149,15 @@ export const Timesheet = () => {
 
 
     const [billable,setBillable]=React.useState([])
+    //eslint-disable-next-line
     const [nonbillable,setnonBillable]=React.useState([])
+    //eslint-disable-next-line
     const [clientName,setClientName]=React.useState(0)
 
 
     useEffect(()=>{
        project_fun()
-  
+  //eslint-disable-next-line
     },[formData])
     const [project,setProject]=useState(0)
     const project_fun=()=>{
@@ -165,16 +167,15 @@ export const Timesheet = () => {
         setProject(project)
     }
     useEffect(()=>{
-        if(project!=0){
+        if(project!==0){
             let bill =Object.keys(project[0].tasks)
             console.log(bill);
            setBillable(bill)
-          
-
+        
           }
     },[project])
 
-     
+     //eslint-disable-next-line
     const task_arr=["businessDevelopment","design","marketing","programming","projectManagement"]
     React.useEffect(()=>{
 
@@ -194,12 +195,13 @@ export const Timesheet = () => {
 
         } 
         
-     
+     //eslint-disable-next-line
     },[openCreateTAsk])
 
 
     React.useEffect(()=>{
         dispatch(getTaskTimer(userID))
+        //eslint-disable-next-line
     },[])
 
   

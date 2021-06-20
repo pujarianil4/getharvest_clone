@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Redirect, useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import style from './Style.module.css'
 import {
@@ -38,14 +38,14 @@ const Icon = styled.section`
     flex-direction: row;
     margin-right: 80px;
 `
-const Button = styled.button`
-    background: #f07544;
-  border-radius: 4px;
-  border: 1px solid white;
-  color: white;
-  margin: 0em 1em;
-  //padding: ;
-`
+// const Button = styled.button`
+//     background: #f07544;
+//   border-radius: 4px;
+//   border: 1px solid white;
+//   color: white;
+//   margin: 0em 1em;
+//   //padding: ;
+// `
 
 export default function HomeHeader() {
   const history= useHistory()

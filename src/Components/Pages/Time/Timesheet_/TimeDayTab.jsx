@@ -3,10 +3,10 @@ import { Link } from "react-router-dom"
 import { Tab } from "./Tab/Tab"
 import style from "./TimeDayTabs.module.css"
 import { Day} from "./Tab/Day"
-import { Timesheet } from "./TimeSheet"
+//import { Timesheet } from "./TimeSheet"
 import { ShowTime } from "./Tab/ShowTime"
 import { useSelector } from "react-redux"
-import { Edit } from "./Edit/Edit"
+//import { Edit } from "./Edit/Edit"
 import { Ring } from "react-awesome-spinners"
 export function DayTabs({setChangeDate}){
 
@@ -58,14 +58,14 @@ const changeDate=(val)=>{
 let todays_data= TaskEntries.filter((task)=> task.date===d.toDateString())
 let todays_timers
 let todays_total
- if(todays_data.length !=0 ){
+ if(todays_data.length !==0 ){
     todays_timers= todays_data.map((el)=>Number(el.timer))
  todays_total= todays_timers.reduce((ac,el)=>{return ac+el})
  }
 
  let total_timers
 let total
- if(TaskEntries.length !=0 ){
+ if(TaskEntries.length !==0 ){
     total_timers= TaskEntries.map((el)=>Number(el.timer))
  total= total_timers.reduce((ac,el)=>{return ac+el})
  }
@@ -76,6 +76,7 @@ console.log(total);
 console.log(todays_data);
 
 useEffect(()=>{
+    //eslint-disable-next-line
     n = weekday[d.getDay()];
   
     setactive(n)
@@ -92,7 +93,7 @@ const taskloading= useSelector((state)=> state.time.taskloading)
             <div className={style.showdate}>
              <button onClick={()=>changeDate(-1)} style={{width:"40px"}}><i class="fa fa-angle-left" style={{fontSize:"15px"}}></i></button>
              <button onClick={()=>changeDate(1)} style={{width:"40px"}}><i class="fa fa-angle-right" style={{fontSize:"15px"}}></i></button>
-         <h2><span>{Prev==0&&"Today: "}</span>{d.toDateString()}</h2>
+         <h2><span>{Prev===0&&"Today: "}</span>{d.toDateString()}</h2>
           {Prev!==0&&<Link onClick={()=>setPrev(0)}>Return to Today</Link>}
          </div>
         <div className={style.maindiv}>
@@ -104,7 +105,7 @@ const taskloading= useSelector((state)=> state.time.taskloading)
                        key={title}
                        handlechange={handlechange}
                        title={title[0]}
-                       time={n==title[0]?todays_total:title[1]}
+                       time={n===title[0]?todays_total:title[1]}
                        active={active===title[0]}
                        
                       />
@@ -120,7 +121,7 @@ const taskloading= useSelector((state)=> state.time.taskloading)
         <h1>Total:     <span>{todays_total}:00</span></h1>
         </div>}
      
-          {!taskloading&& todays_data.length==0&& <div className={style.container} >
+          {!taskloading&& todays_data.length===0&& <div className={style.container} >
            <div className={style.arrow}>
                 <img src="/start arrow.png" alt="img"/>
            </div>

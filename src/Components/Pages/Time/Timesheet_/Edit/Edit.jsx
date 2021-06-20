@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react"
+import React, {  useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { deletetask, edittask } from "../../../../../Redux/Timer/timeAction"
 import { TimeRing } from "../Tab/Ring"
 import style from "./Edit.module.css"
 import CloseIcon from '@material-ui/icons/Close';
-export function Edit( {id,date,timer,setOpenedit}) {
-
+export function Edit( {id,date,setOpenedit}) {
+    //removed timer argument 
     const userID = useSelector(state => state.auth.uid)
 
     const dispatch=useDispatch()
@@ -14,6 +14,7 @@ export function Edit( {id,date,timer,setOpenedit}) {
         timer:input
     }
    const taskloading= useSelector((state)=> state.time.taskloading)
+   //eslint-disable-next-line
    const TaskEntries = useSelector((state)=>state.time.TaskEntries)
     const handleUpdate=()=>{
        
@@ -28,7 +29,7 @@ export function Edit( {id,date,timer,setOpenedit}) {
           dispatch(deletetask(id,userID))
     }
 
-  
+  //eslint-disable-next-line
  const d= new Date()
     return (
         <div className={style.maindiv}>
