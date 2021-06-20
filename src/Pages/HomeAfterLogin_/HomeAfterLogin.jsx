@@ -8,7 +8,7 @@ import TimerIcon from '@material-ui/icons/Timer';
 import PhoneAndroidIcon from '@material-ui/icons/PhoneAndroid';
 import CloseIcon from '@material-ui/icons/Close';
 import styles from './HomeAfterLogin.module.css'
-
+import { VideoTutorial } from '../../Components/VideoTutorial/VideoTutorial';
 
 
 const Container =styled.div`
@@ -107,7 +107,26 @@ const Started =styled.div`
     h2{
         font-size:20px;
     }
+    &:hover{
+       
+        background-color: rgba(255, 235, 205, 0.233);
+        cursor:pointer;
+    }
 `
+
+const StartedA =styled.a`
+    
+    color: black;
+    width:100%;
+ 
+  
+ 
+    display:flex;
+    align-items:center;
+    gap:10px;
+  
+`
+
 const WebinarCont =styled.div`
     width:100%;
     height:130px;
@@ -153,6 +172,7 @@ p{
 
 
 export const HomeAfterLogin = () => {
+    const [isTutorialOpen,setIstutorialOpen]=React.useState(false)
     // const UserName= localStorage.getItem("Username")
     let userid= localStorage.getItem("user")
     userid=JSON.parse(userid)
@@ -174,30 +194,37 @@ export const HomeAfterLogin = () => {
                     <p style={{marginBottom:'10px'}}>Here's how to get started:</p>
                     <StartedBox>
                     <Started className={styles.tobeHover}>
-                        <Circles>
+                        <Link className={styles.links} onClick={()=>setIstutorialOpen(true)}>
+                        <Circles >
                             <PlayArrowIcon style={{paddingTop:'3px'}}/>
                         </Circles>
                         <h2>Learn the basics of time tracking</h2>
+                        </Link>
                     </Started>
 
                     <Started className={styles.tobeHover}>
+                    <Link className={styles.links} to ="/projects">
                         <Circles>
                             <DescriptionIcon style={{paddingTop:'3px'}}/>
                         </Circles>
-                        <Link style = {{color:"black"}} to ="/projects"><h2>Create a project</h2></Link>
+                        <h2>Create a project</h2></Link>
                     </Started>
                     <Started className={styles.tobeHover}>
+                    <Link to={'/time'} className={styles.links}>
                         <Circles>
                             <TimerIcon style={{paddingTop:'3px'}}/>
                         </Circles>
                         <h2>Track your first hour</h2>
+                        </Link>
                     </Started>
-                    <Started className={styles.tobeHover}>
+                   <Started>
+                   <StartedA className={styles.tobeHover} href="https://www.getharvest.com/apps" target="_blank">
                         <Circles>
                             <PhoneAndroidIcon style={{paddingTop:'3px'}}/>
                         </Circles>
                         <h2>Get the desktop and mobile apps</h2>
-                    </Started>
+                    </StartedA>
+                   </Started>
                     </StartedBox>
                     <WebinarCont>
                         <WebinarBox>
@@ -228,7 +255,9 @@ export const HomeAfterLogin = () => {
                
             </LeftRight>
             
-
+            {
+                isTutorialOpen && <VideoTutorial/>
+            }
         </Container>
     )
 }
