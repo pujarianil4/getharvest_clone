@@ -71,7 +71,7 @@ export default function Signup() {
             </Section>
 
 
-            <form style={{ margin: "5% 30%" }}>
+            <form className={style.formTag}>
                 <div className={style.formdiv}>
                     <table>
                     

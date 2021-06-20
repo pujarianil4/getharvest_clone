@@ -48,13 +48,13 @@ if (isAuth===true) {
 
 
     return (
-        <div style={{margin: "0px 32%"}}>
+        <div className={style.singinForm}>
 
             <div className={style.signin_card}>
 
             <table>
                     
-                    <tbody className={style.signin_card}>
+                    <tbody>
                         <tr>
                             <td className={style.heading}>
                                 <h2>Harvest Id</h2>
@@ -70,13 +70,13 @@ if (isAuth===true) {
                         <tr>
                             
                             <td className={style.signin}>
-                            <input name="wemail" onChange={handleInp} />
+                            <input placeholder="Work Mail" name="wemail" onChange={handleInp} />
                             </td>
                         </tr>
                         <tr>
                             
                             <td className={style.signin}>
-                            <input name="password" onChange={handleInp} />
+                            <input type = "password" placeholder="Password" name="password" onChange={handleInp} />
                             </td>
                         </tr>
                         <tr>
