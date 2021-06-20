@@ -212,3 +212,15 @@
   display: flex;  
   justify-content: space-between;
 }
+
+
+
+
+
+
+.download_icon{
+    border: none;
+    margin-top: 5px;
+    margin-left: 5px;
+    background: none;
+}

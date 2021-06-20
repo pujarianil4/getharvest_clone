@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+
+button:hover{
+  cursor: pointer;
+}
+
+input:focus{
+  outline: none;
+}

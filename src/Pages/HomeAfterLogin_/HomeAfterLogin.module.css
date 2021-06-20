@@ -2,3 +2,18 @@
         display: flex;
         color:black;
 }
+
+.paddings{
+        padding-top: 5px;
+}
+
+
+.crossIcon{
+        font-size: "14px"; 
+        font-size: 900;
+        color: grey; 
+}
+.crossIcon:hover{
+        color: black;
+        cursor: pointer;
+}
