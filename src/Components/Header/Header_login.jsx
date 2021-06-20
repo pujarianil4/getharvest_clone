@@ -27,6 +27,9 @@ const Icon = styled.section`
     align-items: center;
     flex-basis: 18%;
     margin-left: 4%;
+    &:hover {
+        cursor: pointer;
+    }
 `
 const Button = styled.button`
     background: #f07544;
