@@ -3,7 +3,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuid } from "uuid";
-import { addExpense, savedExpense } from "../../../Redux/Expenses/action";
+import { addExpense, savedExpense } from "../../Redux/Expenses/action";
 import { DisplayExpense } from "./DisplayExpense";
 import styles from "./Expense.module.css";
 

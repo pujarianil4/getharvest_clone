@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { deletetask, edittask } from "../../../../../Redux/Timer/timeAction"
+
 import { TimeRing } from "../Tab/Ring"
 import style from "./Edit.module.css"
 import CloseIcon from '@material-ui/icons/Close';
+import { edittask,deletetask } from "../../../../Redux/Timer/timeAction";
 export function Edit( {id,date,timer,setOpenedit}) {
 
     const userID = useSelector(state => state.auth.uid)

@@ -2,28 +2,29 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Signin from '../Auth/SignIn/Signin'
 import Signup from '../Auth/SIgnUp/Signup'
-import {Home} from '../Pages/Home/Home'
+import {Home} from '../../Pages/Home/Home'
 
-import CreateProject from '../Pages/Project/CreateProject'
+import CreateProject from '../../Pages/Project/CreateProject'
 
-import { CreateInvoice } from '../Pages/Invoices_/CreateInvoice'
+import { CreateInvoice } from '../../Pages/Invoices_/CreateInvoice'
 
 import HomeHeader from './Header/HomeHeader'
 import Header_login from "./Header/Header_login"
-import { Footer } from '../Pages/Footer/Footer'
-import Time from '../Pages/Reports/Time'
 
-import { Timesheet } from '../Pages/Time/Timesheet_/TimeSheet'
-import {HomeAfterLogin} from "../Pages/HomeAfterLogin_/HomeAfterLogin"
+import Time from '../../Pages/Reports/Time'
 
-import { DayTabs } from '../Pages/Time/Timesheet_/TimeDayTab'
+import { Timesheet } from '../../Pages/Time/Timesheet_/TimeSheet'
+import {HomeAfterLogin} from "../../Pages/HomeAfterLogin_/HomeAfterLogin"
+
+import { DayTabs } from '../../Pages/Time/Timesheet_/TimeDayTab'
 import { useSelector } from 'react-redux'
 
-import { Expenses } from '../Pages/expenses/Expenses'
+import { Expenses } from '../../Pages/expenses/Expenses'
 
 import PrivateRoute from './PrivateRoute'
 
-import { FinalInvoice } from '../Pages/Invoices_/FinalInvoice'
+import { FinalInvoice } from '../../Pages/Invoices_/FinalInvoice'
+import { Footer } from '../../Pages/Footer/Footer'
 
 
 
@@ -80,7 +81,7 @@ export default function Router() {
                     <FinalInvoice/>
                 </Route>
 
-
+               
             </Switch>
            
         </div>

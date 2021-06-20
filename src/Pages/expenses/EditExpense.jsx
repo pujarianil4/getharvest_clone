@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { editExpense } from '../../../Redux/Expenses/action';
+import { editExpense } from '../../Redux/Expenses/action';
 // const initvalue = {
 //     date: new Date().toLocaleDateString(),
 //     projectName: "",

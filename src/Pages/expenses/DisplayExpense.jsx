@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { EditExpense } from './EditExpense'
 import EditIcon from '@material-ui/icons/Edit';
 import styles from './Expense.module.css';
-import { editPop } from '../../../Redux/Expenses/action';
+import { editPop } from '../../Redux/Expenses/action';
 
 // const initvalue = {
 //     date: new Date().toLocaleDateString(),

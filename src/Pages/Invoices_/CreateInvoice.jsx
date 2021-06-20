@@ -4,7 +4,7 @@ import styles from './CreateInvoice.module.css'
 import CloseIcon from '@material-ui/icons/Close';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import {useSelector,useDispatch} from 'react-redux'
-import { getProjectData, getTaskTimer } from '../../../Redux/Timer/timeAction';
+import { getProjectData, getTaskTimer } from '../../Redux/Timer/timeAction';
 import axios from 'axios';
 // import {useDispatch,useSelector} from 'react-redux';
 import {Ring} from 'react-awesome-spinners';
