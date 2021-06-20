@@ -80,7 +80,7 @@ export default function HomeHeader() {
             </Menu>
 
             <Accounts>
-                <Link className={style.rightMenu}>Help</Link>
+                <a target="_blank" className={style.rightMenu} href="https://support.getharvest.com/hc/en-us">Help</a>
                 <Link className={style.rightMenu}>Settings</Link>
                 <Link className={style.rightMenu}>{userName}</Link>
                 <Button onClick={handleLogout}>Logout</Button>
