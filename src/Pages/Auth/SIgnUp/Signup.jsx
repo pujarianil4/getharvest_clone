@@ -51,86 +51,86 @@ export default function Signup() {
         }
         setInp(payload);
     }
-   const history = useHistory()
+    const history = useHistory()
     const submitSignUp = (e) => {
-        e.preventDefault ();
+        e.preventDefault();
         const action = signUp(inp);
-        dispatch(action); 
+        dispatch(action);
         history.replace("/sign-in")
-    }  
+    }
 
 
     return (
         <div>
 
             <Section>
-                
+
                 <Heading primary>Start your free 30-day trial.</Heading>
                 <Heading> Fully functional. No credit card required.</Heading>
-                
+
             </Section>
 
 
             <form className={style.formTag}>
                 <div className={style.formdiv}>
                     <table>
-                    
-                    <tbody>
-                        <tr>
-                            <td colSpan= "2">
-                                <h5> Sign up with your email below </h5>
-                            </td>
-                        </tr>
 
-                        <tr>
-                            <td>
-                            <label >First Name</label>
-                            </td>
-                            <td>
-                            <input name="fname" onChange={handleInp} />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                            <label>Last Name</label>
-                            </td>
-                            <td>
-                            <input name="lname" onChange={handleInp} />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                            <label>Company Name</label>
-                            </td>
-                            <td>
-                            <input name="cname" onChange={handleInp} />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                            <label>Work Email</label>
-                            </td>
-                            <td>
-                            <input name="wemail" onChange={handleInp} />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                            <label>Password</label>
-                            </td>
-                            <td>
-                            <input name="password" onChange={handleInp} />
-                            </td>
-                         </tr>
-                         <tr>
-                             <td colSpan="2">
-                             <Button onClick={submitSignUp}>Create My Account</Button>
-                             </td>
-                         </tr>
-                    </tbody>
+                        <tbody>
+                            <tr>
+                                <td colSpan="2">
+                                    <h5> Sign up with your email below </h5>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <label >First Name</label>
+                                </td>
+                                <td>
+                                    <input name="fname" onChange={handleInp} />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>Last Name</label>
+                                </td>
+                                <td>
+                                    <input name="lname" onChange={handleInp} />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>Company Name</label>
+                                </td>
+                                <td>
+                                    <input name="cname" onChange={handleInp} />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>Work Email</label>
+                                </td>
+                                <td>
+                                    <input name="wemail" onChange={handleInp} />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>Password</label>
+                                </td>
+                                <td>
+                                    <input name="password" onChange={handleInp} />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colSpan="2">
+                                    <Button onClick={submitSignUp}>Create My Account</Button>
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
-               
+
             </form>
 
         </div>
