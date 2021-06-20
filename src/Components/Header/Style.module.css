@@ -10,3 +10,6 @@ a {
 a:hover{
     cursor: pointer;
 }
+.rightMenu {
+    font-weight: 400;
+} 
