@@ -1,19 +1,18 @@
-.links{
-        display: flex;
-        color:black;
+.links {
+  display: flex;
+  color: black;
 }
 
-.paddings{
-        padding-top: 5px;
+.paddings {
+  padding-top: 5px;
 }
 
-
-.crossIcon{
-        font-size: "14px"; 
-        font-size: 900;
-        color: grey; 
+.crossIcon {
+  font-size: "14px";
+  font-size: 900;
+  color: grey;
 }
-.crossIcon:hover{
-        color: black;
-        cursor: pointer;
+.crossIcon:hover {
+  color: black;
+  cursor: pointer;
 }

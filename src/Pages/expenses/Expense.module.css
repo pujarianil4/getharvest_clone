@@ -1,323 +1,293 @@
-.bodyC
-{
-    background-color: white;
-    box-sizing: border-box;
+.bodyC {
+  background-color: white;
+  box-sizing: border-box;
 }
-.NewExpensebtn
-{
-    margin-top: 4%;
-    margin-left: 12%;
+.NewExpensebtn {
+  margin-top: 4%;
+  margin-left: 12%;
 }
-.NewExpensebtn>button
-{
-    /* background-color: rgb(93, 204, 93);
+.NewExpensebtn > button {
+  /* background-color: rgb(93, 204, 93);
     color: white;
     
     border-radius: 2px; */
-    background: linear-gradient(#14a000,#1a8d08);
-    background-image: linear-gradient(rgb(20, 160, 0), rgb(26, 141, 8));
-    background-position-x: initial;
-    background-position-y: initial;
-    background-size: initial;
-    background-attachment: initial;
-    background-origin: initial;
-    background-clip: initial;
-    background-color: initial;
-    height: 40px;
-    width: 200px;
-    color: #fff;
-    font-weight: 500;
-    font-size: 1rem;
+  background: linear-gradient(#14a000, #1a8d08);
+  background-image: linear-gradient(rgb(20, 160, 0), rgb(26, 141, 8));
+  background-position-x: initial;
+  background-position-y: initial;
+  background-size: initial;
+  background-attachment: initial;
+  background-origin: initial;
+  background-clip: initial;
+  background-color: initial;
+  height: 40px;
+  width: 200px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1rem;
 }
-.NewExpensebtn>button:disabled
-{
-    background: #d3d3d3!important;
-    color: #626262;
-    cursor: not-allowed!important;
+.NewExpensebtn > button:disabled {
+  background: #d3d3d3 !important;
+  color: #626262;
+  cursor: not-allowed !important;
 }
-.ExpenssForm
-{
-    margin-top: 3%;
-    background: #f4f4f4;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 20px 5px;
-    margin-left: 2%;
-    width: 57%;
-    height: 350px;
-    display: flex;
-    justify-content: space-around;
+.ExpenssForm {
+  margin-top: 3%;
+  background: #f4f4f4;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 20px 5px;
+  margin-left: 2%;
+  width: 57%;
+  height: 350px;
+  display: flex;
+  justify-content: space-around;
 }
-.DateClass
-{
-    background: #f4f4f4;
+.DateClass {
+  background: #f4f4f4;
 }
-.amountbox
-{
-    margin-top: -2px;
-    width: 200px;
-    height: 80px;
-    background-color: white;
-    font-size: 20px;
-    border-radius: 2px;
-    border-radius: 1px solid black;
-    position: relative;
+.amountbox {
+  margin-top: -2px;
+  width: 200px;
+  height: 80px;
+  background-color: white;
+  font-size: 20px;
+  border-radius: 2px;
+  border-radius: 1px solid black;
+  position: relative;
 }
-.inputamount
-{
-    border: 0cm;
-    width: fit-content;
-    text-align: right !important;
-    
+.inputamount {
+  border: 0cm;
+  width: fit-content;
+  text-align: right !important;
 }
-.dateInput
-{
-    font-size: 13px;
-    height: 29px;
-    appearance: none;
-    background: #fff;
-    border: 1px solid #b6b6b6;
-    border-radius: 3px;
-    color: #222;
-    display: inline-block;
-    font-size: 15px;
-    height: 34px;
-    padding: 0 8px;
-    vertical-align: middle;
-    width: 100%;
+.dateInput {
+  font-size: 13px;
+  height: 29px;
+  appearance: none;
+  background: #fff;
+  border: 1px solid #b6b6b6;
+  border-radius: 3px;
+  color: #222;
+  display: inline-block;
+  font-size: 15px;
+  height: 34px;
+  padding: 0 8px;
+  vertical-align: middle;
+  width: 100%;
 }
-.input
-{
-    
-    text-rendering: auto;
-    color: -internal-light-dark(black, white);
-    letter-spacing: normal;
-    word-spacing: normal;
-    text-transform: none;
-    text-indent: 0px;
-    text-shadow: none;
-    display: inline-block;
-    text-align: start;
-    appearance: auto;
-    background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
-    -webkit-rtl-ordering: logical;
-    cursor: text;
-    margin: 0em;
-    font: 400 13.3333px Arial;
-    padding: 1px 2px;
-    border-width: 2px;
-    border-style: inset;
-    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
-    border-image: initial;
-    width: 100%;
+.input {
+  text-rendering: auto;
+  color: -internal-light-dark(black, white);
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  appearance: auto;
+  background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
+  -webkit-rtl-ordering: logical;
+  cursor: text;
+  margin: 0em;
+  font: 400 13.3333px Arial;
+  padding: 1px 2px;
+  border-width: 2px;
+  border-style: inset;
+  border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+  border-image: initial;
+  width: 100%;
 }
-.ProjectSelection
-{
-    background: linear-gradient(#fff,#f4f4f4);
-    border: 1px solid #bbb;
-    border-radius: 3px;
-    display: block;
-    max-width: 100%!important;
-    padding: 0;
-    width: 100%!important;
-    height: 30px !important;
+.ProjectSelection {
+  background: linear-gradient(#fff, #f4f4f4);
+  border: 1px solid #bbb;
+  border-radius: 3px;
+  display: block;
+  max-width: 100% !important;
+  padding: 0;
+  width: 100% !important;
+  height: 30px !important;
 }
-.ProjectSelection :active
-{
-    background: linear-gradient(#fff,#f4f4f4);
-    border: 1px solid #bbb;
-    border-radius: 3px;
-    display: block;
-    max-width: 100%!important;
-    padding: 0;
-    width: 100%!important; 
+.ProjectSelection :active {
+  background: linear-gradient(#fff, #f4f4f4);
+  border: 1px solid #bbb;
+  border-radius: 3px;
+  display: block;
+  max-width: 100% !important;
+  padding: 0;
+  width: 100% !important;
 }
-.NotesInputbox
-{
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    height: 100%;
-    line-height: 1.25;
-    overflow: auto;
-    padding-bottom: 8px;
-    padding-top: 8px;
-    resize: vertical;
-    appearance: none;
-    background: #fff;
-    border: 1px solid #b6b6b6;
-    border-radius: 3px;
-    color: #222;
-    display: inline-block;
-    font-size: 15px;
-    padding: 0 8px;
-    vertical-align: middle;
-    width: 100%;
+.NotesInputbox {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  height: 100%;
+  line-height: 1.25;
+  overflow: auto;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  resize: vertical;
+  appearance: none;
+  background: #fff;
+  border: 1px solid #b6b6b6;
+  border-radius: 3px;
+  color: #222;
+  display: inline-block;
+  font-size: 15px;
+  padding: 0 8px;
+  vertical-align: middle;
+  width: 100%;
 }
-.Expensebtn
-{
-    background: linear-gradient(#14a000,#1a8d08);
-    color: #fff;
-    font-weight: 500;
-    align-items: center;
-    border: 0;
-    border-radius: 3px;
-    box-shadow: inset 0 0 0 1px rgb(34 34 34 / 25%);
-    display: inline-flex;
-    font-size: 15px;
-    height: 34px;
-    justify-content: center;
-    line-height: 1;
-    padding: 0 16px;
-    position: relative;
-    text-decoration: none;
-    vertical-align: middle;
-    white-space: nowrap;
-    width: auto;
+.Expensebtn {
+  background: linear-gradient(#14a000, #1a8d08);
+  color: #fff;
+  font-weight: 500;
+  align-items: center;
+  border: 0;
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 1px rgb(34 34 34 / 25%);
+  display: inline-flex;
+  font-size: 15px;
+  height: 34px;
+  justify-content: center;
+  line-height: 1;
+  padding: 0 16px;
+  position: relative;
+  text-decoration: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: auto;
 }
-.cancelBtn
-{
-    align-items: center;
-    border: 0;
-    border-radius: 3px;
-    box-shadow: inset 0 0 0 1px rgb(34 34 34 / 25%);
-    color: #545454;
-    display: inline-flex;
-    font-size: 15px;
-    font-weight: 400;
-    height: 34px;
-    justify-content: center;
-    line-height: 1;
-    padding: 0 16px;
-    position: relative;
-    text-decoration: none;
-    vertical-align: middle;
-    white-space: nowrap;
-    width: auto;
-    margin-left: 2px;
+.cancelBtn {
+  align-items: center;
+  border: 0;
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 1px rgb(34 34 34 / 25%);
+  color: #545454;
+  display: inline-flex;
+  font-size: 15px;
+  font-weight: 400;
+  height: 34px;
+  justify-content: center;
+  line-height: 1;
+  padding: 0 16px;
+  position: relative;
+  text-decoration: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: auto;
+  margin-left: 2px;
 }
-.line
-{
-    margin-top: 10px;
-    margin-left: 20%;
-    width: 70%;
-    height: 1px;
-    background-color: grey;
+.line {
+  margin-top: 10px;
+  margin-left: 20%;
+  width: 70%;
+  height: 1px;
+  background-color: grey;
 }
-.ExpenseList
-{
-    display: flex;
-    margin-left: 30%;
-    /* position: relative; */
+.ExpenseList {
+  display: flex;
+  margin-left: 30%;
+  /* position: relative; */
 }
-.ExpenseList >div
-{
-    margin-left: 20px;
+.ExpenseList > div {
+  margin-left: 20px;
 }
-.TableList
-{
-    border-collapse: collapse;
-    border-spacing: 0;
-    empty-cells: show;
-    line-height: 1.3;
-    margin: 0;
-    display: table-row;
-    vertical-align: inherit;
-    border-color: inherit;
-    text-indent: initial;
-    color: #222;
-    font-family: "Fakt","Helvetica Neue",arial,sans-serif;
-    font-size: 14px;
-    font-weight: 400;
+.TableList {
+  border-collapse: collapse;
+  border-spacing: 0;
+  empty-cells: show;
+  line-height: 1.3;
+  margin: 0;
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+  text-indent: initial;
+  color: #222;
+  font-family: "Fakt", "Helvetica Neue", arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
 }
-.TableList td
-{
-    font-size: 14px;
-    padding-bottom: 12px;
-    padding-top: 12px;
-    border-bottom: 1px solid #ccc;
-    padding-left: 7px;
-    padding-right: 7px;
-    display: table-cell;
+.TableList td {
+  font-size: 14px;
+  padding-bottom: 12px;
+  padding-top: 12px;
+  border-bottom: 1px solid #ccc;
+  padding-left: 7px;
+  padding-right: 7px;
+  display: table-cell;
 }
-.TableList .coldate
-{
-    width: 100px;
-    vertical-align: top;
-    width: 1px;
-    white-space: nowrap;
+.TableList .coldate {
+  width: 100px;
+  vertical-align: top;
+  width: 1px;
+  white-space: nowrap;
 }
-.strong
-{
-    font-weight: 600;
+.strong {
+  font-weight: 600;
 }
-.ExpenseNotes
-{
-    color: #888;
-    margin-top: 5px;
-    word-break: break-word;    
+.ExpenseNotes {
+  color: #888;
+  margin-top: 5px;
+  word-break: break-word;
 }
-.BillClass
-{
-    background: #fff;
-    border-color: #626262;
-    color: #626262;
-    display: inline-block;
-    font-size: 10px;
-    font-weight: 400;
-    line-height: 1.5;
-    padding: 0 4px;
-    text-transform: uppercase;
-    vertical-align: middle;
-    white-space: nowrap;
-    border: 1px solid transparent;
-    border-radius: 3px;
+.BillClass {
+  background: #fff;
+  border-color: #626262;
+  color: #626262;
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.5;
+  padding: 0 4px;
+  text-transform: uppercase;
+  vertical-align: middle;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  border-radius: 3px;
 }
-.ExpenseNotes .Notes
-{
-    color: #222;
+.ExpenseNotes .Notes {
+  color: #222;
 }
-.amountList
-{
-    font-size: 16px;
-    padding-top: 23px;
-    vertical-align: top;
-    width: 1px;
-    white-space: nowrap;
-    text-align: right!important;
+.amountList {
+  font-size: 16px;
+  padding-top: 23px;
+  vertical-align: top;
+  width: 1px;
+  white-space: nowrap;
+  text-align: right !important;
 }
-.editbtn
-{
-    font-size: 0;
-    padding-left: 0;
-    padding-top: 19px;
-    width: 72px;
-    vertical-align: top;
-    width: 1px;
-    white-space: nowrap;
-    text-align: right!important;
+.editbtn {
+  font-size: 0;
+  padding-left: 0;
+  padding-top: 19px;
+  width: 72px;
+  vertical-align: top;
+  width: 1px;
+  white-space: nowrap;
+  text-align: right !important;
 }
-.editbtn1
-{
-    padding: 0;
-    font-size: 13px;
-    height: 29px;
-    padding: 0 8px;
-    align-items: center;
-    background: linear-gradient(#fff,#f0f0f0);
-    border: 0;
-    border-radius: 3px;
-    box-shadow: inset 0 0 0 1px rgb(34 34 34 / 25%);
-    color: #545454;
-    display: inline-flex;
-    font-size: 15px;
-    font-weight: 400;
-    height: 34px;
-    justify-content: center;
-    line-height: 1;
-    padding: 0 16px;
-    position: relative;
-    text-decoration: none;
-    vertical-align: middle;
-    white-space: nowrap;
-    width: auto;
+.editbtn1 {
+  padding: 0;
+  font-size: 13px;
+  height: 29px;
+  padding: 0 8px;
+  align-items: center;
+  background: linear-gradient(#fff, #f0f0f0);
+  border: 0;
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 1px rgb(34 34 34 / 25%);
+  color: #545454;
+  display: inline-flex;
+  font-size: 15px;
+  font-weight: 400;
+  height: 34px;
+  justify-content: center;
+  line-height: 1;
+  padding: 0 16px;
+  position: relative;
+  text-decoration: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: auto;
 }

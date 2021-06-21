@@ -1,227 +1,197 @@
-.taskitems{
-   
- 
-    width: 100%;
-  
+.taskitems {
+  width: 100%;
 }
 
-.TaskItemHeading{
-    height: 30px;
-    background-color:#f2f2f2;
-    border-bottom: 0.5px solid #9e9e9e ;
-    border-top: 0.5px solid #9e9e9e;
-    
+.TaskItemHeading {
+  height: 30px;
+  background-color: #f2f2f2;
+  border-bottom: 0.5px solid #9e9e9e;
+  border-top: 0.5px solid #9e9e9e;
 }
 
-.TaskItemHeading>div{
-    height: 100%;
-    margin-left: 5%;
-    width: 94%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.TaskItemHeading > div {
+  height: 100%;
+  margin-left: 5%;
+  width: 94%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.TaskItemHeading>div>div:nth-child(2){
-    width: 50%;
-    font-size: 10px;
+.TaskItemHeading > div > div:nth-child(2) {
+  width: 50%;
+  font-size: 10px;
 }
-.TaskItemHeading>div>div{
-    font-family: "Fakt","Helvetica Neue",arial,sans-serif;
+.TaskItemHeading > div > div {
+  font-family: "Fakt", "Helvetica Neue", arial, sans-serif;
 
-    color: #888;
-    font-size: 11px;
-    font-weight: 500;
-}
-
-.AdditemButton{
-    background: linear-gradient(#fff,#f0f0f0);
-    align-items: center;
-    border-radius: 3px;
-    box-shadow: inset 0 0 0 1px rgb(34 34 34 / 25%);
-    color: #545454;
-    font-weight: 400;
-    height: 30px;
-    border: none;
+  color: #888;
+  font-size: 11px;
+  font-weight: 500;
 }
 
-.AdditemButton:focus{
-    outline: none;
-   
-}
-.AdditemButton:hover{
-    background: linear-gradient(#f0f0f0,#fff);
-}
-
-.TaskItemBody{
-    margin-top: 10px;
-    width: 100%;
-    display: flex;
- 
+.AdditemButton {
+  background: linear-gradient(#fff, #f0f0f0);
+  align-items: center;
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 1px rgb(34 34 34 / 25%);
+  color: #545454;
+  font-weight: 400;
+  height: 30px;
+  border: none;
 }
 
-.TaskItemBody>div:nth-child(1){
-    width: 5%;
+.AdditemButton:focus {
+  outline: none;
 }
-.TaskItemBody>div:nth-child(2){
- 
-    width: 12%;
+.AdditemButton:hover {
+  background: linear-gradient(#f0f0f0, #fff);
 }
-.TaskItemBody>div:nth-child(3){
-    width: 54%;
-   
+
+.TaskItemBody {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+}
+
+.TaskItemBody > div:nth-child(1) {
+  width: 5%;
+}
+.TaskItemBody > div:nth-child(2) {
+  width: 12%;
+}
+.TaskItemBody > div:nth-child(3) {
+  width: 54%;
 }
 /* .TaskItemBody>div:nth-child(3)>div>textarea{
     width: 100%;
 } */
-.TaskItemBody>div:nth-child(4){
-    
-    width: 12%;
+.TaskItemBody > div:nth-child(4) {
+  width: 12%;
 }
-.TaskItemBody>div:nth-child(5){
-
-    width: 12%;
+.TaskItemBody > div:nth-child(5) {
+  width: 12%;
 }
-.TaskItemBody>div:nth-child(6){
-    margin-left:15x;
+.TaskItemBody > div:nth-child(6) {
+  margin-left: 15x;
 }
-.TaskItemBody>div:nth-child(3)>div{
-    display: flex;
-    gap: 3px;
+.TaskItemBody > div:nth-child(3) > div {
+  display: flex;
+  gap: 3px;
 }
 
-.TaskItemBody>div:nth-child(3)>div>select{
-    width: 120px;
+.TaskItemBody > div:nth-child(3) > div > select {
+  width: 120px;
 }
-.TaskItemBody>div:nth-child(4)>input,.TaskItemBody>div:nth-child(5)>input{
-    width: 80px;
-    height: 30px;
-    border-radius: 3px;
-
+.TaskItemBody > div:nth-child(4) > input,
+.TaskItemBody > div:nth-child(5) > input {
+  width: 80px;
+  height: 30px;
+  border-radius: 3px;
 }
-.TaskItemBody>div:nth-child(2)>select{
-    width: 90px;
-    height: 30px;
-    border-radius: 3px;
-    background: linear-gradient(#fff,#f0f0f0);
-    
+.TaskItemBody > div:nth-child(2) > select {
+  width: 90px;
+  height: 30px;
+  border-radius: 3px;
+  background: linear-gradient(#fff, #f0f0f0);
 }
-.TaskItemBody>div:nth-child(2)>select:hover{
-    background: linear-gradient(#f0f0f0,#fff);
+.TaskItemBody > div:nth-child(2) > select:hover {
+  background: linear-gradient(#f0f0f0, #fff);
 }
-.TaskItemBody>div:nth-child(1)>div{
-    width: 25px;
-    height: 25px;
-    background: linear-gradient(#fff,#f0f0f0);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #c9c5c5;
+.TaskItemBody > div:nth-child(1) > div {
+  width: 25px;
+  height: 25px;
+  background: linear-gradient(#fff, #f0f0f0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #c9c5c5;
 }
-.TaskItemBody>div:nth-child(1)>div:hover{
-    background: linear-gradient(#f0f0f0,#fff);
-}
-
-
-.totolsection{
-    margin-top: 10px;
-    width: 98%;
-    display: flex;
-    justify-content: space-between;
-    
+.TaskItemBody > div:nth-child(1) > div:hover {
+  background: linear-gradient(#f0f0f0, #fff);
 }
 
-.totolsection>div:nth-child(1){
-
-
-}
-.totolsection>div:nth-child(2){
-    width: 25%;
-    display: flex;
-    justify-content: space-between;
-}
-.totolsection>div:nth-child(2)>div{
-    /* background-color: blanchedalmond; */
-    width: 50%;
-    text-align: right;
-    margin-right: 14px;
-    
-
+.totolsection {
+  margin-top: 10px;
+  width: 98%;
+  display: flex;
+  justify-content: space-between;
 }
 
-
-.FormBox{
-    width: 100%;
-    margin-top: 10px;
+.totolsection > div:nth-child(2) {
+  width: 25%;
+  display: flex;
+  justify-content: space-between;
 }
-.InvidInput{
-    margin-bottom: 10px;
-    width: 100%;
-  
-    display: flex;
-    justify-content: space-between;
-}
-.InvidInput>div:nth-child(1),.InvidInput>div:nth-child(2){
-    display: flex;
-    width: 45%;
-    justify-content: space-between;
-}
-
-.InvidInput>div:nth-child(1)>div,.InvidInput>div:nth-child(2)>div{
+.totolsection > div:nth-child(2) > div {
+  /* background-color: blanchedalmond; */
   width: 50%;
-    
-}
-.InvidInput>div>input{
-    height: 30px;
-}
-.InvidInput>div>select{
-    height: 30px;
-    width:      200px;
-    
+  text-align: right;
+  margin-right: 14px;
 }
 
-.SubInvidInput{
-    height: 50px;
-    width: 100%!important;
-    
-    display: flex;
-    /* justify-content: space-between; */
-    /* background-color: blue; */
-    
-   
-    
+.FormBox {
+  width: 100%;
+  margin-top: 10px;
 }
-.SubInvidInput>div:nth-child(1){
-    width: 30%;
-    
-    /* background-color: blue; */
-   
-   
+.InvidInput {
+  margin-bottom: 10px;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
 }
-
-.SubInvidInput>input{
-    width: 70%;
-    height: 30px;
-    position: relative;
-
-
+.InvidInput > div:nth-child(1),
+.InvidInput > div:nth-child(2) {
+  display: flex;
+  width: 45%;
+  justify-content: space-between;
 }
 
-
-.close_icon{
-    font-size: 18px;
+.InvidInput > div:nth-child(1) > div,
+.InvidInput > div:nth-child(2) > div {
+  width: 50%;
+}
+.InvidInput > div > input {
+  height: 30px;
+}
+.InvidInput > div > select {
+  height: 30px;
+  width: 200px;
 }
 
-.text_area{
-   width: 95%
+.SubInvidInput {
+  height: 50px;
+  width: 100% !important;
+
+  display: flex;
+  /* justify-content: space-between; */
+  /* background-color: blue; */
+}
+.SubInvidInput > div:nth-child(1) {
+  width: 30%;
+
+  /* background-color: blue; */
 }
 
-.help_outline{
-   
-        color: #b3adad;
-        font-size: 20px;
-        border-radius: "5px"
-     
+.SubInvidInput > input {
+  width: 70%;
+  height: 30px;
+  position: relative;
 }
-.fullwidth{
-    width: 100%;
+
+.close_icon {
+  font-size: 18px;
+}
+
+.text_area {
+  width: 95%;
+}
+
+.help_outline {
+  color: #b3adad;
+  font-size: 20px;
+  border-radius: "5px";
+}
+.fullwidth {
+  width: 100%;
 }
