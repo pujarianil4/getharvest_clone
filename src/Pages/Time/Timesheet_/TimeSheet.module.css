@@ -1,33 +1,30 @@
-.form_div{
-    background-color: rgba(0, 0, 0, 0.405);
-   
-    width: 100%;
-    height: 85%;
-    padding-top: 150px;
-   position: absolute;
-   top: 0px;
+.form_div {
+  background-color: rgba(0, 0, 0, 0.405);
+
+  width: 100%;
+  height: 85%;
+  padding-top: 150px;
+  position: absolute;
+  top: 0px;
 }
-.timer_form{
-    height: 340px;
-   width: 500px;
-   background-color: white;
-   margin: auto;
+.timer_form {
+  height: 340px;
+  width: 500px;
+  background-color: white;
+  margin: auto;
   border: 1px solid black;
   border-radius: 10px;
 }
 .timer_form > form {
-
-    width:90%;
-    margin: 10px auto;
+  width: 90%;
+  margin: 10px auto;
 }
 
+.AddiCons {
+  color: white;
+  font-size: 180px;
 
-.AddiCons{
-
-    color: white;
-    font-size: 180px;
-   
-    padding:30px;
+  padding: 30px;
 }
 
 /* body {
@@ -39,107 +36,99 @@
     z-index: 1;     
   }  */
 
-  .createTaskHeader{
-      height: 40px;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      background-color: #f2f2f2;
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
-      align-items: center;
-      border-bottom: 1px solid grey;
-     
-  }
-  .createTaskHeader>h3{
-    margin-left: 10px;
-  }
-  .createTaskHeader>p{
-    margin-right: 10px;
-  }
-
-  .projectName>select{
-      width: 100%;
-      height: 50px;
-      border-radius: 5px;
-      margin: 4px 0px 10px 0px;
-
-  }
-  
-
-  .TaskName>select{
-      width: 100%;
-      height: 40px;
-      border-radius: 5px;
-      margin-bottom: 10px;
-  }
-  .InputBoxes{
-      display: flex;
-      justify-content: space-between;
-  }
-  .InputBoxes>input:nth-child(1){
-      width: 65%;
-      height: 50px;
-      border-radius: 5px;
-      margin-bottom: 10px;
-      justify-items: start;
-     font-size: 14px;
-  }
-  .InputBoxes>input:nth-child(2){
-      font-size: 30px;
-      text-align: right;
-      
-    width: 28%;
-    height: 50px;
-    border-radius: 5px;
-    margin-bottom: 10px;
+.createTaskHeader {
+  height: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: #f2f2f2;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  align-items: center;
+  border-bottom: 1px solid grey;
+}
+.createTaskHeader > h3 {
+  margin-left: 10px;
+}
+.createTaskHeader > p {
+  margin-right: 10px;
 }
 
-
-
-
-
-
-.Buttons>input{
-    background-color:green;
-    height:40px;
-    color:white;
-    width:150px;
-    border:none;
-    background: linear-gradient(#14a000,#1a8d08);
-    font-weight: 500;
-    border-radius: 3px;
-    cursor: pointer;
-    text-align: center;
+.projectName > select {
+  width: 100%;
+  height: 50px;
+  border-radius: 5px;
+  margin: 4px 0px 10px 0px;
 }
-.Buttons>.cancel_btn{
-    margin-left: 10px;
-    height:40px;
-    width:100px;
-    border:none;
-    background: linear-gradient(#f0f0f0,#d3d3d3);
-    font-weight: 500;
-    border-radius: 3px;
-    cursor: pointer;
-    text-align: center;
+
+.TaskName > select {
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
-.Buttons>.submit_btn{
-    margin-left: 10px;
-    height:40px;
-    width:100px;
-    border:none;
-    background: green;
-    color: white;
-    font-weight: 500;
-    border-radius: 3px;
-    cursor: pointer;
+.InputBoxes {
+  display: flex;
+  justify-content: space-between;
 }
-.Buttons>button:focus,.Buttons>input:focus{
-    outline:none;
-    
+.InputBoxes > input:nth-child(1) {
+  width: 65%;
+  height: 50px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  justify-items: start;
+  font-size: 14px;
 }
-.Buttons>button:hover,.Buttons>input:hover{
-    background:#f37510;
-    color:white;
-    
+.InputBoxes > input:nth-child(2) {
+  font-size: 30px;
+  text-align: right;
+
+  width: 28%;
+  height: 50px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.Buttons > input {
+  background-color: green;
+  height: 40px;
+  color: white;
+  width: 150px;
+  border: none;
+  background: linear-gradient(#14a000, #1a8d08);
+  font-weight: 500;
+  border-radius: 3px;
+  cursor: pointer;
+  text-align: center;
+}
+.Buttons > .cancel_btn {
+  margin-left: 10px;
+  height: 40px;
+  width: 100px;
+  border: none;
+  background: linear-gradient(#f0f0f0, #d3d3d3);
+  font-weight: 500;
+  border-radius: 3px;
+  cursor: pointer;
+  text-align: center;
+}
+.Buttons > .submit_btn {
+  margin-left: 10px;
+  height: 40px;
+  width: 100px;
+  border: none;
+  background: green;
+  color: white;
+  font-weight: 500;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.Buttons > button:focus,
+.Buttons > input:focus {
+  outline: none;
+}
+.Buttons > button:hover,
+.Buttons > input:hover {
+  background: #f37510;
+  color: white;
 }

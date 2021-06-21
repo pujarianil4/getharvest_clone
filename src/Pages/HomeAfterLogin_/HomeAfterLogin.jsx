@@ -1,14 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-// import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import DescriptionIcon from "@material-ui/icons/Description";
 import TimerIcon from "@material-ui/icons/Timer";
 import PhoneAndroidIcon from "@material-ui/icons/PhoneAndroid";
 import CloseIcon from "@material-ui/icons/Close";
+
+
 import styles from "./HomeAfterLogin.module.css";
 import { VideoTutorial } from "../../Components/VideoTutorial/VideoTutorial";
+
 
 const Container = styled.div`
   width: 70%;
@@ -179,7 +181,7 @@ export const HomeAfterLogin = () => {
       </HeadingCont>
       <LeftRight>
         <LeftBox>
-          <p >Here's how to get started:</p>
+          <p>Here's how to get started:</p>
           <StartedBox>
             <Started className={styles.tobeHover}>
               <Link
@@ -187,7 +189,7 @@ export const HomeAfterLogin = () => {
                 onClick={() => setIstutorialOpen(true)}
               >
                 <Circles>
-                  <PlayArrowIcon className={ styles.paddings} />
+                  <PlayArrowIcon className={styles.paddings} />
                 </Circles>
                 <h2>Learn the basics of time tracking</h2>
               </Link>
@@ -196,7 +198,7 @@ export const HomeAfterLogin = () => {
             <Started className={styles.tobeHover}>
               <Link className={styles.links} to="/projects">
                 <Circles>
-                  <DescriptionIcon className={ styles.paddings} />
+                  <DescriptionIcon className={styles.paddings} />
                 </Circles>
                 <h2>Create a project</h2>
               </Link>
@@ -204,7 +206,7 @@ export const HomeAfterLogin = () => {
             <Started className={styles.tobeHover}>
               <Link to={"/time"} className={styles.links}>
                 <Circles>
-                  <TimerIcon className={ styles.paddings} />
+                  <TimerIcon className={styles.paddings} />
                 </Circles>
                 <h2>Track your first hour</h2>
               </Link>
@@ -216,7 +218,7 @@ export const HomeAfterLogin = () => {
                 target="_blank"
               >
                 <Circles>
-                  <PhoneAndroidIcon className={ styles.paddings} />
+                  <PhoneAndroidIcon className={styles.paddings} />
                 </Circles>
                 <h2>Get the desktop and mobile apps</h2>
               </StartedA>

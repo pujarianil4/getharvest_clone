@@ -1,65 +1,61 @@
-.maindiv{
-    width: 100%;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.426);
-    position: fixed;
-    top: 0;
-    left: 0;
-
+.maindiv {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.426);
+  position: fixed;
+  top: 0;
+  left: 0;
 }
-.edit{
-    
-    height: 200px;
-    width: 400px;
-    background-color: white;
-    border: 1px solid black;
-    border-radius: 10px;
-    margin: auto;
-    margin-top: 200px;
+.edit {
+  height: 200px;
+  width: 400px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: auto;
+  margin-top: 200px;
 }
-.nav{
-    height: 30px;
-    background-color: rgb(192, 192, 192);
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    display: flex;
-    justify-content: space-between;
-    padding: 0px 10px;
+.nav {
+  height: 30px;
+  background-color: rgb(192, 192, 192);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 10px;
 }
-.nav > h5{
-    color: black;
-    margin: 0px;
-    font-size: 15px;
+.nav > h5 {
+  color: black;
+  margin: 0px;
+  font-size: 15px;
 }
-.input{
-    
-    width: 100px;
-margin: auto;
-margin-top: 20px;
-
-} 
-.input > input{
-    width: 100px;
-    height: 50px;
-    font-size: 30px;
-    border: 1px solid rgb(192, 192, 192);
-    border-radius: 10px;
-    text-align: center;
+.input {
+  width: 100px;
+  margin: auto;
+  margin-top: 20px;
 }
-.btn{
-    display: flex;
-    width: 200px;
-    margin: auto;
-    margin-top: 50px;
+.input > input {
+  width: 100px;
+  height: 50px;
+  font-size: 30px;
+  border: 1px solid rgb(192, 192, 192);
+  border-radius: 10px;
+  text-align: center;
 }
-.btn > button{
-    width: 150px;
-    height: 30px;
-    margin: 0px 10px;
-    border: 0px;
-    color: white;
+.btn {
+  display: flex;
+  width: 200px;
+  margin: auto;
+  margin-top: 50px;
 }
-.close{
-    background: linear-gradient(#f0f0f0,#d3d3d3);
-    border: 1px solid gray;
+.btn > button {
+  width: 150px;
+  height: 30px;
+  margin: 0px 10px;
+  border: 0px;
+  color: white;
+}
+.close {
+  background: linear-gradient(#f0f0f0, #d3d3d3);
+  border: 1px solid gray;
 }

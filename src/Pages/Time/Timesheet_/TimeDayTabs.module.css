@@ -1,78 +1,75 @@
-.maindiv{
- width: 895px;
-
+.maindiv {
+  width: 895px;
 }
 
-.showdate{
-    display: flex;
-    margin: 0px 0px 20px 0px;
+.showdate {
+  display: flex;
+  margin: 0px 0px 20px 0px;
 }
-.showdate > h2{
-    font-weight: 500;
+.showdate > h2 {
+  font-weight: 500;
 }
-.showdate > h2 > span{
-    font-weight: 700;
+.showdate > h2 > span {
+  font-weight: 700;
 }
-.showdate > a{
-    color: blue;
-    text-decoration:underline;
-    margin-top: 10px;
+.showdate > a {
+  color: blue;
+  text-decoration: underline;
+  margin-top: 10px;
 }
-.daytabs{
- display: flex;
- width: 900px;
-
+.daytabs {
+  display: flex;
+  width: 900px;
 }
-.container{
-    height: 450px;
-    background-color: #F0F0F0;
-    border: 1px solid black;
-    position: relative;
-    top: -2px;
-}
-
-.total{
-    
-        height: 20px;
-        width: 50px;
-        border: 1px solid gray;
-        padding: 10px 50px 20px 10px;
-        background-color: #E6E6E6;
-    
-}
-.arrow{
-    height: 50px;
-}
-.main_img{
-    padding: 0px 300px;
-}
-.main_img> img{
-    width: 300px;
-}
-.ready{
-    text-align: center;
-    margin: 20px;
-}
-.ready> h2,.ready>a>h2{
-    margin: 0px;
-}
-.ready >a{
-    color: blue;
-    text-decoration: underline;
+.container {
+  height: 450px;
+  background-color: #f0f0f0;
+  border: 1px solid black;
+  position: relative;
+  top: -2px;
 }
 
-.total_timer{
-    text-align: right;
-    padding-right: 130px;
+.total {
+  height: 20px;
+  width: 50px;
+  border: 1px solid gray;
+  padding: 10px 50px 20px 10px;
+  background-color: #e6e6e6;
 }
-.total_timer > h1{
-    font-weight: 400;
+.arrow {
+  height: 50px;
 }
-.total_timer > h1 > span{
-    font-weight: 700;
+.main_img {
+  padding: 0px 300px;
+}
+.main_img > img {
+  width: 300px;
+}
+.ready {
+  text-align: center;
+  margin: 20px;
+}
+.ready > h2,
+.ready > a > h2 {
+  margin: 0px;
+}
+.ready > a {
+  color: blue;
+  text-decoration: underline;
 }
 
-.ring{
-    width: 100px;
-    margin: auto;
+.total_timer {
+  text-align: right;
+  padding-right: 130px;
+}
+.total_timer > h1 {
+  font-weight: 400;
+}
+.total_timer > h1 > span {
+  font-weight: 700;
+}
+
+.ring {
+  width: 100px;
+  margin: auto;
 }

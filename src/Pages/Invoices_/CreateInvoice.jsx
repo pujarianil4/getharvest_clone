@@ -6,11 +6,8 @@ import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 import { useSelector, useDispatch } from "react-redux";
 import { getProjectData, getTaskTimer } from "../../Redux/Timer/timeAction";
 import axios from "axios";
-// import {useDispatch,useSelector} from 'react-redux';
-// import {Ring} from 'react-awesome-spinners';
-// import { grey } from '@material-ui/core/colors';
 import { useHistory } from "react-router";
-// import ReactToPdf from "react-to-pdf"
+
 
 const InvoiceCont = styled.div`
   width: 70%;
@@ -464,9 +461,7 @@ export const CreateInvoice = () => {
                         <option value={item.pname}>{item.pname}</option>
                       ))}
                   </select>
-                  <HelpOutlineIcon
-                    className={styles.help_outline}
-                  />
+                  <HelpOutlineIcon className={styles.help_outline} />
                 </div>
               </div>
               <div>
@@ -532,9 +527,7 @@ export const CreateInvoice = () => {
                         <option value={item.pname}>{item.pname}</option>
                       ))}
                   </select>
-                  <HelpOutlineIcon
-                    className={styles.help_outline}
-                  />
+                  <HelpOutlineIcon className={styles.help_outline} />
                 </div>
               </div>
               <div>
@@ -586,9 +579,7 @@ export const CreateInvoice = () => {
                         <option value={item.pname}>{item.pname}</option>
                       ))}
                   </select>
-                  <HelpOutlineIcon
-                    className={styles.help_outline}
-                  />
+                  <HelpOutlineIcon className={styles.help_outline} />
                 </div>
               </div>
               <div>
@@ -636,7 +627,12 @@ export const CreateInvoice = () => {
 
         <Notes>
           <label htmlFor="">Notes (optional, displayed on invoice)</label>
-          <textarea name="" id="" rows="4" className={styles.fullwidth}></textarea>
+          <textarea
+            name=""
+            id=""
+            rows="4"
+            className={styles.fullwidth}
+          ></textarea>
           <label htmlFor="">Formatting tips: *bold* _italics_</label>
         </Notes>
 
@@ -648,5 +644,3 @@ export const CreateInvoice = () => {
     </InvoiceCont>
   );
 };
-
-
