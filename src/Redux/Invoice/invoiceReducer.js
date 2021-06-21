@@ -1,119 +1,132 @@
-import { CREATETASK_FAILURE, CREATETASK_REQUEST, CREATETASK_SUCCESS, DELETETASK_FAILURE, DELETETASK_REQUEST, DELETETASK_SUCCESS, EDITTASK_FAILURE, EDITTASK_REQUEST, EDITTASK_SUCCESS, GETPROJECT_FAILURE, GETPROJECT_REQUEST, GETPROJECT_SUCCESS, GETTASK_FAILURE, GETTASK_REQUEST, GETTASK_SUCCESS } from "./actionType"
+import {
+  CREATETASK_FAILURE,
+  CREATETASK_REQUEST,
+  CREATETASK_SUCCESS,
+  DELETETASK_FAILURE,
+  DELETETASK_REQUEST,
+  DELETETASK_SUCCESS,
+  EDITTASK_FAILURE,
+  EDITTASK_REQUEST,
+  EDITTASK_SUCCESS,
+  GETPROJECT_FAILURE,
+  GETPROJECT_REQUEST,
+  GETPROJECT_SUCCESS,
+  GETTASK_FAILURE,
+  GETTASK_REQUEST,
+  GETTASK_SUCCESS,
+} from "./actionType";
 
-const initTaskState ={
-    isLoading:true,
-    isError:false,
-    projectData:[],
-    TaskEntries:[],
-    taskloading:false
-}
+const initTaskState = {
+  isLoading: true,
+  isError: false,
+  projectData: [],
+  TaskEntries: [],
+  taskloading: false,
+};
 
-export const timeReducer=(state=initTaskState,{type,payload})=>{
-    switch(type){
-        
-        case CREATETASK_REQUEST: {
-            return{
-                ...state,
-                taskloading:true
-            }
-        }
-        case CREATETASK_SUCCESS: {
-            return{
-                ...state,
-                taskloading: true
-            }
-        }
-        case CREATETASK_FAILURE: {
-            return{
-                ...state,
-            }
-        }
-// ______________________GETTING TASK__________________________________//
-
-        case GETTASK_REQUEST: {
-            return{
-                ...state,
-                taskloading:true
-            }
-        }
-        case GETTASK_SUCCESS: {
-            return{
-                ...state,
-                TaskEntries:payload,
-                isLoading:false,
-                taskloading: false
-            }
-        }
-        case GETTASK_FAILURE: {
-            return{
-                ...state,
-            }
-        }
-// _________________________PROJECTS_______________________________//
-        case GETPROJECT_REQUEST: {
-            return{
-                ...state,
-                isLoading:true
-            }
-        }
-        case GETPROJECT_SUCCESS: {
-            return{
-                
-                ...state,
-                projectData:payload,
-                isLoading:false
-            }
-        }
-        case GETPROJECT_FAILURE: {
-            return{
-                ...state,
-            }
-        }
-// _________________________EDIT TIMER_______________________________//
-case EDITTASK_REQUEST: {
-    return{
+export const timeReducer = (state = initTaskState, { type, payload }) => {
+  switch (type) {
+    case CREATETASK_REQUEST: {
+      return {
         ...state,
-        taskloading: true
+        taskloading: true,
+      };
     }
-}
-case EDITTASK_SUCCESS: {
-    return{
+    case CREATETASK_SUCCESS: {
+      return {
         ...state,
-        taskloading:false
+        taskloading: true,
+      };
     }
-}
-case EDITTASK_FAILURE: {
-    return{
+    case CREATETASK_FAILURE: {
+      return {
         ...state,
-        isError:true,
-        taskloading:false
+      };
     }
-}
-// _________________________DELETE TIMER_______________________________//
+    // ______________________GETTING TASK__________________________________//
 
-case DELETETASK_REQUEST: {
-    return{
+    case GETTASK_REQUEST: {
+      return {
+        ...state,
+        taskloading: true,
+      };
+    }
+    case GETTASK_SUCCESS: {
+      return {
+        ...state,
+        TaskEntries: payload,
+        isLoading: false,
+        taskloading: false,
+      };
+    }
+    case GETTASK_FAILURE: {
+      return {
+        ...state,
+      };
+    }
+    // _________________________PROJECTS_______________________________//
+    case GETPROJECT_REQUEST: {
+      return {
+        ...state,
+        isLoading: true,
+      };
+    }
+    case GETPROJECT_SUCCESS: {
+      return {
+        ...state,
+        projectData: payload,
+        isLoading: false,
+      };
+    }
+    case GETPROJECT_FAILURE: {
+      return {
+        ...state,
+      };
+    }
+    // _________________________EDIT TIMER_______________________________//
+    case EDITTASK_REQUEST: {
+      return {
+        ...state,
+        taskloading: true,
+      };
+    }
+    case EDITTASK_SUCCESS: {
+      return {
+        ...state,
+        taskloading: false,
+      };
+    }
+    case EDITTASK_FAILURE: {
+      return {
+        ...state,
+        isError: true,
+        taskloading: false,
+      };
+    }
+    // _________________________DELETE TIMER_______________________________//
+
+    case DELETETASK_REQUEST: {
+      return {
         ...state,
         //taskloading: true
+      };
     }
-}
-case DELETETASK_SUCCESS: {
-    return{
+    case DELETETASK_SUCCESS: {
+      return {
         ...state,
         //taskloading:false
+      };
     }
-}
-case DELETETASK_FAILURE: {
-    return{
+    case DELETETASK_FAILURE: {
+      return {
         ...state,
-        isError:true,
-        taskloading:false
+        isError: true,
+        taskloading: false,
+      };
     }
-}
 
-        default:{
-            return state
-        }
-        
+    default: {
+      return state;
     }
-}
+  }
+};

@@ -1,5 +1,7 @@
 import React from "react";
+
 import styles from "./ProjectR.module.css";
+
 const TaskR = () => {
   return (
     <div className={styles.TaskRBox}>
