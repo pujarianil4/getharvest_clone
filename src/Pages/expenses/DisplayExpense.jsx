@@ -45,6 +45,7 @@ const DisplayExpense = () => {
                 {/* eslint-disable-next-line */}
                 <strong className={styles.strong}>
                   {" "}
+                  {/* eslint-disable-next-line */}
                   {"$" + `${items.amount}`}
                 </strong>
               </td>

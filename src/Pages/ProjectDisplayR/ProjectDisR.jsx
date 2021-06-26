@@ -6,7 +6,6 @@ import { TaskR } from "./TaskR";
 
 const ProjectDisR = () => {
   const [showt, setShowt] = useState(true);
-  const [showI, setShowI] = useState(false);
   return (
     <div className={styles.body}>
       {/* Top Bar Starting */}

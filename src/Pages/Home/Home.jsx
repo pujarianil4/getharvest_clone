@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
@@ -7,7 +7,7 @@ import ComputerIcon from "@material-ui/icons/Computer";
 import RecordVoiceOverIcon from "@material-ui/icons/RecordVoiceOver";
 
 import { Footer } from "../../Components/Footer/Footer";
-import { Feature_card, Start_trial_button } from "../../Library/Custom_UI";
+import {  Start_trial_button } from "../../Library/Custom_UI";
 import { Carousel } from "./Carousel";
 import style from "./Home.module.css";
 
