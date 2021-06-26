@@ -93,7 +93,9 @@ export default function HomeHeader() {
 
       <Accounts>
         <a
+        // eslint-disable-next-line
           target="_blank"
+          rel="noreferrer"
           className={style.rightMenu}
           href="https://support.getharvest.com/hc/en-us"
         >

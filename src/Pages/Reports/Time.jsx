@@ -224,9 +224,10 @@ export default function Time() {
                   <TableCell>{taskObj.businessDevelopment || 0}</TableCell>
                   <TableCell>{taskObj.businessDevelopment || 0}</TableCell>
                   <TableCell>
-                    {taskObj.businessDevelopment * rates === NaN
-                      ? taskObj.businessDevelopment * rates
-                      : 0}
+                    {/* eslint-disable-next-line */}
+                    {isNaN(taskObj.businessDevelopment * rates)
+                      ?0
+                      : taskObj.businessDevelopment * rates}
                     $
                   </TableCell>
                 </TableRow>
@@ -241,9 +242,10 @@ export default function Time() {
                   <TableCell>{taskObj.marketing || 0}</TableCell>
                   <TableCell>{taskObj.marketing || 0}</TableCell>
                   <TableCell>
-                    {taskObj.marketing * rates === NaN
-                      ? taskObj.businessDevelopment * rates
-                      : 0}
+                    {/* eslint-disable-next-line */}
+                    {isNaN(taskObj.marketing * rates)
+                      ? 0
+                      :taskObj.businessDevelopment * rates}
                     $
                   </TableCell>
                 </TableRow>
@@ -258,9 +260,10 @@ export default function Time() {
                   <TableCell>{taskObj.projectManagement || 0}</TableCell>
                   <TableCell>{taskObj.projectManagement || 0}</TableCell>
                   <TableCell>
-                    {taskObj.projectManagement * rates === NaN
-                      ? taskObj.businessDevelopment * rates
-                      : 0}
+                    {/* eslint-disable-next-line */}
+                    {isNaN(taskObj.projectManagement * rates)
+                      ? 0
+                      :taskObj.businessDevelopment * rates}
                     $
                   </TableCell>
                 </TableRow>
