@@ -278,7 +278,7 @@ export default function CreateProject() {
 
             <div>
               <div className={styles.taskwidth}>
-                <label>Business Development</label>
+                <label>Marketing</label>
               </div>
               <div className={styles.myCheckbox}>
                 <input
@@ -291,7 +291,7 @@ export default function CreateProject() {
             </div>
             <div>
               <div className={styles.taskwidth}>
-                <label>Business Development</label>
+                <label>Programming</label>
               </div>
               <div className={styles.myCheckbox}>
                 <input
@@ -304,7 +304,7 @@ export default function CreateProject() {
             </div>
             <div>
               <div className={styles.taskwidth}>
-                <label>project Management</label>
+                <label>Project Management</label>
               </div>
               <div className={styles.myCheckbox}>
                 {" "}

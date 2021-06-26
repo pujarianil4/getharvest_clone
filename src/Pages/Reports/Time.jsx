@@ -52,11 +52,12 @@ export default function Time() {
       }
     });
 
+
   //console.log(projectReportData[0].projectType[0].hourlyRates);
   //eslint-disable-next-line
   let rates =
     (!isLoadingProject &&
-      !isLoadingTask &&
+      !isLoadingTask && 
       Number(projectReportData[0].projectType[0].hourlyRates)) ||
     0;
 
@@ -89,7 +90,8 @@ export default function Time() {
     return <div>{value === index && <h2>{children}</h2>}</div>;
   }
 
-  return (
+  return   (
+    projectReportData &&
     <div>
       <Container style={{ width: "75%", margin: "auto" }}>
         <div
@@ -235,7 +237,7 @@ export default function Time() {
                   <TableCell>Programming</TableCell>
                   <TableCell>{taskObj.programming || 0}</TableCell>
                   <TableCell>{taskObj.programming || 0}</TableCell>
-                  <TableCell>{taskObj.programming * rates}$</TableCell>
+                  <TableCell>{isNaN(taskObj.programming)?"0":taskObj.programming * rates}$</TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell>Marketing</TableCell>
@@ -253,7 +255,7 @@ export default function Time() {
                   <TableCell>Design</TableCell>
                   <TableCell>{taskObj.design || 0}</TableCell>
                   <TableCell>{taskObj.design || 0}</TableCell>
-                  <TableCell>{taskObj.design * rates}$</TableCell>
+                  <TableCell>{isNaN(taskObj.design)?"0":taskObj.design * rates}$</TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell>project Management</TableCell>

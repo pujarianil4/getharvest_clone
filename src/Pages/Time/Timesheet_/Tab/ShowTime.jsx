@@ -1,6 +1,5 @@
 import React, { useState,useEffect } from "react"
 import style from "./ShowTime.module.css"
-//import { Ring } from "react-awesome-spinners"
 import { TimeRing } from "./Ring"
 import { Edit } from "../Edit/Edit"
 import {  useSelector } from "react-redux"
