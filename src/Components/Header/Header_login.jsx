@@ -23,11 +23,14 @@ const Menu = styled.section`
   padding: 3px 0px 0px 0px;
 `;
 const Icon = styled.section`
-  display: flex;
-  align-items: center;
-  flex-basis: 18%;
-  margin-left: 4%;
-`;
+    display: flex;
+    align-items: center;
+    flex-basis: 18%;
+    margin-left: 4%;
+    &:hover {
+        cursor: pointer;
+    }
+`
 const Button = styled.button`
   background: #f07544;
   border-radius: 4px;
