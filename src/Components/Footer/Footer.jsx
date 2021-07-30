@@ -126,6 +126,9 @@ export function Footer() {
                   src="https://www.getharvest.com/assets/footer/forecast-screen-da4954256a26b39182bd6535834f6b605b3124c9352e372a8e577218e5b750dc.png"
                   alt="img"
                 />
+                {/* {
+                  //f.hubspotusercontent10.net/hubfs/19495563/raw_assets/public/getharvest-theme/images/misc/forecast-screen.png
+                } */}
               </div>
             </div>
           </div>

@@ -1,0 +1,108 @@
+Hello Abdul,
+
+
+
+
+
+README.md is missing. There should be a README.md file on the main folder which contains images, video, steps to run locally, hosted platform, details about npm packages if any, etc ( mention all the details )
+
+
+Use code formatter extension and format your code ; It's not formatted properly 
+
+
+Github description is missing
+
+
+I did not see any footer. I think main landing page will have a footer for sure
+
+
+There are a lot of warnings that are coming in when we run the project. Please clear all those warnings
+
+
+Do not use inline styling. Please change that
+
+
+Remove all unused logic, unused variables and unused code from project 
+
+
+Folder structure is not really nice. Please fix that. Why does the Components subfolder have a pages folder as it's child. Have a separate folder for components , pages, redux etc
+
+
+/signup 
+
+
+Form isn't aligned in the centre . fix that. Use % or rem instead of px for uniformity. That might help to maintain consistency across screens
+
+
+Why are tables being used when there better options like grid etc
+
+
+/welcome
+
+
+Hardcoded values are found as logic. I don't understand why
+
+/projects
+
+
+Give proper names to state and setState variables
+
+
+Was moved to /time route after project creation but nothing was working. All I got was a loading spinner there
+
+
+/time
+
+
+There is no validation for time input
+
+
+Not sure how or what start is for
+
+
+/expenses
+
+Maintain consistency in naming routes and component to avoid confusion
+
+
+
+
+/invoice
+
+
+PDF download implementation is nice
+
+
+ Remove all the unused imports and console.log from the code before the final push. 
+
+
+Either your code should be self explanatory; Since it wasn't you should make use of some comments to describe code - L . There are places it has been done and there are place it hasn't been done
+
+
+Component reusability should be looked into; Also Start using components in react instead of HTML tags. Can also make use of UI libraries like material UI
+
+
+Text is a bit off in navbar and is not centrally aligned
+
+
+User in v=navbar and logout button
+
+
+Packages imported should be at the top - leave a line - then start importing local modules ( individual files ). It's a good convention and not a compulsion though - L
+
+
+UI is not responsive - work on it as well - L
+
+
+Reusability can be looked into - L
+
+
+Check if it's possible to have some common  CSS - L
+
+
+
+
+
+
+
+

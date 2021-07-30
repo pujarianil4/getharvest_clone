@@ -51,7 +51,7 @@ export function Home() {
 
           <div className={style.title_img}>
             <img
-              src="https://www.getharvest.com/assets/home/homepage-hero-f5fa037e2f7a8ecb0622213e2646f37a098a484073e9a0faa9d6fb748089ba9b.png"
+              src="https://f.hubspotusercontent10.net/hub/19495563/hubfs/homepage-hero.png?width=850&name=homepage-hero.png"
               alt="title img"
             />
           </div>
@@ -266,6 +266,9 @@ export function Home() {
               src="https://www.getharvest.com/assets/illustrations/timesheets-medium-857db8f1310d74ce1a0d2ef066ce09f1a0354b7a9eb40e02449d8a18942734b1.png"
               alt="img"
             />
+            {/* {
+              https://f.hubspotusercontent10.net/hub/19495563/hubfs/illustrations/timesheets-medium.png?width=500&name=timesheets-medium.png
+            } */}
           </div>
         </div>
       </div>
