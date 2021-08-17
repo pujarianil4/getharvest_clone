@@ -4,7 +4,7 @@
 This project is a clone of getharvest.com which is a project management and invoicing web application.
 
 
-![Logo](https://www.getharvest.com/assets/press/harvest-logo-capsule-thumb-cbc50d27df203ec7e28be793348a51c83f0cd4ce9728482522b0ea70fe9d4d66.png)
+![Logo](https://f.hubspotusercontent10.net/hubfs/19495563/about/harvest-logo-capsule-498c77c3434509f1555dcef96fdf615720e4e124cb589fe9bd59e807246844a6.png)
 
     
 ## Run Locally
